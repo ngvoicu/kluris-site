@@ -1,0 +1,1529 @@
+<!DOCTYPE html>
+<html lang="en" class="dark">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<!-- Primary Meta -->
+<title>Kluris — The SME your team never had | AI agent knowledge base</title>
+<meta name="description" content="Kluris turns your AI agents into a subject matter expert that never sleeps and never quits. Customizable, human-curated, git-backed brains shared across Claude Code, Cursor, Windsurf, GitHub Copilot, Codex, Gemini CLI, and every agent on your team. Open source Python CLI, installable via pipx.">
+<meta name="keywords" content="kluris, kluris.io, AI agents, SME, subject matter expert, knowledge base, AI knowledge management, Claude Code, Cursor, Windsurf, GitHub Copilot, Codex, Gemini CLI, Kilo Code, Junie, brain, neurons, lobes, synapses, git-backed knowledge, pipx, python CLI, AI pair programming, agentic workflows, coding assistant memory, team knowledge sharing">
+<meta name="author" content="Gabriel Voicu">
+<meta name="robots" content="index, follow, max-image-preview:large, max-snippet:-1">
+<meta name="googlebot" content="index, follow">
+<link rel="canonical" href="https://kluris.io/">
+
+<!-- Open Graph / Facebook / LinkedIn -->
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://kluris.io/">
+<meta property="og:title" content="Kluris — The SME your team never had">
+<meta property="og:description" content="Turn your AI agents into a subject matter expert that never sleeps and never quits. Customizable, human-curated, git-backed brains. Open source. Free forever.">
+<meta property="og:site_name" content="Kluris">
+<meta property="og:image" content="https://kluris.io/og-image.png">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta property="og:image:alt" content="Kluris — a stylized brain logo with circuit synapses and a glowing crystal core">
+<meta property="og:locale" content="en_US">
+
+<!-- Twitter / X -->
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:url" content="https://kluris.io/">
+<meta name="twitter:title" content="Kluris — The SME your team never had">
+<meta name="twitter:description" content="Turn your AI agents into a subject matter expert that never sleeps and never quits. Open source Python CLI, installable via pipx.">
+<meta name="twitter:image" content="https://kluris.io/og-image.png">
+<meta name="twitter:image:alt" content="Kluris — a stylized brain logo with circuit synapses and a glowing crystal core">
+
+<!-- Theme & PWA -->
+<meta name="theme-color" content="#0a0e1a">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+<meta name="apple-mobile-web-app-title" content="Kluris">
+
+<!-- Favicons -->
+<link rel="icon" type="image/png" sizes="32x32" href="favicon-32x32.png">
+<link rel="icon" type="image/png" sizes="16x16" href="favicon-16x16.png">
+<link rel="apple-touch-icon" sizes="180x180" href="apple-touch-icon.png">
+<link rel="manifest" href="site.webmanifest">
+
+<!-- Structured Data — SoftwareApplication schema -->
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "SoftwareApplication",
+  "name": "Kluris",
+  "description": "Kluris turns your AI agents into a subject matter expert that never sleeps and never quits. Customizable, human-curated, git-backed brains shared across every AI agent on your team.",
+  "url": "https://kluris.io/",
+  "applicationCategory": "DeveloperApplication",
+  "applicationSubCategory": "AI Knowledge Management",
+  "operatingSystem": "macOS, Linux, Windows",
+  "programmingLanguage": "Python",
+  "license": "https://opensource.org/licenses/MIT",
+  "image": "https://kluris.io/og-image.png",
+  "softwareVersion": "1.0.0",
+  "downloadUrl": "https://github.com/ngvoicu/kluris-cli",
+  "installUrl": "https://github.com/ngvoicu/kluris-cli#install",
+  "softwareRequirements": "Python 3.10+, git, pipx",
+  "author": {
+    "@type": "Person",
+    "name": "Gabriel Voicu",
+    "url": "https://www.linkedin.com/in/ngvoicu/"
+  },
+  "publisher": {
+    "@type": "Person",
+    "name": "Gabriel Voicu"
+  },
+  "offers": {
+    "@type": "Offer",
+    "price": "0",
+    "priceCurrency": "USD",
+    "availability": "https://schema.org/InStock"
+  },
+  "keywords": "AI agents, SME, knowledge base, brain, neurons, lobes, synapses, Claude Code, Cursor, Windsurf, GitHub Copilot, Codex, Gemini CLI, pipx, Python CLI",
+  "sameAs": [
+    "https://github.com/ngvoicu/kluris-cli",
+    "https://pypi.org/project/kluris/"
+  ]
+}
+</script>
+
+<!-- Structured Data — Organization -->
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "Organization",
+  "name": "Kluris",
+  "url": "https://kluris.io/",
+  "logo": "https://kluris.io/icon-512.png",
+  "founder": {
+    "@type": "Person",
+    "name": "Gabriel Voicu"
+  },
+  "sameAs": [
+    "https://github.com/ngvoicu/kluris-cli"
+  ]
+}
+</script>
+
+<!-- Structured Data — WebSite + SearchAction -->
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "WebSite",
+  "name": "Kluris",
+  "url": "https://kluris.io/",
+  "description": "The SME your team never had — kluris turns your AI agents into a shared, customizable, git-backed brain.",
+  "publisher": {
+    "@type": "Person",
+    "name": "Gabriel Voicu"
+  }
+}
+</script>
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=Inter:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<script>
+  tailwind.config = {
+    darkMode: 'class',
+    theme: {
+      extend: {
+        colors: {
+          bg: '#0a0e1a',
+          surface: '#10141f',
+          'surface-hover': '#141a28',
+          border: 'rgba(255,255,255,0.06)',
+          'border-hover': 'rgba(255,255,255,0.12)',
+          text: '#e4e7ef',
+          'text-dim': '#8a92a6',
+          'text-muted': '#5b6275',
+          purple: {
+            DEFAULT: '#a78bfa',
+            deep: '#8b5cf6',
+            light: '#c4b5fd',
+          },
+          pink: '#ec4899',
+          cyan: '#22d3ee',
+          lobe: {
+            pink: '#ec4899',
+            orange: '#f59e0b',
+            yellow: '#facc15',
+            purple: '#a78bfa',
+            green: '#34d399',
+            magenta: '#f0abfc',
+          },
+        },
+        fontFamily: {
+          serif: ['DM Serif Display', 'Georgia', 'serif'],
+          sans: ['Inter', 'system-ui', 'sans-serif'],
+          mono: ['JetBrains Mono', 'Fira Code', 'monospace'],
+        },
+        borderRadius: {
+          DEFAULT: '0.5rem',
+          lg: '0.75rem',
+          xl: '1rem',
+          '2xl': '1.25rem',
+          '3xl': '1.5rem',
+        },
+      },
+    },
+  };
+</script>
+
+<style>
+  *,*::before,*::after { box-sizing: border-box; }
+  html { scroll-behavior: smooth; }
+  body {
+    background: #0a0e1a;
+    color: #e4e7ef;
+    font-family: 'Inter', system-ui, sans-serif;
+    -webkit-font-smoothing: antialiased;
+    overflow-x: hidden;
+    line-height: 1.6;
+  }
+
+  /* Background grid (matches the MRI) */
+  .grid-bg {
+    background-image:
+      linear-gradient(rgba(255,255,255,0.03) 1px, transparent 1px),
+      linear-gradient(90deg, rgba(255,255,255,0.03) 1px, transparent 1px);
+    background-size: 48px 48px;
+  }
+
+  /* Gradient text — purple → pink */
+  .gradient-text {
+    background: linear-gradient(135deg, #c4b5fd 0%, #a78bfa 35%, #ec4899 100%);
+    -webkit-background-clip: text;
+    background-clip: text;
+    -webkit-text-fill-color: transparent;
+    color: transparent;
+  }
+
+  /* Purple glow halos */
+  .glow-purple {
+    box-shadow: 0 0 80px rgba(167,139,250,0.25), 0 0 30px rgba(167,139,250,0.15);
+  }
+  .glow-purple-sm {
+    box-shadow: 0 0 25px rgba(167,139,250,0.2);
+  }
+
+  /* CTA button — purple-to-pink gradient */
+  .btn-primary {
+    background: linear-gradient(135deg, #a78bfa 0%, #ec4899 100%);
+    color: #0a0e1a;
+    font-weight: 600;
+    box-shadow: 0 8px 30px rgba(167,139,250,0.3), 0 0 20px rgba(236,72,153,0.15);
+    transition: transform 0.2s, box-shadow 0.2s;
+  }
+  .btn-primary:hover {
+    transform: translateY(-1px);
+    box-shadow: 0 10px 40px rgba(167,139,250,0.5), 0 0 30px rgba(236,72,153,0.25);
+  }
+
+  /* Card hover glow */
+  .card {
+    background: #10141f;
+    border: 1px solid rgba(255,255,255,0.06);
+    transition: border-color 0.3s, box-shadow 0.3s, transform 0.3s;
+  }
+  .card:hover {
+    border-color: rgba(167,139,250,0.35);
+    box-shadow: 0 0 40px rgba(167,139,250,0.1);
+  }
+
+  /* Terminal block style */
+  .terminal {
+    background: #10141f;
+    border: 1px solid rgba(255,255,255,0.06);
+    border-radius: 12px;
+    overflow: hidden;
+  }
+  .terminal-header {
+    background: rgba(255,255,255,0.02);
+    padding: 0.6rem 1rem;
+    border-bottom: 1px solid rgba(255,255,255,0.06);
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 0.7rem;
+    color: #8a92a6;
+  }
+  .terminal-dot {
+    width: 10px; height: 10px; border-radius: 50%;
+  }
+  .terminal pre {
+    padding: 1.25rem;
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 0.82rem;
+    line-height: 1.65;
+    color: #e4e7ef;
+    white-space: pre;
+    overflow-x: auto;
+    tab-size: 2;
+  }
+  .terminal pre .prompt { color: #a78bfa; font-weight: 600; }
+  .terminal pre .dim { color: #5b6275; }
+  .terminal pre .ok { color: #34d399; }
+  .terminal pre .warn { color: #facc15; }
+  .terminal pre .str { color: #c4b5fd; }
+  .terminal pre .cmd { color: #e4e7ef; }
+  .terminal pre .meta { color: #8a92a6; font-style: italic; }
+
+  /* Pulse animation for accents */
+  @keyframes pulse-soft {
+    0%, 100% { opacity: 0.6; }
+    50% { opacity: 1; }
+  }
+  .pulse-soft { animation: pulse-soft 3s ease-in-out infinite; }
+
+  /* Logo — clean, no glow, no halo */
+  .logo-wrap {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+  }
+  .logo-wrap img {
+    transition: transform 0.3s;
+  }
+  .group:hover .logo-wrap img {
+    transform: scale(1.08) rotate(2deg);
+  }
+
+  /* Drifting particles */
+  @keyframes float-up {
+    0% { transform: translateY(100vh) scale(0.5); opacity: 0; }
+    10% { opacity: 0.6; }
+    90% { opacity: 0.6; }
+    100% { transform: translateY(-20vh) scale(1); opacity: 0; }
+  }
+
+  /* Scroll fade-in reveal */
+  .reveal { opacity: 0; transform: translateY(24px); transition: opacity 0.8s, transform 0.8s; }
+  .reveal.in { opacity: 1; transform: translateY(0); }
+
+  /* Nav backdrop */
+  .nav-bg {
+    background: rgba(10,14,26,0.75);
+    backdrop-filter: blur(24px) saturate(1.4);
+    -webkit-backdrop-filter: blur(24px) saturate(1.4);
+  }
+
+  /* MRI image frame */
+  .mri-frame {
+    border: 1px solid rgba(167,139,250,0.35);
+    border-radius: 18px;
+    padding: 0;
+    overflow: hidden;
+    background: #10141f;
+    box-shadow: 0 20px 80px rgba(167,139,250,0.15), 0 0 40px rgba(34,211,238,0.1);
+  }
+
+  /* Horizontal rule as a synapse line */
+  .synapse-hr {
+    height: 1px;
+    background: linear-gradient(90deg, transparent 0%, rgba(167,139,250,0.4) 50%, transparent 100%);
+    border: none;
+    margin: 0;
+  }
+
+  /* File tree styling */
+  .tree {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 0.82rem;
+    line-height: 1.8;
+    color: #e4e7ef;
+  }
+  .tree .folder { color: #a78bfa; font-weight: 600; }
+  .tree .file { color: #e4e7ef; }
+  .tree .note { color: #5b6275; }
+
+  /* Chip */
+  .chip {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.4rem;
+    padding: 0.3rem 0.85rem;
+    border-radius: 9999px;
+    border: 1px solid rgba(167,139,250,0.35);
+    background: rgba(167,139,250,0.05);
+    color: #c4b5fd;
+    font-size: 0.7rem;
+    font-weight: 500;
+    letter-spacing: 0.02em;
+    text-transform: uppercase;
+    font-family: 'Inter', sans-serif;
+  }
+
+  /* Smooth reveal on load for hero */
+  @keyframes hero-in {
+    from { opacity: 0; transform: translateY(20px); }
+    to { opacity: 1; transform: translateY(0); }
+  }
+  .hero-in { animation: hero-in 1s ease-out both; }
+  .hero-in-1 { animation-delay: 0.1s; }
+  .hero-in-2 { animation-delay: 0.3s; }
+  .hero-in-3 { animation-delay: 0.5s; }
+  .hero-in-4 { animation-delay: 0.7s; }
+  .hero-in-5 { animation-delay: 0.9s; }
+
+  /* Hide scrollbar on code blocks for cleanliness */
+  .terminal pre::-webkit-scrollbar { height: 6px; background: transparent; }
+  .terminal pre::-webkit-scrollbar-thumb { background: rgba(255,255,255,0.08); border-radius: 3px; }
+
+  /* Table for commands */
+  .cmd-table {
+    width: 100%;
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 0.82rem;
+    border-collapse: collapse;
+  }
+  .cmd-table td {
+    padding: 0.55rem 0.6rem;
+    border-bottom: 1px solid rgba(255,255,255,0.04);
+    vertical-align: top;
+  }
+  .cmd-table td:first-child {
+    color: #a78bfa;
+    font-weight: 600;
+    white-space: nowrap;
+    padding-right: 1.2rem;
+  }
+  .cmd-table td:last-child {
+    color: #8a92a6;
+    font-family: 'Inter', sans-serif;
+    font-size: 0.85rem;
+  }
+  .cmd-table tr:last-child td { border-bottom: none; }
+  .cmd-table tr:hover td { background: rgba(167,139,250,0.03); }
+
+  /* Section divider */
+  .section-divider {
+    max-width: 240px;
+    margin: 0 auto;
+    height: 1px;
+    background: linear-gradient(90deg, transparent, rgba(167,139,250,0.4), transparent);
+  }
+</style>
+</head>
+<body class="bg-bg text-text font-sans">
+
+<!-- ============================================ -->
+<!-- FIXED TOP NAV                                  -->
+<!-- ============================================ -->
+<nav class="nav-bg fixed top-0 left-0 right-0 z-50 border-b border-white/5">
+  <div class="max-w-7xl mx-auto flex items-center justify-between px-6 md:px-10 h-16">
+    <a href="#" class="font-serif text-2xl tracking-tight flex items-center gap-3 group">
+      <span class="logo-wrap">
+        <img src="logo.png" alt="Kluris logo" width="44" height="44" class="w-11 h-11 object-contain" />
+      </span>
+      <span class="gradient-text">kluris</span>
+    </a>
+    <div class="hidden md:flex items-center gap-8 text-sm font-medium">
+      <a href="#install" class="text-text-dim hover:text-text transition-colors">Install</a>
+      <a href="#first-brain" class="text-text-dim hover:text-text transition-colors">First brain</a>
+      <a href="#commands" class="text-text-dim hover:text-text transition-colors">Commands</a>
+      <a href="#agents" class="text-text-dim hover:text-text transition-colors">Agents</a>
+    </div>
+    <a href="https://github.com/ngvoicu/kluris-cli" class="inline-flex items-center gap-2 px-4 py-2 text-xs md:text-sm font-semibold text-purple-light border border-purple/40 hover:border-purple hover:bg-purple/10 rounded-full transition-all">
+      <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor"><path d="M12 .297c-6.63 0-12 5.373-12 12 0 5.303 3.438 9.8 8.205 11.385.6.113.82-.258.82-.577 0-.285-.01-1.04-.015-2.04-3.338.724-4.042-1.61-4.042-1.61C4.422 18.07 3.633 17.7 3.633 17.7c-1.087-.744.084-.729.084-.729 1.205.084 1.838 1.236 1.838 1.236 1.07 1.835 2.809 1.305 3.495.998.108-.776.417-1.305.76-1.605-2.665-.3-5.466-1.332-5.466-5.93 0-1.31.465-2.38 1.235-3.22-.135-.303-.54-1.523.105-3.176 0 0 1.005-.322 3.3 1.23.96-.267 1.98-.399 3-.405 1.02.006 2.04.138 3 .405 2.28-1.552 3.285-1.23 3.285-1.23.645 1.653.24 2.873.12 3.176.765.84 1.23 1.91 1.23 3.22 0 4.61-2.805 5.625-5.475 5.92.42.36.81 1.096.81 2.22 0 1.606-.015 2.896-.015 3.286 0 .315.21.69.825.57C20.565 22.092 24 17.592 24 12.297c0-6.627-5.373-12-12-12"/></svg>
+      GitHub
+    </a>
+  </div>
+</nav>
+
+<!-- ============================================ -->
+<!-- SECTION 1 — HERO                               -->
+<!-- ============================================ -->
+<section class="relative min-h-screen grid-bg overflow-hidden">
+  <canvas id="brain-canvas" class="absolute inset-0 w-full h-full"></canvas>
+
+  <!-- Radial purple vignette -->
+  <div class="absolute inset-0 pointer-events-none" style="background: radial-gradient(ellipse at 50% 40%, rgba(167,139,250,0.12) 0%, transparent 60%);"></div>
+
+  <!-- Hero content -->
+  <div class="relative z-10 min-h-screen flex flex-col items-center justify-center text-center px-6 pt-24 pb-20">
+    <div class="hero-in hero-in-1 mb-8">
+      <span class="chip">
+        <span class="inline-block w-1.5 h-1.5 rounded-full bg-purple"></span>
+        Open source · MIT · Python CLI · pipx installable
+      </span>
+    </div>
+
+    <h1 class="hero-in hero-in-2 font-serif text-5xl sm:text-6xl md:text-7xl lg:text-[7.5rem] leading-[0.95] tracking-tight max-w-5xl mb-8">
+      <span class="block text-text">The SME your team</span>
+      <span class="block gradient-text">never had.</span>
+    </h1>
+
+    <p class="hero-in hero-in-3 text-lg md:text-xl text-text-dim max-w-2xl mx-auto mb-10 leading-relaxed font-light">
+      Kluris turns your AI agents into a subject matter expert that never sleeps and never quits — built collaboratively with you, one approved entry at a time.
+    </p>
+
+    <div class="hero-in hero-in-4 flex flex-col sm:flex-row items-center justify-center gap-4 mb-8">
+      <a href="#install" class="btn-primary inline-flex items-center gap-2 px-8 py-4 rounded-full text-base">
+        Install kluris
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><path d="M5 12h14M13 5l7 7-7 7"/></svg>
+      </a>
+      <a href="https://github.com/ngvoicu/kluris-cli" class="inline-flex items-center gap-2 px-8 py-4 rounded-full text-base font-semibold text-purple-light border border-purple/50 hover:bg-purple/10 hover:border-purple transition-all">
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><path d="M12 .297c-6.63 0-12 5.373-12 12 0 5.303 3.438 9.8 8.205 11.385.6.113.82-.258.82-.577 0-.285-.01-1.04-.015-2.04-3.338.724-4.042-1.61-4.042-1.61C4.422 18.07 3.633 17.7 3.633 17.7c-1.087-.744.084-.729.084-.729 1.205.084 1.838 1.236 1.838 1.236 1.07 1.835 2.809 1.305 3.495.998.108-.776.417-1.305.76-1.605-2.665-.3-5.466-1.332-5.466-5.93 0-1.31.465-2.38 1.235-3.22-.135-.303-.54-1.523.105-3.176 0 0 1.005-.322 3.3 1.23.96-.267 1.98-.399 3-.405 1.02.006 2.04.138 3 .405 2.28-1.552 3.285-1.23 3.285-1.23.645 1.653.24 2.873.12 3.176.765.84 1.23 1.91 1.23 3.22 0 4.61-2.805 5.625-5.475 5.92.42.36.81 1.096.81 2.22 0 1.606-.015 2.896-.015 3.286 0 .315.21.69.825.57C20.565 22.092 24 17.592 24 12.297c0-6.627-5.373-12-12-12"/></svg>
+        View on GitHub
+      </a>
+    </div>
+
+    <p class="hero-in hero-in-5 text-sm text-text-muted tracking-wide">
+      Customizable brains · Human-curated · Git-backed · Yours forever
+    </p>
+  </div>
+
+  <!-- Scroll hint -->
+  <div class="absolute bottom-8 left-1/2 -translate-x-1/2 text-text-muted text-xs tracking-widest uppercase flex flex-col items-center gap-2 opacity-60">
+    <span>Scroll</span>
+    <div class="w-px h-8 bg-gradient-to-b from-purple to-transparent"></div>
+  </div>
+</section>
+
+<!-- ============================================ -->
+<!-- SECTION 2 — THE PROBLEM                        -->
+<!-- ============================================ -->
+<section class="py-28 md:py-40 px-6 relative">
+  <div class="max-w-7xl mx-auto">
+    <div class="text-center mb-16 max-w-3xl mx-auto">
+      <p class="text-purple text-xs uppercase tracking-[0.2em] font-medium mb-4">The problem</p>
+      <h2 class="font-serif text-4xl md:text-6xl leading-tight mb-6">
+        Your AI agents start from <span class="gradient-text">zero</span> every morning.
+      </h2>
+      <p class="text-text-dim text-lg leading-relaxed">
+        Every new session, every new repo, every new teammate — the knowledge walks out the door. Kluris fixes that.
+      </p>
+    </div>
+
+    <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+      <!-- Card 1 -->
+      <div class="card rounded-2xl p-8">
+        <div class="w-10 h-10 rounded-lg bg-pink/10 border border-pink/30 flex items-center justify-center mb-6">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#ec4899" stroke-width="2" stroke-linecap="round"><path d="M12 8v4M12 16h.01"/><circle cx="12" cy="12" r="10"/></svg>
+        </div>
+        <h3 class="font-serif text-2xl mb-3">Your agents forget.</h3>
+        <p class="text-text-dim leading-relaxed">A new context window means a new brain. Every morning, every session, your agent re-learns your codebase from scratch.</p>
+      </div>
+
+      <!-- Card 2 -->
+      <div class="card rounded-2xl p-8">
+        <div class="w-10 h-10 rounded-lg bg-lobe-orange/10 border border-lobe-orange/30 flex items-center justify-center mb-6">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#f59e0b" stroke-width="2" stroke-linecap="round"><path d="M16 21v-2a4 4 0 0 0-4-4H6a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M22 11l-4 4M18 11l4 4"/></svg>
+        </div>
+        <h3 class="font-serif text-2xl mb-3">Your best engineer leaves.</h3>
+        <p class="text-text-dim leading-relaxed">When the senior dev who knows why things are built this way moves on, their context leaves with them. A year later, nobody can explain the auth flow.</p>
+      </div>
+
+      <!-- Card 3 -->
+      <div class="card rounded-2xl p-8">
+        <div class="w-10 h-10 rounded-lg bg-lobe-yellow/10 border border-lobe-yellow/30 flex items-center justify-center mb-6">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#facc15" stroke-width="2" stroke-linecap="round"><path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20"/><path d="M6.5 2H20v20H6.5A2.5 2.5 0 0 1 4 19.5v-15A2.5 2.5 0 0 1 6.5 2z"/></svg>
+        </div>
+        <h3 class="font-serif text-2xl mb-3">Your docs are for humans.</h3>
+        <p class="text-text-dim leading-relaxed">Wikis, Notion, and CLAUDE.md are written for people, not agents. They can't be searched, linked, or reasoned across by your AI.</p>
+      </div>
+    </div>
+
+    <div class="mt-16 text-center">
+      <div class="section-divider mb-8"></div>
+      <p class="text-text-muted text-sm italic">Kluris gives every agent on your team a shared brain they read, search, and grow together.</p>
+    </div>
+  </div>
+</section>
+
+<!-- ============================================ -->
+<!-- SECTION 3 — INSTALL                            -->
+<!-- ============================================ -->
+<section id="install" class="py-28 md:py-40 px-6 relative grid-bg">
+  <div class="max-w-5xl mx-auto">
+    <div class="text-center mb-16">
+      <p class="text-purple text-xs uppercase tracking-[0.2em] font-medium mb-4">Step 1</p>
+      <h2 class="font-serif text-4xl md:text-6xl leading-tight mb-6">
+        Install in <span class="gradient-text">two commands</span>.
+      </h2>
+      <p class="text-text-dim text-lg max-w-2xl mx-auto leading-relaxed">
+        Kluris is a Python CLI distributed on PyPI. Install with <span class="text-purple font-mono">pipx</span> — it keeps things isolated and always up to date.
+      </p>
+    </div>
+
+    <div class="grid grid-cols-1 md:grid-cols-3 gap-5">
+      <!-- macOS -->
+      <div class="terminal glow-purple-sm">
+        <div class="terminal-header">
+          <span class="terminal-dot" style="background:#ef4444;opacity:0.6"></span>
+          <span class="terminal-dot" style="background:#f59e0b;opacity:0.6"></span>
+          <span class="terminal-dot" style="background:#34d399;opacity:0.6"></span>
+          <span class="ml-2">macOS</span>
+        </div>
+<pre><span class="prompt">$</span> <span class="cmd">brew install pipx</span>
+<span class="prompt">$</span> <span class="cmd">pipx ensurepath</span>
+<span class="prompt">$</span> <span class="cmd">pipx install kluris</span></pre>
+      </div>
+
+      <!-- Linux -->
+      <div class="terminal glow-purple-sm">
+        <div class="terminal-header">
+          <span class="terminal-dot" style="background:#ef4444;opacity:0.6"></span>
+          <span class="terminal-dot" style="background:#f59e0b;opacity:0.6"></span>
+          <span class="terminal-dot" style="background:#34d399;opacity:0.6"></span>
+          <span class="ml-2">Linux</span>
+        </div>
+<pre><span class="prompt">$</span> <span class="cmd">python3 -m pip install --user pipx</span>
+<span class="prompt">$</span> <span class="cmd">pipx ensurepath</span>
+<span class="prompt">$</span> <span class="cmd">pipx install kluris</span></pre>
+      </div>
+
+      <!-- Windows -->
+      <div class="terminal glow-purple-sm">
+        <div class="terminal-header">
+          <span class="terminal-dot" style="background:#ef4444;opacity:0.6"></span>
+          <span class="terminal-dot" style="background:#f59e0b;opacity:0.6"></span>
+          <span class="terminal-dot" style="background:#34d399;opacity:0.6"></span>
+          <span class="ml-2">Windows</span>
+        </div>
+<pre><span class="prompt">&gt;</span> <span class="cmd">pip install pipx</span>
+<span class="prompt">&gt;</span> <span class="cmd">pipx ensurepath</span>
+<span class="prompt">&gt;</span> <span class="cmd">pipx install kluris</span></pre>
+      </div>
+    </div>
+
+    <div class="mt-6 terminal max-w-2xl mx-auto">
+      <div class="terminal-header">
+        <span class="terminal-dot" style="background:#a78bfa"></span>
+        <span class="ml-2">Verify the install</span>
+      </div>
+<pre><span class="prompt">$</span> <span class="cmd">kluris doctor</span>
+  <span class="ok">✓</span> git found
+  <span class="ok">✓</span> Python 3.11 found
+  <span class="ok">✓</span> kluris 1.0.0 ready
+  <span class="ok">✓</span> 8 agents detected (claude, cursor, windsurf, ...)
+
+<span class="dim">Everything looks good. You are ready to create a brain.</span></pre>
+    </div>
+  </div>
+</section>
+
+<!-- ============================================ -->
+<!-- SECTION 4 — YOUR FIRST BRAIN                   -->
+<!-- ============================================ -->
+<section id="first-brain" class="py-28 md:py-40 px-6 relative">
+  <div class="max-w-7xl mx-auto">
+    <div class="text-center mb-16 max-w-3xl mx-auto">
+      <p class="text-purple text-xs uppercase tracking-[0.2em] font-medium mb-4">Step 2</p>
+      <h2 class="font-serif text-4xl md:text-6xl leading-tight mb-6">
+        <span class="block">Create your first brain</span>
+        <span class="block gradient-text">for your new SME.</span>
+      </h2>
+      <p class="text-text-dim text-lg leading-relaxed">
+        One command, one wizard, one git repo. You pick the name, the type, and the location — kluris does the rest.
+      </p>
+    </div>
+
+    <div class="grid grid-cols-1 lg:grid-cols-2 gap-6 items-stretch">
+      <!-- Left: terminal wizard -->
+      <div class="terminal">
+        <div class="terminal-header">
+          <span class="terminal-dot" style="background:#ef4444;opacity:0.6"></span>
+          <span class="terminal-dot" style="background:#f59e0b;opacity:0.6"></span>
+          <span class="terminal-dot" style="background:#34d399;opacity:0.6"></span>
+          <span class="ml-2">kluris create — interactive wizard</span>
+        </div>
+<pre><span class="prompt">$</span> <span class="cmd">kluris create</span>
+
+<span class="meta">Brain name:</span> <span class="str">acme-brain</span>
+<span class="meta">Brain type:</span>
+  <span class="dim">[1]</span> product-group  <span class="dim">[2]</span> personal
+  <span class="dim">[3]</span> product        <span class="dim">[4]</span> research
+  <span class="dim">[5]</span> blank
+<span class="meta">Choice:</span> <span class="str">1</span>
+<span class="meta">Location:</span> <span class="str">~/Projects/acme-brain</span>
+<span class="meta">Initialize git?</span> <span class="str">y</span>
+<span class="meta">Register as default?</span> <span class="str">y</span>
+
+  <span class="ok">✓</span> Created acme-brain
+  <span class="ok">✓</span> Git initialized on main
+  <span class="ok">✓</span> Registered as default brain
+  <span class="ok">✓</span> Installed /kluris skill for 8 agents
+
+<span class="dim">Next: cd into any project and use</span>
+<span class="dim">      /kluris learn this service</span></pre>
+      </div>
+
+      <!-- Right: file tree -->
+      <div class="terminal">
+        <div class="terminal-header">
+          <span class="terminal-dot" style="background:#a78bfa"></span>
+          <span class="ml-2">The folder kluris just created</span>
+        </div>
+<pre class="tree"><span class="folder">acme-brain/</span>
+├── kluris.yml              <span class="note"># gitignored — your local config</span>
+├── brain.md                <span class="note"># root directory, auto-generated</span>
+├── glossary.md             <span class="note"># domain terms, hand-edited</span>
+├── README.md               <span class="note"># usage guide</span>
+├── .gitignore
+├── <span class="folder">projects/</span>
+│   ├── map.md              <span class="note"># lobe index, auto-generated</span>
+│   └── <span class="dim">(your neurons go here)</span>
+├── <span class="folder">infrastructure/</span>
+│   ├── map.md
+│   └── <span class="dim">(your neurons go here)</span>
+└── <span class="folder">knowledge/</span>
+    ├── map.md
+    └── <span class="dim">(your neurons go here)</span></pre>
+      </div>
+    </div>
+
+    <div class="mt-10 text-center">
+      <p class="text-text-muted text-sm italic">Every brain is a git repo. Your knowledge is markdown. Nothing is magic.</p>
+    </div>
+  </div>
+</section>
+
+<!-- ============================================ -->
+<!-- SECTION 5 — ANATOMY                            -->
+<!-- ============================================ -->
+<section class="py-28 md:py-40 px-6 relative grid-bg">
+  <div class="max-w-7xl mx-auto">
+    <div class="text-center mb-16 max-w-3xl mx-auto">
+      <p class="text-purple text-xs uppercase tracking-[0.2em] font-medium mb-4">Anatomy</p>
+      <h2 class="font-serif text-4xl md:text-6xl leading-tight mb-6">
+        What lives inside a <span class="gradient-text">brain</span>.
+      </h2>
+      <p class="text-text-dim text-lg leading-relaxed">
+        Seven pieces. Learn them once, use them forever.
+      </p>
+    </div>
+
+    <!-- Row 1 — 3 cards -->
+    <div class="grid grid-cols-1 md:grid-cols-3 gap-5 mb-5">
+      <div class="card rounded-2xl p-7 border-t-2" style="border-top-color:#ec4899">
+        <div class="flex items-center gap-3 mb-3">
+          <span class="w-2 h-2 rounded-full bg-lobe-pink pulse-soft"></span>
+          <span class="text-xs uppercase tracking-wider text-lobe-pink font-semibold">Root</span>
+        </div>
+        <h3 class="font-serif text-2xl mb-2">Brain</h3>
+        <p class="text-text-dim text-sm leading-relaxed">The top-level git repo. One brain = one shared knowledge base. You can have many.</p>
+      </div>
+
+      <div class="card rounded-2xl p-7 border-t-2" style="border-top-color:#f59e0b">
+        <div class="flex items-center gap-3 mb-3">
+          <span class="w-2 h-2 rounded-full bg-lobe-orange pulse-soft"></span>
+          <span class="text-xs uppercase tracking-wider text-lobe-orange font-semibold">Region</span>
+        </div>
+        <h3 class="font-serif text-2xl mb-2">Lobe</h3>
+        <p class="text-text-dim text-sm leading-relaxed">A folder inside the brain. Each lobe is a knowledge region — projects, infrastructure, knowledge, tasks, whatever you need.</p>
+      </div>
+
+      <div class="card rounded-2xl p-7 border-t-2" style="border-top-color:#facc15">
+        <div class="flex items-center gap-3 mb-3">
+          <span class="w-2 h-2 rounded-full bg-lobe-yellow pulse-soft"></span>
+          <span class="text-xs uppercase tracking-wider text-lobe-yellow font-semibold">Atom</span>
+        </div>
+        <h3 class="font-serif text-2xl mb-2">Neuron</h3>
+        <p class="text-text-dim text-sm leading-relaxed">A single markdown file inside a lobe. One idea, one decision, one runbook, one fact. Named with kebab-case.</p>
+      </div>
+    </div>
+
+    <!-- Row 2 — 3 cards -->
+    <div class="grid grid-cols-1 md:grid-cols-3 gap-5 mb-5">
+      <div class="card rounded-2xl p-7 border-t-2" style="border-top-color:#a78bfa">
+        <div class="flex items-center gap-3 mb-3">
+          <span class="w-2 h-2 rounded-full bg-lobe-purple pulse-soft"></span>
+          <span class="text-xs uppercase tracking-wider text-lobe-purple font-semibold">Link</span>
+        </div>
+        <h3 class="font-serif text-2xl mb-2">Synapse</h3>
+        <p class="text-text-dim text-sm leading-relaxed">A bidirectional link between two neurons. Written in frontmatter as <span class="font-mono text-xs text-purple-light">related:</span>. Dream auto-fixes one-way synapses into two-way.</p>
+      </div>
+
+      <div class="card rounded-2xl p-7 border-t-2" style="border-top-color:#34d399">
+        <div class="flex items-center gap-3 mb-3">
+          <span class="w-2 h-2 rounded-full bg-lobe-green pulse-soft"></span>
+          <span class="text-xs uppercase tracking-wider text-lobe-green font-semibold">Index</span>
+        </div>
+        <h3 class="font-serif text-2xl mb-2">Map</h3>
+        <p class="text-text-dim text-sm leading-relaxed">An auto-generated <span class="font-mono text-xs text-lobe-green">map.md</span> at the root of every lobe. Lists every neuron in the lobe. You never write this — dream writes it.</p>
+      </div>
+
+      <div class="card rounded-2xl p-7 border-t-2" style="border-top-color:#f0abfc">
+        <div class="flex items-center gap-3 mb-3">
+          <span class="w-2 h-2 rounded-full bg-lobe-magenta pulse-soft"></span>
+          <span class="text-xs uppercase tracking-wider text-lobe-magenta font-semibold">Vocab</span>
+        </div>
+        <h3 class="font-serif text-2xl mb-2">Glossary</h3>
+        <p class="text-text-dim text-sm leading-relaxed">A single hand-edited <span class="font-mono text-xs text-lobe-magenta">glossary.md</span> at the root. Defines your domain vocabulary so agents know what your team words mean.</p>
+      </div>
+    </div>
+
+    <!-- Row 3 — 1 wide card -->
+    <div class="card rounded-2xl p-7 border-t-2" style="border-top-color:#a78bfa">
+      <div class="flex flex-col md:flex-row md:items-center gap-6">
+        <div class="flex-1">
+          <div class="flex items-center gap-3 mb-3">
+            <span class="w-2 h-2 rounded-full bg-purple pulse-soft"></span>
+            <span class="text-xs uppercase tracking-wider text-purple font-semibold">Local config</span>
+          </div>
+          <h3 class="font-serif text-2xl mb-2">kluris.yml</h3>
+          <p class="text-text-dim text-sm leading-relaxed max-w-3xl">Your local config for this brain. <span class="text-purple font-medium">Gitignored.</span> Contains your git branch preference, your default commit prefix, and which AI agents you use. Each teammate has their own <span class="font-mono text-xs text-purple-light">kluris.yml</span> — so everyone can have different settings without touching the shared brain.</p>
+        </div>
+        <div class="md:w-80 flex-shrink-0">
+<pre class="font-mono text-xs leading-relaxed bg-bg/50 p-4 rounded-lg border border-white/5 text-text-dim"><span class="text-lobe-purple">name</span>: acme-brain
+<span class="text-lobe-purple">description</span>: platform brains
+<span class="text-lobe-purple">git</span>:
+  <span class="text-lobe-purple">default_branch</span>: main
+  <span class="text-lobe-purple">commit_prefix</span>: <span class="text-lobe-green">"brain:"</span></pre>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============================================ -->
+<!-- SECTION 6 — TEACH THE BRAIN                    -->
+<!-- ============================================ -->
+<section class="py-28 md:py-40 px-6 relative">
+  <div class="max-w-7xl mx-auto">
+    <div class="text-center mb-16 max-w-3xl mx-auto">
+      <p class="text-purple text-xs uppercase tracking-[0.2em] font-medium mb-4">Teach</p>
+      <h2 class="font-serif text-4xl md:text-6xl leading-tight mb-6">
+        Teach the <span class="gradient-text">brain</span>.
+      </h2>
+      <p class="text-text-dim text-lg leading-relaxed">
+        Three ways to write knowledge into a brain — all collaborative, all reviewed by you before anything is saved.
+      </p>
+    </div>
+
+    <div class="space-y-6">
+      <!-- Card 1 — /kluris learn -->
+      <div class="card rounded-2xl overflow-hidden">
+        <div class="grid grid-cols-1 lg:grid-cols-2 gap-0">
+          <div class="p-10 border-b lg:border-b-0 lg:border-r border-white/5">
+            <div class="chip mb-5">/kluris learn</div>
+            <h3 class="font-serif text-3xl mb-4">Let the agent analyze your code.</h3>
+            <p class="text-text-dim leading-relaxed mb-5">Point the agent at a folder. It reads your code and proposes neurons one at a time, with a preview of every piece before it is written.</p>
+            <ul class="space-y-2 text-sm text-text-dim">
+              <li class="flex items-start gap-3"><span class="text-purple mt-0.5">→</span>Approve, edit, skip, or change the target lobe</li>
+              <li class="flex items-start gap-3"><span class="text-purple mt-0.5">→</span>Nothing is written without your sign-off</li>
+              <li class="flex items-start gap-3"><span class="text-purple mt-0.5">→</span>The agent infers related neurons automatically</li>
+            </ul>
+          </div>
+          <div class="bg-bg/40">
+<pre class="p-8 font-mono text-[0.78rem] leading-relaxed"><span class="prompt">&gt;</span> <span class="cmd">/kluris learn the auth flow</span>
+
+<span class="dim">Analyzing src/auth/... (14 files)</span>
+
+<span class="meta">Proposing neuron:</span> projects/btb-core/auth-flow.md
+<span class="dim">──────────────────────────────────────</span>
+<span class="str"># Auth flow</span>
+
+<span class="cmd">We use Keycloak OIDC. Frontend obtains
+JWT via Keycloak, passes it to backend
+as Bearer token. Backend validates via
+JWKS. Refresh at 80% TTL.</span>
+
+<span class="meta">Related:</span> <span class="str">[clerk-vs-keycloak.md,
+          jwt-rotation.md]</span>
+<span class="dim">──────────────────────────────────────</span>
+
+[<span class="ok">a</span>]pprove  [<span class="warn">e</span>]dit  [<span class="dim">s</span>]kip  [<span class="str">c</span>]hange lobe: </pre>
+          </div>
+        </div>
+      </div>
+
+      <!-- Card 2 — /kluris remember -->
+      <div class="card rounded-2xl overflow-hidden">
+        <div class="grid grid-cols-1 lg:grid-cols-2 gap-0">
+          <div class="bg-bg/40 order-2 lg:order-1">
+<pre class="p-8 font-mono text-[0.78rem] leading-relaxed"><span class="prompt">&gt;</span> <span class="cmd">/kluris remember we chose raw SQL
+                      over JPA for query
+                      complexity</span>
+
+<span class="meta">Proposing:</span> knowledge/use-raw-sql.md
+<span class="dim">(template: decision)</span>
+<span class="dim">──────────────────────────────────────</span>
+<span class="str"># Use raw SQL over JPA</span>
+
+<span class="meta">## Context</span>
+<span class="cmd">Query complexity and performance
+on the reporting endpoints...</span>
+
+<span class="meta">## Decision</span>
+<span class="cmd">Use NamedParameterJdbcTemplate with
+explicit raw SQL...</span>
+
+<span class="meta">## Consequences</span>
+<span class="cmd">Less ORM magic, more typing, faster
+queries, clearer SQL in git diffs.</span>
+<span class="dim">──────────────────────────────────────</span>
+
+[<span class="ok">a</span>]pprove  [<span class="warn">e</span>]dit  [<span class="dim">s</span>]kip: </pre>
+          </div>
+          <div class="p-10 border-t lg:border-t-0 lg:border-l border-white/5 order-1 lg:order-2">
+            <div class="chip mb-5">/kluris remember</div>
+            <h3 class="font-serif text-3xl mb-4">Capture a decision in one line.</h3>
+            <p class="text-text-dim leading-relaxed mb-5">For when you just made a call and want to write it down before you forget. The agent turns your one-liner into a properly structured neuron.</p>
+            <ul class="space-y-2 text-sm text-text-dim">
+              <li class="flex items-start gap-3"><span class="text-purple mt-0.5">→</span>Auto-selects the decision template</li>
+              <li class="flex items-start gap-3"><span class="text-purple mt-0.5">→</span>Fills in context, decision, consequences</li>
+              <li class="flex items-start gap-3"><span class="text-purple mt-0.5">→</span>You edit or approve before anything lands</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+
+      <!-- Card 3 — kluris neuron -->
+      <div class="card rounded-2xl overflow-hidden">
+        <div class="grid grid-cols-1 lg:grid-cols-2 gap-0">
+          <div class="p-10 border-b lg:border-b-0 lg:border-r border-white/5">
+            <div class="chip mb-5">kluris neuron</div>
+            <h3 class="font-serif text-3xl mb-4">Create one manually with a template.</h3>
+            <p class="text-text-dim leading-relaxed mb-5">When you want full control. Pick a template — decision, incident, or runbook — and get a pre-structured neuron to fill in by hand.</p>
+            <ul class="space-y-2 text-sm text-text-dim">
+              <li class="flex items-start gap-3"><span class="text-purple mt-0.5">→</span>Three built-in templates, ready to use</li>
+              <li class="flex items-start gap-3"><span class="text-purple mt-0.5">→</span>Write your own templates too</li>
+              <li class="flex items-start gap-3"><span class="text-purple mt-0.5">→</span>Dream automatically updates the lobe map</li>
+            </ul>
+          </div>
+          <div class="bg-bg/40">
+<pre class="p-8 font-mono text-[0.78rem] leading-relaxed"><span class="prompt">$</span> <span class="cmd">kluris neuron outage-jan.md \
+    --lobe knowledge \
+    --template incident</span>
+
+<span class="ok">Created:</span> knowledge/outage-jan.md
+<span class="meta">Template:</span> incident
+
+<span class="meta">Sections:</span>
+  <span class="str">Summary</span>
+  <span class="str">Timeline</span>
+  <span class="str">Root cause</span>
+  <span class="str">Impact</span>
+  <span class="str">Resolution</span>
+  <span class="str">Lessons learned</span>
+
+<span class="dim">Open it in your editor to fill in
+the details. Run `kluris dream` to
+refresh the lobe map afterward.</span></pre>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============================================ -->
+<!-- SECTION 7 — ASK THE BRAIN                      -->
+<!-- ============================================ -->
+<section class="py-28 md:py-40 px-6 relative grid-bg">
+  <div class="max-w-7xl mx-auto">
+    <div class="text-center mb-16 max-w-3xl mx-auto">
+      <p class="text-purple text-xs uppercase tracking-[0.2em] font-medium mb-4">Ask</p>
+      <h2 class="font-serif text-4xl md:text-6xl leading-tight mb-6">
+        Ask the <span class="gradient-text">brain</span>.
+      </h2>
+      <p class="text-text-dim text-lg leading-relaxed">
+        Once your brain has knowledge, every agent can use it. Search, query, and implement — all with your team's conventions baked in.
+      </p>
+    </div>
+
+    <div class="grid grid-cols-1 lg:grid-cols-2 gap-5">
+      <!-- search -->
+      <div class="terminal">
+        <div class="terminal-header">
+          <span class="chip text-[0.62rem] py-0.5 px-2">SEARCH</span>
+          <span class="ml-2">semantic + keyword lookup</span>
+        </div>
+<pre><span class="prompt">&gt;</span> <span class="cmd">/kluris search auth flow</span>
+
+<span class="meta">Found 3 neurons:</span>
+  projects/btb-core/auth-flow.md       <span class="warn">★★★</span>
+  knowledge/jwt-rotation.md            <span class="warn">★★</span>
+  infrastructure/keycloak-setup.md     <span class="warn">★</span>
+
+<span class="dim">Run `/kluris open auth-flow.md` to read one.</span></pre>
+      </div>
+
+      <!-- ask -->
+      <div class="terminal">
+        <div class="terminal-header">
+          <span class="chip text-[0.62rem] py-0.5 px-2">ASK</span>
+          <span class="ml-2">natural language Q&amp;A across the brain</span>
+        </div>
+<pre><span class="prompt">&gt;</span> <span class="cmd">/kluris what do we know about Docker?</span>
+
+<span class="dim">Reading:</span>
+  infrastructure/docker-builds.md
+  infrastructure/environments.md
+
+<span class="cmd">You build multi-stage Dockerfiles with
+BuildKit. Images go to ghcr.io/zeespire/.
+Prod uses Coolify on Hetzner with Cloudflare
+Tunnel (zero public ports).</span></pre>
+      </div>
+
+      <!-- implement -->
+      <div class="terminal">
+        <div class="terminal-header">
+          <span class="chip text-[0.62rem] py-0.5 px-2">IMPLEMENT</span>
+          <span class="ml-2">agent writes code using your conventions</span>
+        </div>
+<pre><span class="prompt">&gt;</span> <span class="cmd">/kluris implement the POST /users
+          endpoint following our conventions</span>
+
+<span class="dim">Reading brain:</span>
+  - use-raw-sql.md <span class="meta">(decision)</span>
+  - api-conventions.md
+  - auth-flow.md
+
+<span class="ok">Generated endpoint using NamedParameter
+JdbcTemplate, JWT validation, i18n JSONB
+fields, explicit constraint names.</span></pre>
+      </div>
+
+      <!-- fix -->
+      <div class="terminal">
+        <div class="terminal-header">
+          <span class="chip text-[0.62rem] py-0.5 px-2">FIX</span>
+          <span class="ml-2">bug fixes grounded in your brain</span>
+        </div>
+<pre><span class="prompt">&gt;</span> <span class="cmd">/kluris fix the token refresh --
+          use brain knowledge</span>
+
+<span class="dim">Checking brain for auth decisions...</span>
+<span class="meta">Found:</span> knowledge/jwt-rotation.md
+
+<span class="warn">Conflict:</span> your code refreshes on 401,
+but the brain says refresh at 80% TTL.
+<span class="ok">Applying the brain's rule.</span></pre>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============================================ -->
+<!-- SECTION 8 — VISUALIZE + MAINTAIN               -->
+<!-- ============================================ -->
+<section class="py-28 md:py-40 px-6 relative">
+  <div class="max-w-7xl mx-auto">
+    <div class="text-center mb-16 max-w-3xl mx-auto">
+      <p class="text-purple text-xs uppercase tracking-[0.2em] font-medium mb-4">Operate</p>
+      <h2 class="font-serif text-4xl md:text-6xl leading-tight mb-6">
+        Three commands that keep your <span class="gradient-text">brain alive</span>.
+      </h2>
+      <p class="text-text-dim text-lg leading-relaxed">
+        <span class="font-mono text-purple text-sm">wake-up</span> · <span class="font-mono text-purple text-sm">dream</span> · <span class="font-mono text-purple text-sm">mri</span> — the rituals of a healthy brain. Run them daily, weekly, or never — your choice.
+      </p>
+    </div>
+
+    <div class="grid grid-cols-1 lg:grid-cols-3 gap-5 mb-12">
+      <!-- wake-up -->
+      <div class="terminal glow-purple-sm">
+        <div class="terminal-header">
+          <span class="chip text-[0.62rem] py-0.5 px-2">WAKE-UP</span>
+        </div>
+<pre><span class="prompt">$</span> <span class="cmd">kluris wake-up</span>
+
+<span class="meta">Brain:</span> <span class="str">acme-brain (default)</span>
+  <span class="dim">Path: ~/Projects/acme-brain</span>
+
+<span class="meta">Lobes (3)</span>
+  - projects/:        <span class="warn">12</span> neurons
+  - infrastructure/:  <span class="warn"> 4</span> neurons
+  - knowledge/:       <span class="warn"> 7</span> neurons
+
+<span class="meta">Total neurons:</span> <span class="warn">23</span>
+
+<span class="meta">Recently updated (5)</span>
+  <span class="dim">2026-04-05</span> use-raw-sql.md
+  <span class="dim">2026-04-04</span> auth-flow.md
+  <span class="dim">2026-04-04</span> docker-builds.md
+  <span class="dim">2026-04-02</span> state.md
+  <span class="dim">2026-04-01</span> import.md</pre>
+        <div class="px-5 py-3 text-xs text-text-muted border-t border-white/5">Compact snapshot — agents run this on every new session.</div>
+      </div>
+
+      <!-- dream -->
+      <div class="terminal glow-purple-sm">
+        <div class="terminal-header">
+          <span class="chip text-[0.62rem] py-0.5 px-2">DREAM</span>
+        </div>
+<pre><span class="prompt">$</span> <span class="cmd">kluris dream</span>
+
+<span class="meta">acme-brain health report:</span>
+  Lobes: <span class="str">projects, infrastructure,
+          knowledge</span>
+  Maps regenerated: <span class="warn">4</span>
+  <span class="ok">OK</span>   synapses
+  <span class="ok">OK</span>   bidirectional
+  <span class="ok">OK</span>   orphans
+  <span class="ok">OK</span>   frontmatter
+  <span class="ok">OK</span>   deprecation
+  <span class="warn">6</span>    automatic fixes applied
+  <span class="warn">3</span>    dates refreshed from git
+  <span class="warn">1</span>    missing parent inferred
+  <span class="warn">2</span>    reverse links added
+
+<span class="ok">Brain is healthy.</span></pre>
+        <div class="px-5 py-3 text-xs text-text-muted border-t border-white/5">Regenerates maps, validates synapses, refreshes dates from git.</div>
+      </div>
+
+      <!-- mri -->
+      <div class="terminal glow-purple-sm">
+        <div class="terminal-header">
+          <span class="chip text-[0.62rem] py-0.5 px-2">MRI</span>
+        </div>
+<pre><span class="prompt">$</span> <span class="cmd">kluris mri --open</span>
+
+<span class="ok">MRI complete</span> — brain-mri.html
+  <span class="warn">23</span> nodes, <span class="warn">31</span> edges
+  <span class="dim">→ opening in browser</span>
+
+<span class="meta">Interactive features:</span>
+  <span class="ok">·</span> search any neuron
+  <span class="ok">·</span> hover to see connections
+  <span class="ok">·</span> click to inspect content
+  <span class="ok">·</span> pan and zoom the graph
+  <span class="ok">·</span> filter by lobe
+
+<span class="dim">Share the HTML — it runs anywhere.</span></pre>
+        <div class="px-5 py-3 text-xs text-text-muted border-t border-white/5">Interactive HTML visualization — nodes, edges, search, inspector.</div>
+      </div>
+    </div>
+
+    <!-- Wide MRI image -->
+    <div class="mri-frame max-w-5xl mx-auto">
+      <img src="mri-ngvoicu.png" alt="A real kluris mri output — nodes are neurons, colors are lobes, dashed lines are synapses" class="w-full h-auto block" />
+    </div>
+    <p class="mt-5 text-center text-xs text-text-muted">
+      <span class="text-purple">Live output:</span> an actual <span class="font-mono text-purple-light">kluris mri</span> of a real brain. Colors are lobes, dashed cyan lines are synapses, labeled nodes are neurons.
+    </p>
+  </div>
+</section>
+
+<!-- ============================================ -->
+<!-- SECTION 9 — CUSTOMIZE                          -->
+<!-- ============================================ -->
+<section class="py-28 md:py-40 px-6 relative grid-bg">
+  <div class="max-w-7xl mx-auto">
+    <div class="text-center mb-16 max-w-3xl mx-auto">
+      <p class="text-purple text-xs uppercase tracking-[0.2em] font-medium mb-4">Customize</p>
+      <h2 class="font-serif text-4xl md:text-6xl leading-tight mb-6">
+        Shape your brain, <span class="gradient-text">your way</span>.
+      </h2>
+      <p class="text-text-dim text-lg leading-relaxed">
+        Brains are not fixed. Add lobes, edit the glossary, write your own templates, deprecate old decisions — all with simple commands.
+      </p>
+    </div>
+
+    <div class="grid grid-cols-1 md:grid-cols-2 gap-5">
+      <!-- Add lobes -->
+      <div class="card rounded-2xl p-8">
+        <div class="flex items-center gap-3 mb-4">
+          <span class="w-8 h-8 rounded-lg bg-lobe-pink/10 border border-lobe-pink/30 flex items-center justify-center text-lobe-pink font-bold text-sm">+</span>
+          <h3 class="font-serif text-2xl">Add new lobes as you grow</h3>
+        </div>
+        <p class="text-text-dim text-sm mb-5">Your brain evolves with your team. Add a new knowledge region in one command, or nest a sub-lobe inside an existing one.</p>
+<pre class="font-mono text-xs bg-bg/50 p-4 rounded-lg border border-white/5 leading-relaxed"><span class="text-purple">$</span> <span class="text-text">kluris lobe analytics</span>
+<span class="text-lobe-green">Created:</span> <span class="text-text-dim">acme-brain/analytics/</span>
+
+<span class="text-purple">$</span> <span class="text-text">kluris lobe post-auth \
+    --parent projects/api/endpoints</span>
+<span class="text-lobe-green">Created:</span> <span class="text-text-dim">projects/api/endpoints/post-auth/</span></pre>
+      </div>
+
+      <!-- Edit glossary -->
+      <div class="card rounded-2xl p-8">
+        <div class="flex items-center gap-3 mb-4">
+          <span class="w-8 h-8 rounded-lg bg-lobe-orange/10 border border-lobe-orange/30 flex items-center justify-center text-lobe-orange font-bold text-sm">A</span>
+          <h3 class="font-serif text-2xl">Edit the glossary by hand</h3>
+        </div>
+        <p class="text-text-dim text-sm mb-5">Define the vocabulary your team uses in one file. Every agent on your team reads it and stops asking "what does that mean?"</p>
+<pre class="font-mono text-xs bg-bg/50 p-4 rounded-lg border border-white/5 leading-relaxed"><span class="text-lobe-purple"># Glossary</span>
+
+<span class="text-text">**Neuron**</span> <span class="text-text-dim">— a single knowledge file</span>
+<span class="text-text">**Lobe**</span> <span class="text-text-dim">— a knowledge region folder</span>
+<span class="text-text">**Tenant**</span> <span class="text-text-dim">— a customer company
+  in our multi-tenant SaaS</span>
+<span class="text-text">**Protocol**</span> <span class="text-text-dim">— our psychometric
+  evaluation workflow</span></pre>
+      </div>
+
+      <!-- Templates -->
+      <div class="card rounded-2xl p-8">
+        <div class="flex items-center gap-3 mb-4">
+          <span class="w-8 h-8 rounded-lg bg-lobe-yellow/10 border border-lobe-yellow/30 flex items-center justify-center text-lobe-yellow font-bold text-sm">T</span>
+          <h3 class="font-serif text-2xl">List and use built-in templates</h3>
+        </div>
+        <p class="text-text-dim text-sm mb-5">Three templates out of the box — decision, incident, runbook. Each one has the right sections so your neurons are consistent.</p>
+<pre class="font-mono text-xs bg-bg/50 p-4 rounded-lg border border-white/5 leading-relaxed"><span class="text-purple">$</span> <span class="text-text">kluris templates</span>
+
+<span class="text-lobe-yellow">decision</span>  <span class="text-text-dim">Context, Decision, Rationale,
+          Alternatives, Consequences</span>
+<span class="text-lobe-yellow">incident</span>  <span class="text-text-dim">Summary, Timeline, Root cause,
+          Impact, Resolution, Lessons</span>
+<span class="text-lobe-yellow">runbook</span>   <span class="text-text-dim">Purpose, Prerequisites, Steps,
+          Rollback, Contacts</span></pre>
+      </div>
+
+      <!-- Deprecation -->
+      <div class="card rounded-2xl p-8">
+        <div class="flex items-center gap-3 mb-4">
+          <span class="w-8 h-8 rounded-lg bg-lobe-green/10 border border-lobe-green/30 flex items-center justify-center text-lobe-green font-bold text-sm">×</span>
+          <h3 class="font-serif text-2xl">Deprecate old decisions cleanly</h3>
+        </div>
+        <p class="text-text-dim text-sm mb-5">Decisions change. Mark a neuron as deprecated instead of deleting it — history stays, and agents follow the replacement.</p>
+<pre class="font-mono text-xs bg-bg/50 p-4 rounded-lg border border-white/5 leading-relaxed"><span class="text-text-dim">---</span>
+<span class="text-lobe-purple">status</span>: <span class="text-lobe-green">deprecated</span>
+<span class="text-lobe-purple">deprecated_at</span>: <span class="text-text">2026-04-01</span>
+<span class="text-lobe-purple">replaced_by</span>: <span class="text-text">./use-clerk.md</span>
+<span class="text-text-dim">---</span>
+
+<span class="text-text-dim"># Kluris dream will surface warnings</span>
+<span class="text-text-dim"># for any active links to this neuron.</span></pre>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============================================ -->
+<!-- SECTION 10 — MULTIPLE BRAINS                   -->
+<!-- ============================================ -->
+<section class="py-28 md:py-40 px-6 relative">
+  <div class="max-w-6xl mx-auto">
+    <div class="text-center mb-16 max-w-3xl mx-auto">
+      <p class="text-purple text-xs uppercase tracking-[0.2em] font-medium mb-4">Switch</p>
+      <h2 class="font-serif text-4xl md:text-6xl leading-tight mb-6">
+        Run <span class="gradient-text">more than one</span> brain.
+      </h2>
+      <p class="text-text-dim text-lg leading-relaxed">
+        A work brain, a personal brain, a team brain you cloned from GitHub — kluris keeps them separate and lets you switch in one command.
+      </p>
+    </div>
+
+    <div class="terminal glow-purple-sm">
+      <div class="terminal-header">
+        <span class="terminal-dot" style="background:#ef4444;opacity:0.6"></span>
+        <span class="terminal-dot" style="background:#f59e0b;opacity:0.6"></span>
+        <span class="terminal-dot" style="background:#34d399;opacity:0.6"></span>
+        <span class="ml-2">juggling three brains at once</span>
+      </div>
+<pre><span class="prompt">$</span> <span class="cmd">kluris list</span>
+  <span class="str">acme-brain</span>     <span class="ok">(default)</span>   <span class="dim">~/Projects/acme-brain       [git]</span>
+  <span class="str">personal</span>                    <span class="dim">~/Projects/personal-brain   [git]</span>
+  <span class="str">research</span>                    <span class="dim">~/Projects/research-brain   [no git]</span>
+
+<span class="prompt">$</span> <span class="cmd">kluris use personal</span>
+<span class="meta">Default brain:</span> <span class="str">personal</span>
+  <span class="ok">✓</span> /kluris skill updated for 8 agents
+
+<span class="prompt">$</span> <span class="cmd">kluris status</span>
+<span class="str">personal</span> <span class="dim">(personal)</span>
+  Lobes: <span class="warn">3</span>, Neurons: <span class="warn">18</span>
+  <span class="dim">2026-04-05</span>  tasks/today.md
+  <span class="dim">2026-04-04</span>  notes/q2-goals.md
+
+<span class="prompt">$</span> <span class="cmd">kluris clone git@github.com:acme/team-brain.git</span>
+  <span class="dim">Cloning into ~/Projects/team-brain...</span>
+  <span class="ok">✓</span> Registered team-brain
+  <span class="ok">✓</span> /kluris skill updated</pre>
+    </div>
+
+    <div class="mt-8 flex flex-wrap justify-center gap-3">
+      <span class="chip">Clone a team brain</span>
+      <span class="chip">Switch in one command</span>
+      <span class="chip">Keep work and personal separate</span>
+      <span class="chip">Every brain has its own git history</span>
+    </div>
+  </div>
+</section>
+
+<!-- ============================================ -->
+<!-- SECTION 11 — ALL COMMANDS                      -->
+<!-- ============================================ -->
+<section id="commands" class="py-28 md:py-40 px-6 relative grid-bg">
+  <div class="max-w-7xl mx-auto">
+    <div class="text-center mb-16 max-w-3xl mx-auto">
+      <p class="text-purple text-xs uppercase tracking-[0.2em] font-medium mb-4">Reference</p>
+      <h2 class="font-serif text-4xl md:text-6xl leading-tight mb-6">
+        Every command, <span class="gradient-text">one page</span>.
+      </h2>
+      <p class="text-text-dim text-lg leading-relaxed">
+        Seventeen CLI commands, plus the <span class="font-mono text-purple text-sm">/kluris</span> agent patterns. Everything you need, nothing you don't.
+      </p>
+    </div>
+
+    <div class="grid grid-cols-1 lg:grid-cols-2 gap-8">
+      <!-- CLI commands -->
+      <div class="card rounded-2xl p-8">
+        <div class="flex items-center gap-3 mb-6 pb-4 border-b border-white/5">
+          <span class="w-2 h-2 rounded-full bg-purple pulse-soft"></span>
+          <h3 class="text-sm uppercase tracking-[0.15em] text-purple font-semibold">CLI commands &nbsp;·&nbsp; <span class="font-mono text-text">kluris *</span></h3>
+        </div>
+        <table class="cmd-table">
+          <tr><td>create</td><td>Create a brain (interactive wizard)</td></tr>
+          <tr><td>clone &lt;url&gt;</td><td>Clone a brain from git</td></tr>
+          <tr><td>list</td><td>List registered brains</td></tr>
+          <tr><td>use &lt;name&gt;</td><td>Switch the default brain</td></tr>
+          <tr><td>status</td><td>Show brain tree and recent changes</td></tr>
+          <tr><td>wake-up</td><td>Compact snapshot for agent bootstrap</td></tr>
+          <tr><td>neuron &lt;file&gt;</td><td>Create a neuron (<span class="font-mono text-xs">--lobe</span>, <span class="font-mono text-xs">--template</span>)</td></tr>
+          <tr><td>lobe &lt;name&gt;</td><td>Create a lobe (<span class="font-mono text-xs">--parent</span> for nesting)</td></tr>
+          <tr><td>dream</td><td>Regenerate maps, fix links, validate</td></tr>
+          <tr><td>push</td><td>Commit and push brain changes</td></tr>
+          <tr><td>mri</td><td>Generate interactive HTML viz</td></tr>
+          <tr><td>templates</td><td>List neuron templates</td></tr>
+          <tr><td>install-skills</td><td>Install /kluris skill for agents</td></tr>
+          <tr><td>uninstall-skills</td><td>Remove /kluris skill</td></tr>
+          <tr><td>remove &lt;name&gt;</td><td>Unregister a brain (keeps files)</td></tr>
+          <tr><td>doctor</td><td>Check prerequisites</td></tr>
+          <tr><td>help</td><td>Show command help</td></tr>
+        </table>
+        <p class="mt-5 text-xs text-text-muted italic">All CLI commands support <span class="font-mono text-purple-light">--json</span> for machine-readable output.</p>
+      </div>
+
+      <!-- Agent patterns -->
+      <div class="card rounded-2xl p-8">
+        <div class="flex items-center gap-3 mb-6 pb-4 border-b border-white/5">
+          <span class="w-2 h-2 rounded-full bg-pink pulse-soft"></span>
+          <h3 class="text-sm uppercase tracking-[0.15em] text-pink font-semibold">Agent patterns &nbsp;·&nbsp; <span class="font-mono text-text">/kluris ...</span></h3>
+        </div>
+        <table class="cmd-table">
+          <tr><td>/kluris learn &lt;topic&gt;</td><td>Agent analyzes code, proposes neurons</td></tr>
+          <tr><td>/kluris remember &lt;fact&gt;</td><td>Quick-capture a decision as a neuron</td></tr>
+          <tr><td>/kluris search &lt;term&gt;</td><td>Search the brain for a topic</td></tr>
+          <tr><td>/kluris what do we know about ...</td><td>Ask the brain a question</td></tr>
+          <tr><td>/kluris implement &lt;task&gt;</td><td>Implement following brain conventions</td></tr>
+          <tr><td>/kluris fix &lt;bug&gt;</td><td>Fix a bug using brain knowledge</td></tr>
+          <tr><td>/kluris create a decision</td><td>Create a decision record neuron</td></tr>
+          <tr><td>/kluris create an incident</td><td>Create an incident report neuron</td></tr>
+          <tr><td>/kluris create a runbook</td><td>Create a runbook neuron</td></tr>
+          <tr><td>/kluris open &lt;file&gt;</td><td>Open a neuron and read it</td></tr>
+          <tr><td>/kluris deprecate &lt;file&gt;</td><td>Mark a neuron as deprecated</td></tr>
+        </table>
+        <p class="mt-5 text-xs text-text-muted italic">Agent patterns are free-form — say it naturally. The agent picks the template.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============================================ -->
+<!-- SECTION 12 — CTA + AGENTS + FOOTER             -->
+<!-- ============================================ -->
+<section id="agents" class="py-28 md:py-40 px-6 relative">
+  <div class="max-w-5xl mx-auto">
+    <!-- Big CTA card -->
+    <div class="relative rounded-3xl p-12 md:p-16 text-center overflow-hidden" style="background: radial-gradient(ellipse at 30% 20%, rgba(167,139,250,0.25) 0%, transparent 55%), radial-gradient(ellipse at 70% 80%, rgba(236,72,153,0.2) 0%, transparent 55%), #10141f; border: 1px solid rgba(167,139,250,0.25); box-shadow: 0 20px 80px rgba(167,139,250,0.15);">
+      <h2 class="font-serif text-4xl md:text-6xl leading-tight mb-6">
+        Your <span class="gradient-text">SME</span> starts here.
+      </h2>
+      <p class="text-text-dim text-lg md:text-xl max-w-2xl mx-auto mb-10 leading-relaxed">
+        Two commands. Free forever. Works with every AI agent on your team.
+      </p>
+      <div class="flex flex-col sm:flex-row items-center justify-center gap-4 mb-8">
+        <a href="#install" class="btn-primary inline-flex items-center gap-2 px-8 py-4 rounded-full text-base">
+          <span class="font-mono">pipx install kluris</span>
+        </a>
+        <a href="https://github.com/ngvoicu/kluris-cli" class="inline-flex items-center gap-2 px-8 py-4 rounded-full text-base font-semibold text-purple-light border border-purple/50 hover:bg-purple/10 hover:border-purple transition-all">
+          View on GitHub
+        </a>
+      </div>
+      <p class="text-xs text-text-muted tracking-wide">MIT licensed · Python 3.10+ · Works offline · All data is yours</p>
+    </div>
+
+    <!-- Supported agents strip -->
+    <div class="mt-28 text-center">
+      <p class="text-xs uppercase tracking-[0.25em] text-text-muted font-medium mb-10">Works with every agent on your team</p>
+      <div class="flex flex-wrap justify-center items-center gap-x-10 gap-y-5 text-base md:text-lg font-serif text-text-dim">
+        <span class="hover:text-purple transition-colors cursor-default">Claude Code</span>
+        <span class="text-text-muted">·</span>
+        <span class="hover:text-purple transition-colors cursor-default">Cursor</span>
+        <span class="text-text-muted">·</span>
+        <span class="hover:text-purple transition-colors cursor-default">Windsurf</span>
+        <span class="text-text-muted">·</span>
+        <span class="hover:text-purple transition-colors cursor-default">GitHub Copilot</span>
+        <span class="text-text-muted">·</span>
+        <span class="hover:text-purple transition-colors cursor-default">Codex</span>
+        <span class="text-text-muted">·</span>
+        <span class="hover:text-purple transition-colors cursor-default">Gemini CLI</span>
+        <span class="text-text-muted">·</span>
+        <span class="hover:text-purple transition-colors cursor-default">Kilo Code</span>
+        <span class="text-text-muted">·</span>
+        <span class="hover:text-purple transition-colors cursor-default">Junie</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Footer -->
+<footer class="border-t border-white/5 py-14 px-6">
+  <div class="max-w-7xl mx-auto flex flex-col md:flex-row items-center justify-between gap-8">
+    <div class="flex items-center gap-3">
+      <img src="logo.png" alt="Kluris logo" width="28" height="28" class="w-7 h-7 object-contain" />
+      <span class="font-serif text-xl gradient-text">kluris</span>
+      <span class="text-text-muted text-sm ml-2 hidden md:inline">· The SME your team never had.</span>
+    </div>
+    <div class="flex items-center gap-8 text-sm text-text-dim">
+      <a href="https://github.com/ngvoicu/kluris-cli" class="hover:text-purple transition-colors">GitHub</a>
+      <a href="https://github.com/ngvoicu/kluris-cli/blob/main/LICENSE" class="hover:text-purple transition-colors">MIT License</a>
+      <a href="https://www.linkedin.com/in/ngvoicu/" class="hover:text-purple transition-colors">Author</a>
+    </div>
+  </div>
+  <p class="text-center text-xs text-text-muted mt-8">Kluris is open source and free forever. Built by Gabriel Voicu.</p>
+</footer>
+
+<!-- ============================================ -->
+<!-- HERO CANVAS SCRIPT                             -->
+<!-- ============================================ -->
+<script>
+(function() {
+  const canvas = document.getElementById('brain-canvas');
+  if (!canvas) return;
+  const ctx = canvas.getContext('2d');
+  const dpr = window.devicePixelRatio || 1;
+
+  // Multi-color palette matching the lobes
+  const COLORS = ['#ec4899','#f59e0b','#facc15','#a78bfa','#34d399','#f0abfc','#c4b5fd'];
+  const SYNAPSE = 'rgba(34,211,238,0.35)';
+  const SYNAPSE_HOT = 'rgba(34,211,238,0.85)';
+
+  let nodes = [];
+  let edges = [];
+  let w = 0, h = 0;
+  let mx = -9999, my = -9999;
+
+  function resize() {
+    const rect = canvas.getBoundingClientRect();
+    w = rect.width; h = rect.height;
+    canvas.width = w * dpr;
+    canvas.height = h * dpr;
+    ctx.setTransform(1, 0, 0, 1, 0, 0);
+    ctx.scale(dpr, dpr);
+  }
+
+  function init(n) {
+    nodes = [];
+    for (let i = 0; i < n; i++) {
+      // Random angle + random magnitude — every node gets a real heading
+      const angle = Math.random() * Math.PI * 2;
+      const speed = 0.12 + Math.random() * 0.18;  // 0.12–0.30 px/frame — gentle drift
+      nodes.push({
+        x: Math.random() * w,
+        y: Math.random() * h,
+        vx: Math.cos(angle) * speed,
+        vy: Math.sin(angle) * speed,
+        r: 2.5 + Math.random() * 3,
+        color: COLORS[i % COLORS.length],
+        pulse: Math.random() * Math.PI * 2,
+      });
+    }
+    rebuildEdges();
+  }
+
+  function rebuildEdges() {
+    edges = [];
+    for (let i = 0; i < nodes.length; i++) {
+      const dists = nodes
+        .map((nn, j) => ({ j, d: Math.hypot(nn.x - nodes[i].x, nn.y - nodes[i].y) }))
+        .filter(o => o.j !== i)
+        .sort((a, b) => a.d - b.d)
+        .slice(0, 2);
+      for (const o of dists) edges.push([i, o.j]);
+    }
+  }
+
+  let frameCount = 0;
+  function tick() {
+    frameCount++;
+    // Rebuild synapse network every ~40 frames (~0.65s @ 60fps) so edges
+    // follow the moving nodes instead of stretching infinitely.
+    if (frameCount % 40 === 0) rebuildEdges();
+
+    ctx.clearRect(0, 0, w, h);
+
+    // Edges (synapses)
+    ctx.lineWidth = 1;
+    ctx.setLineDash([4, 6]);
+    for (const [i, j] of edges) {
+      const a = nodes[i], b = nodes[j];
+      const midX = (a.x + b.x) / 2;
+      const midY = (a.y + b.y) / 2;
+      const nearMouse = Math.hypot(midX - mx, midY - my) < 160;
+      ctx.strokeStyle = nearMouse ? SYNAPSE_HOT : SYNAPSE;
+      ctx.globalAlpha = nearMouse ? 1 : 0.4;
+      ctx.beginPath();
+      ctx.moveTo(a.x, a.y);
+      ctx.lineTo(b.x, b.y);
+      ctx.stroke();
+    }
+    ctx.setLineDash([]);
+    ctx.globalAlpha = 1;
+
+    // Nodes
+    for (const n of nodes) {
+      n.x += n.vx; n.y += n.vy;
+      if (n.x < 0 || n.x > w) n.vx *= -1;
+      if (n.y < 0 || n.y > h) n.vy *= -1;
+      n.pulse += 0.02;
+      const pulseR = n.r + Math.sin(n.pulse) * 0.8;
+      const dist = Math.hypot(n.x - mx, n.y - my);
+      const isNear = dist < 80;
+
+      // Outer glow
+      const grad = ctx.createRadialGradient(n.x, n.y, 0, n.x, n.y, pulseR + 14);
+      grad.addColorStop(0, n.color + 'aa');
+      grad.addColorStop(1, n.color + '00');
+      ctx.fillStyle = grad;
+      ctx.beginPath();
+      ctx.arc(n.x, n.y, pulseR + (isNear ? 16 : 12), 0, Math.PI * 2);
+      ctx.fill();
+
+      // Core dot
+      ctx.beginPath();
+      ctx.arc(n.x, n.y, pulseR, 0, Math.PI * 2);
+      ctx.fillStyle = n.color;
+      ctx.fill();
+    }
+
+    requestAnimationFrame(tick);
+  }
+
+  function onMove(e) {
+    const rect = canvas.getBoundingClientRect();
+    mx = e.clientX - rect.left;
+    my = e.clientY - rect.top;
+  }
+  function onLeave() { mx = my = -9999; }
+
+  window.addEventListener('resize', () => { resize(); init(32); });
+  canvas.addEventListener('mousemove', onMove);
+  canvas.addEventListener('mouseleave', onLeave);
+  canvas.addEventListener('touchmove', (e) => {
+    if (e.touches && e.touches[0]) {
+      const rect = canvas.getBoundingClientRect();
+      mx = e.touches[0].clientX - rect.left;
+      my = e.touches[0].clientY - rect.top;
+    }
+  }, { passive: true });
+
+  resize();
+  init(32);
+  requestAnimationFrame(tick);
+})();
+
+// Scroll reveal
+(function() {
+  const io = new IntersectionObserver((entries) => {
+    for (const e of entries) {
+      if (e.isIntersecting) {
+        e.target.classList.add('in');
+        io.unobserve(e.target);
+      }
+    }
+  }, { threshold: 0.08 });
+  document.querySelectorAll('.reveal').forEach(el => io.observe(el));
+})();
+</script>
+
+</body>
+</html>

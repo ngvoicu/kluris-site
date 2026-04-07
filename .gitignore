@@ -1,0 +1,15 @@
+# macOS
+.DS_Store
+
+# Node / build artifacts (none today, future-proof)
+node_modules/
+*.log
+
+# Stitch working output (kept locally as reference, not deployed)
+.stitch-output.html
+
+# Pixelmator source for the logo (3.4MB binary — keep out of git)
+logo.pxd
+
+# Temp image conversions
+logo-source.png
