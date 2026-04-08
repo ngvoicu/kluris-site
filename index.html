@@ -641,11 +641,10 @@
 <span class="meta">Choice:</span> <span class="str">1</span>
 <span class="meta">Location:</span> <span class="str">~/Projects/acme-brain</span>
 <span class="meta">Initialize git?</span> <span class="str">y</span>
-<span class="meta">Register as default?</span> <span class="str">y</span>
 
   <span class="ok">✓</span> Created acme-brain
   <span class="ok">✓</span> Git initialized on main
-  <span class="ok">✓</span> Registered as default brain
+  <span class="ok">✓</span> Registered acme-brain
   <span class="ok">✓</span> Installed /kluris skill for 8 agents
 
 <span class="dim">Next: cd into any project and use</span>
@@ -1197,7 +1196,7 @@ but the brain says refresh at 80% TTL.
         Run <span class="gradient-text">more than one</span> brain.
       </h2>
       <p class="text-text-dim text-lg leading-relaxed">
-        A work brain, a personal brain, a team brain you cloned from GitHub — kluris keeps them separate and lets you switch in one command.
+        A work brain, a personal brain, a team brain you cloned from GitHub — kluris keeps them separate. Each brain installs as its own slash command, so the agent never has to guess which one you mean.
       </p>
     </div>
 
@@ -1209,15 +1208,18 @@ but the brain says refresh at 80% TTL.
         <span class="ml-2">juggling three brains at once</span>
       </div>
 <pre><span class="prompt">$</span> <span class="cmd">kluris list</span>
-  <span class="str">acme-brain</span>     <span class="ok">(default)</span>   <span class="dim">~/Projects/acme-brain       [git]</span>
-  <span class="str">personal</span>                    <span class="dim">~/Projects/personal-brain   [git]</span>
-  <span class="str">research</span>                    <span class="dim">~/Projects/research-brain   [no git]</span>
-
-<span class="prompt">$</span> <span class="cmd">kluris use personal</span>
-<span class="meta">Default brain:</span> <span class="str">personal</span>
-  <span class="ok">✓</span> /kluris skill updated for 8 agents
+  <span class="str">acme-brain</span>     <span class="dim">~/Projects/acme-brain       [git]</span>
+  <span class="str">personal</span>       <span class="dim">~/Projects/personal-brain   [git]</span>
+  <span class="str">research</span>       <span class="dim">~/Projects/research-brain   [no git]</span>
 
 <span class="prompt">$</span> <span class="cmd">kluris status</span>
+Multiple brains registered. Pick one:
+  <span class="dim">[1]</span> acme-brain  (~/Projects/acme-brain)
+  <span class="dim">[2]</span> personal    (~/Projects/personal-brain)
+  <span class="dim">[3]</span> research    (~/Projects/research-brain)
+  <span class="dim">[4]</span> all
+<span class="meta">Choice:</span> <span class="str">2</span>
+
 <span class="str">personal</span> <span class="dim">(personal)</span>
   Lobes: <span class="warn">3</span>, Neurons: <span class="warn">18</span>
   <span class="dim">2026-04-05</span>  tasks/today.md
@@ -1226,12 +1228,12 @@ but the brain says refresh at 80% TTL.
 <span class="prompt">$</span> <span class="cmd">kluris clone git@github.com:acme/team-brain.git</span>
   <span class="dim">Cloning into ~/Projects/team-brain...</span>
   <span class="ok">✓</span> Registered team-brain
-  <span class="ok">✓</span> /kluris skill updated</pre>
+  <span class="ok">✓</span> /kluris-team-brain skill installed across 8 agents</pre>
     </div>
 
     <div class="mt-8 flex flex-wrap justify-center gap-3">
       <span class="chip">Clone a team brain</span>
-      <span class="chip">Switch in one command</span>
+      <span class="chip">One skill per brain</span>
       <span class="chip">Keep work and personal separate</span>
       <span class="chip">Every brain has its own git history</span>
     </div>
@@ -1249,7 +1251,7 @@ but the brain says refresh at 80% TTL.
         Every command, <span class="gradient-text">one page</span>.
       </h2>
       <p class="text-text-dim text-lg leading-relaxed">
-        Seventeen CLI commands, plus the <span class="font-mono text-purple text-sm">/kluris</span> agent patterns. Everything you need, nothing you don't.
+        Sixteen CLI commands, plus the <span class="font-mono text-purple text-sm">/kluris</span> (or <span class="font-mono text-purple text-sm">/kluris-&lt;name&gt;</span>) agent patterns. Everything you need, nothing you don't.
       </p>
     </div>
 
@@ -1264,7 +1266,6 @@ but the brain says refresh at 80% TTL.
           <tr><td>create</td><td>Create a brain (interactive wizard)</td></tr>
           <tr><td>clone &lt;url&gt;</td><td>Clone a brain from git</td></tr>
           <tr><td>list</td><td>List registered brains</td></tr>
-          <tr><td>use &lt;name&gt;</td><td>Switch the default brain</td></tr>
           <tr><td>status</td><td>Show brain tree and recent changes</td></tr>
           <tr><td>wake-up</td><td>Compact snapshot for agent bootstrap</td></tr>
           <tr><td>neuron &lt;file&gt;</td><td>Create a neuron (<span class="font-mono text-xs">--lobe</span>, <span class="font-mono text-xs">--template</span>)</td></tr>
@@ -1288,6 +1289,7 @@ but the brain says refresh at 80% TTL.
           <span class="w-2 h-2 rounded-full bg-pink pulse-soft"></span>
           <h3 class="text-sm uppercase tracking-[0.15em] text-pink font-semibold">Agent patterns &nbsp;·&nbsp; <span class="font-mono text-text">/kluris ...</span></h3>
         </div>
+        <p class="mb-5 text-xs text-text-muted italic">With one brain registered, the slash command is <span class="font-mono text-purple-light">/kluris</span>. With multiple brains, each installs as <span class="font-mono text-purple-light">/kluris-&lt;name&gt;</span>. Examples below use <span class="font-mono text-purple-light">/kluris</span> for clarity.</p>
         <table class="cmd-table">
           <tr><td>/kluris learn &lt;topic&gt;</td><td>Agent analyzes code, proposes neurons</td></tr>
           <tr><td>/kluris remember &lt;fact&gt;</td><td>Quick-capture a decision as a neuron</td></tr>
