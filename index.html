@@ -264,12 +264,54 @@
     tab-size: 2;
   }
   .terminal pre .prompt { color: #a78bfa; font-weight: 600; }
+  .terminal pre .prompt-agent { color: #ec4899; font-weight: 600; }
   .terminal pre .dim { color: #5b6275; }
   .terminal pre .ok { color: #34d399; }
   .terminal pre .warn { color: #facc15; }
   .terminal pre .str { color: #c4b5fd; }
   .terminal pre .cmd { color: #e4e7ef; }
   .terminal pre .meta { color: #8a92a6; font-style: italic; }
+
+  /* Scope badges — tell the reader where a command runs.
+     Terminal (purple $) vs Inside your AI agent (pink >). */
+  .scope {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.35rem;
+    margin-left: auto;
+    padding: 0.15rem 0.55rem;
+    border-radius: 9999px;
+    font-family: 'Inter', sans-serif;
+    font-size: 0.62rem;
+    font-weight: 600;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    white-space: nowrap;
+  }
+  .scope-terminal {
+    color: #c4b5fd;
+    background: rgba(167,139,250,0.10);
+    border: 1px solid rgba(167,139,250,0.35);
+  }
+  .scope-agent {
+    color: #f0abfc;
+    background: rgba(236,72,153,0.10);
+    border: 1px solid rgba(236,72,153,0.40);
+  }
+  /* Standalone scope bar for code blocks not wrapped in a .terminal */
+  .scope-bar {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    padding: 0.55rem 1rem;
+    background: rgba(255,255,255,0.02);
+    border-bottom: 1px solid rgba(255,255,255,0.06);
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 0.7rem;
+    color: #8a92a6;
+    border-top-left-radius: 0.75rem;
+    border-top-right-radius: 0.75rem;
+  }
 
   /* Pulse animation for accents */
   @keyframes pulse-soft {
@@ -557,6 +599,7 @@
           <span class="terminal-dot" style="background:#f59e0b;opacity:0.6"></span>
           <span class="terminal-dot" style="background:#34d399;opacity:0.6"></span>
           <span class="ml-2">macOS</span>
+          <span class="scope scope-terminal">Terminal</span>
         </div>
 <pre><span class="prompt">$</span> <span class="cmd">brew install pipx</span>
 <span class="prompt">$</span> <span class="cmd">pipx ensurepath</span>
@@ -570,6 +613,7 @@
           <span class="terminal-dot" style="background:#f59e0b;opacity:0.6"></span>
           <span class="terminal-dot" style="background:#34d399;opacity:0.6"></span>
           <span class="ml-2">Linux</span>
+          <span class="scope scope-terminal">Terminal</span>
         </div>
 <pre><span class="prompt">$</span> <span class="cmd">python3 -m pip install --user pipx</span>
 <span class="prompt">$</span> <span class="cmd">pipx ensurepath</span>
@@ -583,6 +627,7 @@
           <span class="terminal-dot" style="background:#f59e0b;opacity:0.6"></span>
           <span class="terminal-dot" style="background:#34d399;opacity:0.6"></span>
           <span class="ml-2">Windows</span>
+          <span class="scope scope-terminal">Terminal</span>
         </div>
 <pre><span class="prompt">&gt;</span> <span class="cmd">pip install pipx</span>
 <span class="prompt">&gt;</span> <span class="cmd">pipx ensurepath</span>
@@ -594,6 +639,7 @@
       <div class="terminal-header">
         <span class="terminal-dot" style="background:#a78bfa"></span>
         <span class="ml-2">Verify the install</span>
+        <span class="scope scope-terminal">Terminal</span>
       </div>
 <pre><span class="prompt">$</span> <span class="cmd">kluris doctor</span>
   <span class="ok">✓</span> git found
@@ -630,6 +676,7 @@
           <span class="terminal-dot" style="background:#f59e0b;opacity:0.6"></span>
           <span class="terminal-dot" style="background:#34d399;opacity:0.6"></span>
           <span class="ml-2">kluris create — interactive wizard</span>
+          <span class="scope scope-terminal">Terminal</span>
         </div>
 <pre><span class="prompt">$</span> <span class="cmd">kluris create</span>
 
@@ -791,6 +838,9 @@
       <p class="text-text-dim text-lg leading-relaxed">
         Three ways to write knowledge into a brain — all collaborative, all reviewed by you before anything is saved.
       </p>
+      <p class="mt-4 text-xs text-text-muted">
+        <span class="scope scope-agent" style="margin-left:0">Agent</span> cards run inside your AI coding agent (Claude Code, Cursor, Windsurf, …). <span class="scope scope-terminal" style="margin-left:0">Terminal</span> cards run in your shell.
+      </p>
     </div>
 
     <div class="space-y-6">
@@ -808,7 +858,11 @@
             </ul>
           </div>
           <div class="bg-bg/40">
-<pre class="p-8 font-mono text-[0.78rem] leading-relaxed"><span class="prompt">&gt;</span> <span class="cmd">/kluris learn the auth flow</span>
+            <div class="scope-bar">
+              <span>Inside your AI agent (Claude Code, Cursor, Windsurf, …)</span>
+              <span class="scope scope-agent">Agent</span>
+            </div>
+<pre class="p-8 font-mono text-[0.78rem] leading-relaxed"><span class="prompt-agent">&gt;</span> <span class="cmd">/kluris learn the auth flow</span>
 
 <span class="dim">Analyzing src/auth/... (14 files)</span>
 
@@ -834,7 +888,11 @@ JWKS. Refresh at 80% TTL.</span>
       <div class="card rounded-2xl overflow-hidden">
         <div class="grid grid-cols-1 lg:grid-cols-2 gap-0">
           <div class="bg-bg/40 order-2 lg:order-1">
-<pre class="p-8 font-mono text-[0.78rem] leading-relaxed"><span class="prompt">&gt;</span> <span class="cmd">/kluris remember we chose raw SQL
+            <div class="scope-bar">
+              <span>Inside your AI agent (Claude Code, Cursor, Windsurf, …)</span>
+              <span class="scope scope-agent">Agent</span>
+            </div>
+<pre class="p-8 font-mono text-[0.78rem] leading-relaxed"><span class="prompt-agent">&gt;</span> <span class="cmd">/kluris remember we chose raw SQL
                       over JPA for query
                       complexity</span>
 
@@ -885,6 +943,10 @@ queries, clearer SQL in git diffs.</span>
             </ul>
           </div>
           <div class="bg-bg/40">
+            <div class="scope-bar">
+              <span>In your terminal</span>
+              <span class="scope scope-terminal">Terminal</span>
+            </div>
 <pre class="p-8 font-mono text-[0.78rem] leading-relaxed"><span class="prompt">$</span> <span class="cmd">kluris neuron outage-jan.md \
     --lobe knowledge \
     --template incident</span>
@@ -931,8 +993,9 @@ refresh the lobe map afterward.</span></pre>
         <div class="terminal-header">
           <span class="chip text-[0.62rem] py-0.5 px-2">SEARCH</span>
           <span class="ml-2">semantic + keyword lookup</span>
+          <span class="scope scope-agent">Agent</span>
         </div>
-<pre><span class="prompt">&gt;</span> <span class="cmd">/kluris search auth flow</span>
+<pre><span class="prompt-agent">&gt;</span> <span class="cmd">/kluris search auth flow</span>
 
 <span class="meta">Found 3 neurons:</span>
   projects/btb-core/auth-flow.md       <span class="warn">★★★</span>
@@ -947,8 +1010,9 @@ refresh the lobe map afterward.</span></pre>
         <div class="terminal-header">
           <span class="chip text-[0.62rem] py-0.5 px-2">ASK</span>
           <span class="ml-2">natural language Q&amp;A across the brain</span>
+          <span class="scope scope-agent">Agent</span>
         </div>
-<pre><span class="prompt">&gt;</span> <span class="cmd">/kluris what do we know about Docker?</span>
+<pre><span class="prompt-agent">&gt;</span> <span class="cmd">/kluris what do we know about Docker?</span>
 
 <span class="dim">Reading:</span>
   infrastructure/docker-builds.md
@@ -965,8 +1029,9 @@ Tunnel (zero public ports).</span></pre>
         <div class="terminal-header">
           <span class="chip text-[0.62rem] py-0.5 px-2">IMPLEMENT</span>
           <span class="ml-2">agent writes code using your conventions</span>
+          <span class="scope scope-agent">Agent</span>
         </div>
-<pre><span class="prompt">&gt;</span> <span class="cmd">/kluris implement the POST /users
+<pre><span class="prompt-agent">&gt;</span> <span class="cmd">/kluris implement the POST /users
           endpoint following our conventions</span>
 
 <span class="dim">Reading brain:</span>
@@ -984,8 +1049,9 @@ fields, explicit constraint names.</span></pre>
         <div class="terminal-header">
           <span class="chip text-[0.62rem] py-0.5 px-2">FIX</span>
           <span class="ml-2">bug fixes grounded in your brain</span>
+          <span class="scope scope-agent">Agent</span>
         </div>
-<pre><span class="prompt">&gt;</span> <span class="cmd">/kluris fix the token refresh --
+<pre><span class="prompt-agent">&gt;</span> <span class="cmd">/kluris fix the token refresh --
           use brain knowledge</span>
 
 <span class="dim">Checking brain for auth decisions...</span>
@@ -1019,6 +1085,7 @@ but the brain says refresh at 80% TTL.
       <div class="terminal glow-purple-sm">
         <div class="terminal-header">
           <span class="chip text-[0.62rem] py-0.5 px-2">WAKE-UP</span>
+          <span class="scope scope-terminal">Terminal</span>
         </div>
 <pre><span class="prompt">$</span> <span class="cmd">kluris wake-up</span>
 
@@ -1045,6 +1112,7 @@ but the brain says refresh at 80% TTL.
       <div class="terminal glow-purple-sm">
         <div class="terminal-header">
           <span class="chip text-[0.62rem] py-0.5 px-2">DREAM</span>
+          <span class="scope scope-terminal">Terminal</span>
         </div>
 <pre><span class="prompt">$</span> <span class="cmd">kluris dream</span>
 
@@ -1070,6 +1138,7 @@ but the brain says refresh at 80% TTL.
       <div class="terminal glow-purple-sm">
         <div class="terminal-header">
           <span class="chip text-[0.62rem] py-0.5 px-2">MRI</span>
+          <span class="scope scope-terminal">Terminal</span>
         </div>
 <pre><span class="prompt">$</span> <span class="cmd">kluris mri</span>
 
@@ -1117,9 +1186,10 @@ but the brain says refresh at 80% TTL.
     <div class="grid grid-cols-1 md:grid-cols-2 gap-5">
       <!-- Add lobes -->
       <div class="card rounded-2xl p-8">
-        <div class="flex items-center gap-3 mb-4">
+        <div class="flex flex-wrap items-center gap-3 mb-4">
           <span class="w-8 h-8 rounded-lg bg-lobe-pink/10 border border-lobe-pink/30 flex items-center justify-center text-lobe-pink font-bold text-sm">+</span>
           <h3 class="font-serif text-2xl">Add new lobes as you grow</h3>
+          <span class="scope scope-terminal" style="margin-left:0">Terminal</span>
         </div>
         <p class="text-text-dim text-sm mb-5">Your brain evolves with your team. Add a new knowledge region in one command, or nest a sub-lobe inside an existing one.</p>
 <pre class="font-mono text-xs bg-bg/50 p-4 rounded-lg border border-white/5 leading-relaxed"><span class="text-purple">$</span> <span class="text-text">kluris lobe analytics</span>
@@ -1149,9 +1219,10 @@ but the brain says refresh at 80% TTL.
 
       <!-- Templates -->
       <div class="card rounded-2xl p-8">
-        <div class="flex items-center gap-3 mb-4">
+        <div class="flex flex-wrap items-center gap-3 mb-4">
           <span class="w-8 h-8 rounded-lg bg-lobe-yellow/10 border border-lobe-yellow/30 flex items-center justify-center text-lobe-yellow font-bold text-sm">T</span>
           <h3 class="font-serif text-2xl">List and use built-in templates</h3>
+          <span class="scope scope-terminal" style="margin-left:0">Terminal</span>
         </div>
         <p class="text-text-dim text-sm mb-5">Three templates out of the box — decision, incident, runbook. Each one has the right sections so your neurons are consistent.</p>
 <pre class="font-mono text-xs bg-bg/50 p-4 rounded-lg border border-white/5 leading-relaxed"><span class="text-purple">$</span> <span class="text-text">kluris templates</span>
@@ -1205,6 +1276,7 @@ but the brain says refresh at 80% TTL.
         <span class="terminal-dot" style="background:#f59e0b;opacity:0.6"></span>
         <span class="terminal-dot" style="background:#34d399;opacity:0.6"></span>
         <span class="ml-2">juggling three brains at once</span>
+        <span class="scope scope-terminal">Terminal</span>
       </div>
 <pre><span class="prompt">$</span> <span class="cmd">kluris list</span>
   <span class="str">acme-brain</span>     <span class="dim">~/Projects/acme-brain       [git]</span>
@@ -1244,23 +1316,45 @@ Multiple brains registered. Pick one:
 <!-- ============================================ -->
 <section id="commands" class="py-28 md:py-40 px-6 relative grid-bg">
   <div class="max-w-7xl mx-auto">
-    <div class="text-center mb-16 max-w-3xl mx-auto">
+    <div class="text-center mb-12 max-w-3xl mx-auto">
       <p class="text-purple text-xs uppercase tracking-[0.2em] font-medium mb-4">Reference</p>
       <h2 class="font-serif text-4xl md:text-6xl leading-tight mb-6">
-        Every command, <span class="gradient-text">one page</span>.
+        Two surfaces, <span class="gradient-text">one brain</span>.
       </h2>
       <p class="text-text-dim text-lg leading-relaxed">
-        Nineteen CLI commands, plus the <span class="font-mono text-purple text-sm">/kluris</span> (or <span class="font-mono text-purple text-sm">/kluris-&lt;name&gt;</span>) agent patterns. Everything you need, nothing you don't.
+        Kluris lives in two places. You run the <span class="text-purple font-medium">CLI</span> in your terminal to set up and maintain your brains. Your AI agents run <span class="text-pink font-medium">slash commands</span> inside Claude Code, Cursor, Windsurf, Codex, Copilot, Gemini CLI, Kilo, or Junie to read and write knowledge while you code.
       </p>
+    </div>
+
+    <!-- Two-surface legend -->
+    <div class="max-w-4xl mx-auto mb-14 grid grid-cols-1 md:grid-cols-2 gap-4">
+      <div class="rounded-2xl p-6 border border-purple/30 bg-purple/5">
+        <div class="flex items-center gap-3 mb-2">
+          <span class="scope scope-terminal" style="margin-left:0">Terminal</span>
+          <span class="text-xs text-text-muted">where you type</span>
+        </div>
+        <p class="font-mono text-sm text-purple-light mb-2"><span class="text-purple font-bold">$</span> kluris &lt;cmd&gt;</p>
+        <p class="text-xs text-text-dim leading-relaxed">Run in your shell — bash, zsh, fish, PowerShell. The <span class="text-purple">purple <span class="font-mono">$</span></span> prompt. Use it for install, setup, snapshots, git, and housekeeping.</p>
+      </div>
+      <div class="rounded-2xl p-6 border border-pink/30 bg-pink/5">
+        <div class="flex items-center gap-3 mb-2">
+          <span class="scope scope-agent" style="margin-left:0">Agent</span>
+          <span class="text-xs text-text-muted">where the agent types</span>
+        </div>
+        <p class="font-mono text-sm text-pink mb-2"><span class="text-pink font-bold">&gt;</span> /kluris &lt;pattern&gt;</p>
+        <p class="text-xs text-text-dim leading-relaxed">Run inside your AI coding agent — Claude Code, Cursor, Windsurf, Codex, Copilot, Gemini CLI, Kilo, Junie. The <span class="text-pink">pink <span class="font-mono">&gt;</span></span> prompt. Use it while coding to teach and query the brain.</p>
+      </div>
     </div>
 
     <div class="grid grid-cols-1 lg:grid-cols-2 gap-8">
       <!-- CLI commands -->
       <div class="card rounded-2xl p-8">
-        <div class="flex items-center gap-3 mb-6 pb-4 border-b border-white/5">
+        <div class="flex flex-wrap items-center gap-3 mb-2 pb-4 border-b border-white/5">
           <span class="w-2 h-2 rounded-full bg-purple pulse-soft"></span>
-          <h3 class="text-sm uppercase tracking-[0.15em] text-purple font-semibold">CLI commands &nbsp;·&nbsp; <span class="font-mono text-text">kluris *</span></h3>
+          <h3 class="text-sm uppercase tracking-[0.15em] text-purple font-semibold">In your terminal &nbsp;·&nbsp; <span class="font-mono text-text">$ kluris *</span></h3>
+          <span class="scope scope-terminal" style="margin-left:0">Terminal</span>
         </div>
+        <p class="mb-5 text-xs text-text-muted italic">Run these in bash, zsh, fish, or PowerShell.</p>
         <table class="cmd-table">
           <tr><td>create</td><td>Create a brain (interactive wizard)</td></tr>
           <tr><td>clone &lt;url&gt;</td><td>Clone a brain from git</td></tr>
@@ -1287,11 +1381,12 @@ Multiple brains registered. Pick one:
 
       <!-- Agent patterns -->
       <div class="card rounded-2xl p-8">
-        <div class="flex items-center gap-3 mb-6 pb-4 border-b border-white/5">
+        <div class="flex flex-wrap items-center gap-3 mb-2 pb-4 border-b border-white/5">
           <span class="w-2 h-2 rounded-full bg-pink pulse-soft"></span>
-          <h3 class="text-sm uppercase tracking-[0.15em] text-pink font-semibold">Agent patterns &nbsp;·&nbsp; <span class="font-mono text-text">/kluris ...</span></h3>
+          <h3 class="text-sm uppercase tracking-[0.15em] text-pink font-semibold">Inside your AI agent &nbsp;·&nbsp; <span class="font-mono text-text">&gt; /kluris ...</span></h3>
+          <span class="scope scope-agent" style="margin-left:0">Agent</span>
         </div>
-        <p class="mb-5 text-xs text-text-muted italic">With one brain registered, the slash command is <span class="font-mono text-purple-light">/kluris</span>. With multiple brains, each installs as <span class="font-mono text-purple-light">/kluris-&lt;name&gt;</span>. Examples below use <span class="font-mono text-purple-light">/kluris</span> for clarity.</p>
+        <p class="mb-5 text-xs text-text-muted italic">Type these inside Claude Code, Cursor, Windsurf, Codex, Copilot, Gemini CLI, Kilo, or Junie. With one brain registered the slash command is <span class="font-mono text-purple-light">/kluris</span>; with multiple brains each installs as <span class="font-mono text-purple-light">/kluris-&lt;name&gt;</span>. Examples below use <span class="font-mono text-purple-light">/kluris</span> for clarity.</p>
         <table class="cmd-table">
           <tr><td>/kluris learn &lt;topic&gt;</td><td>Agent analyzes code, proposes neurons</td></tr>
           <tr><td>/kluris remember &lt;fact&gt;</td><td>Quick-capture a decision as a neuron</td></tr>
