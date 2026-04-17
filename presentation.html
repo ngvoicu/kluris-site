@@ -67,9 +67,11 @@
     color: #e4e7ef;
     font-family: 'Inter', system-ui, sans-serif;
     -webkit-font-smoothing: antialiased;
-    overflow-x: hidden;
+    overflow: hidden;            /* page never scrolls — the slide-deck does */
     line-height: 1.65;
     margin: 0;
+    height: 100%;
+    width: 100%;
   }
 
   /* ============ Shared design language (mirrors index.html) ============ */
@@ -211,20 +213,52 @@
 
   /* ============ Presentation-specific ============ */
 
-  /* Slide container */
+  /* Horizontal slide deck — one viewport per slide, swipe / arrow to navigate */
+  .slide-deck {
+    display: flex;
+    flex-direction: row;
+    width: 100vw;
+    height: 100vh;
+    overflow-x: auto;
+    overflow-y: hidden;
+    scroll-snap-type: x mandatory;
+    scroll-behavior: smooth;
+    /* Hide the deck's own horizontal scrollbar — navigation is via nav controls + keys */
+    scrollbar-width: none;          /* Firefox */
+    -ms-overflow-style: none;       /* old Edge */
+  }
+  .slide-deck::-webkit-scrollbar { display: none; } /* Chromium / Safari */
+
+  /* Slide container — exactly one viewport wide and tall.
+     Content taller than 100vh scrolls internally within the slide. */
   .slide {
     position: relative;
-    min-height: 100vh;
+    flex: 0 0 100vw;
+    width: 100vw;
+    height: 100vh;
+    max-height: 100vh;
+    overflow-y: auto;
+    overflow-x: hidden;
+    scroll-snap-align: start;
+    scroll-snap-stop: always;
     padding: 6.5rem 1.25rem 5rem;
     display: flex; flex-direction: column;
     scroll-margin-top: 0;
   }
+  /* Thin internal scrollbar for slides that overflow vertically */
+  .slide::-webkit-scrollbar { width: 6px; background: transparent; }
+  .slide::-webkit-scrollbar-thumb {
+    background: rgba(167,139,250,0.2);
+    border-radius: 3px;
+  }
+  .slide:hover::-webkit-scrollbar-thumb { background: rgba(167,139,250,0.35); }
+
   @media (min-width: 768px) {
     .slide { padding: 7rem 4rem 5rem; }
   }
   .slide-inner {
     width: 100%; max-width: 1200px; margin: 0 auto;
-    flex: 1; display: flex; flex-direction: column;
+    flex: 1 0 auto; display: flex; flex-direction: column;
   }
   .slide-number {
     display: inline-block;
@@ -630,11 +664,11 @@
      unconditional rules of equal specificity (e.g. .bottomnav { display: flex }).
      ===================================================================== */
   @media (max-width: 640px) {
-    /* Keyboard nav isn't used on phones — scroll is the interaction */
-    .bottomnav { display: none; }
+    /* Keep bottomnav on phones too — the only way to advance without swipe */
+    /* (horizontal swipe still works via scroll-snap) */
 
     /* Tighter slide padding, smaller titles */
-    .slide { padding: 5.5rem 1rem 3rem; }
+    .slide { padding: 5rem 1rem 3.5rem; }
     .slide-title { font-size: 1.9rem; line-height: 1.1; }
 
     /* Terminals: smaller font, less padding, more visible scrollbar thumb */
@@ -713,18 +747,24 @@
 </div>
 
 <!-- ======================================================================= -->
+<!-- SLIDE DECK — 10 horizontal slides, one viewport per slide                -->
+<!-- ======================================================================= -->
+<main class="slide-deck" id="slide-deck">
+
+<!-- ======================================================================= -->
 <!-- SLIDE 1 — INTRODUCE KLURIS                                               -->
 <!-- ======================================================================= -->
 <section class="slide grid-bg" id="slide-1" data-title="Introduction">
   <div class="slide-inner">
     <span class="slide-number"><span class="n">01</span> &nbsp;·&nbsp; Introduction</span>
     <h1 class="slide-title">
-      Your AI agents, with a <span class="gradient-text">shared memory</span>.
+      Turn a git repo <span class="gradient-text">into a brain</span>.
     </h1>
     <p class="slide-lede">
-      <strong>Kluris</strong> turns a git repository into a <em>brain</em> — a structured
-      knowledge graph that every AI agent on your team reads as a subject matter expert.
-      Human-curated. Git-backed. Portable across Claude Code, Cursor, Windsurf, Codex,
+      <strong>Kluris</strong> creates a brain and makes your AI coding agent your
+      team's SME. A brain is a git repo of human-curated markdown — lobes,
+      neurons, synapses — that every agent on your team reads as a subject
+      matter expert. Portable across Claude Code, Cursor, Windsurf, Codex,
       Gemini CLI and friends.
     </p>
 
@@ -767,7 +807,7 @@
           The <code>kluris</code> CLI. You run these yourself — install, create a brain,
           push/pull changes, regenerate the MRI, refresh skills.
         </p>
-        <div class="surface-example">kluris wake-up --brain acme-sme</div>
+        <div class="surface-example">kluris push</div>
       </div>
       <div class="surface-card agent-card">
         <div class="surface-head">
@@ -1021,37 +1061,48 @@
     </p>
 
     <!-- ToC for the slide -->
-    <div class="grid grid-cols-2 md:grid-cols-3 gap-2 mt-6 mb-10">
+    <div class="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-2 mt-6 mb-10">
       <a href="#s4-1" class="chip" style="justify-content:center;">4·1 · Connect agents</a>
       <a href="#s4-2" class="chip" style="justify-content:center;">4·2 · Session wake-up</a>
       <a href="#s4-3" class="chip" style="justify-content:center;">4·3 · Learn mode</a>
       <a href="#s4-4" class="chip" style="justify-content:center;">4·4 · Remember mode</a>
       <a href="#s4-5" class="chip" style="justify-content:center;">4·5 · Guide & change</a>
       <a href="#s4-6" class="chip" style="justify-content:center;">4·6 · A-to-Z walkthrough</a>
+      <a href="#s4-7" class="chip" style="justify-content:center;">4·7 · Why it saves tokens</a>
     </div>
 
     <!-- ================== 4·1 Connect agents ================== -->
     <div id="s4-1" class="pt-6">
       <p class="subhead">4 · 1</p>
-      <h2 class="font-serif text-3xl md:text-4xl mt-2 mb-3">Connect your agents once.</h2>
+      <h2 class="font-serif text-3xl md:text-4xl mt-2 mb-3">Your agents — already connected.</h2>
       <p class="text-text-dim mb-5">
-        Kluris generates an <strong>agent skill</strong> — a small pack of instructions —
-        for each AI tool you use. You tell kluris which tools; it writes the skill to the
-        right place on disk. After that, every new project automatically has access.
+        There's no separate "connect agents" step. The moment you finish
+        <code>kluris create</code>, <code>kluris clone</code>, or
+        <code>kluris register</code>, kluris writes an <strong>agent skill</strong>
+        — a small pack of instructions — into every supported agent's skills
+        directory. Open any project in any of those agents and the brain is
+        already there.
       </p>
       <div class="grid grid-cols-1 lg:grid-cols-2 gap-5">
         <div class="terminal glow-purple-sm">
           <div class="terminal-header">
             <span class="terminal-dot" style="background:#a78bfa"></span>
-            <span>install skills for Claude Code + Cursor</span>
+            <span>skills drop into place after create / clone / register</span>
             <span class="scope scope-terminal">Terminal</span>
           </div>
-<pre><span class="prompt">$</span> <span class="cmd">kluris install-skills</span>
-<span class="info">?</span> Which agents? <span class="str">claude-code cursor</span>
+<pre><span class="prompt">$</span> <span class="cmd">kluris create acme-sme</span>
 
-<span class="ok">✓</span> ~/.claude/skills/kluris-acme-sme/     <span class="dim">(Claude Code)</span>
-<span class="ok">✓</span> ~/.cursor/skills/kluris-acme-sme/     <span class="dim">(Cursor)</span>
-<span class="meta">Now open any repo and type</span> <span class="cmd">/kluris-acme-sme</span> <span class="meta">in chat.</span></pre>
+<span class="ok">✓</span> brain scaffolded at ~/Projects/acme-sme
+<span class="ok">✓</span> /kluris skill installed across 8 agents
+    <span class="dim">~/.claude/skills/kluris/</span>
+    <span class="dim">~/.cursor/skills/kluris/</span>
+    <span class="dim">~/.codeium/windsurf/skills/kluris/</span>
+    <span class="dim">~/.copilot/skills/kluris/</span>
+    <span class="dim">~/.codex/skills/kluris/</span>
+    <span class="dim">~/.gemini/skills/kluris/</span>
+    <span class="dim">~/.kilo/skills/kluris/</span>
+    <span class="dim">~/.junie/skills/kluris/</span>
+<span class="meta">Open any repo and type</span> <span class="cmd">/kluris</span> <span class="meta">in chat.</span></pre>
         </div>
 
         <div class="space-y-3">
@@ -1071,7 +1122,8 @@
             just <code>/kluris</code>. Two or more and it becomes
             <code>/kluris-&lt;brain-name&gt;</code> — so <code>/kluris-acme-sme</code>,
             <code>/kluris-btb-sme</code>, <code>/kluris-ngvoicu-sme</code> are each
-            a direct line to a specific brain.
+            a direct line to a specific brain. The skills are refreshed
+            automatically every time you add or remove a brain.
           </div>
         </div>
       </div>
@@ -1099,7 +1151,7 @@
           </div>
 <pre><span class="prompt-agent">&gt;</span> <span class="cmd">/kluris-acme-sme learn about our auth flow</span>
 
-<span class="meta">↳ agent runs</span> kluris wake-up --brain acme-sme --json
+<span class="meta">↳ agent runs</span> kluris wake-up --json
 <span class="ok">✓</span> loaded brain.md             <span class="dim">7 lobes · 142 neurons</span>
 <span class="ok">✓</span> loaded glossary.md          <span class="dim">38 terms</span>
 <span class="ok">✓</span> ready
@@ -1117,7 +1169,7 @@
           </ul>
           <div class="callout callout-cyan">
             <strong>Manual refresh:</strong> after a big <code>git pull</code>, run
-            <code>kluris wake-up --brain acme-sme</code> in your terminal and the next
+            <code>kluris wake-up</code> in your terminal and the next
             agent invocation reads the updated snapshot immediately.
           </div>
         </div>
@@ -1278,18 +1330,18 @@
         </div>
 
         <div class="card p-5">
-          <p class="slide-kicker m-0 mb-2"><span class="tag-sm tag-purple">new lobe</span>&nbsp; Add a new folder</p>
+          <p class="slide-kicker m-0 mb-2"><span class="tag-sm tag-pink">new lobe</span>&nbsp; Add a new folder</p>
           <div class="terminal">
             <div class="terminal-header">
-              <span class="terminal-dot" style="background:#a78bfa"></span>
-              <span>terminal</span>
-              <span class="scope scope-terminal">Terminal</span>
+              <span class="terminal-dot" style="background:#ec4899"></span>
+              <span>agent</span>
+              <span class="scope scope-agent">Agent</span>
             </div>
-<pre><span class="prompt">$</span> <span class="cmd">kluris lobe compliance</span>
-<span class="ok">✓</span> created compliance/
-<span class="ok">✓</span> linked into brain.md</pre>
+<pre><span class="prompt-agent">&gt;</span> <span class="cmd">/kluris-acme-sme add a compliance</span>
+   <span class="cmd">lobe for SOC2 and GDPR notes</span>
+<span class="dim">→ creates compliance/ + links it into brain.md</span></pre>
           </div>
-          <p class="text-text-dim text-sm mt-3">Lobes are just folders — add one when a new concern emerges (SOC2, pricing, migrations).</p>
+          <p class="text-text-dim text-sm mt-3">Lobes are just folders — ask the agent when a new concern emerges (SOC2, pricing, migrations).</p>
         </div>
 
         <div class="card p-5">
@@ -1305,6 +1357,65 @@
    <span class="cmd">deprecated, replaced_by oauth2.md</span></pre>
           </div>
           <p class="text-text-dim text-sm mt-3">Flips frontmatter to <code>status: deprecated</code> + <code>replaced_by</code>. Non-blocking, searchable, reversible.</p>
+        </div>
+      </div>
+
+      <!-- Second row: steer mid-session — rewrite a neuron, or promote it to a lobe -->
+      <div class="grid grid-cols-1 lg:grid-cols-2 gap-4 mb-6">
+        <div class="card p-5">
+          <p class="slide-kicker m-0 mb-2"><span class="tag-sm tag-pink">rewrite</span>&nbsp; "I don't like this neuron"</p>
+          <div class="terminal">
+            <div class="terminal-header">
+              <span class="terminal-dot" style="background:#ec4899"></span>
+              <span>agent · mid-conversation</span>
+              <span class="scope scope-agent">Agent</span>
+            </div>
+<pre><span class="prompt-agent">&gt;</span> <span class="cmd">/kluris-acme-sme I don't like the content of</span>
+   <span class="cmd">infrastructure/auth/overview.md — rewrite it to</span>
+   <span class="cmd">cover the OAuth2 flow, the refresh-token rotation,</span>
+   <span class="cmd">and the cookie vs. header tradeoffs we made.</span>
+
+<span class="meta">agent:</span> Drafting a new overview.md…
+  <span class="info">?</span> Keep the existing synapses to
+    <span class="cmd">knowledge/decisions/oauth2.md</span> and
+    <span class="cmd">projects/acme-api/token-refresh.md</span>? <span class="str">y</span>
+  <span class="info">?</span> Approve new body? <span class="str">y</span>
+<span class="ok">✓</span> rewrote overview.md · synapses preserved</pre>
+          </div>
+          <p class="text-text-dim text-sm mt-3">
+            Say it in natural language mid-session. The agent drafts a replacement,
+            shows you the before/after, and only writes after you approve.
+          </p>
+        </div>
+
+        <div class="card p-5">
+          <p class="slide-kicker m-0 mb-2"><span class="tag-sm tag-pink">promote</span>&nbsp; "This should be a lobe, not a neuron"</p>
+          <div class="terminal">
+            <div class="terminal-header">
+              <span class="terminal-dot" style="background:#ec4899"></span>
+              <span>agent · mid-conversation</span>
+              <span class="scope scope-agent">Agent</span>
+            </div>
+<pre><span class="prompt-agent">&gt;</span> <span class="cmd">/kluris-acme-sme this shouldn't be a neuron —</span>
+   <span class="cmd">knowledge/billing.md is too big. Promote it to</span>
+   <span class="cmd">a billing/ lobe and split the content into</span>
+   <span class="cmd">pricing.md, invoicing.md, dunning.md, taxes.md.</span>
+
+<span class="meta">agent:</span> Proposed split:
+  <span class="info">›</span> billing/pricing.md      <span class="dim">(# plans, tiers, addons)</span>
+  <span class="info">›</span> billing/invoicing.md    <span class="dim">(# billing cycle, proration)</span>
+  <span class="info">›</span> billing/dunning.md      <span class="dim">(# retries, grace periods)</span>
+  <span class="info">›</span> billing/taxes.md        <span class="dim">(# VAT, US nexus, Stripe Tax)</span>
+  <span class="info">?</span> Approve split? <span class="str">y</span>
+<span class="ok">✓</span> created billing/ lobe
+<span class="ok">✓</span> moved &amp; split knowledge/billing.md
+<span class="ok">✓</span> rewrote synapses in 6 linked neurons</pre>
+          </div>
+          <p class="text-text-dim text-sm mt-3">
+            When a neuron grows past its weight class, ask the agent to promote it to a
+            lobe. It proposes the split, rewrites inbound synapses, and runs
+            <code>kluris dream</code> to regenerate maps.
+          </p>
         </div>
       </div>
 
@@ -1412,7 +1523,7 @@
             </p>
             <div class="terminal">
               <div class="terminal-header"><span class="terminal-dot" style="background:#a78bfa"></span>
-                <span>terminal, inside acme-sme/</span>
+                <span>terminal</span>
                 <span class="scope scope-terminal">Terminal</span>
               </div>
 <pre><span class="prompt">$</span> <span class="cmd">kluris lobe acme-api --parent projects</span>
@@ -1521,10 +1632,10 @@
             </div>
             <div class="terminal mt-3">
               <div class="terminal-header"><span class="terminal-dot" style="background:#a78bfa"></span>
-                <span>terminal, inside acme-sme/</span>
+                <span>terminal</span>
                 <span class="scope scope-terminal">Terminal</span>
               </div>
-<pre><span class="prompt">$</span> <span class="cmd">kluris push --brain acme-sme</span>
+<pre><span class="prompt">$</span> <span class="cmd">kluris push</span>
 <span class="ok">✓</span> 2 commits · pushed to origin/main
 <span class="dim">Teammates: next wake-up pulls your additions.</span></pre>
             </div>
@@ -1538,6 +1649,91 @@
         about the codebase</code> and gets the same synthesis your senior engineer would
         give — grounded in real facts from the brain, not hallucinated from vibes.
       </div>
+    </div>
+
+    <hr class="synapse-hr my-12">
+
+    <!-- ================== 4·7 Why it saves tokens ================== -->
+    <div id="s4-7">
+      <p class="subhead">4 · 7</p>
+      <h2 class="font-serif text-3xl md:text-4xl mt-2 mb-3">
+        Why this <span class="gradient-text">saves you tokens</span> — a lot of them.
+      </h2>
+      <p class="text-text-dim mb-6 max-w-3xl">
+        The whole brain is a pre-digested summary your agent reads instead of
+        crawling files. Without it, agents re-read the tree, READMEs, config
+        files, and several sibling repos every fresh chat. With a brain, the
+        first call in a session is one compact snapshot — the rest is
+        targeted lookups.
+      </p>
+
+      <div class="grid grid-cols-1 lg:grid-cols-2 gap-5">
+        <!-- Before: no brain -->
+        <div class="terminal">
+          <div class="terminal-header">
+            <span class="terminal-dot" style="background:#ef4444;opacity:0.6"></span>
+            <span>illustrative · cold start · no brain · medium repo</span>
+            <span class="scope scope-agent">Inside your AI agent</span>
+          </div>
+<pre><span class="meta">agent:</span> let me orient myself in this codebase...
+  <span class="info">›</span> tree + README + CLAUDE.md          <span class="dim">~3,000 tokens</span>
+  <span class="info">›</span> grep related symbols               <span class="dim">~2,000 tokens</span>
+  <span class="info">›</span> read 4–8 relevant files            <span class="dim">~15,000 tokens</span>
+  <span class="info">›</span> read 2–3 sibling-project files     <span class="dim">~8,000 tokens</span>
+  <span class="warn">──────────────────────────────────────────────</span>
+  <span class="warn">Σ ~28,000 tokens just to orient</span></pre>
+        </div>
+        <!-- After: with brain -->
+        <div class="terminal glow-purple-sm">
+          <div class="terminal-header">
+            <span class="terminal-dot" style="background:#34d399;opacity:0.8"></span>
+            <span>illustrative · same task · brain-backed</span>
+            <span class="scope scope-agent">Inside your AI agent</span>
+          </div>
+<pre><span class="meta">agent:</span> loading brain snapshot...
+  <span class="info">›</span> kluris wake-up --json              <span class="dim">~1,200 tokens</span>
+  <span class="info">›</span> kluris search "&lt;query&gt;" --json     <span class="dim">~400 tokens</span>
+  <span class="info">›</span> read 1–2 matching neurons          <span class="dim">~1,500 tokens</span>
+  <span class="ok">──────────────────────────────────────────────</span>
+  <span class="ok">Σ ~3,100 tokens · ~9× less orientation cost</span></pre>
+        </div>
+      </div>
+
+      <div class="grid grid-cols-1 md:grid-cols-3 gap-4 mt-8">
+        <div class="card p-5">
+          <p class="text-purple text-xs uppercase tracking-widest font-semibold mb-2">Compact snapshot</p>
+          <p class="text-text-dim text-sm">
+            <code>wake-up</code> returns <code>brain.md</code>, lobe index, recent neurons and
+            glossary — enough to decode your team's jargon before a single source file is read.
+          </p>
+        </div>
+        <div class="card p-5">
+          <p class="text-purple text-xs uppercase tracking-widest font-semibold mb-2">Targeted lookups</p>
+          <p class="text-text-dim text-sm">
+            <code>kluris search</code> returns ranked hits with snippets — the agent opens only
+            the 1–2 neurons that actually answer the question instead of grepping the repo.
+          </p>
+        </div>
+        <div class="card p-5">
+          <p class="text-purple text-xs uppercase tracking-widest font-semibold mb-2">One brain, many repos</p>
+          <p class="text-text-dim text-sm">
+            Cross-project context (infra, decisions, conventions) lives in the brain —
+            agents never re-read five repos of source to get it.
+          </p>
+        </div>
+      </div>
+
+      <div class="callout mt-8">
+        <strong>Net effect:</strong> more of the agent's context window goes to
+        <em>your actual work</em> — the plan, the diff, the tests — and a whole lot
+        less goes to "what is this codebase anyway". Agents stay faster and
+        cheaper the more projects your brain covers.
+      </div>
+      <p class="text-text-muted text-xs italic mt-3 max-w-3xl">
+        Rough estimates, not a benchmark — actual numbers depend on repo size,
+        agent, and prompt style. The shape holds: the brain replaces a wide
+        crawl with a targeted lookup.
+      </p>
     </div>
   </div>
 </section>
@@ -1567,7 +1763,7 @@
             <span>generate the MRI</span>
             <span class="scope scope-terminal">Terminal</span>
           </div>
-<pre><span class="prompt">$</span> <span class="cmd">kluris mri --brain ngvoicu-sme</span>
+<pre><span class="prompt">$</span> <span class="cmd">kluris mri</span>
 <span class="ok">✓</span> scanned 142 neurons across 7 lobes
 <span class="ok">✓</span> resolved 318 synapses
 <span class="ok">✓</span> wrote brain-mri.html
@@ -1583,11 +1779,6 @@
           <li class="flex gap-2"><span class="tag-sm tag-purple">inspector</span>&nbsp; click a node to read frontmatter, excerpt, backlinks, file path.</li>
           <li class="flex gap-2"><span class="tag-sm tag-purple">offline</span>&nbsp; single HTML file · no JS build, no external calls — commit it or email it.</li>
         </ul>
-
-        <div class="callout callout-pink">
-          <strong>Multi-brain tip:</strong> run <code>kluris mri --brain all</code> to
-          regenerate every brain's MRI at once. Great before a team demo.
-        </div>
       </div>
 
       <!-- Screenshot -->
@@ -1675,7 +1866,11 @@
 <span class="ok">✓</span>  btb-sme        <span class="dim">~/Projects/btb-sme        (single-project)</span>
 <span class="ok">✓</span>  ngvoicu-sme    <span class="dim">~/Projects/ngvoicu-sme    (project-group)</span>
 
-<span class="prompt">$</span> <span class="cmd">kluris status --brain all</span>
+<span class="prompt">$</span> <span class="cmd">kluris status</span>
+<span class="meta">Multiple brains registered. Pick one:</span>
+  <span class="dim">[1]</span> acme-sme    <span class="dim">[2]</span> btb-sme    <span class="dim">[3]</span> ngvoicu-sme
+  <span class="dim">[4]</span> all
+<span class="meta">Choice:</span> <span class="str">4</span>
 <span class="dim">acme-sme</span>      · clean · origin ahead 0 / behind 0
 <span class="dim">btb-sme</span>       · 2 uncommitted files · behind 3
 <span class="dim">ngvoicu-sme</span>   · clean · origin ahead 1 / behind 0</pre>
@@ -1683,8 +1878,9 @@
 
         <div class="callout callout-cyan mt-4">
           <strong>No <code>kluris use</code>.</strong> The CLI doesn't hold a stateful
-          "active brain" — every command that touches a brain takes <code>--brain NAME</code>.
-          Zero confusion about which brain you just pushed to.
+          "active brain". With one brain on disk, every command auto-resolves to it.
+          With two or more, the CLI asks which brain you mean — zero confusion about
+          which brain you just pushed to.
         </div>
       </div>
 
@@ -1720,54 +1916,6 @@
         </div>
       </div>
     </div>
-
-    <hr class="synapse-hr my-10">
-
-    <!-- Fan-out commands -->
-    <p class="slide-kicker"><span class="chip">Fan-out commands with <code>--brain all</code></span></p>
-    <p class="text-text-dim mb-4 max-w-3xl">
-      A handful of commands operate on every brain at once — useful for daily
-      housekeeping or before a meeting.
-    </p>
-    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-5 gap-3">
-      <div class="card p-4">
-        <p class="font-mono text-purple text-sm">--brain all</p>
-        <p class="text-text-dim text-xs mt-1">dream</p>
-        <p class="text-text-dim text-xs">maintenance pass on every brain</p>
-      </div>
-      <div class="card p-4">
-        <p class="font-mono text-purple text-sm">--brain all</p>
-        <p class="text-text-dim text-xs mt-1">push</p>
-        <p class="text-text-dim text-xs">push all clean brains to origin</p>
-      </div>
-      <div class="card p-4">
-        <p class="font-mono text-purple text-sm">--brain all</p>
-        <p class="text-text-dim text-xs mt-1">pull</p>
-        <p class="text-text-dim text-xs">pull every brain's latest</p>
-      </div>
-      <div class="card p-4">
-        <p class="font-mono text-purple text-sm">--brain all</p>
-        <p class="text-text-dim text-xs mt-1">status</p>
-        <p class="text-text-dim text-xs">status panel for every brain</p>
-      </div>
-      <div class="card p-4">
-        <p class="font-mono text-purple text-sm">--brain all</p>
-        <p class="text-text-dim text-xs mt-1">mri</p>
-        <p class="text-text-dim text-xs">regenerate every MRI</p>
-      </div>
-    </div>
-
-    <div class="callout mt-6">
-      <strong>Non-fan-out commands</strong> (<code>create</code>, <code>clone</code>,
-      <code>search</code>, <code>neuron</code>, <code>lobe</code>, <code>branch</code>,
-      <code>wake-up</code>, <code>templates</code>) always target exactly one brain —
-      either the only one, or the one you pass as <code>--brain NAME</code>.
-    </div>
-
-    <div class="callout callout-pink mt-4">
-      <strong>Automation:</strong> set <code>KLURIS_NO_PROMPT=1</code> in CI or scripts.
-      Every interactive prompt becomes non-interactive — safe defaults or a clean error.
-    </div>
   </div>
 </section>
 
@@ -1796,10 +1944,10 @@
             <span>one brain, one flow</span>
             <span class="scope scope-terminal">Terminal</span>
           </div>
-<pre><span class="prompt">$</span> <span class="cmd">kluris status --brain acme-sme</span>
+<pre><span class="prompt">$</span> <span class="cmd">kluris status</span>
 <span class="dim">branch: main · 3 modified, 1 new</span>
 
-<span class="prompt">$</span> <span class="cmd">kluris push --brain acme-sme</span>
+<span class="prompt">$</span> <span class="cmd">kluris push</span>
 <span class="ok">✓</span> staged · committed · pushed to origin/main</pre>
         </div>
 
@@ -1810,13 +1958,12 @@
             <span>PR-reviewed changes</span>
             <span class="scope scope-terminal">Terminal</span>
           </div>
-<pre><span class="prompt">$</span> <span class="cmd">kluris branch add-rate-limit-decision \</span>
-    <span class="cmd">--brain acme-sme</span>
+<pre><span class="prompt">$</span> <span class="cmd">kluris branch add-rate-limit-decision</span>
 <span class="ok">✓</span> switched to add-rate-limit-decision
 
 <span class="meta">→ remember / edit / approve neurons</span>
 
-<span class="prompt">$</span> <span class="cmd">kluris push --brain acme-sme</span>
+<span class="prompt">$</span> <span class="cmd">kluris push</span>
 <span class="ok">✓</span> pushed add-rate-limit-decision
 <span class="dim">open a PR in your git host · review · merge</span></pre>
         </div>
@@ -1828,12 +1975,16 @@
             <span>morning refresh</span>
             <span class="scope scope-terminal">Terminal</span>
           </div>
-<pre><span class="prompt">$</span> <span class="cmd">kluris pull --brain all</span>
+<pre><span class="prompt">$</span> <span class="cmd">kluris pull</span>
+<span class="meta">Multiple brains registered. Pick one:</span>
+  <span class="dim">[1]</span> acme-sme    <span class="dim">[2]</span> btb-sme    <span class="dim">[3]</span> ngvoicu-sme
+  <span class="dim">[4]</span> all
+<span class="meta">Choice:</span> <span class="str">4</span>
 <span class="dim">acme-sme</span>      · 4 new neurons, 1 deprecation
 <span class="dim">btb-sme</span>       · up to date
 <span class="dim">ngvoicu-sme</span>   · 2 new neurons
 
-<span class="prompt">$</span> <span class="cmd">kluris dream --brain all</span>
+<span class="prompt">$</span> <span class="cmd">kluris dream</span>   <span class="dim"># pick [4] all again</span>
 <span class="ok">✓</span> maps regenerated · synapses validated</pre>
         </div>
       </div>
@@ -1998,7 +2149,7 @@
               <span>terminal</span>
               <span class="scope scope-terminal">Terminal</span>
             </div>
-<pre><span class="prompt">$</span> <span class="cmd">kluris push --brain acme-sme</span>
+<pre><span class="prompt">$</span> <span class="cmd">kluris push</span>
 <span class="ok">✓</span> pushed · teammates' next wake-up sees the new retry policy neuron.</pre>
           </div>
         </div>
@@ -2043,7 +2194,7 @@
             <span>terminal</span>
             <span class="scope scope-terminal">Terminal</span>
           </div>
-<pre><span class="prompt">$</span> <span class="cmd">kluris dream --brain all</span>
+<pre><span class="prompt">$</span> <span class="cmd">kluris dream</span>
 <span class="meta">agent:</span> 3 duplicates, 2 missing synapses,
        1 neuron untouched since 2025-09
   <span class="info">?</span> merge a &amp; b into infrastructure/auth? <span class="str">y</span></pre>
@@ -2100,6 +2251,7 @@
         <table class="cmd-table">
           <tr><td>kluris create</td><td>scaffold a new brain</td></tr>
           <tr><td>kluris clone</td><td>clone an existing brain repo</td></tr>
+          <tr><td>kluris register</td><td>register a brain already on disk (dir or .zip)</td></tr>
           <tr><td>kluris list</td><td>list all brains on disk</td></tr>
           <tr><td>kluris status</td><td>git + snapshot status</td></tr>
           <tr><td>kluris doctor</td><td>health-check + refresh skills</td></tr>
@@ -2128,18 +2280,22 @@
       <div class="card p-4">
         <p class="text-purple-light text-xs uppercase tracking-widest mb-2">agents · viz</p>
         <table class="cmd-table">
-          <tr><td>kluris install-skills</td><td>add agent skills on disk</td></tr>
-          <tr><td>kluris uninstall-skills</td><td>remove agent skills</td></tr>
           <tr><td>kluris mri</td><td>render the interactive map</td></tr>
           <tr><td>kluris help</td><td>long-form help for any subcommand</td></tr>
         </table>
+        <p class="text-text-muted text-xs italic mt-3">
+          Agent skills refresh automatically on <code>create</code>,
+          <code>clone</code>, <code>register</code>, <code>remove</code>, or
+          <code>doctor</code> — one muscle-memory command after every
+          <code>pipx upgrade</code>.
+        </p>
       </div>
     </div>
 
     <div class="callout mt-8">
-      <strong>Scripts &amp; CI:</strong> every command respects
-      <code>KLURIS_NO_PROMPT=1</code> — prompts either use safe defaults or fail fast,
-      so automation never hangs on an input.
+      <strong>Every command supports <code>--json</code></strong> for
+      machine-readable output — ideal for scripts, CI, and anything that needs
+      to react to the result programmatically.
     </div>
   </div>
 </section>
@@ -2192,9 +2348,12 @@
           <span class="scope scope-terminal">Terminal</span>
         </div>
 <pre><span class="prompt">$</span> <span class="cmd">pipx install kluris</span>
-<span class="prompt">$</span> <span class="cmd">kluris create</span>                 <span class="dim"># or: kluris clone &lt;repo&gt;</span>
-<span class="prompt">$</span> <span class="cmd">kluris install-skills</span>         <span class="dim"># pick your agents</span>
-<span class="meta">→ open any repo · type</span> <span class="cmd">/kluris-&lt;your-brain&gt;</span> <span class="meta">in chat</span></pre>
+<span class="prompt">$</span> <span class="cmd">kluris create</span>                         <span class="dim"># new brain from scratch</span>
+  <span class="dim"># — or — </span>
+<span class="prompt">$</span> <span class="cmd">kluris clone git@github.com:team/brain.git</span>   <span class="dim"># join a team brain</span>
+<span class="prompt">$</span> <span class="cmd">kluris register ~/path/to/brain</span>            <span class="dim"># adopt a brain already on disk</span>
+<span class="prompt">$</span> <span class="cmd">kluris register ~/Downloads/brain.zip</span>        <span class="dim"># unpack &amp; register a zip</span>
+<span class="meta">→ agent skills auto-install · open any repo · type</span> <span class="cmd">/kluris</span> <span class="meta">in chat</span></pre>
       </div>
 
       <div class="flex flex-col sm:flex-row items-center justify-center gap-4 mt-10">
@@ -2211,30 +2370,31 @@
       <p class="text-text-muted text-xs tracking-wider mt-8">
         Open source · MIT · Yours forever · Free. Really.
       </p>
+
+      <!-- in-slide footer (replaces the old standalone <footer>) -->
+      <div class="section-divider my-8"></div>
+      <p class="text-text-muted text-xs tracking-wide mb-2">
+        <span style="color:#8a92a6;">kluris · a guided tour</span>
+        &nbsp;·&nbsp;
+        <a href="index.html" style="color:#a78bfa; text-decoration:none;">kluris.io</a>
+        &nbsp;·&nbsp;
+        <a href="https://github.com/ngvoicu/kluris-cli" style="color:#a78bfa; text-decoration:none;">source</a>
+      </p>
+      <p class="text-text-muted text-xs tracking-wide">
+        Use <span class="kbd">←</span> <span class="kbd">→</span> or <span class="kbd">Space</span> to navigate · <span class="kbd">1</span>–<span class="kbd">9</span><span class="kbd">0</span> to jump.
+      </p>
     </div>
   </div>
 </section>
 
-<!-- ======================================================================= -->
-<!-- FOOTER                                                                   -->
-<!-- ======================================================================= -->
-<footer style="padding: 2rem 1.5rem 7rem; text-align: center; color: #5b6275; font-size: 0.85rem; letter-spacing: 0.02em;">
-  <div class="section-divider" style="margin-bottom: 1.5rem;"></div>
-  <p>
-    <span style="color:#8a92a6;">kluris · a guided tour</span>
-    &nbsp;·&nbsp;
-    <a href="index.html" style="color:#a78bfa; text-decoration:none;">kluris.io</a>
-    &nbsp;·&nbsp;
-    <a href="https://github.com/ngvoicu/kluris-cli" style="color:#a78bfa; text-decoration:none;">source</a>
-  </p>
-  <p style="margin-top: 0.5rem;">Use <span class="kbd">←</span> <span class="kbd">→</span> or <span class="kbd">Space</span> to navigate · <span class="kbd">1</span>–<span class="kbd">9</span><span class="kbd">0</span> to jump.</p>
-</footer>
+</main><!-- /.slide-deck -->
 
 <!-- ======================================================================= -->
 <!-- NAVIGATION SCRIPT                                                        -->
 <!-- ======================================================================= -->
 <script>
 (function() {
+  const deck = document.getElementById('slide-deck');
   const slides = Array.from(document.querySelectorAll('.slide'));
   const total = slides.length;
   const dotsEl = document.getElementById('dots');
@@ -2262,11 +2422,29 @@
 
   let current = 0;
 
-  function goTo(idx) {
+  function goTo(idx, opts) {
     idx = Math.max(0, Math.min(total - 1, idx));
     current = idx;
-    slides[idx].scrollIntoView({ behavior: 'smooth', block: 'start' });
-    // Note: we don't early-set the UI — the scroll observer will update it.
+    const instant = !!(opts && opts.instant);
+    const target = idx * deck.clientWidth;
+    // Horizontal scroll by slide index — avoids any off-by-one from computed widths.
+    // CSS `scroll-behavior: smooth` on the deck overrides scrollTo({behavior:'auto'}),
+    // so when we want instant (initial load, resize, hashchange) we temporarily
+    // force the inline scroll-behavior to auto and assign scrollLeft directly.
+    if (instant) {
+      const prev = deck.style.scrollBehavior;
+      deck.style.scrollBehavior = 'auto';
+      deck.scrollLeft = target;
+      // Restore on next frame so subsequent user scrolls still glide smoothly.
+      requestAnimationFrame(() => { deck.style.scrollBehavior = prev; });
+    } else {
+      deck.scrollTo({ left: target, behavior: 'smooth' });
+    }
+    // Reset the slide's own vertical scroll so long slides start from the top.
+    slides[idx].scrollTop = 0;
+    // The scroll observer will call setActive once the scroll settles,
+    // but we set it eagerly so the UI doesn't lag.
+    setActive(idx);
   }
 
   function setActive(idx) {
@@ -2282,39 +2460,39 @@
     history.replaceState(null, '', '#slide-' + (idx + 1));
   }
 
-  // Scroll tracker: the active slide is the one whose top is closest to —
-  // but not below — a reference line just under the fixed topbar. This works
-  // even for slides much taller than the viewport (where an IntersectionObserver
-  // threshold on the slide itself would never fire).
+  // Horizontal scroll tracker: which slide's left edge is closest to
+  // the viewport's left edge. Works for any slide width via deck.scrollLeft.
   let scrollRaf = 0;
   function updateActiveOnScroll() {
     scrollRaf = 0;
-    const refY = 140; // ~topbar height + a small buffer
-    let best = 0;
-    for (let i = 0; i < slides.length; i++) {
-      const top = slides[i].getBoundingClientRect().top;
-      if (top <= refY) best = i; else break;
-    }
-    if (best !== current) setActive(best);
+    const w = deck.clientWidth;
+    if (w <= 0) return;
+    const idx = Math.round(deck.scrollLeft / w);
+    const clamped = Math.max(0, Math.min(total - 1, idx));
+    if (clamped !== current) setActive(clamped);
   }
   function onScroll() {
     if (!scrollRaf) scrollRaf = requestAnimationFrame(updateActiveOnScroll);
   }
-  window.addEventListener('scroll', onScroll, { passive: true });
-  window.addEventListener('resize', onScroll, { passive: true });
+  deck.addEventListener('scroll', onScroll, { passive: true });
+  // On resize, the clientWidth changes → snap the active slide back into place
+  // (otherwise the scrollLeft value points at stale pixel coords).
+  window.addEventListener('resize', () => {
+    goTo(current, { instant: true });
+  }, { passive: true });
 
   // Keyboard navigation.
+  // Horizontal keys (←/→, PgUp/PgDn, Space) change slides.
+  // Vertical keys (↑/↓) are left alone so long slides can be scrolled.
   document.addEventListener('keydown', (e) => {
     // Ignore when focused on an input / textarea / contenteditable.
     const t = e.target;
     if (t && (t.tagName === 'INPUT' || t.tagName === 'TEXTAREA' || t.isContentEditable)) return;
 
     switch (e.key) {
-      case 'ArrowDown':
       case 'ArrowRight':
       case 'PageDown':
         e.preventDefault(); goTo(current + 1); break;
-      case 'ArrowUp':
       case 'ArrowLeft':
       case 'PageUp':
         e.preventDefault(); goTo(current - 1); break;
@@ -2341,18 +2519,54 @@
   btnPrev.addEventListener('click', () => goTo(current - 1));
   btnNext.addEventListener('click', () => goTo(current + 1));
 
-  // Deep-link via hash (e.g. /presentation.html#slide-4)
-  function hashToIndex() {
-    const m = (window.location.hash || '').match(/^#slide-(\d+)$/);
+  // Deep-link via hash (e.g. /presentation.html#slide-4).
+  // Accepts #slide-N (our canonical form) and the intra-slide anchors
+  // (#s4-3 etc.) by treating "s<N>-" as slide N.
+  function hashToIndex(hash) {
+    const h = (hash || window.location.hash || '').toString();
+    let m = h.match(/^#slide-(\d+)$/);
+    if (m) return Math.max(0, Math.min(total - 1, parseInt(m[1], 10) - 1));
+    m = h.match(/^#s(\d+)(?:[-.].*)?$/);
     if (m) return Math.max(0, Math.min(total - 1, parseInt(m[1], 10) - 1));
     return 0;
   }
-  const initial = hashToIndex();
-  if (initial > 0) {
-    // Jump without smooth so the first paint starts on the target slide.
-    slides[initial].scrollIntoView({ block: 'start' });
+  // Position the deck after layout settles. Two rAFs are enough to guarantee
+  // the flex container has measured each slide at 100vw; that matters because
+  // deck.clientWidth is what goTo() multiplies by.
+  function positionInitial() {
+    const hash = window.location.hash || '';
+    const initial = hashToIndex(hash);
+    const isDeepLink = /^#slide-\d+$/.test(hash);
+    // Run twice across rAFs — first aligns, second corrects if the browser's
+    // native anchor-scroll nudged us in between.
+    requestAnimationFrame(() => {
+      goTo(initial, { instant: true });
+      requestAnimationFrame(() => {
+        goTo(initial, { instant: true });
+        // Intra-slide anchor (e.g. #s4-7): scroll that element into view
+        // within the slide's own overflow-y. goTo() just reset scrollTop=0,
+        // so we do the sub-slide scroll after the horizontal landing is firm.
+        if (!isDeepLink && hash.length > 1) {
+          const el = document.getElementById(hash.slice(1));
+          if (el) el.scrollIntoView({ block: 'start', inline: 'nearest', behavior: 'auto' });
+        }
+      });
+    });
   }
-  setActive(initial);
+  if (document.readyState === 'complete') {
+    positionInitial();
+  } else {
+    window.addEventListener('load', positionInitial, { once: true });
+  }
+  // Honour user-driven hash changes. Only handle the canonical slide deep-link
+  // form (#slide-N); leave intra-slide chips (#s4-3, #s4-7, …) to the browser's
+  // native anchor-scroll so they can scroll within their slide's overflow-y.
+  window.addEventListener('hashchange', () => {
+    const hash = window.location.hash || '';
+    if (/^#slide-\d+$/.test(hash)) {
+      goTo(hashToIndex(hash), { instant: false });
+    }
+  });
 })();
 </script>
 
