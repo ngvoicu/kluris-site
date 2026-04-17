@@ -112,6 +112,7 @@
     background: #10141f;
     border: 1px solid rgba(255,255,255,0.06);
     border-radius: 12px; overflow: hidden;
+    min-width: 0; /* let flex parents shrink us below content */
   }
   .terminal-header {
     background: rgba(255,255,255,0.02);
@@ -280,6 +281,7 @@
   .step {
     display: flex; gap: 1rem; align-items: flex-start;
   }
+  .step > .flex-1 { min-width: 0; } /* shrink below child terminal's intrinsic width */
   .step-num {
     flex: 0 0 auto;
     width: 2rem; height: 2rem; border-radius: 9999px;
@@ -621,6 +623,44 @@
     background: linear-gradient(135deg, rgba(34,211,238,0.12), rgba(167,139,250,0.12));
     border: 1px solid rgba(34,211,238,0.3);
     color: #67e8f9;
+  }
+
+  /* =====================================================================
+     Mobile overrides — MUST live at the end so they beat later-in-source
+     unconditional rules of equal specificity (e.g. .bottomnav { display: flex }).
+     ===================================================================== */
+  @media (max-width: 640px) {
+    /* Keyboard nav isn't used on phones — scroll is the interaction */
+    .bottomnav { display: none; }
+
+    /* Tighter slide padding, smaller titles */
+    .slide { padding: 5.5rem 1rem 3rem; }
+    .slide-title { font-size: 1.9rem; line-height: 1.1; }
+
+    /* Terminals: smaller font, less padding, more visible scrollbar thumb */
+    .terminal pre {
+      font-size: 0.7rem;
+      padding: 0.9rem 1rem;
+      line-height: 1.6;
+    }
+    .terminal pre::-webkit-scrollbar { height: 8px; }
+    .terminal pre::-webkit-scrollbar-thumb {
+      background: rgba(167,139,250,0.45);
+    }
+    .terminal-header {
+      padding: 0.5rem 0.85rem;
+      font-size: 0.62rem;
+      flex-wrap: wrap; /* let scope badge drop below if crowded */
+      row-gap: 0.3rem;
+    }
+    .scope { font-size: 0.55rem; padding: 0.12rem 0.45rem; }
+
+    /* A-to-Z steps: smaller step bullet + reduced gap */
+    .step { gap: 0.7rem; }
+    .step-num { width: 1.6rem; height: 1.6rem; font-size: 0.72rem; }
+
+    /* Glossary / vocabulary cards: one column for readability */
+    #slide-1 .grid.grid-cols-2 { grid-template-columns: 1fr; }
   }
 </style>
 
