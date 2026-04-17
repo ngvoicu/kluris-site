@@ -173,7 +173,10 @@
 
 <style>
   *,*::before,*::after { box-sizing: border-box; }
-  html { scroll-behavior: smooth; }
+  html {
+    scroll-behavior: smooth;
+    overflow-x: hidden; /* keep fixed nav from stretching when a child overflows */
+  }
   body {
     background: #0a0e1a;
     color: #e4e7ef;
@@ -446,6 +449,66 @@
     margin: 0 auto;
     height: 1px;
     background: linear-gradient(90deg, transparent, rgba(167,139,250,0.4), transparent);
+  }
+
+  /* =====================================================================
+     Mobile overrides — tighten typography, stop horizontal overflow,
+     make terminal scroll thumbs visible.
+     ===================================================================== */
+  @media (max-width: 640px) {
+    /* Hero title — shrink so "The SME your team" fits on one line */
+    h1.font-serif {
+      font-size: 2.5rem;
+      line-height: 1.05;
+    }
+
+    /* Section headings — tame the oversized serif on narrow screens */
+    section h2.font-serif { font-size: 2rem; line-height: 1.1; }
+    section h2.font-serif.text-3xl,
+    section h3.font-serif { font-size: 1.5rem; }
+
+    /* Hero subhead + section lead copy */
+    section p.text-lg { font-size: 1rem; }
+    section p.text-xl { font-size: 1.05rem; }
+
+    /* Chip — let long tag strings wrap instead of pushing the pill wide */
+    .chip {
+      white-space: normal;
+      text-align: center;
+      line-height: 1.4;
+    }
+
+    /* Nav pill: keep the GitHub button on-screen */
+    nav .font-serif.text-2xl { font-size: 1.25rem; }
+    nav a img { width: 2rem; height: 2rem; }
+    nav a[href*="github.com"] { padding: 0.4rem 0.8rem; }
+
+    /* Terminals — smaller font + clearly visible scrollbar on mobile */
+    .terminal pre {
+      font-size: 0.72rem;
+      padding: 1rem;
+      line-height: 1.7;
+    }
+    .terminal pre::-webkit-scrollbar { height: 8px; }
+    .terminal pre::-webkit-scrollbar-thumb {
+      background: rgba(167,139,250,0.45);
+      border-radius: 3px;
+    }
+    .terminal-header { padding: 0.5rem 0.85rem; font-size: 0.62rem; }
+    .scope { font-size: 0.55rem; padding: 0.12rem 0.45rem; }
+    .scope-bar { padding: 0.5rem 0.85rem; font-size: 0.62rem; flex-wrap: wrap; row-gap: 0.3rem; }
+
+    /* File tree — shrink so name + inline comment fit */
+    .tree { font-size: 0.7rem; line-height: 1.8; }
+
+    /* Command table — stop it from forcing horizontal overflow */
+    .cmd-table { font-size: 0.72rem; }
+    .cmd-table td { padding: 0.5rem 0.35rem; }
+    .cmd-table td:first-child {
+      white-space: normal;
+      padding-right: 0.55rem;
+    }
+    .cmd-table td:last-child { font-size: 0.78rem; }
   }
 </style>
 </head>
