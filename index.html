@@ -271,6 +271,7 @@
   .terminal pre .dim { color: #5b6275; }
   .terminal pre .ok { color: #34d399; }
   .terminal pre .warn { color: #facc15; }
+  .terminal pre .info { color: #22d3ee; }
   .terminal pre .str { color: #c4b5fd; }
   .terminal pre .cmd { color: #e4e7ef; }
   .terminal pre .meta { color: #8a92a6; font-style: italic; }
@@ -525,12 +526,15 @@
       </span>
       <span class="gradient-text">kluris</span>
     </a>
-    <div class="hidden md:flex items-center gap-8 text-sm font-medium">
+    <div class="hidden md:flex items-center gap-4 lg:gap-6 text-sm font-medium">
       <a href="presentation.html" class="text-purple-light hover:text-pink transition-colors">Tour</a>
-      <a href="#install" class="text-text-dim hover:text-text transition-colors">Install</a>
-      <a href="#first-brain" class="text-text-dim hover:text-text transition-colors">First brain</a>
-      <a href="#commands" class="text-text-dim hover:text-text transition-colors">Commands</a>
-      <a href="#agents" class="text-text-dim hover:text-text transition-colors">Agents</a>
+      <a href="#setup" class="text-text-dim hover:text-text transition-colors">Set up</a>
+      <a href="#teach" class="text-text-dim hover:text-text transition-colors">Teach</a>
+      <a href="#see" class="text-text-dim hover:text-text transition-colors">See</a>
+      <a href="#use" class="text-text-dim hover:text-text transition-colors">Use</a>
+      <a href="#grow" class="text-text-dim hover:text-text transition-colors">Grow</a>
+      <a href="#review" class="text-text-dim hover:text-text transition-colors">Review</a>
+      <a href="#reference" class="text-text-dim hover:text-text transition-colors">Reference</a>
     </div>
     <a href="https://github.com/ngvoicu/kluris-cli" class="inline-flex items-center gap-2 px-4 py-2 text-xs md:text-sm font-semibold text-purple-light border border-purple/40 hover:border-purple hover:bg-purple/10 rounded-full transition-all">
       <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor"><path d="M12 .297c-6.63 0-12 5.373-12 12 0 5.303 3.438 9.8 8.205 11.385.6.113.82-.258.82-.577 0-.285-.01-1.04-.015-2.04-3.338.724-4.042-1.61-4.042-1.61C4.422 18.07 3.633 17.7 3.633 17.7c-1.087-.744.084-.729.084-.729 1.205.084 1.838 1.236 1.838 1.236 1.07 1.835 2.809 1.305 3.495.998.108-.776.417-1.305.76-1.605-2.665-.3-5.466-1.332-5.466-5.93 0-1.31.465-2.38 1.235-3.22-.135-.303-.54-1.523.105-3.176 0 0 1.005-.322 3.3 1.23.96-.267 1.98-.399 3-.405 1.02.006 2.04.138 3 .405 2.28-1.552 3.285-1.23 3.285-1.23.645 1.653.24 2.873.12 3.176.765.84 1.23 1.91 1.23 3.22 0 4.61-2.805 5.625-5.475 5.92.42.36.81 1.096.81 2.22 0 1.606-.015 2.896-.015 3.286 0 .315.21.69.825.57C20.565 22.092 24 17.592 24 12.297c0-6.627-5.373-12-12-12"/></svg>
@@ -540,7 +544,7 @@
 </nav>
 
 <!-- ============================================ -->
-<!-- SECTION 1 — HERO                               -->
+<!-- HERO                                           -->
 <!-- ============================================ -->
 <section class="relative min-h-screen grid-bg overflow-hidden">
   <canvas id="brain-canvas" class="absolute inset-0 w-full h-full"></canvas>
@@ -567,7 +571,7 @@
     </p>
 
     <div class="hero-in hero-in-4 flex flex-col sm:flex-row items-center justify-center gap-4 mb-8">
-      <a href="#install" class="btn-primary inline-flex items-center gap-2 px-8 py-4 rounded-full text-base">
+      <a href="#setup" class="btn-primary inline-flex items-center gap-2 px-8 py-4 rounded-full text-base">
         Install kluris
         <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><path d="M5 12h14M13 5l7 7-7 7"/></svg>
       </a>
@@ -583,7 +587,7 @@
 
     <a href="presentation.html" class="hero-in hero-in-5 inline-flex items-center gap-2 mt-4 text-sm text-purple-light hover:text-pink transition-colors group/link">
       <span class="inline-block w-1.5 h-1.5 rounded-full bg-purple pulse-soft"></span>
-      New here? <span class="underline decoration-purple/30 underline-offset-4 group-hover/link:decoration-pink">Take the 10-slide guided tour</span>
+      New here? <span class="underline decoration-purple/30 underline-offset-4 group-hover/link:decoration-pink">Take the 8-slide guided tour</span>
       <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" class="group-hover/link:translate-x-0.5 transition-transform"><path d="M5 12h14M13 5l7 7-7 7"/></svg>
     </a>
   </div>
@@ -596,167 +600,22 @@
 </section>
 
 <!-- ============================================ -->
-<!-- SECTION 2 — THE PROBLEM                        -->
+<!-- BEAT 1 — SET UP                                -->
 <!-- ============================================ -->
-<section class="py-28 md:py-40 px-6 relative">
+<section id="setup" class="py-28 md:py-40 px-6 relative">
   <div class="max-w-7xl mx-auto">
     <div class="text-center mb-16 max-w-3xl mx-auto">
-      <p class="text-purple text-xs uppercase tracking-[0.2em] font-medium mb-4">The problem</p>
+      <p class="text-purple text-xs uppercase tracking-[0.2em] font-medium mb-4">Beat 1 · Set up</p>
       <h2 class="font-serif text-4xl md:text-6xl leading-tight mb-6">
-        Your AI agents start from <span class="gradient-text">zero</span> every morning.
+        Install kluris. <span class="gradient-text">Create a brain.</span>
       </h2>
       <p class="text-text-dim text-lg leading-relaxed">
-        Every new session, every new repo, every new teammate — the knowledge walks out the door. Kluris fixes that.
+        A <span class="text-text font-medium">brain</span> is a git repo of curated markdown that every AI agent on your team can read as a subject matter expert. One command to install. One wizard to create your first one.
       </p>
     </div>
 
-    <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
-      <!-- Card 1 -->
-      <div class="card rounded-2xl p-8">
-        <div class="w-10 h-10 rounded-lg bg-pink/10 border border-pink/30 flex items-center justify-center mb-6">
-          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#ec4899" stroke-width="2" stroke-linecap="round"><path d="M12 8v4M12 16h.01"/><circle cx="12" cy="12" r="10"/></svg>
-        </div>
-        <h3 class="font-serif text-2xl mb-3">Your agents forget.</h3>
-        <p class="text-text-dim leading-relaxed">A new context window means a new brain. Every morning, every session, your agent re-learns your codebase from scratch.</p>
-      </div>
-
-      <!-- Card 2 -->
-      <div class="card rounded-2xl p-8">
-        <div class="w-10 h-10 rounded-lg bg-lobe-orange/10 border border-lobe-orange/30 flex items-center justify-center mb-6">
-          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#f59e0b" stroke-width="2" stroke-linecap="round"><path d="M16 21v-2a4 4 0 0 0-4-4H6a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M22 11l-4 4M18 11l4 4"/></svg>
-        </div>
-        <h3 class="font-serif text-2xl mb-3">Your best engineer leaves.</h3>
-        <p class="text-text-dim leading-relaxed">When the senior dev who knows why things are built this way moves on, their context leaves with them. A year later, nobody can explain the auth flow.</p>
-      </div>
-
-      <!-- Card 3 -->
-      <div class="card rounded-2xl p-8">
-        <div class="w-10 h-10 rounded-lg bg-lobe-yellow/10 border border-lobe-yellow/30 flex items-center justify-center mb-6">
-          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#facc15" stroke-width="2" stroke-linecap="round"><path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20"/><path d="M6.5 2H20v20H6.5A2.5 2.5 0 0 1 4 19.5v-15A2.5 2.5 0 0 1 6.5 2z"/></svg>
-        </div>
-        <h3 class="font-serif text-2xl mb-3">Your docs are for humans.</h3>
-        <p class="text-text-dim leading-relaxed">Wikis, Notion, and CLAUDE.md are written for people, not agents. They can't be searched, linked, or reasoned across by your AI.</p>
-      </div>
-    </div>
-
-    <div class="mt-16 text-center">
-      <div class="section-divider mb-8"></div>
-      <p class="text-text-muted text-sm italic">Kluris gives every agent on your team a shared brain they read, search, and grow together.</p>
-    </div>
-  </div>
-</section>
-
-<!-- ============================================ -->
-<!-- SECTION 2B — WHY IT SAVES TOKENS               -->
-<!-- ============================================ -->
-<section class="py-28 md:py-40 px-6 relative grid-bg">
-  <div class="max-w-6xl mx-auto">
-    <div class="text-center mb-14 max-w-3xl mx-auto">
-      <p class="text-purple text-xs uppercase tracking-[0.2em] font-medium mb-4">Why it pays off</p>
-      <h2 class="font-serif text-4xl md:text-6xl leading-tight mb-6">
-        One brain snapshot, <span class="gradient-text">not five repos</span>.
-      </h2>
-      <p class="text-text-dim text-lg leading-relaxed">
-        A brain is a pre-digested summary your agent reads instead of the raw
-        files. It doesn't have to crawl every project, every README, every
-        config, and every sibling repo on every new chat — it loads one compact
-        snapshot and jumps straight to the neuron it needs. That means a lot
-        fewer tokens burned on orientation, and a lot more context left for
-        the actual work.
-      </p>
-    </div>
-
-    <div class="grid grid-cols-1 lg:grid-cols-2 gap-6">
-      <!-- Before -->
-      <div class="terminal">
-        <div class="terminal-header">
-          <span class="terminal-dot" style="background:#ef4444;opacity:0.6"></span>
-          <span class="terminal-dot" style="background:#f59e0b;opacity:0.6"></span>
-          <span class="terminal-dot" style="background:#34d399;opacity:0.6"></span>
-          <span class="ml-2">illustrative · cold start · no brain · medium repo</span>
-          <span class="scope scope-agent">Inside your AI agent</span>
-        </div>
-<pre><span class="meta">agent:</span> let me orient myself in this codebase...
-  <span class="info">›</span> tree + README + CLAUDE.md          <span class="dim">~3,000 tokens</span>
-  <span class="info">›</span> grep related symbols               <span class="dim">~2,000 tokens</span>
-  <span class="info">›</span> read 4–8 relevant files            <span class="dim">~15,000 tokens</span>
-  <span class="info">›</span> read 2–3 sibling-project files     <span class="dim">~8,000 tokens</span>
-  <span class="warn">──────────────────────────────────────────────</span>
-  <span class="warn">Σ ~28,000 tokens just to orient</span></pre>
-      </div>
-
-      <!-- After -->
-      <div class="terminal glow-purple-sm">
-        <div class="terminal-header">
-          <span class="terminal-dot" style="background:#ef4444;opacity:0.6"></span>
-          <span class="terminal-dot" style="background:#f59e0b;opacity:0.6"></span>
-          <span class="terminal-dot" style="background:#34d399;opacity:0.6"></span>
-          <span class="ml-2">illustrative · same task · brain-backed</span>
-          <span class="scope scope-agent">Inside your AI agent</span>
-        </div>
-<pre><span class="meta">agent:</span> loading brain snapshot...
-  <span class="info">›</span> kluris wake-up --json              <span class="dim">~1,200 tokens</span>
-  <span class="info">›</span> kluris search "&lt;query&gt;" --json     <span class="dim">~400 tokens</span>
-  <span class="info">›</span> read 1–2 matching neurons          <span class="dim">~1,500 tokens</span>
-  <span class="ok">──────────────────────────────────────────────</span>
-  <span class="ok">Σ ~3,100 tokens · ~9× less orientation cost</span></pre>
-      </div>
-    </div>
-
-    <div class="grid grid-cols-1 md:grid-cols-3 gap-4 mt-10">
-      <div class="card rounded-2xl p-6">
-        <p class="text-purple text-xs uppercase tracking-widest font-semibold mb-2">Compact snapshot</p>
-        <p class="text-text-dim text-sm leading-relaxed">
-          <code class="text-purple-light">kluris wake-up</code> returns <code>brain.md</code>,
-          the lobe index, recent neurons, and the glossary — enough to decode your team's
-          jargon before a single source file is read.
-        </p>
-      </div>
-      <div class="card rounded-2xl p-6">
-        <p class="text-purple text-xs uppercase tracking-widest font-semibold mb-2">Targeted lookups</p>
-        <p class="text-text-dim text-sm leading-relaxed">
-          <code class="text-purple-light">kluris search</code> returns ranked hits with
-          snippets — the agent opens only the 1–2 neurons that actually answer the question,
-          not five files it might need.
-        </p>
-      </div>
-      <div class="card rounded-2xl p-6">
-        <p class="text-purple text-xs uppercase tracking-widest font-semibold mb-2">One brain, many repos</p>
-        <p class="text-text-dim text-sm leading-relaxed">
-          Cross-project knowledge (infra, decisions, conventions) lives in the brain.
-          Agents never re-read five repos of source to get it — one snapshot covers them all.
-        </p>
-      </div>
-    </div>
-
-    <div class="mt-10 max-w-3xl mx-auto text-center">
-      <p class="text-text-dim text-sm italic">
-        Rough estimates, not a benchmark — actual numbers depend on repo size, agent,
-        and prompt style. The shape holds: the brain replaces a wide crawl with a
-        targeted lookup, and the savings compound the more projects you touch. More
-        context window for <em>the actual work</em> — the plan, the diff, the tests —
-        and less for "what is this codebase anyway?"
-      </p>
-    </div>
-  </div>
-</section>
-
-<!-- ============================================ -->
-<!-- SECTION 3 — INSTALL                            -->
-<!-- ============================================ -->
-<section id="install" class="py-28 md:py-40 px-6 relative grid-bg">
-  <div class="max-w-5xl mx-auto">
-    <div class="text-center mb-16">
-      <p class="text-purple text-xs uppercase tracking-[0.2em] font-medium mb-4">Step 1</p>
-      <h2 class="font-serif text-4xl md:text-6xl leading-tight mb-6">
-        Install in <span class="gradient-text">two commands</span>.
-      </h2>
-      <p class="text-text-dim text-lg max-w-2xl mx-auto leading-relaxed">
-        Kluris is a Python CLI distributed on PyPI. Install with <span class="text-purple font-mono">pipx</span> — it keeps things isolated and always up to date.
-      </p>
-    </div>
-
-    <div class="grid grid-cols-1 md:grid-cols-3 gap-5">
+    <!-- Install: 3 pipx blocks -->
+    <div class="grid grid-cols-1 md:grid-cols-3 gap-5 mb-10">
       <!-- macOS -->
       <div class="terminal glow-purple-sm">
         <div class="terminal-header">
@@ -800,41 +659,8 @@
       </div>
     </div>
 
-    <div class="mt-6 terminal max-w-2xl mx-auto">
-      <div class="terminal-header">
-        <span class="terminal-dot" style="background:#a78bfa"></span>
-        <span class="ml-2">Verify the install</span>
-        <span class="scope scope-terminal">Terminal</span>
-      </div>
-<pre><span class="prompt">$</span> <span class="cmd">kluris doctor</span>
-  <span class="ok">✓</span> git found
-  <span class="ok">✓</span> Python 3.11 found
-  <span class="ok">✓</span> kluris 1.0.0 ready
-  <span class="ok">✓</span> 8 agents detected (claude, cursor, windsurf, ...)
-
-<span class="dim">Everything looks good. You are ready to create a brain.</span></pre>
-    </div>
-  </div>
-</section>
-
-<!-- ============================================ -->
-<!-- SECTION 4 — YOUR FIRST BRAIN                   -->
-<!-- ============================================ -->
-<section id="first-brain" class="py-28 md:py-40 px-6 relative">
-  <div class="max-w-7xl mx-auto">
-    <div class="text-center mb-16 max-w-3xl mx-auto">
-      <p class="text-purple text-xs uppercase tracking-[0.2em] font-medium mb-4">Step 2</p>
-      <h2 class="font-serif text-4xl md:text-6xl leading-tight mb-6">
-        <span class="block">Create your first brain</span>
-        <span class="block gradient-text">for your new SME.</span>
-      </h2>
-      <p class="text-text-dim text-lg leading-relaxed">
-        One command, one wizard, one git repo. You pick the name, the type, and the location — kluris does the rest.
-      </p>
-    </div>
-
+    <!-- Create wizard + scaffolded folder tree -->
     <div class="grid grid-cols-1 lg:grid-cols-2 gap-6 items-stretch">
-      <!-- Left: terminal wizard -->
       <div class="terminal">
         <div class="terminal-header">
           <span class="terminal-dot" style="background:#ef4444;opacity:0.6"></span>
@@ -847,7 +673,7 @@
 
 <span class="meta">Brain name:</span> <span class="str">acme-brain</span>
 <span class="meta">Brain type:</span>
-  <span class="dim">[1]</span> product-group  <span class="dim">[2]</span> personal
+  <span class="dim">[1]</span> project-group  <span class="dim">[2]</span> personal
   <span class="dim">[3]</span> product        <span class="dim">[4]</span> research
   <span class="dim">[5]</span> blank
 <span class="meta">Choice:</span> <span class="str">1</span>
@@ -859,11 +685,10 @@
   <span class="ok">✓</span> Registered acme-brain
   <span class="ok">✓</span> Installed /kluris skill for 8 agents
 
-<span class="dim">Next: cd into any project and use</span>
-<span class="dim">      /kluris learn this service</span></pre>
+<span class="dim">Next: open any project in your AI agent and</span>
+<span class="dim">      type /kluris learn this service</span></pre>
       </div>
 
-      <!-- Right: file tree -->
       <div class="terminal">
         <div class="terminal-header">
           <span class="terminal-dot" style="background:#a78bfa"></span>
@@ -876,135 +701,30 @@
 ├── README.md               <span class="note"># usage guide</span>
 ├── .gitignore
 ├── <span class="folder">projects/</span>
-│   ├── map.md              <span class="note"># lobe index, auto-generated</span>
 │   └── <span class="dim">(your neurons go here)</span>
 ├── <span class="folder">infrastructure/</span>
-│   ├── map.md
 │   └── <span class="dim">(your neurons go here)</span>
 └── <span class="folder">knowledge/</span>
-    ├── map.md
     └── <span class="dim">(your neurons go here)</span></pre>
       </div>
     </div>
 
-    <div class="mt-10 text-center">
-      <p class="text-text-muted text-sm italic">Every brain is a git repo. Your knowledge is markdown. Nothing is magic.</p>
-    </div>
+    <p class="mt-10 text-center text-text-muted text-sm italic">Every brain is a git repo. Your knowledge is markdown. Nothing is magic.</p>
   </div>
 </section>
 
 <!-- ============================================ -->
-<!-- SECTION 5 — ANATOMY                            -->
+<!-- BEAT 2 — TEACH                                 -->
 <!-- ============================================ -->
-<section class="py-28 md:py-40 px-6 relative grid-bg">
+<section id="teach" class="py-28 md:py-40 px-6 relative grid-bg">
   <div class="max-w-7xl mx-auto">
     <div class="text-center mb-16 max-w-3xl mx-auto">
-      <p class="text-purple text-xs uppercase tracking-[0.2em] font-medium mb-4">Anatomy</p>
+      <p class="text-purple text-xs uppercase tracking-[0.2em] font-medium mb-4">Beat 2 · Teach</p>
       <h2 class="font-serif text-4xl md:text-6xl leading-tight mb-6">
-        What lives inside a <span class="gradient-text">brain</span>.
+        Teach the <span class="gradient-text">brain</span> what your team knows.
       </h2>
       <p class="text-text-dim text-lg leading-relaxed">
-        Seven pieces. Learn them once, use them forever.
-      </p>
-    </div>
-
-    <!-- Row 1 — 3 cards -->
-    <div class="grid grid-cols-1 md:grid-cols-3 gap-5 mb-5">
-      <div class="card rounded-2xl p-7 border-t-2" style="border-top-color:#ec4899">
-        <div class="flex items-center gap-3 mb-3">
-          <span class="w-2 h-2 rounded-full bg-lobe-pink pulse-soft"></span>
-          <span class="text-xs uppercase tracking-wider text-lobe-pink font-semibold">Root</span>
-        </div>
-        <h3 class="font-serif text-2xl mb-2">Brain</h3>
-        <p class="text-text-dim text-sm leading-relaxed">The top-level git repo. One brain = one shared knowledge base. You can have many.</p>
-      </div>
-
-      <div class="card rounded-2xl p-7 border-t-2" style="border-top-color:#f59e0b">
-        <div class="flex items-center gap-3 mb-3">
-          <span class="w-2 h-2 rounded-full bg-lobe-orange pulse-soft"></span>
-          <span class="text-xs uppercase tracking-wider text-lobe-orange font-semibold">Region</span>
-        </div>
-        <h3 class="font-serif text-2xl mb-2">Lobe</h3>
-        <p class="text-text-dim text-sm leading-relaxed">A folder inside the brain. Each lobe is a knowledge region — projects, infrastructure, knowledge, tasks, whatever you need.</p>
-      </div>
-
-      <div class="card rounded-2xl p-7 border-t-2" style="border-top-color:#facc15">
-        <div class="flex items-center gap-3 mb-3">
-          <span class="w-2 h-2 rounded-full bg-lobe-yellow pulse-soft"></span>
-          <span class="text-xs uppercase tracking-wider text-lobe-yellow font-semibold">Atom</span>
-        </div>
-        <h3 class="font-serif text-2xl mb-2">Neuron</h3>
-        <p class="text-text-dim text-sm leading-relaxed">A single markdown file inside a lobe. One idea, one decision, one runbook, one fact. Named with kebab-case.</p>
-      </div>
-    </div>
-
-    <!-- Row 2 — 3 cards -->
-    <div class="grid grid-cols-1 md:grid-cols-3 gap-5 mb-5">
-      <div class="card rounded-2xl p-7 border-t-2" style="border-top-color:#a78bfa">
-        <div class="flex items-center gap-3 mb-3">
-          <span class="w-2 h-2 rounded-full bg-lobe-purple pulse-soft"></span>
-          <span class="text-xs uppercase tracking-wider text-lobe-purple font-semibold">Link</span>
-        </div>
-        <h3 class="font-serif text-2xl mb-2">Synapse</h3>
-        <p class="text-text-dim text-sm leading-relaxed">A bidirectional link between two neurons. Written in frontmatter as <span class="font-mono text-xs text-purple-light">related:</span>. Dream auto-fixes one-way synapses into two-way.</p>
-      </div>
-
-      <div class="card rounded-2xl p-7 border-t-2" style="border-top-color:#34d399">
-        <div class="flex items-center gap-3 mb-3">
-          <span class="w-2 h-2 rounded-full bg-lobe-green pulse-soft"></span>
-          <span class="text-xs uppercase tracking-wider text-lobe-green font-semibold">Index</span>
-        </div>
-        <h3 class="font-serif text-2xl mb-2">Map</h3>
-        <p class="text-text-dim text-sm leading-relaxed">An auto-generated <span class="font-mono text-xs text-lobe-green">map.md</span> at the root of every lobe. Lists every neuron in the lobe. You never write this — dream writes it.</p>
-      </div>
-
-      <div class="card rounded-2xl p-7 border-t-2" style="border-top-color:#f0abfc">
-        <div class="flex items-center gap-3 mb-3">
-          <span class="w-2 h-2 rounded-full bg-lobe-magenta pulse-soft"></span>
-          <span class="text-xs uppercase tracking-wider text-lobe-magenta font-semibold">Vocab</span>
-        </div>
-        <h3 class="font-serif text-2xl mb-2">Glossary</h3>
-        <p class="text-text-dim text-sm leading-relaxed">A single hand-edited <span class="font-mono text-xs text-lobe-magenta">glossary.md</span> at the root. Defines your domain vocabulary so agents know what your team words mean.</p>
-      </div>
-    </div>
-
-    <!-- Row 3 — 1 wide card -->
-    <div class="card rounded-2xl p-7 border-t-2" style="border-top-color:#a78bfa">
-      <div class="flex flex-col md:flex-row md:items-center gap-6">
-        <div class="flex-1">
-          <div class="flex items-center gap-3 mb-3">
-            <span class="w-2 h-2 rounded-full bg-purple pulse-soft"></span>
-            <span class="text-xs uppercase tracking-wider text-purple font-semibold">Local config</span>
-          </div>
-          <h3 class="font-serif text-2xl mb-2">kluris.yml</h3>
-          <p class="text-text-dim text-sm leading-relaxed max-w-3xl">Your local config for this brain. <span class="text-purple font-medium">Gitignored.</span> Contains your commit prefix and which AI agents you use. Each teammate has their own <span class="font-mono text-xs text-purple-light">kluris.yml</span> — so everyone can have different settings without touching the shared brain.</p>
-        </div>
-        <div class="md:w-80 flex-shrink-0">
-<pre class="font-mono text-xs leading-relaxed bg-bg/50 p-4 rounded-lg border border-white/5 text-text-dim"><span class="text-lobe-purple">name</span>: acme-brain
-<span class="text-lobe-purple">description</span>: platform brains
-<span class="text-lobe-purple">git</span>:
-  <span class="text-lobe-purple">commit_prefix</span>: <span class="text-lobe-green">"brain:"</span></pre>
-        </div>
-      </div>
-    </div>
-  </div>
-</section>
-
-<!-- ============================================ -->
-<!-- SECTION 6 — TEACH THE BRAIN                    -->
-<!-- ============================================ -->
-<section class="py-28 md:py-40 px-6 relative">
-  <div class="max-w-7xl mx-auto">
-    <div class="text-center mb-16 max-w-3xl mx-auto">
-      <p class="text-purple text-xs uppercase tracking-[0.2em] font-medium mb-4">Teach</p>
-      <h2 class="font-serif text-4xl md:text-6xl leading-tight mb-6">
-        Teach the <span class="gradient-text">brain</span>.
-      </h2>
-      <p class="text-text-dim text-lg leading-relaxed">
-        Three ways to write knowledge into a brain — all collaborative, all reviewed by you before anything is saved.
-      </p>
-      <p class="mt-4 text-xs text-text-muted">
-        <span class="scope scope-agent" style="margin-left:0">Agent</span> cards run inside your AI coding agent (Claude Code, Cursor, Windsurf, …). <span class="scope scope-terminal" style="margin-left:0">Terminal</span> cards run in your shell.
+        Inside any AI agent, two slash commands turn conversations into knowledge. The brain is a tree of <span class="text-text font-medium">lobes</span> — folders grouping related ideas — filled with <span class="text-text font-medium">neurons</span>: one markdown file per fact, decision, or runbook. You approve every neuron before it lands.
       </p>
     </div>
 
@@ -1093,62 +813,81 @@ queries, clearer SQL in git diffs.</span>
           </div>
         </div>
       </div>
-
-      <!-- Card 3 — kluris neuron -->
-      <div class="card rounded-2xl overflow-hidden">
-        <div class="grid grid-cols-1 lg:grid-cols-2 gap-0">
-          <div class="p-10 border-b lg:border-b-0 lg:border-r border-white/5">
-            <div class="chip mb-5">kluris neuron</div>
-            <h3 class="font-serif text-3xl mb-4">Create one manually with a template.</h3>
-            <p class="text-text-dim leading-relaxed mb-5">When you want full control. Pick a template — decision, incident, or runbook — and get a pre-structured neuron to fill in by hand.</p>
-            <ul class="space-y-2 text-sm text-text-dim">
-              <li class="flex items-start gap-3"><span class="text-purple mt-0.5">→</span>Three built-in templates, ready to use</li>
-              <li class="flex items-start gap-3"><span class="text-purple mt-0.5">→</span>Write your own templates too</li>
-              <li class="flex items-start gap-3"><span class="text-purple mt-0.5">→</span>Dream automatically updates the lobe map</li>
-            </ul>
-          </div>
-          <div class="bg-bg/40">
-            <div class="scope-bar">
-              <span>In your terminal</span>
-              <span class="scope scope-terminal">Terminal</span>
-            </div>
-<pre class="p-8 font-mono text-[0.78rem] leading-relaxed"><span class="prompt">$</span> <span class="cmd">kluris neuron outage-jan.md \
-    --lobe knowledge \
-    --template incident</span>
-
-<span class="ok">Created:</span> knowledge/outage-jan.md
-<span class="meta">Template:</span> incident
-
-<span class="meta">Sections:</span>
-  <span class="str">Summary</span>
-  <span class="str">Timeline</span>
-  <span class="str">Root cause</span>
-  <span class="str">Impact</span>
-  <span class="str">Resolution</span>
-  <span class="str">Lessons learned</span>
-
-<span class="dim">Open it in your editor to fill in
-the details. Run `kluris dream` to
-refresh the lobe map afterward.</span></pre>
-          </div>
-        </div>
-      </div>
     </div>
+
+    <p class="mt-10 text-center text-xs text-text-muted">
+      <span class="scope scope-agent" style="margin-left:0">Agent</span> = inside your AI coding agent. <span class="scope scope-terminal" style="margin-left:0">Terminal</span> = in your shell.
+    </p>
   </div>
 </section>
 
 <!-- ============================================ -->
-<!-- SECTION 7 — ASK THE BRAIN                      -->
+<!-- BEAT 3 — SEE                                   -->
 <!-- ============================================ -->
-<section class="py-28 md:py-40 px-6 relative grid-bg">
+<section id="see" class="py-28 md:py-40 px-6 relative">
   <div class="max-w-7xl mx-auto">
     <div class="text-center mb-16 max-w-3xl mx-auto">
-      <p class="text-purple text-xs uppercase tracking-[0.2em] font-medium mb-4">Ask</p>
+      <p class="text-purple text-xs uppercase tracking-[0.2em] font-medium mb-4">Beat 3 · See</p>
       <h2 class="font-serif text-4xl md:text-6xl leading-tight mb-6">
-        Ask the <span class="gradient-text">brain</span>.
+        See the <span class="gradient-text">whole brain</span> at a glance.
       </h2>
       <p class="text-text-dim text-lg leading-relaxed">
-        Once your brain has knowledge, every agent can use it. Search, query, and implement — all with your team's conventions baked in.
+        One command renders every neuron as a node and every <span class="text-text font-medium">synapse</span> — a frontmatter link between neurons — as a dashed line. Share it, explore it, find the orphans.
+      </p>
+    </div>
+
+    <div class="grid grid-cols-1 lg:grid-cols-2 gap-6 items-start mb-10">
+      <div class="terminal glow-purple-sm">
+        <div class="terminal-header">
+          <span class="terminal-dot" style="background:#ef4444;opacity:0.6"></span>
+          <span class="terminal-dot" style="background:#f59e0b;opacity:0.6"></span>
+          <span class="terminal-dot" style="background:#34d399;opacity:0.6"></span>
+          <span class="ml-2">kluris mri — interactive HTML</span>
+          <span class="scope scope-terminal">Terminal</span>
+        </div>
+<pre><span class="prompt">$</span> <span class="cmd">kluris mri</span>
+
+<span class="ok">MRI complete</span> — brain-mri.html
+  <span class="warn">23</span> nodes, <span class="warn">31</span> edges
+  <span class="dim">→ file:///home/user/acme-brain/brain-mri.html</span>
+
+<span class="meta">Interactive features:</span>
+  <span class="ok">·</span> search any neuron
+  <span class="ok">·</span> hover to see connections
+  <span class="ok">·</span> click to inspect content
+  <span class="ok">·</span> pan and zoom the graph
+  <span class="ok">·</span> filter by lobe
+
+<span class="dim">Share the HTML — it runs anywhere.</span></pre>
+      </div>
+
+      <div class="mri-frame">
+        <img src="mri-ngvoicu.png" alt="A real kluris mri output — nodes are neurons, colors are lobes, dashed lines are synapses" class="w-full h-auto block" />
+      </div>
+    </div>
+
+    <p class="text-center text-xs text-text-muted mb-6">
+      <span class="text-purple">Live output:</span> an actual <span class="font-mono text-purple-light">kluris mri</span> of a real brain. Colors are lobes, dashed lines are synapses, labeled nodes are neurons.
+    </p>
+
+    <p class="max-w-3xl mx-auto text-center text-text-dim text-base italic leading-relaxed">
+      A brain replaces a wide file crawl with a targeted lookup — agents burn fewer tokens orienting and more tokens doing real work.
+    </p>
+  </div>
+</section>
+
+<!-- ============================================ -->
+<!-- BEAT 4 — USE                                   -->
+<!-- ============================================ -->
+<section id="use" class="py-28 md:py-40 px-6 relative grid-bg">
+  <div class="max-w-7xl mx-auto">
+    <div class="text-center mb-16 max-w-3xl mx-auto">
+      <p class="text-purple text-xs uppercase tracking-[0.2em] font-medium mb-4">Beat 4 · Use</p>
+      <h2 class="font-serif text-4xl md:text-6xl leading-tight mb-6">
+        Ask the brain. <span class="gradient-text">Get grounded answers.</span>
+      </h2>
+      <p class="text-text-dim text-lg leading-relaxed">
+        Every agent on your team can search and query across the brain. The agent shows you exactly which neurons it read — no hallucinations, no vibe.
       </p>
     </div>
 
@@ -1170,10 +909,10 @@ refresh the lobe map afterward.</span></pre>
 <span class="dim">Run `/kluris open auth-flow.md` to read one.</span></pre>
       </div>
 
-      <!-- ask -->
+      <!-- what do we know -->
       <div class="terminal">
         <div class="terminal-header">
-          <span class="chip text-[0.62rem] py-0.5 px-2">ASK</span>
+          <span class="chip text-[0.62rem] py-0.5 px-2">WHAT DO WE KNOW</span>
           <span class="ml-2">natural language Q&amp;A across the brain</span>
           <span class="scope scope-agent">Agent</span>
         </div>
@@ -1188,303 +927,162 @@ BuildKit. Images go to ghcr.io/zeespire/.
 Prod uses Coolify on Hetzner with Cloudflare
 Tunnel (zero public ports).</span></pre>
       </div>
-
-      <!-- implement -->
-      <div class="terminal">
-        <div class="terminal-header">
-          <span class="chip text-[0.62rem] py-0.5 px-2">IMPLEMENT</span>
-          <span class="ml-2">agent writes code using your conventions</span>
-          <span class="scope scope-agent">Agent</span>
-        </div>
-<pre><span class="prompt-agent">&gt;</span> <span class="cmd">/kluris implement the POST /users
-          endpoint following our conventions</span>
-
-<span class="dim">Reading brain:</span>
-  - use-raw-sql.md <span class="meta">(decision)</span>
-  - api-conventions.md
-  - auth-flow.md
-
-<span class="ok">Generated endpoint using NamedParameter
-JdbcTemplate, JWT validation, i18n JSONB
-fields, explicit constraint names.</span></pre>
-      </div>
-
-      <!-- fix -->
-      <div class="terminal">
-        <div class="terminal-header">
-          <span class="chip text-[0.62rem] py-0.5 px-2">FIX</span>
-          <span class="ml-2">bug fixes grounded in your brain</span>
-          <span class="scope scope-agent">Agent</span>
-        </div>
-<pre><span class="prompt-agent">&gt;</span> <span class="cmd">/kluris fix the token refresh --
-          use brain knowledge</span>
-
-<span class="dim">Checking brain for auth decisions...</span>
-<span class="meta">Found:</span> knowledge/jwt-rotation.md
-
-<span class="warn">Conflict:</span> your code refreshes on 401,
-but the brain says refresh at 80% TTL.
-<span class="ok">Applying the brain's rule.</span></pre>
-      </div>
     </div>
   </div>
 </section>
 
 <!-- ============================================ -->
-<!-- SECTION 8 — VISUALIZE + MAINTAIN               -->
+<!-- BEAT 5 — GROW                                  -->
 <!-- ============================================ -->
-<section class="py-28 md:py-40 px-6 relative">
+<section id="grow" class="py-28 md:py-40 px-6 relative">
   <div class="max-w-7xl mx-auto">
     <div class="text-center mb-16 max-w-3xl mx-auto">
-      <p class="text-purple text-xs uppercase tracking-[0.2em] font-medium mb-4">Operate</p>
+      <p class="text-purple text-xs uppercase tracking-[0.2em] font-medium mb-4">Beat 5 · Grow</p>
       <h2 class="font-serif text-4xl md:text-6xl leading-tight mb-6">
-        Three commands that keep your <span class="gradient-text">brain alive</span>.
+        Grow it <span class="gradient-text">with your team</span>.
       </h2>
       <p class="text-text-dim text-lg leading-relaxed">
-        <span class="font-mono text-purple text-sm">wake-up</span> · <span class="font-mono text-purple text-sm">dream</span> · <span class="font-mono text-purple text-sm">mri</span> — the rituals of a healthy brain. Run them daily, weekly, or never — your choice.
+        Add lobes as new concerns emerge. Ship neurons through git like any other code. Run <span class="font-mono text-purple text-sm">kluris dream</span> now and then to tidy up maps and synapses.
       </p>
     </div>
 
-    <div class="grid grid-cols-1 lg:grid-cols-3 gap-5 mb-12">
-      <!-- wake-up -->
+    <div class="grid grid-cols-1 lg:grid-cols-2 gap-5 mb-6">
+      <!-- Add lobes -->
       <div class="terminal glow-purple-sm">
         <div class="terminal-header">
-          <span class="chip text-[0.62rem] py-0.5 px-2">WAKE-UP</span>
+          <span class="terminal-dot" style="background:#a78bfa"></span>
+          <span class="ml-2">Add a new lobe</span>
           <span class="scope scope-terminal">Terminal</span>
         </div>
-<pre><span class="prompt">$</span> <span class="cmd">kluris wake-up</span>
+<pre><span class="prompt">$</span> <span class="cmd">kluris lobe compliance</span>
+<span class="ok">✓</span> Created acme-brain/compliance/
 
-<span class="meta">Brain:</span> <span class="str">acme-brain (default)</span>
-  <span class="dim">Path: ~/Projects/acme-brain</span>
+<span class="prompt">$</span> <span class="cmd">kluris lobe gdpr --parent compliance</span>
+<span class="ok">✓</span> Created acme-brain/compliance/gdpr/
 
-<span class="meta">Lobes (3)</span>
-  - projects/:        <span class="warn">12</span> neurons
-  - infrastructure/:  <span class="warn"> 4</span> neurons
-  - knowledge/:       <span class="warn"> 7</span> neurons
-
-<span class="meta">Total neurons:</span> <span class="warn">23</span>
-
-<span class="meta">Recently updated (5)</span>
-  <span class="dim">2026-04-05</span> use-raw-sql.md
-  <span class="dim">2026-04-04</span> auth-flow.md
-  <span class="dim">2026-04-04</span> docker-builds.md
-  <span class="dim">2026-04-02</span> state.md
-  <span class="dim">2026-04-01</span> import.md</pre>
-        <div class="px-5 py-3 text-xs text-text-muted border-t border-white/5">Compact snapshot — agents run this on every new session.</div>
+<span class="dim">Ask the agent to seed neurons into the new lobe
+whenever a new concern shows up — SOC2, pricing,
+migrations, anything.</span></pre>
       </div>
 
-      <!-- dream -->
+      <!-- Git flow -->
       <div class="terminal glow-purple-sm">
         <div class="terminal-header">
-          <span class="chip text-[0.62rem] py-0.5 px-2">DREAM</span>
+          <span class="terminal-dot" style="background:#a78bfa"></span>
+          <span class="ml-2">Share via git</span>
           <span class="scope scope-terminal">Terminal</span>
         </div>
+<pre><span class="prompt">$</span> <span class="cmd">kluris branch add-auth-decision</span>
+<span class="ok">✓</span> Switched to add-auth-decision
+
+<span class="meta">(approve neurons in your agent)</span>
+
+<span class="prompt">$</span> <span class="cmd">kluris push</span>
+<span class="ok">✓</span> 3 commits · pushed to origin
+
+<span class="prompt">$</span> <span class="cmd">kluris pull</span>
+<span class="ok">✓</span> 2 new neurons pulled
+
+<span class="dim">Teammates see your neurons on next wake-up.</span></pre>
+      </div>
+    </div>
+
+    <!-- Dream -->
+    <div class="terminal max-w-3xl mx-auto">
+      <div class="terminal-header">
+        <span class="terminal-dot" style="background:#a78bfa"></span>
+        <span class="ml-2">Housekeeping — run now and then</span>
+        <span class="scope scope-terminal">Terminal</span>
+      </div>
 <pre><span class="prompt">$</span> <span class="cmd">kluris dream</span>
 
 <span class="meta">acme-brain health report:</span>
-  Lobes: <span class="str">projects, infrastructure,
-          knowledge</span>
-  Maps regenerated: <span class="warn">4</span>
-  <span class="ok">OK</span>   synapses
-  <span class="ok">OK</span>   bidirectional
-  <span class="ok">OK</span>   orphans
-  <span class="ok">OK</span>   frontmatter
-  <span class="ok">OK</span>   deprecation
-  <span class="warn">6</span>    automatic fixes applied
-  <span class="warn">3</span>    dates refreshed from git
-  <span class="warn">1</span>    missing parent inferred
-  <span class="warn">2</span>    reverse links added
+  Maps regenerated: <span class="warn">4</span>   <span class="ok">OK</span> synapses
+  <span class="warn">6</span> automatic fixes applied
+  <span class="warn">3</span> dates refreshed from git
+  <span class="warn">2</span> reverse links added
 
 <span class="ok">Brain is healthy.</span></pre>
-        <div class="px-5 py-3 text-xs text-text-muted border-t border-white/5">Regenerates maps, validates synapses, refreshes dates from git.</div>
-      </div>
-
-      <!-- mri -->
-      <div class="terminal glow-purple-sm">
-        <div class="terminal-header">
-          <span class="chip text-[0.62rem] py-0.5 px-2">MRI</span>
-          <span class="scope scope-terminal">Terminal</span>
-        </div>
-<pre><span class="prompt">$</span> <span class="cmd">kluris mri</span>
-
-<span class="ok">MRI complete</span> — brain-mri.html
-  <span class="warn">23</span> nodes, <span class="warn">31</span> edges
-  <span class="dim">→ file:///home/user/acme-brain/brain-mri.html</span>
-
-<span class="meta">Interactive features:</span>
-  <span class="ok">·</span> search any neuron
-  <span class="ok">·</span> hover to see connections
-  <span class="ok">·</span> click to inspect content
-  <span class="ok">·</span> pan and zoom the graph
-  <span class="ok">·</span> filter by lobe
-
-<span class="dim">Share the HTML — it runs anywhere.</span></pre>
-        <div class="px-5 py-3 text-xs text-text-muted border-t border-white/5">Interactive HTML visualization — nodes, edges, search, inspector.</div>
-      </div>
     </div>
 
-    <!-- Wide MRI image -->
-    <div class="mri-frame max-w-5xl mx-auto">
-      <img src="mri-ngvoicu.png" alt="A real kluris mri output — nodes are neurons, colors are lobes, dashed lines are synapses" class="w-full h-auto block" />
-    </div>
-    <p class="mt-5 text-center text-xs text-text-muted">
-      <span class="text-purple">Live output:</span> an actual <span class="font-mono text-purple-light">kluris mri</span> of a real brain. Colors are lobes, dashed cyan lines are synapses, labeled nodes are neurons.
+    <p class="mt-10 text-center text-sm text-text-muted italic">
+      Running more than one brain? Each installs as its own <span class="font-mono text-purple-light">/kluris-&lt;name&gt;</span> skill — see <a href="#more-than-one-brain" class="text-purple-light underline decoration-purple/30 underline-offset-2 hover:decoration-pink">the appendix</a>.
     </p>
   </div>
 </section>
 
 <!-- ============================================ -->
-<!-- SECTION 9 — CUSTOMIZE                          -->
+<!-- BEAT 6 — SELF-IMPROVE                          -->
 <!-- ============================================ -->
-<section class="py-28 md:py-40 px-6 relative grid-bg">
-  <div class="max-w-7xl mx-auto">
+<section id="review" class="py-28 md:py-40 px-6 relative grid-bg">
+  <div class="max-w-5xl mx-auto">
     <div class="text-center mb-16 max-w-3xl mx-auto">
-      <p class="text-purple text-xs uppercase tracking-[0.2em] font-medium mb-4">Customize</p>
+      <p class="text-purple text-xs uppercase tracking-[0.2em] font-medium mb-4">Beat 6 · Self-improve</p>
       <h2 class="font-serif text-4xl md:text-6xl leading-tight mb-6">
-        Shape your brain, <span class="gradient-text">your way</span>.
+        Let the brain <span class="gradient-text">review itself</span>.
       </h2>
       <p class="text-text-dim text-lg leading-relaxed">
-        Brains are not fixed. Add lobes, edit the glossary, write your own templates, deprecate old decisions — all with simple commands.
+        Ask the agent to audit the brain. It reads across every neuron, spots connections you never wrote, and proposes new synapses — you approve each one before anything changes.
       </p>
     </div>
 
-    <div class="grid grid-cols-1 md:grid-cols-2 gap-5">
-      <!-- Add lobes -->
-      <div class="card rounded-2xl p-8">
-        <div class="flex flex-wrap items-center gap-3 mb-4">
-          <span class="w-8 h-8 rounded-lg bg-lobe-pink/10 border border-lobe-pink/30 flex items-center justify-center text-lobe-pink font-bold text-sm">+</span>
-          <h3 class="font-serif text-2xl">Add new lobes as you grow</h3>
-          <span class="scope scope-terminal" style="margin-left:0">Terminal</span>
-        </div>
-        <p class="text-text-dim text-sm mb-5">Your brain evolves with your team. Add a new knowledge region in one command, or nest a sub-lobe inside an existing one.</p>
-<pre class="font-mono text-xs bg-bg/50 p-4 rounded-lg border border-white/5 leading-relaxed"><span class="text-purple">$</span> <span class="text-text">kluris lobe analytics</span>
-<span class="text-lobe-green">Created:</span> <span class="text-text-dim">acme-brain/analytics/</span>
-
-<span class="text-purple">$</span> <span class="text-text">kluris lobe post-auth \
-    --parent projects/api/endpoints</span>
-<span class="text-lobe-green">Created:</span> <span class="text-text-dim">projects/api/endpoints/post-auth/</span></pre>
-      </div>
-
-      <!-- Edit glossary -->
-      <div class="card rounded-2xl p-8">
-        <div class="flex items-center gap-3 mb-4">
-          <span class="w-8 h-8 rounded-lg bg-lobe-orange/10 border border-lobe-orange/30 flex items-center justify-center text-lobe-orange font-bold text-sm">A</span>
-          <h3 class="font-serif text-2xl">Edit the glossary by hand</h3>
-        </div>
-        <p class="text-text-dim text-sm mb-5">Define the vocabulary your team uses in one file. Every agent on your team reads it and stops asking "what does that mean?"</p>
-<pre class="font-mono text-xs bg-bg/50 p-4 rounded-lg border border-white/5 leading-relaxed"><span class="text-lobe-purple"># Glossary</span>
-
-<span class="text-text">**Neuron**</span> <span class="text-text-dim">— a single knowledge file</span>
-<span class="text-text">**Lobe**</span> <span class="text-text-dim">— a knowledge region folder</span>
-<span class="text-text">**Tenant**</span> <span class="text-text-dim">— a customer company
-  in our multi-tenant SaaS</span>
-<span class="text-text">**Protocol**</span> <span class="text-text-dim">— our psychometric
-  evaluation workflow</span></pre>
-      </div>
-
-      <!-- Templates -->
-      <div class="card rounded-2xl p-8">
-        <div class="flex flex-wrap items-center gap-3 mb-4">
-          <span class="w-8 h-8 rounded-lg bg-lobe-yellow/10 border border-lobe-yellow/30 flex items-center justify-center text-lobe-yellow font-bold text-sm">T</span>
-          <h3 class="font-serif text-2xl">List and use built-in templates</h3>
-          <span class="scope scope-terminal" style="margin-left:0">Terminal</span>
-        </div>
-        <p class="text-text-dim text-sm mb-5">Three templates out of the box — decision, incident, runbook. Each one has the right sections so your neurons are consistent.</p>
-<pre class="font-mono text-xs bg-bg/50 p-4 rounded-lg border border-white/5 leading-relaxed"><span class="text-purple">$</span> <span class="text-text">kluris templates</span>
-
-<span class="text-lobe-yellow">decision</span>  <span class="text-text-dim">Context, Decision, Rationale,
-          Alternatives, Consequences</span>
-<span class="text-lobe-yellow">incident</span>  <span class="text-text-dim">Summary, Timeline, Root cause,
-          Impact, Resolution, Lessons</span>
-<span class="text-lobe-yellow">runbook</span>   <span class="text-text-dim">Purpose, Prerequisites, Steps,
-          Rollback, Contacts</span></pre>
-      </div>
-
-      <!-- Deprecation -->
-      <div class="card rounded-2xl p-8">
-        <div class="flex items-center gap-3 mb-4">
-          <span class="w-8 h-8 rounded-lg bg-lobe-green/10 border border-lobe-green/30 flex items-center justify-center text-lobe-green font-bold text-sm">×</span>
-          <h3 class="font-serif text-2xl">Deprecate old decisions cleanly</h3>
-        </div>
-        <p class="text-text-dim text-sm mb-5">Decisions change. Mark a neuron as deprecated instead of deleting it — history stays, and agents follow the replacement.</p>
-<pre class="font-mono text-xs bg-bg/50 p-4 rounded-lg border border-white/5 leading-relaxed"><span class="text-text-dim">---</span>
-<span class="text-lobe-purple">status</span>: <span class="text-lobe-green">deprecated</span>
-<span class="text-lobe-purple">deprecated_at</span>: <span class="text-text">2026-04-01</span>
-<span class="text-lobe-purple">replaced_by</span>: <span class="text-text">./use-clerk.md</span>
-<span class="text-text-dim">---</span>
-
-<span class="text-text-dim"># Kluris dream will surface warnings</span>
-<span class="text-text-dim"># for any active links to this neuron.</span></pre>
-      </div>
-    </div>
-  </div>
-</section>
-
-<!-- ============================================ -->
-<!-- SECTION 10 — MULTIPLE BRAINS                   -->
-<!-- ============================================ -->
-<section class="py-28 md:py-40 px-6 relative">
-  <div class="max-w-6xl mx-auto">
-    <div class="text-center mb-16 max-w-3xl mx-auto">
-      <p class="text-purple text-xs uppercase tracking-[0.2em] font-medium mb-4">Switch</p>
-      <h2 class="font-serif text-4xl md:text-6xl leading-tight mb-6">
-        Run <span class="gradient-text">more than one</span> brain.
-      </h2>
-      <p class="text-text-dim text-lg leading-relaxed">
-        A work brain, a personal brain, a team brain you cloned from GitHub — kluris keeps them separate. Each brain installs as its own slash command, so the agent never has to guess which one you mean.
-      </p>
-    </div>
-
-    <div class="terminal glow-purple-sm">
+    <div class="terminal glow-purple-sm mb-10">
       <div class="terminal-header">
-        <span class="terminal-dot" style="background:#ef4444;opacity:0.6"></span>
-        <span class="terminal-dot" style="background:#f59e0b;opacity:0.6"></span>
-        <span class="terminal-dot" style="background:#34d399;opacity:0.6"></span>
-        <span class="ml-2">juggling three brains at once</span>
-        <span class="scope scope-terminal">Terminal</span>
+        <span class="terminal-dot" style="background:#ec4899"></span>
+        <span class="ml-2">the brain reviewing itself</span>
+        <span class="scope scope-agent">Inside your AI agent</span>
       </div>
-<pre><span class="prompt">$</span> <span class="cmd">kluris list</span>
-  <span class="str">acme-brain</span>     <span class="dim">~/Projects/acme-brain       [git]</span>
-  <span class="str">personal</span>       <span class="dim">~/Projects/personal-brain   [git]</span>
-  <span class="str">research</span>       <span class="dim">~/Projects/research-brain   [no git]</span>
+<pre><span class="prompt-agent">&gt;</span> <span class="cmd">/kluris review this brain and create more synapses</span>
 
-<span class="prompt">$</span> <span class="cmd">kluris status</span>
-Multiple brains registered. Pick one:
-  <span class="dim">[1]</span> acme-brain  (~/Projects/acme-brain)
-  <span class="dim">[2]</span> personal    (~/Projects/personal-brain)
-  <span class="dim">[3]</span> research    (~/Projects/research-brain)
-  <span class="dim">[4]</span> all
-<span class="meta">Choice:</span> <span class="str">2</span>
+<span class="dim">Reading 34 neurons across 3 lobes...</span>
 
-<span class="str">personal</span> <span class="dim">(personal)</span>
-  Lobes: <span class="warn">3</span>, Neurons: <span class="warn">18</span>
-  <span class="dim">2026-04-05</span>  tasks/today.md
-  <span class="dim">2026-04-04</span>  notes/q2-goals.md
+<span class="meta">Found 14 connections you haven&#39;t written yet:</span>
+  <span class="info">›</span> projects/btb/auth-flow.md       ↔ knowledge/jwt-rotation.md
+  <span class="info">›</span> infrastructure/docker-builds.md ↔ infrastructure/environments.md
+  <span class="info">›</span> knowledge/use-raw-sql.md        ↔ projects/btb/reporting.md
+  <span class="info">›</span> projects/btb/import.md          ↔ infrastructure/keycloak-setup.md
+  <span class="dim">... 10 more</span>
 
-<span class="prompt">$</span> <span class="cmd">kluris clone git@github.com:acme/team-brain.git</span>
-  <span class="dim">Cloning into ~/Projects/team-brain...</span>
-  <span class="ok">✓</span> Registered team-brain
-  <span class="ok">✓</span> /kluris-team-brain skill installed across 8 agents
+<span class="meta">Proposed update ·</span> projects/btb/auth-flow.md
+<span class="dim">──────────────────────────────────────</span>
+  <span class="str">---</span>
+  <span class="str">title: Auth flow</span>
+  <span class="str">related:</span>
+    <span class="str">- ./clerk-vs-keycloak.md</span>
+    <span class="str">- ../knowledge/jwt-rotation.md</span>   <span class="warn">(new)</span>
+  <span class="str">---</span>
+<span class="dim">──────────────────────────────────────</span>
 
-<span class="prompt">$</span> <span class="cmd">kluris register ~/Downloads/archived-brain.zip</span>
-  <span class="dim">Extracting to ~/archived-brain...</span>
-  <span class="ok">✓</span> Registered archived-brain
-  <span class="ok">✓</span> /kluris-archived-brain skill installed across 8 agents</pre>
+[<span class="ok">a</span>]pprove all  [<span class="warn">o</span>]ne-by-one  [<span class="dim">s</span>]kip: <span class="str">o</span>
+
+<span class="meta">Stepping through 14 proposed synapses...</span>
+
+<span class="ok">✓</span> 12 applied · 2 skipped
+<span class="ok">✓</span> bidirectional links written
+<span class="ok">✓</span> maps regenerated</pre>
     </div>
 
-    <div class="mt-8 flex flex-wrap justify-center gap-3">
-      <span class="chip">Clone a team brain</span>
-      <span class="chip">One skill per brain</span>
-      <span class="chip">Keep work and personal separate</span>
-      <span class="chip">Every brain has its own git history</span>
+    <div class="grid grid-cols-1 md:grid-cols-3 gap-4">
+      <div class="card rounded-2xl p-6">
+        <p class="text-purple text-xs uppercase tracking-widest font-semibold mb-2">Grounded</p>
+        <p class="text-text-dim text-sm leading-relaxed">The agent only proposes synapses between neurons that already exist — no hallucinated references.</p>
+      </div>
+      <div class="card rounded-2xl p-6">
+        <p class="text-purple text-xs uppercase tracking-widest font-semibold mb-2">Reviewed</p>
+        <p class="text-text-dim text-sm leading-relaxed">You approve every change — one-shot, one-by-one, or skip — before anything is written to disk.</p>
+      </div>
+      <div class="card rounded-2xl p-6">
+        <p class="text-purple text-xs uppercase tracking-widest font-semibold mb-2">Compounding</p>
+        <p class="text-text-dim text-sm leading-relaxed">Re-run it monthly. As the brain grows, the agent finds new patterns and your knowledge graph gets denser.</p>
+      </div>
     </div>
   </div>
 </section>
 
 <!-- ============================================ -->
-<!-- SECTION 11 — ALL COMMANDS                      -->
+<!-- REFERENCE                                      -->
 <!-- ============================================ -->
-<section id="commands" class="py-28 md:py-40 px-6 relative grid-bg">
+<section id="reference" class="py-28 md:py-40 px-6 relative">
   <div class="max-w-7xl mx-auto">
     <div class="text-center mb-12 max-w-3xl mx-auto">
       <p class="text-purple text-xs uppercase tracking-[0.2em] font-medium mb-4">Reference</p>
@@ -1563,8 +1161,7 @@ Multiple brains registered. Pick one:
           <tr><td>/kluris remember &lt;fact&gt;</td><td>Quick-capture a decision as a neuron</td></tr>
           <tr><td>/kluris search &lt;term&gt;</td><td>Search the brain for a topic</td></tr>
           <tr><td>/kluris what do we know about ...</td><td>Ask the brain a question</td></tr>
-          <tr><td>/kluris implement &lt;task&gt;</td><td>Implement following brain conventions</td></tr>
-          <tr><td>/kluris fix &lt;bug&gt;</td><td>Fix a bug using brain knowledge</td></tr>
+          <tr><td>/kluris review this brain</td><td>Audit the brain, propose more synapses</td></tr>
           <tr><td>/kluris create a decision</td><td>Create a decision record neuron</td></tr>
           <tr><td>/kluris create an incident</td><td>Create an incident report neuron</td></tr>
           <tr><td>/kluris create a runbook</td><td>Create a runbook neuron</td></tr>
@@ -1578,9 +1175,70 @@ Multiple brains registered. Pick one:
 </section>
 
 <!-- ============================================ -->
-<!-- SECTION 12 — CTA + AGENTS + FOOTER             -->
+<!-- APPENDIX — MORE THAN ONE BRAIN                 -->
 <!-- ============================================ -->
-<section id="agents" class="py-28 md:py-40 px-6 relative">
+<section id="more-than-one-brain" class="py-28 md:py-40 px-6 relative grid-bg">
+  <div class="max-w-6xl mx-auto">
+    <div class="text-center mb-14 max-w-3xl mx-auto">
+      <p class="text-purple text-xs uppercase tracking-[0.2em] font-medium mb-4">Appendix</p>
+      <h2 class="font-serif text-4xl md:text-6xl leading-tight mb-6">
+        More than <span class="gradient-text">one brain</span>.
+      </h2>
+      <p class="text-text-dim text-lg leading-relaxed">
+        A work brain, a personal brain, a team brain you cloned from GitHub — kluris keeps them separate. Each brain installs as its own slash command, so the agent never has to guess which one you mean.
+      </p>
+    </div>
+
+    <div class="terminal glow-purple-sm">
+      <div class="terminal-header">
+        <span class="terminal-dot" style="background:#ef4444;opacity:0.6"></span>
+        <span class="terminal-dot" style="background:#f59e0b;opacity:0.6"></span>
+        <span class="terminal-dot" style="background:#34d399;opacity:0.6"></span>
+        <span class="ml-2">juggling three brains at once</span>
+        <span class="scope scope-terminal">Terminal</span>
+      </div>
+<pre><span class="prompt">$</span> <span class="cmd">kluris list</span>
+  <span class="str">acme-brain</span>     <span class="dim">~/Projects/acme-brain       [git]</span>
+  <span class="str">personal</span>       <span class="dim">~/Projects/personal-brain   [git]</span>
+  <span class="str">research</span>       <span class="dim">~/Projects/research-brain   [no git]</span>
+
+<span class="prompt">$</span> <span class="cmd">kluris status</span>
+Multiple brains registered. Pick one:
+  <span class="dim">[1]</span> acme-brain  (~/Projects/acme-brain)
+  <span class="dim">[2]</span> personal    (~/Projects/personal-brain)
+  <span class="dim">[3]</span> research    (~/Projects/research-brain)
+  <span class="dim">[4]</span> all
+<span class="meta">Choice:</span> <span class="str">2</span>
+
+<span class="str">personal</span> <span class="dim">(personal)</span>
+  Lobes: <span class="warn">3</span>, Neurons: <span class="warn">18</span>
+  <span class="dim">2026-04-05</span>  tasks/today.md
+  <span class="dim">2026-04-04</span>  notes/q2-goals.md
+
+<span class="prompt">$</span> <span class="cmd">kluris clone git@github.com:acme/team-brain.git</span>
+  <span class="dim">Cloning into ~/Projects/team-brain...</span>
+  <span class="ok">✓</span> Registered team-brain
+  <span class="ok">✓</span> /kluris-team-brain skill installed across 8 agents
+
+<span class="prompt">$</span> <span class="cmd">kluris register ~/Downloads/archived-brain.zip</span>
+  <span class="dim">Extracting to ~/archived-brain...</span>
+  <span class="ok">✓</span> Registered archived-brain
+  <span class="ok">✓</span> /kluris-archived-brain skill installed across 8 agents</pre>
+    </div>
+
+    <div class="mt-8 flex flex-wrap justify-center gap-3">
+      <span class="chip">Clone a team brain</span>
+      <span class="chip">One skill per brain</span>
+      <span class="chip">Keep work and personal separate</span>
+      <span class="chip">Every brain has its own git history</span>
+    </div>
+  </div>
+</section>
+
+<!-- ============================================ -->
+<!-- CTA + AGENTS + FOOTER                          -->
+<!-- ============================================ -->
+<section class="py-28 md:py-40 px-6 relative">
   <div class="max-w-5xl mx-auto">
     <!-- Big CTA card -->
     <div class="relative rounded-3xl p-12 md:p-16 text-center overflow-hidden" style="background: radial-gradient(ellipse at 30% 20%, rgba(167,139,250,0.25) 0%, transparent 55%), radial-gradient(ellipse at 70% 80%, rgba(236,72,153,0.2) 0%, transparent 55%), #10141f; border: 1px solid rgba(167,139,250,0.25); box-shadow: 0 20px 80px rgba(167,139,250,0.15);">
@@ -1591,7 +1249,7 @@ Multiple brains registered. Pick one:
         Two commands. Free forever. Works with every AI agent on your team.
       </p>
       <div class="flex flex-col sm:flex-row items-center justify-center gap-4 mb-8">
-        <a href="#install" class="btn-primary inline-flex items-center gap-2 px-8 py-4 rounded-full text-base">
+        <a href="#setup" class="btn-primary inline-flex items-center gap-2 px-8 py-4 rounded-full text-base">
           <span class="font-mono">pipx install kluris</span>
         </a>
         <a href="https://github.com/ngvoicu/kluris-cli" class="inline-flex items-center gap-2 px-8 py-4 rounded-full text-base font-semibold text-purple-light border border-purple/50 hover:bg-purple/10 hover:border-purple transition-all">
