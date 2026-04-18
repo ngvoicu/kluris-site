@@ -5,7 +5,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
 <title>Kluris — The guided tour</title>
-<meta name="description" content="An eight-slide tour of kluris: set up a brain, teach it in any AI agent, see it on one screen, use it to get grounded answers, grow it with your team, and let the brain review itself.">
+<meta name="description" content="An eight-slide tour of kluris: set up a brain, teach it from your AI agent in a project, see it on one screen, use it to get grounded answers, grow it with your team, and let the brain review itself.">
 <meta name="robots" content="index, follow">
 <link rel="canonical" href="https://kluris.io/presentation.html">
 
@@ -786,9 +786,9 @@
           <span>The agent, with the kluris skill loaded</span>
         </div>
         <p class="surface-desc">
-          Slash commands the agent runs when you type them in chat.
-          With one brain the command is <code>/kluris</code>; with more it becomes
-          <code>/kluris-&lt;name&gt;</code>.
+          One slash command — <code>/kluris</code> — followed by whatever you want to say.
+          Run it while your agent is open on a project so it can read the code.
+          With more than one brain registered it becomes <code>/kluris-&lt;name&gt;</code>.
         </p>
         <div class="surface-example">/kluris learn the auth flow</div>
       </div>
@@ -912,7 +912,7 @@
       <div class="terminal">
         <div class="terminal-header">
           <span class="terminal-dot" style="background:#a78bfa"></span>
-          <span>The folder kluris just created</span>
+          <span>The folder kluris just created · <code>project-group</code> defaults</span>
         </div>
 <pre class="tree"><span class="folder">acme-brain/</span>
 ├── kluris.yml              <span class="note"># gitignored — your local config</span>
@@ -926,6 +926,9 @@
 │   └── <span class="dim">(your neurons go here)</span>
 └── <span class="folder">knowledge/</span>
     └── <span class="dim">(your neurons go here)</span></pre>
+        <p class="px-5 py-3 text-xs text-text-muted italic border-t border-white/5">
+          Scaffolded defaults for the <code>project-group</code> brain type. You add, rename, or remove lobes as your team grows.
+        </p>
       </div>
     </div>
 
@@ -945,9 +948,12 @@
       Teach the brain <span class="gradient-text">what your team knows.</span>
     </h1>
     <p class="slide-lede">
-      Inside any AI agent, two slash commands turn conversations into knowledge. The brain is a tree of
-      <strong>lobes</strong> — folders grouping related ideas — filled with <strong>neurons</strong>:
-      one markdown file per fact, decision, or runbook. You approve every neuron before it lands.
+      Open your AI agent in a project — a repo, a service, a codebase — and one slash command,
+      <code>/kluris</code>, turns the conversation into knowledge. Say <em>learn</em>,
+      <em>remember</em>, or anything in between; the agent picks the right behavior.
+      <strong>Lobes</strong> are folders you create to group related ideas — one per concern, as
+      many as you need. <strong>Neurons</strong> are the markdown files inside them. You approve every
+      neuron before it lands.
     </p>
 
     <div class="grid grid-cols-1 lg:grid-cols-2 gap-5 mt-8">
@@ -956,7 +962,7 @@
         <div class="terminal-header">
           <span class="terminal-dot" style="background:#ec4899"></span>
           <span>/kluris learn · analyze code, propose neurons</span>
-          <span class="scope scope-agent">Inside your AI agent</span>
+          <span class="scope scope-agent">In your AI agent · in a project</span>
         </div>
 <pre><span class="prompt-agent">&gt;</span> <span class="cmd">/kluris learn the auth flow</span>
 
@@ -983,7 +989,7 @@ JWKS. Refresh at 80% TTL.</span>
         <div class="terminal-header">
           <span class="terminal-dot" style="background:#ec4899"></span>
           <span>/kluris remember · capture a decision in one line</span>
-          <span class="scope scope-agent">Inside your AI agent</span>
+          <span class="scope scope-agent">In your AI agent · in a project</span>
         </div>
 <pre><span class="prompt-agent">&gt;</span> <span class="cmd">/kluris remember we chose raw SQL
                       over JPA for query
@@ -1103,7 +1109,7 @@ queries, clearer SQL in git diffs.</span>
         <div class="terminal-header">
           <span class="terminal-dot" style="background:#ec4899"></span>
           <span>/kluris search · semantic + keyword lookup</span>
-          <span class="scope scope-agent">Inside your AI agent</span>
+          <span class="scope scope-agent">In your AI agent · in a project</span>
         </div>
 <pre><span class="prompt-agent">&gt;</span> <span class="cmd">/kluris search auth flow</span>
 
@@ -1119,7 +1125,7 @@ queries, clearer SQL in git diffs.</span>
         <div class="terminal-header">
           <span class="terminal-dot" style="background:#ec4899"></span>
           <span>/kluris what do we know · natural language Q&amp;A</span>
-          <span class="scope scope-agent">Inside your AI agent</span>
+          <span class="scope scope-agent">In your AI agent · in a project</span>
         </div>
 <pre><span class="prompt-agent">&gt;</span> <span class="cmd">/kluris what do we know about Docker?</span>
 
@@ -1167,7 +1173,8 @@ Tunnel (zero public ports).</span></pre>
       Grow it <span class="gradient-text">with your team.</span>
     </h1>
     <p class="slide-lede">
-      Add lobes as new concerns emerge. Ship neurons through git like any other code.
+      Your scaffolded lobes are a starting point, not a cage — add a new one any time a new concern
+      shows up. Ship neurons through git like any other code.
       Run <code>kluris dream</code> now and then to tidy up maps and synapses.
     </p>
 
@@ -1253,7 +1260,7 @@ migrations, anything.</span></pre>
       <div class="terminal-header">
         <span class="terminal-dot" style="background:#ec4899"></span>
         <span>the brain reviewing itself</span>
-        <span class="scope scope-agent">Inside your AI agent</span>
+        <span class="scope scope-agent">In your AI agent · in a project</span>
       </div>
 <pre><span class="prompt-agent">&gt;</span> <span class="cmd">/kluris review this brain and create more synapses</span>
 
@@ -1340,7 +1347,7 @@ migrations, anything.</span></pre>
     <div class="text-center">
       <p class="text-purple text-xs uppercase tracking-[0.22em] font-medium mb-4">Start now</p>
       <h2 class="font-serif text-4xl md:text-5xl mb-6">
-        Three commands to a <span class="gradient-text">smarter team.</span>
+        From zero to a <span class="gradient-text">smarter team.</span>
       </h2>
 
       <div class="terminal glow-purple-sm max-w-2xl mx-auto text-left">

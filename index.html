@@ -692,7 +692,7 @@
       <div class="terminal">
         <div class="terminal-header">
           <span class="terminal-dot" style="background:#a78bfa"></span>
-          <span class="ml-2">The folder kluris just created</span>
+          <span class="ml-2">The folder kluris just created · <code>project-group</code> defaults</span>
         </div>
 <pre class="tree"><span class="folder">acme-brain/</span>
 ├── kluris.yml              <span class="note"># gitignored — your local config</span>
@@ -706,6 +706,9 @@
 │   └── <span class="dim">(your neurons go here)</span>
 └── <span class="folder">knowledge/</span>
     └── <span class="dim">(your neurons go here)</span></pre>
+        <p class="px-5 py-3 text-xs text-text-muted italic border-t border-white/5">
+          Scaffolded defaults for the <code>project-group</code> brain type. You add, rename, or remove lobes as your team grows.
+        </p>
       </div>
     </div>
 
@@ -724,7 +727,7 @@
         Teach the <span class="gradient-text">brain</span> what your team knows.
       </h2>
       <p class="text-text-dim text-lg leading-relaxed">
-        Inside any AI agent, two slash commands turn conversations into knowledge. The brain is a tree of <span class="text-text font-medium">lobes</span> — folders grouping related ideas — filled with <span class="text-text font-medium">neurons</span>: one markdown file per fact, decision, or runbook. You approve every neuron before it lands.
+        Open your AI agent in a project — a repo, a service, a codebase — and one slash command, <span class="font-mono text-purple-light">/kluris</span>, turns the conversation into knowledge. Say <em>learn</em>, <em>remember</em>, or anything in between; the agent picks the right behavior. <span class="text-text font-medium">Lobes</span> are folders you create to group related ideas — one per concern, as many as you need. <span class="text-text font-medium">Neurons</span> are the markdown files inside them. You approve every neuron before it lands.
       </p>
     </div>
 
@@ -744,7 +747,7 @@
           </div>
           <div class="bg-bg/40">
             <div class="scope-bar">
-              <span>Inside your AI agent (Claude Code, Cursor, Windsurf, …)</span>
+              <span>In your AI agent, opened on a project (Claude Code, Cursor, Windsurf, …)</span>
               <span class="scope scope-agent">Agent</span>
             </div>
 <pre class="p-8 font-mono text-[0.78rem] leading-relaxed"><span class="prompt-agent">&gt;</span> <span class="cmd">/kluris learn the auth flow</span>
@@ -774,7 +777,7 @@ JWKS. Refresh at 80% TTL.</span>
         <div class="grid grid-cols-1 lg:grid-cols-2 gap-0">
           <div class="bg-bg/40 order-2 lg:order-1">
             <div class="scope-bar">
-              <span>Inside your AI agent (Claude Code, Cursor, Windsurf, …)</span>
+              <span>In your AI agent, opened on a project (Claude Code, Cursor, Windsurf, …)</span>
               <span class="scope scope-agent">Agent</span>
             </div>
 <pre class="p-8 font-mono text-[0.78rem] leading-relaxed"><span class="prompt-agent">&gt;</span> <span class="cmd">/kluris remember we chose raw SQL
@@ -816,7 +819,7 @@ queries, clearer SQL in git diffs.</span>
     </div>
 
     <p class="mt-10 text-center text-xs text-text-muted">
-      <span class="scope scope-agent" style="margin-left:0">Agent</span> = inside your AI coding agent. <span class="scope scope-terminal" style="margin-left:0">Terminal</span> = in your shell.
+      <span class="scope scope-agent" style="margin-left:0">Agent</span> = inside your AI coding agent, opened on a project. <span class="scope scope-terminal" style="margin-left:0">Terminal</span> = in your shell.
     </p>
   </div>
 </section>
@@ -942,7 +945,7 @@ Tunnel (zero public ports).</span></pre>
         Grow it <span class="gradient-text">with your team</span>.
       </h2>
       <p class="text-text-dim text-lg leading-relaxed">
-        Add lobes as new concerns emerge. Ship neurons through git like any other code. Run <span class="font-mono text-purple text-sm">kluris dream</span> now and then to tidy up maps and synapses.
+        Your scaffolded lobes are a starting point, not a cage — add a new one any time a new concern shows up. Ship neurons through git like any other code. Run <span class="font-mono text-purple text-sm">kluris dream</span> now and then to tidy up maps and synapses.
       </p>
     </div>
 
@@ -1030,7 +1033,7 @@ migrations, anything.</span></pre>
       <div class="terminal-header">
         <span class="terminal-dot" style="background:#ec4899"></span>
         <span class="ml-2">the brain reviewing itself</span>
-        <span class="scope scope-agent">Inside your AI agent</span>
+        <span class="scope scope-agent">In your AI agent · in a project</span>
       </div>
 <pre><span class="prompt-agent">&gt;</span> <span class="cmd">/kluris review this brain and create more synapses</span>
 
@@ -1090,7 +1093,7 @@ migrations, anything.</span></pre>
         Two surfaces, <span class="gradient-text">one brain</span>.
       </h2>
       <p class="text-text-dim text-lg leading-relaxed">
-        Kluris lives in two places. You run the <span class="text-purple font-medium">CLI</span> in your terminal to set up and maintain your brains. Your AI agents run <span class="text-pink font-medium">slash commands</span> inside Claude Code, Cursor, Windsurf, Codex, Copilot, Gemini CLI, Kilo, or Junie to read and write knowledge while you code.
+        Kluris lives in two places. You run the <span class="text-purple font-medium">CLI</span> in your terminal to set up and maintain your brains. Your AI agents run one <span class="text-pink font-medium">slash command</span> — <span class="font-mono text-purple-light">/kluris</span> — inside Claude Code, Cursor, Windsurf, Codex, Copilot, Gemini CLI, Kilo, or Junie, followed by whatever you want to say. Keep the agent open on a project so it has code to read.
       </p>
     </div>
 
@@ -1110,7 +1113,7 @@ migrations, anything.</span></pre>
           <span class="text-xs text-text-muted">where the agent types</span>
         </div>
         <p class="font-mono text-sm text-pink mb-2"><span class="text-pink font-bold">&gt;</span> /kluris &lt;pattern&gt;</p>
-        <p class="text-xs text-text-dim leading-relaxed">Run inside your AI coding agent — Claude Code, Cursor, Windsurf, Codex, Copilot, Gemini CLI, Kilo, Junie. The <span class="text-pink">pink <span class="font-mono">&gt;</span></span> prompt. Use it while coding to teach and query the brain.</p>
+        <p class="text-xs text-text-dim leading-relaxed">Run inside your AI coding agent — Claude Code, Cursor, Windsurf, Codex, Copilot, Gemini CLI, Kilo, Junie — with a project open. The <span class="text-pink">pink <span class="font-mono">&gt;</span></span> prompt. Use it while coding to teach and query the brain.</p>
       </div>
     </div>
 
@@ -1155,7 +1158,8 @@ migrations, anything.</span></pre>
           <h3 class="text-sm uppercase tracking-[0.15em] text-pink font-semibold">Inside your AI agent &nbsp;·&nbsp; <span class="font-mono text-text">&gt; /kluris ...</span></h3>
           <span class="scope scope-agent" style="margin-left:0">Agent</span>
         </div>
-        <p class="mb-5 text-xs text-text-muted italic">Type these inside Claude Code, Cursor, Windsurf, Codex, Copilot, Gemini CLI, Kilo, or Junie. With one brain registered the slash command is <span class="font-mono text-purple-light">/kluris</span>; with multiple brains each installs as <span class="font-mono text-purple-light">/kluris-&lt;name&gt;</span>. Examples below use <span class="font-mono text-purple-light">/kluris</span> for clarity.</p>
+        <p class="mb-3 text-xs text-pink/80 font-medium not-italic">There's only one slash command — <span class="font-mono text-purple-light">/kluris</span>. Everything below is an example of what you can say after it.</p>
+        <p class="mb-5 text-xs text-text-muted italic">Type these inside Claude Code, Cursor, Windsurf, Codex, Copilot, Gemini CLI, Kilo, or Junie — with a project open, so the agent can read your code. With one brain registered the slash command is <span class="font-mono text-purple-light">/kluris</span>; with multiple brains each installs as <span class="font-mono text-purple-light">/kluris-&lt;name&gt;</span>. Examples below use <span class="font-mono text-purple-light">/kluris</span> for clarity.</p>
         <table class="cmd-table">
           <tr><td>/kluris learn &lt;topic&gt;</td><td>Agent analyzes code, proposes neurons</td></tr>
           <tr><td>/kluris remember &lt;fact&gt;</td><td>Quick-capture a decision as a neuron</td></tr>
@@ -1246,7 +1250,7 @@ Multiple brains registered. Pick one:
         Your <span class="gradient-text">SME</span> starts here.
       </h2>
       <p class="text-text-dim text-lg md:text-xl max-w-2xl mx-auto mb-10 leading-relaxed">
-        Two commands. Free forever. Works with every AI agent on your team.
+        Free forever. Works with every AI agent on your team.
       </p>
       <div class="flex flex-col sm:flex-row items-center justify-center gap-4 mb-8">
         <a href="#setup" class="btn-primary inline-flex items-center gap-2 px-8 py-4 rounded-full text-base">
