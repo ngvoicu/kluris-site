@@ -1,6 +1,6 @@
 # kluris-site
 
-The marketing and tutorial site for [Kluris](https://github.com/ngvoicu/kluris-cli) — *the SME your team never had.*
+The marketing and tutorial site for [Kluris](https://github.com/ngvoicu/kluris) — *the SME your team never had.*
 
 Lives at **[https://kluris.io/](https://kluris.io/)**.
 
@@ -57,7 +57,7 @@ This folder is designed to deploy to GitHub Pages with a custom domain (`kluris.
 
 ### One-time setup
 
-1. **Push the folder to a GitHub repo** (for example `ngvoicu/kluris-site` — separate repo, or as a subfolder of `kluris-cli` with Pages source set to that subfolder).
+1. **Push the folder to a GitHub repo** (for example `ngvoicu/kluris-site` — separate repo, or as a subfolder of `kluris` with Pages source set to that subfolder).
 
 2. **Enable GitHub Pages:**
    - Repo → **Settings** → **Pages**
