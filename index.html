@@ -829,53 +829,69 @@ queries, clearer SQL in git diffs.</span>
 <!-- ============================================ -->
 <section id="see" class="py-28 md:py-40 px-6 relative">
   <div class="max-w-7xl mx-auto">
-    <div class="text-center mb-16 max-w-3xl mx-auto">
+    <div class="text-center mb-14 max-w-3xl mx-auto">
       <p class="text-purple text-xs uppercase tracking-[0.2em] font-medium mb-4">Beat 3 · See</p>
       <h2 class="font-serif text-4xl md:text-6xl leading-tight mb-6">
-        See the <span class="gradient-text">whole brain</span> at a glance.
+        See the <span class="gradient-text">whole brain</span>.
       </h2>
       <p class="text-text-dim text-lg leading-relaxed">
-        One command renders every neuron as a node and every <span class="text-text font-medium">synapse</span> — a frontmatter link between neurons — as a dashed line. Share it, explore it, find the orphans.
+        One command. A local, interactive map you can share.
       </p>
     </div>
 
-    <div class="grid grid-cols-1 lg:grid-cols-2 gap-6 items-start mb-10">
+    <div class="max-w-3xl mx-auto mb-10">
       <div class="terminal glow-purple-sm">
         <div class="terminal-header">
           <span class="terminal-dot" style="background:#ef4444;opacity:0.6"></span>
           <span class="terminal-dot" style="background:#f59e0b;opacity:0.6"></span>
           <span class="terminal-dot" style="background:#34d399;opacity:0.6"></span>
-          <span class="ml-2">kluris mri — interactive HTML</span>
+          <span class="ml-2">kluris mri — one self-contained HTML file</span>
           <span class="scope scope-terminal">Terminal</span>
         </div>
 <pre><span class="prompt">$</span> <span class="cmd">kluris mri</span>
 
 <span class="ok">MRI complete</span> — brain-mri.html
-  <span class="warn">23</span> nodes, <span class="warn">31</span> edges
+  <span class="warn">51</span> neurons, <span class="warn">491</span> synapses
   <span class="dim">→ file:///home/user/acme-brain/brain-mri.html</span>
 
-<span class="meta">Interactive features:</span>
-  <span class="ok">·</span> search any neuron
-  <span class="ok">·</span> hover to see connections
-  <span class="ok">·</span> click to inspect content
-  <span class="ok">·</span> pan and zoom the graph
-  <span class="ok">·</span> filter by lobe
-
-<span class="dim">Share the HTML — it runs anywhere.</span></pre>
-      </div>
-
-      <div class="mri-frame">
-        <img src="mri-ngvoicu.png" alt="A real kluris mri output — nodes are neurons, colors are lobes, dashed lines are synapses" class="w-full h-auto block" />
+<span class="dim">Open it in any browser. Commit it, email it, drop it
+in Slack — it runs anywhere, with no server.</span></pre>
       </div>
     </div>
 
-    <p class="text-center text-xs text-text-muted mb-6">
-      <span class="text-purple">Live output:</span> an actual <span class="font-mono text-purple-light">kluris mri</span> of a real brain. Colors are lobes, dashed lines are synapses, labeled nodes are neurons.
-    </p>
+    <div class="grid grid-cols-1 lg:grid-cols-2 gap-6 items-start mb-12">
+      <figure>
+        <div class="mri-frame">
+          <img src="mri-overview.png" alt="kluris mri overview — lobe panel with neuron counts, live stats (51 neurons, 491 links), search box, and the whole brain as coloured clusters with dashed synapse lines" class="w-full h-auto block" />
+        </div>
+        <figcaption class="mt-3 text-xs text-text-muted leading-relaxed text-center">
+          The overview — lobes as clusters, neurons as nodes, synapses as lines. Live stats for neurons and links. Click a lobe to filter, click a node to open it.
+        </figcaption>
+      </figure>
+      <figure>
+        <div class="mri-frame">
+          <img src="mri-inspector.png" alt="kluris mri inspector — a neuron's rendered markdown on the right, related-neuron tabs along the top, and the full brain tree in the left panel for jumping around" class="w-full h-auto block" />
+        </div>
+        <figcaption class="mt-3 text-xs text-text-muted leading-relaxed text-center">
+          The inspector — every neuron opens with its markdown rendered, its related neurons as tabs, and the full brain tree on the left for jumping around.
+        </figcaption>
+      </figure>
+    </div>
 
-    <p class="max-w-3xl mx-auto text-center text-text-dim text-base italic leading-relaxed">
-      A brain replaces a wide file crawl with a targeted lookup — agents burn fewer tokens orienting and more tokens doing real work.
-    </p>
+    <div class="max-w-3xl mx-auto space-y-5 text-text-dim text-base leading-relaxed">
+      <p>
+        The MRI is a single self-contained HTML file — no server, no account, no external calls. Run <span class="font-mono text-purple-light text-sm">kluris mri</span>, open the file in any browser, and you've got the whole brain to explore.
+      </p>
+      <p>
+        You get live counts (this brain has <span class="text-text font-medium">51 neurons and 491 synapses</span>), a lobe breakdown with neuron counts per lobe, fuzzy search across names, paths, lobes, and tags, and a click-to-inspect view for any neuron — with its rendered markdown, its related neurons as tabs, and a full tree of the brain on the side so you can jump anywhere.
+      </p>
+      <p>
+        It's a tool for three audiences at once: <span class="text-text font-medium">you</span> (spot isolated neurons that should be cross-linked), <span class="text-text font-medium">your team</span> (shared mental model of what we know), and <span class="text-text font-medium">new hires</span> (five-minute onboarding instead of five days of spelunking). Since it's just HTML, you can commit it, email it, or drop it in Slack.
+      </p>
+      <p>
+        Lines between neurons are <span class="text-text font-medium">synapses</span> — cross-links agents follow to load related context. Because the brain is a pre-digested snapshot, agents spend far fewer tokens orienting to a codebase than without one.
+      </p>
+    </div>
   </div>
 </section>
 
@@ -939,77 +955,63 @@ Tunnel (zero public ports).</span></pre>
 <!-- ============================================ -->
 <section id="grow" class="py-28 md:py-40 px-6 relative">
   <div class="max-w-7xl mx-auto">
-    <div class="text-center mb-16 max-w-3xl mx-auto">
+    <div class="text-center mb-14 max-w-3xl mx-auto">
       <p class="text-purple text-xs uppercase tracking-[0.2em] font-medium mb-4">Beat 5 · Grow</p>
       <h2 class="font-serif text-4xl md:text-6xl leading-tight mb-6">
-        Grow it <span class="gradient-text">with your team</span>.
+        Your brain grows <span class="gradient-text">with your team</span>.
       </h2>
       <p class="text-text-dim text-lg leading-relaxed">
-        Your scaffolded lobes are a starting point, not a cage — add a new one any time a new concern shows up. Ship neurons through git like any other code. Run <span class="font-mono text-purple text-sm">kluris dream</span> now and then to tidy up maps and synapses.
+        Add lobes, add neurons, keep going — all through the agent.
       </p>
     </div>
 
-    <div class="grid grid-cols-1 lg:grid-cols-2 gap-5 mb-6">
-      <!-- Add lobes -->
+    <div class="grid grid-cols-1 lg:grid-cols-2 gap-5 mb-10">
+      <!-- Add a lobe (via agent) -->
       <div class="terminal glow-purple-sm">
         <div class="terminal-header">
-          <span class="terminal-dot" style="background:#a78bfa"></span>
-          <span class="ml-2">Add a new lobe</span>
-          <span class="scope scope-terminal">Terminal</span>
+          <span class="terminal-dot" style="background:#ec4899"></span>
+          <span class="ml-2">/kluris · add a new lobe</span>
+          <span class="scope scope-agent">In your AI agent · in a project</span>
         </div>
-<pre><span class="prompt">$</span> <span class="cmd">kluris lobe compliance</span>
-<span class="ok">✓</span> Created acme-brain/compliance/
+<pre><span class="prompt-agent">&gt;</span> <span class="cmd">/kluris add a compliance lobe for SOC2
+         and GDPR notes</span>
 
-<span class="prompt">$</span> <span class="cmd">kluris lobe gdpr --parent compliance</span>
-<span class="ok">✓</span> Created acme-brain/compliance/gdpr/
+<span class="meta">Proposing new lobe:</span> compliance/
+  <span class="ok">✓</span> will create compliance/map.md
+  <span class="ok">✓</span> will link into brain.md
 
-<span class="dim">Ask the agent to seed neurons into the new lobe
-whenever a new concern shows up — SOC2, pricing,
-migrations, anything.</span></pre>
+[<span class="ok">a</span>]pprove  [<span class="dim">c</span>]ancel: </pre>
       </div>
 
-      <!-- Git flow -->
+      <!-- Add a neuron in that lobe (via agent) -->
       <div class="terminal glow-purple-sm">
         <div class="terminal-header">
-          <span class="terminal-dot" style="background:#a78bfa"></span>
-          <span class="ml-2">Share via git</span>
-          <span class="scope scope-terminal">Terminal</span>
+          <span class="terminal-dot" style="background:#ec4899"></span>
+          <span class="ml-2">/kluris · add a neuron in the new lobe</span>
+          <span class="scope scope-agent">In your AI agent · in a project</span>
         </div>
-<pre><span class="prompt">$</span> <span class="cmd">kluris branch add-auth-decision</span>
-<span class="ok">✓</span> Switched to add-auth-decision
+<pre><span class="prompt-agent">&gt;</span> <span class="cmd">/kluris remember that SOC2 audit evidence lives in
+         the compliance-evidence/ bucket, rotated yearly</span>
 
-<span class="meta">(approve neurons in your agent)</span>
+<span class="meta">Proposing:</span> compliance/soc2-evidence.md
+<span class="dim">──────────────────────────────────────</span>
+<span class="str"># SOC2 audit evidence</span>
 
-<span class="prompt">$</span> <span class="cmd">kluris push</span>
-<span class="ok">✓</span> 3 commits · pushed to origin
+<span class="cmd">Evidence artifacts live in the `compliance-evidence/`
+S3 bucket. Rotation is annual. Access is restricted
+to the security team.</span>
+<span class="dim">──────────────────────────────────────</span>
 
-<span class="prompt">$</span> <span class="cmd">kluris pull</span>
-<span class="ok">✓</span> 2 new neurons pulled
-
-<span class="dim">Teammates see your neurons on next wake-up.</span></pre>
+[<span class="ok">a</span>]pprove  [<span class="warn">e</span>]dit  [<span class="dim">s</span>]kip: </pre>
       </div>
     </div>
 
-    <!-- Dream -->
-    <div class="terminal max-w-3xl mx-auto">
-      <div class="terminal-header">
-        <span class="terminal-dot" style="background:#a78bfa"></span>
-        <span class="ml-2">Housekeeping — run now and then</span>
-        <span class="scope scope-terminal">Terminal</span>
-      </div>
-<pre><span class="prompt">$</span> <span class="cmd">kluris dream</span>
+    <p class="max-w-3xl mx-auto text-text-dim text-base leading-relaxed text-center">
+      Lobes are folders, neurons are markdown files inside them — but you don't create them by hand. Ask the agent. It proposes the structure, shows you the diff, and writes it only after you approve. Nesting works the same way: <em>"add a sublobe for the <span class="font-mono text-purple-light text-sm">endpoints</span> of <span class="font-mono text-purple-light text-sm">acme-api</span>"</em> and the agent puts it in the right place.
+    </p>
 
-<span class="meta">acme-brain health report:</span>
-  Maps regenerated: <span class="warn">4</span>   <span class="ok">OK</span> synapses
-  <span class="warn">6</span> automatic fixes applied
-  <span class="warn">3</span> dates refreshed from git
-  <span class="warn">2</span> reverse links added
-
-<span class="ok">Brain is healthy.</span></pre>
-    </div>
-
-    <p class="mt-10 text-center text-sm text-text-muted italic">
-      Running more than one brain? Each installs as its own <span class="font-mono text-purple-light">/kluris-&lt;name&gt;</span> skill — see <a href="#more-than-one-brain" class="text-purple-light underline decoration-purple/30 underline-offset-2 hover:decoration-pink">the appendix</a>.
+    <p class="mt-10 text-center text-xs text-text-muted leading-relaxed">
+      Run <span class="font-mono text-purple-light">kluris dream</span> to regenerate maps and validate links after structural changes. Run <span class="font-mono text-purple-light">kluris push</span> to commit and share with your team. Have more than one brain? Each installs as <span class="font-mono text-purple-light">/kluris-&lt;name&gt;</span> and everything above works the same — see <a href="#more-than-one-brain" class="text-purple-light underline decoration-purple/30 underline-offset-2 hover:decoration-pink">the appendix</a>.
     </p>
   </div>
 </section>
@@ -1134,8 +1136,8 @@ migrations, anything.</span></pre>
           <tr><td>status</td><td>Show brain tree and recent changes</td></tr>
           <tr><td>search &lt;query&gt;</td><td>Ranked search across neurons, glossary, brain.md</td></tr>
           <tr><td>wake-up</td><td>Compact snapshot for agent bootstrap</td></tr>
-          <tr><td>neuron &lt;file&gt;</td><td>Create a neuron (<span class="font-mono text-xs">--lobe</span>, <span class="font-mono text-xs">--template</span>)</td></tr>
-          <tr><td>lobe &lt;name&gt;</td><td>Create a lobe (<span class="font-mono text-xs">--parent</span> for nesting)</td></tr>
+          <tr><td>neuron &lt;file&gt;</td><td>Create a neuron (<span class="font-mono text-xs">--lobe</span>, <span class="font-mono text-xs">--template</span>) <span class="text-pink/70 text-[0.65rem] uppercase tracking-wider ml-1">via agent</span></td></tr>
+          <tr><td>lobe &lt;name&gt;</td><td>Create a lobe (<span class="font-mono text-xs">--parent</span> for nesting) <span class="text-pink/70 text-[0.65rem] uppercase tracking-wider ml-1">via agent</span></td></tr>
           <tr><td>dream</td><td>Regenerate maps, fix links, validate</td></tr>
           <tr><td>branch [name]</td><td>Show, switch, or create a git branch (<span class="font-mono text-xs">--list</span>)</td></tr>
           <tr><td>push</td><td>Commit and push to the current branch</td></tr>
@@ -1149,6 +1151,7 @@ migrations, anything.</span></pre>
           <tr><td>help</td><td>Show command help</td></tr>
         </table>
         <p class="mt-5 text-xs text-text-muted italic">All CLI commands support <span class="font-mono text-purple-light">--json</span> for machine-readable output.</p>
+        <p class="mt-2 text-xs text-text-muted italic">Most users create lobes and neurons by asking their AI agent — these commands are what the agent runs under the hood.</p>
       </div>
 
       <!-- Agent patterns -->
@@ -1163,6 +1166,8 @@ migrations, anything.</span></pre>
         <table class="cmd-table">
           <tr><td>/kluris learn &lt;topic&gt;</td><td>Agent analyzes code, proposes neurons</td></tr>
           <tr><td>/kluris remember &lt;fact&gt;</td><td>Quick-capture a decision as a neuron</td></tr>
+          <tr><td>/kluris add a &lt;name&gt; lobe</td><td>Propose a new lobe, approve before it lands</td></tr>
+          <tr><td>/kluris add a sublobe for ...</td><td>Nest a lobe under an existing one</td></tr>
           <tr><td>/kluris search &lt;term&gt;</td><td>Search the brain for a topic</td></tr>
           <tr><td>/kluris what do we know about ...</td><td>Ask the brain a question</td></tr>
           <tr><td>/kluris review this brain</td><td>Audit the brain, propose more synapses</td></tr>
