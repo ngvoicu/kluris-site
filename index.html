@@ -145,6 +145,11 @@
           },
           pink: '#ec4899',
           cyan: '#22d3ee',
+          mint: {
+            DEFAULT: '#34d399',
+            dim: '#10b981',
+            light: '#6ee7b7',
+          },
           lobe: {
             pink: '#ec4899',
             orange: '#f59e0b',
@@ -209,6 +214,44 @@
   }
   .glow-purple-sm {
     box-shadow: 0 0 25px rgba(167,139,250,0.2);
+  }
+
+  /* Mint glow halos — used in the Pair with Specmint section */
+  .glow-mint {
+    box-shadow: 0 0 80px rgba(52,211,153,0.22), 0 0 30px rgba(52,211,153,0.12);
+  }
+  .glow-mint-sm {
+    box-shadow: 0 0 25px rgba(52,211,153,0.18);
+  }
+
+  /* Brand-crossover mark (× between kluris and specmint logos) */
+  .crossover-mark {
+    font-family: 'DM Serif Display', Georgia, serif;
+    background: linear-gradient(135deg, #a78bfa 0%, #34d399 100%);
+    -webkit-background-clip: text;
+    background-clip: text;
+    color: transparent;
+    font-style: italic;
+    line-height: 1;
+  }
+
+  /* Subtle mint wash for the Pair section background */
+  .mint-wash {
+    background:
+      radial-gradient(circle at 20% 15%, rgba(52,211,153,0.08), transparent 50%),
+      radial-gradient(circle at 80% 85%, rgba(167,139,250,0.06), transparent 55%);
+  }
+
+  /* Logo lockup — two brand marks side-by-side with connecting glow */
+  .lockup-logo {
+    filter: drop-shadow(0 8px 28px rgba(167,139,250,0.25));
+    transition: transform 0.4s ease;
+  }
+  .lockup-logo.mint {
+    filter: drop-shadow(0 8px 28px rgba(52,211,153,0.28));
+  }
+  .lockup-logo:hover {
+    transform: translateY(-3px) scale(1.04);
   }
 
   /* CTA button — purple-to-pink gradient */
@@ -532,6 +575,7 @@
       <a href="#teach" class="text-text-dim hover:text-text transition-colors">Teach</a>
       <a href="#see" class="text-text-dim hover:text-text transition-colors">See</a>
       <a href="#use" class="text-text-dim hover:text-text transition-colors">Use</a>
+      <a href="#pair" class="text-mint hover:text-mint-light transition-colors">Pair</a>
       <a href="#grow" class="text-text-dim hover:text-text transition-colors">Grow</a>
       <a href="#review" class="text-text-dim hover:text-text transition-colors">Review</a>
       <a href="#reference" class="text-text-dim hover:text-text transition-colors">Reference</a>
@@ -859,31 +903,34 @@ in Slack — it runs anywhere, with no server.</span></pre>
       </div>
     </div>
 
-    <div class="grid grid-cols-1 lg:grid-cols-2 gap-6 items-start mb-12">
-      <figure>
+    <div class="space-y-12 mb-12">
+      <figure class="max-w-5xl mx-auto">
         <div class="mri-frame">
           <img src="mri-overview.png" alt="kluris mri overview — lobe panel with neuron counts, live stats (51 neurons, 491 links), search box, and the whole brain as coloured clusters with dashed synapse lines" class="w-full h-auto block" />
         </div>
-        <figcaption class="mt-3 text-xs text-text-muted leading-relaxed text-center">
-          The overview — lobes as clusters, neurons as nodes, synapses as lines. Live stats for neurons and links. Click a lobe to filter, click a node to open it.
+        <figcaption class="mt-4 text-sm text-text-muted leading-relaxed text-center">
+          <span class="text-purple-light font-semibold">The overview</span> — lobes as clusters, neurons as nodes, synapses as the lines between them.
         </figcaption>
+        <p class="mt-3 max-w-3xl mx-auto text-text-dim text-base leading-relaxed text-center">
+          Live counts (<span class="text-text font-medium">51 neurons · 491 synapses</span>), a lobe breakdown you can collapse and filter, and a fuzzy search across names, paths, lobes, and tags. Click a lobe to isolate it; click a node to open it.
+        </p>
       </figure>
-      <figure>
+      <figure class="max-w-5xl mx-auto">
         <div class="mri-frame">
           <img src="mri-inspector.png" alt="kluris mri inspector — a neuron's rendered markdown on the right, related-neuron tabs along the top, and the full brain tree in the left panel for jumping around" class="w-full h-auto block" />
         </div>
-        <figcaption class="mt-3 text-xs text-text-muted leading-relaxed text-center">
-          The inspector — every neuron opens with its markdown rendered, its related neurons as tabs, and the full brain tree on the left for jumping around.
+        <figcaption class="mt-4 text-sm text-text-muted leading-relaxed text-center">
+          <span class="text-purple-light font-semibold">The inspector</span> — rendered markdown on the right, related neurons as tabs, the full brain tree on the left.
         </figcaption>
+        <p class="mt-3 max-w-3xl mx-auto text-text-dim text-base leading-relaxed text-center">
+          One click on any node opens its neuron, fully rendered, with related-neuron tabs across the top so you can walk a topic in seconds. This is what agents see — now visible to you.
+        </p>
       </figure>
     </div>
 
     <div class="max-w-3xl mx-auto space-y-5 text-text-dim text-base leading-relaxed">
       <p>
-        The MRI is a single self-contained HTML file — no server, no account, no external calls. Run <span class="font-mono text-purple-light text-sm">kluris mri</span>, open the file in any browser, and you've got the whole brain to explore.
-      </p>
-      <p>
-        You get live counts (this brain has <span class="text-text font-medium">51 neurons and 491 synapses</span>), a lobe breakdown with neuron counts per lobe, fuzzy search across names, paths, lobes, and tags, and a click-to-inspect view for any neuron — with its rendered markdown, its related neurons as tabs, and a full tree of the brain on the side so you can jump anywhere.
+        The MRI is a single self-contained HTML file — no server, no account, no external calls. Run <span class="font-mono text-purple-light text-sm">kluris mri</span>, open it in any browser, and you've got the whole brain to explore.
       </p>
       <p>
         It's a tool for three audiences at once: <span class="text-text font-medium">you</span> (spot isolated neurons that should be cross-linked), <span class="text-text font-medium">your team</span> (shared mental model of what we know), and <span class="text-text font-medium">new hires</span> (five-minute onboarding instead of five days of spelunking). Since it's just HTML, you can commit it, email it, or drop it in Slack.
@@ -916,7 +963,7 @@ in Slack — it runs anywhere, with no server.</span></pre>
         <div class="terminal-header">
           <span class="chip text-[0.62rem] py-0.5 px-2">SEARCH</span>
           <span class="ml-2">semantic + keyword lookup</span>
-          <span class="scope scope-agent">Agent</span>
+          <span class="scope scope-agent">In your AI agent · in a project</span>
         </div>
 <pre><span class="prompt-agent">&gt;</span> <span class="cmd">/kluris search auth flow</span>
 
@@ -933,7 +980,7 @@ in Slack — it runs anywhere, with no server.</span></pre>
         <div class="terminal-header">
           <span class="chip text-[0.62rem] py-0.5 px-2">WHAT DO WE KNOW</span>
           <span class="ml-2">natural language Q&amp;A across the brain</span>
-          <span class="scope scope-agent">Agent</span>
+          <span class="scope scope-agent">In your AI agent · in a project</span>
         </div>
 <pre><span class="prompt-agent">&gt;</span> <span class="cmd">/kluris what do we know about Docker?</span>
 
@@ -946,6 +993,143 @@ BuildKit. Images go to ghcr.io/zeespire/.
 Prod uses Coolify on Hetzner with Cloudflare
 Tunnel (zero public ports).</span></pre>
       </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============================================ -->
+<!-- PAIR — KLURIS × SPECMINT                         -->
+<!-- ============================================ -->
+<section id="pair" class="py-28 md:py-40 px-6 relative overflow-hidden mint-wash">
+  <!-- soft divider glow -->
+  <div class="absolute top-0 left-1/2 -translate-x-1/2 w-96 h-px bg-gradient-to-r from-transparent via-mint/60 to-transparent"></div>
+
+  <div class="max-w-7xl mx-auto relative">
+
+    <!-- Brand lockup: kluris × specmint -->
+    <div class="flex items-center justify-center gap-6 md:gap-10 mb-12" aria-label="Kluris paired with Specmint">
+      <div class="relative">
+        <div class="absolute inset-0 rounded-full bg-purple/25 blur-3xl"></div>
+        <img src="logo.png" alt="Kluris" width="88" height="88" class="relative lockup-logo w-20 h-20 md:w-24 md:h-24 object-contain" />
+      </div>
+      <span class="crossover-mark text-5xl md:text-7xl select-none" aria-hidden="true">×</span>
+      <div class="relative">
+        <div class="absolute inset-0 rounded-full bg-mint/25 blur-3xl"></div>
+        <img src="specmint-logo.webp" alt="Specmint" width="88" height="88" class="relative lockup-logo mint w-20 h-20 md:w-24 md:h-24 object-contain" />
+      </div>
+    </div>
+
+    <!-- Title + lede -->
+    <div class="text-center max-w-3xl mx-auto mb-14">
+      <p class="text-mint text-xs uppercase tracking-[0.2em] font-medium mb-4">+ Pair · Specmint</p>
+      <h2 class="font-serif text-4xl md:text-6xl leading-tight mb-6">
+        Plan with context you didn't have to <span class="text-mint">re-derive</span>.
+      </h2>
+      <p class="text-text-dim text-lg leading-relaxed">
+        Kluris is the brain. <a href="https://specmint.io" class="text-mint underline decoration-mint/30 underline-offset-4 hover:decoration-mint transition-colors" target="_blank" rel="noopener">Specmint</a> turns a feature request into a persistent spec built from deep research and iterative interviews. Use them together and the research phase starts half-done — grounded in your code <em>and</em> the knowledge your team already agreed to.
+      </p>
+    </div>
+
+    <!-- 3 benefit cards -->
+    <div class="grid grid-cols-1 md:grid-cols-3 gap-4 max-w-5xl mx-auto mb-12">
+      <div class="card rounded-2xl p-6 border border-mint/25">
+        <p class="text-mint text-[0.7rem] uppercase tracking-[0.18em] font-semibold mb-3">1 · Shorter research</p>
+        <p class="text-text-dim text-sm leading-relaxed">
+          Forge reads your repo <em>and</em> consults the brain. Decisions the team already made don't get re-discovered from the code.
+        </p>
+      </div>
+      <div class="card rounded-2xl p-6 border border-mint/25">
+        <p class="text-mint text-[0.7rem] uppercase tracking-[0.18em] font-semibold mb-3">2 · Sharper interviews</p>
+        <p class="text-text-dim text-sm leading-relaxed">
+          Not "what's your auth?" — but <em>"your brain says Keycloak for cost — should GitHub OAuth live behind it as an IdP, or beside it?"</em>
+        </p>
+      </div>
+      <div class="card rounded-2xl p-6 border border-mint/25">
+        <p class="text-mint text-[0.7rem] uppercase tracking-[0.18em] font-semibold mb-3">3 · Traceable decisions</p>
+        <p class="text-text-dim text-sm leading-relaxed">
+          Every entry in the resulting SPEC.md cites the neuron that backs it. A week later you can still tell <em>why</em>.
+        </p>
+      </div>
+    </div>
+
+    <!-- Terminal: forge workflow reading from both sources -->
+    <div class="max-w-4xl mx-auto">
+      <div class="terminal glow-mint">
+        <div class="terminal-header">
+          <span class="terminal-dot" style="background:#34d399"></span>
+          <span class="terminal-dot" style="background:#a78bfa;opacity:0.6"></span>
+          <span class="ml-2">/specmint-core:forge — spec grounded in code + brain</span>
+          <span class="scope scope-agent">In your AI agent · in a project</span>
+        </div>
+<pre><span class="prompt-agent">&gt;</span> <span class="cmd">/specmint-core:forge add OAuth sign-in with GitHub</span>
+
+<span class="meta">Phase 1a · Codebase research</span>
+  <span class="dim">●</span> Reading <span class="str">src/auth/</span> <span class="dim">(14 files)</span>
+  <span class="dim">●</span> Reading <span class="str">config/GlobalExceptionHandler.kt</span>
+
+<span class="meta">Phase 1b · Brain research</span>   <span class="warn">← the kluris bit</span>
+  <span class="dim">●</span> <span class="cmd">/kluris what do we know about auth</span>
+    <span class="ok">→</span> knowledge/auth-decisions.md
+    <span class="ok">→</span> projects/btb-core/auth-flow.md
+    <span class="ok">→</span> knowledge/jwt-rotation.md
+
+<span class="meta">Phase 2 · Interview</span>
+  <span class="cmd">Q1.</span> Brain says you chose Keycloak for cost.
+       Should GitHub OAuth live behind Keycloak
+       as an IdP, or alongside it?
+  <span class="cmd">Q2.</span> Auth-flow neuron says refresh-at-80% TTL.
+       Same cadence for the GitHub session?
+
+<span class="meta">Phase 3 · Spec written</span>
+  <span class="ok">✓</span> .specs/github-oauth-signin/SPEC.md
+  <span class="ok">✓</span> 3 phases · 14 tasks · 4 decisions logged
+  <span class="ok">✓</span> Every decision references a neuron</pre>
+      </div>
+    </div>
+
+    <!-- Install: two flavors side-by-side -->
+    <div class="max-w-5xl mx-auto mt-10">
+      <p class="text-center text-xs uppercase tracking-[0.18em] text-text-muted font-medium mb-5">Install Specmint</p>
+      <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+        <!-- Core -->
+        <div class="card rounded-2xl p-6 border border-mint/25">
+          <div class="flex items-baseline justify-between mb-3">
+            <p class="font-serif text-xl text-mint">specmint-core</p>
+            <span class="text-[0.62rem] uppercase tracking-[0.16em] text-text-muted font-semibold">Spec-first</span>
+          </div>
+          <p class="text-text-dim text-sm leading-relaxed mb-4">
+            Research · Interview · Spec · Implement. The workflow shown above.
+          </p>
+          <div class="flex flex-col gap-2 text-xs">
+            <code class="font-mono px-3 py-2.5 rounded-lg border border-mint/30 bg-mint/5 text-mint">/plugin marketplace add ngvoicu/specmint-core</code>
+            <code class="font-mono px-3 py-2.5 rounded-lg border border-mint/30 bg-mint/5 text-mint">npx skills add ngvoicu/specmint-core</code>
+          </div>
+        </div>
+        <!-- TDD -->
+        <div class="card rounded-2xl p-6 border border-mint/25">
+          <div class="flex items-baseline justify-between mb-3">
+            <p class="font-serif text-xl text-mint">specmint-tdd</p>
+            <span class="text-[0.62rem] uppercase tracking-[0.16em] text-text-muted font-semibold">Red · Green · Refactor</span>
+          </div>
+          <p class="text-text-dim text-sm leading-relaxed mb-4">
+            Same forge flow, with strict TDD — a failing test before any implementation.
+          </p>
+          <div class="flex flex-col gap-2 text-xs">
+            <code class="font-mono px-3 py-2.5 rounded-lg border border-mint/30 bg-mint/5 text-mint">/plugin marketplace add ngvoicu/specmint-tdd</code>
+            <code class="font-mono px-3 py-2.5 rounded-lg border border-mint/30 bg-mint/5 text-mint">npx skills add ngvoicu/specmint-tdd</code>
+          </div>
+        </div>
+      </div>
+      <p class="text-center text-text-dim text-xs mt-5">
+        Both work with Claude Code, Codex, Cursor, Windsurf, Cline, Gemini CLI, and more.
+      </p>
+    </div>
+
+    <div class="text-center mt-10">
+      <a href="https://specmint.io" target="_blank" rel="noopener" class="inline-flex items-center gap-2 text-mint hover:text-mint-light transition-colors text-sm font-medium group">
+        <span>Visit specmint.io</span>
+        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" class="transition-transform group-hover:translate-x-1"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
+      </a>
     </div>
   </div>
 </section>

@@ -5,14 +5,14 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
 <title>Kluris — The guided tour</title>
-<meta name="description" content="An eight-slide tour of kluris: set up a brain, teach it from your AI agent in a project, see it on one screen, use it to get grounded answers, grow it with your team, and let the brain review itself.">
+<meta name="description" content="A nine-slide tour of kluris: set up a brain, teach it from your AI agent in a project, see it on one screen, use it to get grounded answers, pair it with specmint for grounded specs, grow it with your team, and let the brain review itself.">
 <meta name="robots" content="index, follow">
 <link rel="canonical" href="https://kluris.io/presentation.html">
 
 <meta property="og:type" content="website">
 <meta property="og:url" content="https://kluris.io/presentation.html">
 <meta property="og:title" content="Kluris — The guided tour">
-<meta property="og:description" content="An eight-slide tour of kluris: set up, teach, see, use, grow, and let the brain review itself.">
+<meta property="og:description" content="A nine-slide tour of kluris: set up, teach, see, use, pair with specmint, grow, and let the brain review itself.">
 <meta property="og:image" content="https://kluris.io/og-image.png">
 <meta property="og:image:width" content="1200">
 <meta property="og:image:height" content="630">
@@ -87,6 +87,48 @@
     -webkit-text-fill-color: transparent; color: transparent;
   }
   .glow-purple-sm { box-shadow: 0 0 25px rgba(167,139,250,0.2); }
+
+  /* Mint accents — used on the Pair slide where kluris meets specmint */
+  .glow-mint      { box-shadow: 0 0 80px rgba(52,211,153,0.22), 0 0 30px rgba(52,211,153,0.12); }
+  .glow-mint-sm   { box-shadow: 0 0 25px rgba(52,211,153,0.18); }
+  .crossover-mark {
+    font-family: 'DM Serif Display', Georgia, serif;
+    background: linear-gradient(135deg, #a78bfa 0%, #34d399 100%);
+    -webkit-background-clip: text; background-clip: text;
+    -webkit-text-fill-color: transparent; color: transparent;
+    font-style: italic; line-height: 1;
+  }
+  .mint-wash {
+    background:
+      radial-gradient(circle at 20% 15%, rgba(52,211,153,0.08), transparent 50%),
+      radial-gradient(circle at 80% 85%, rgba(167,139,250,0.06), transparent 55%);
+  }
+  .lockup-logo {
+    filter: drop-shadow(0 8px 28px rgba(167,139,250,0.25));
+    transition: transform 0.4s ease;
+  }
+  .lockup-logo.mint { filter: drop-shadow(0 8px 28px rgba(52,211,153,0.28)); }
+  .lockup-logo:hover { transform: translateY(-3px) scale(1.04); }
+  .text-mint      { color: #34d399; }
+  .text-mint-light { color: #6ee7b7; }
+  .gradient-text-mint {
+    background: linear-gradient(135deg, #6ee7b7 0%, #34d399 50%, #a78bfa 100%);
+    -webkit-background-clip: text; background-clip: text;
+    -webkit-text-fill-color: transparent; color: transparent;
+  }
+  /* scope-agent badge variant that matches specmint's mint accent */
+  .scope-agent-mint {
+    color: #6ee7b7; background: rgba(52,211,153,0.10);
+    border: 1px solid rgba(52,211,153,0.40);
+    display: inline-flex; align-items: center; gap: 0.35rem;
+    margin-left: auto;
+    padding: 0.15rem 0.55rem;
+    border-radius: 9999px;
+    font-family: 'Inter', sans-serif;
+    font-size: 0.62rem; font-weight: 600;
+    letter-spacing: 0.08em; text-transform: uppercase;
+    white-space: nowrap;
+  }
 
   .btn-primary {
     background: linear-gradient(135deg, #a78bfa 0%, #ec4899 100%);
@@ -715,7 +757,7 @@
       <span id="slide-label">Introduction</span>
     </div>
     <div style="display: flex; align-items: center; gap: 0.6rem;">
-      <span class="topbar-counter"><span class="cur" id="slide-cur">1</span> / <span id="slide-total">8</span></span>
+      <span class="topbar-counter"><span class="cur" id="slide-cur">1</span> / <span id="slide-total">9</span></span>
       <a href="index.html" class="nav-btn" title="Back to kluris.io" style="border: 1px solid rgba(255,255,255,0.08);">
         <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M3 12l9-9 9 9M5 10v10h14V10"/></svg>
       </a>
@@ -740,14 +782,14 @@
   <button class="nav-btn" id="btn-prev" title="Previous slide (← / PgUp / Shift+Space)">
     <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round"><path d="M15 18l-6-6 6-6"/></svg>
   </button>
-  <span class="nav-label" id="nav-label">1 / 8</span>
+  <span class="nav-label" id="nav-label">1 / 9</span>
   <button class="nav-btn" id="btn-next" title="Next slide (→ / PgDn / Space)">
     <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round"><path d="M9 6l6 6-6 6"/></svg>
   </button>
 </div>
 
 <!-- ======================================================================= -->
-<!-- SLIDE DECK — 8 slides, one viewport per slide · mirrors the 6 beats     -->
+<!-- SLIDE DECK — 9 slides, one viewport per slide · 6 beats + bonus pair     -->
 <!-- ======================================================================= -->
 <main class="slide-deck" id="slide-deck">
 
@@ -824,7 +866,7 @@
 
     <p class="text-text-muted text-xs italic mt-8 text-center">
       Use <span class="kbd">←</span> <span class="kbd">→</span> or <span class="kbd">Space</span> to navigate &nbsp;·&nbsp;
-      <span class="kbd">1</span>–<span class="kbd">8</span> to jump to any slide.
+      <span class="kbd">1</span>–<span class="kbd">9</span> to jump to any slide.
     </p>
   </div>
 </section>
@@ -1047,14 +1089,14 @@ queries, clearer SQL in git diffs.</span>
       One command. A local, interactive map you can share.
     </p>
 
-    <div class="grid grid-cols-1 lg:grid-cols-5 gap-5 items-start mt-6">
-      <div class="lg:col-span-2 space-y-4">
-        <div class="terminal glow-purple-sm">
-          <div class="terminal-header">
-            <span class="terminal-dot" style="background:#a78bfa"></span>
-            <span>kluris mri — one self-contained HTML file</span>
-            <span class="scope scope-terminal">Terminal</span>
-          </div>
+    <!-- Terminal, centered -->
+    <div class="max-w-2xl mx-auto mt-6">
+      <div class="terminal glow-purple-sm">
+        <div class="terminal-header">
+          <span class="terminal-dot" style="background:#a78bfa"></span>
+          <span>kluris mri — one self-contained HTML file</span>
+          <span class="scope scope-terminal">Terminal</span>
+        </div>
 <pre><span class="prompt">$</span> <span class="cmd">kluris mri</span>
 
 <span class="ok">MRI complete</span> — brain-mri.html
@@ -1063,48 +1105,39 @@ queries, clearer SQL in git diffs.</span>
 
 <span class="dim">Open it in any browser. Commit it, email it,
 drop it in Slack — it runs anywhere, no server.</span></pre>
-        </div>
-        <div class="text-text-dim text-sm leading-relaxed space-y-3">
-          <p>
-            A single self-contained HTML file — no server, no account, no external calls. Run it, open
-            it, explore the whole brain.
-          </p>
-          <p>
-            You get live counts (<strong>51 neurons · 491 synapses</strong>), a lobe breakdown,
-            fuzzy search across names, paths, lobes, and tags, and a click-to-inspect view for any
-            neuron — rendered markdown, related-neuron tabs, a full tree on the side.
-          </p>
-          <p>
-            One tool, three audiences: <strong>you</strong> (spot the orphans),
-            <strong>your team</strong> (shared mental model), <strong>new hires</strong>
-            (five-minute onboarding).
-          </p>
-        </div>
-      </div>
-
-      <div class="lg:col-span-3 grid grid-cols-1 gap-4">
-        <figure>
-          <div class="mri-frame">
-            <img src="mri-overview.png" alt="kluris mri overview — lobe panel with neuron counts, live stats, search box, and the whole brain as coloured clusters with dashed synapse lines" style="display:block; width:100%; height:auto;">
-          </div>
-          <figcaption class="text-text-muted text-xs mt-2 text-center leading-relaxed">
-            The overview — lobes as clusters, neurons as nodes, synapses as lines. Click a lobe to
-            filter, click a node to open it.
-          </figcaption>
-        </figure>
-        <figure>
-          <div class="mri-frame">
-            <img src="mri-inspector.png" alt="kluris mri inspector — a neuron's rendered markdown on the right, related-neuron tabs along the top, and the full brain tree in the left panel" style="display:block; width:100%; height:auto;">
-          </div>
-          <figcaption class="text-text-muted text-xs mt-2 text-center leading-relaxed">
-            The inspector — rendered markdown, related neurons as tabs, full brain tree on the left for
-            jumping around.
-          </figcaption>
-        </figure>
       </div>
     </div>
 
-    <p class="text-center text-text-dim text-sm italic mt-6 max-w-3xl mx-auto leading-relaxed">
+    <!-- Overview: full-width screenshot, explanation below -->
+    <figure class="max-w-5xl mx-auto mt-8">
+      <div class="mri-frame">
+        <img src="mri-overview.png" alt="kluris mri overview — lobe panel with neuron counts, live stats, search box, and the whole brain as coloured clusters with dashed synapse lines" style="display:block; width:100%; height:auto;">
+      </div>
+      <figcaption class="text-text-muted text-xs mt-3 text-center leading-relaxed">
+        <span class="text-purple-light font-semibold">The overview</span> — lobes as clusters, neurons as nodes, synapses as the lines between them.
+      </figcaption>
+      <p class="text-text-dim text-sm leading-relaxed mt-3 max-w-3xl mx-auto text-center">
+        Live counts (<strong>51 neurons · 491 synapses</strong>), a lobe breakdown you can collapse and
+        filter, and a fuzzy search across names, paths, lobes, and tags. Click a lobe to isolate it;
+        click a node to open it.
+      </p>
+    </figure>
+
+    <!-- Inspector: full-width screenshot, explanation below -->
+    <figure class="max-w-5xl mx-auto mt-8">
+      <div class="mri-frame">
+        <img src="mri-inspector.png" alt="kluris mri inspector — a neuron's rendered markdown on the right, related-neuron tabs along the top, and the full brain tree in the left panel" style="display:block; width:100%; height:auto;">
+      </div>
+      <figcaption class="text-text-muted text-xs mt-3 text-center leading-relaxed">
+        <span class="text-purple-light font-semibold">The inspector</span> — rendered markdown on the right, related neurons as tabs, the full brain tree on the left.
+      </figcaption>
+      <p class="text-text-dim text-sm leading-relaxed mt-3 max-w-3xl mx-auto text-center">
+        One click on any node opens its neuron, fully rendered, with the related-neuron tabs across the
+        top so you can walk a topic in seconds. This is what agents see — now visible to you.
+      </p>
+    </figure>
+
+    <p class="text-center text-text-dim text-sm italic mt-8 max-w-3xl mx-auto leading-relaxed">
       Lines between neurons are <strong>synapses</strong> — cross-links agents follow to load related
       context. A pre-digested brain means agents spend far fewer tokens orienting to a codebase than
       without one.
@@ -1186,11 +1219,141 @@ Tunnel (zero public ports).</span></pre>
 </section>
 
 <!-- ======================================================================= -->
-<!-- SLIDE 6 — BEAT 5 · GROW                                                  -->
+<!-- SLIDE 6 — BONUS · PAIR WITH SPECMINT                                     -->
 <!-- ======================================================================= -->
-<section class="slide" id="slide-6" data-title="Grow">
+<section class="slide mint-wash" id="slide-pair" data-title="Pair · Specmint">
   <div class="slide-inner">
-    <span class="slide-number"><span class="n">06</span> &nbsp;·&nbsp; Beat 5 · Grow</span>
+    <span class="slide-number" style="color:#6ee7b7;">
+      <span class="n" style="color:#34d399;">+</span> &nbsp;·&nbsp; Bonus · Pair with Specmint
+    </span>
+
+    <!-- Brand lockup: kluris × specmint -->
+    <div class="flex items-center justify-center gap-6 md:gap-10 mb-7">
+      <div class="relative">
+        <div class="absolute inset-0 rounded-full" style="background:rgba(167,139,250,0.25); filter:blur(44px);"></div>
+        <img src="logo.png" alt="Kluris" width="72" height="72" class="relative lockup-logo w-16 h-16 md:w-20 md:h-20 object-contain">
+      </div>
+      <span class="crossover-mark text-5xl md:text-7xl select-none">×</span>
+      <div class="relative">
+        <div class="absolute inset-0 rounded-full" style="background:rgba(52,211,153,0.25); filter:blur(44px);"></div>
+        <img src="specmint-logo.webp" alt="Specmint" width="72" height="72" class="relative lockup-logo mint w-16 h-16 md:w-20 md:h-20 object-contain">
+      </div>
+    </div>
+
+    <h1 class="slide-title text-center">
+      Plan with context you didn't have to <span class="text-mint">re-derive</span>.
+    </h1>
+    <p class="slide-lede mx-auto text-center">
+      Kluris is the brain. <a href="https://specmint.io" target="_blank" rel="noopener" class="text-mint underline decoration-mint/30 underline-offset-4">Specmint</a> turns a feature request into a persistent spec
+      built from deep research and iterative interviews. Pair them and the research phase starts half-done —
+      grounded in your code <em>and</em> the knowledge your team already agreed to.
+    </p>
+
+    <!-- 3 benefit cards -->
+    <div class="grid grid-cols-1 md:grid-cols-3 gap-4 mt-8">
+      <div class="card p-5" style="border-color: rgba(52,211,153,0.25);">
+        <p class="text-[0.7rem] uppercase tracking-[0.18em] font-semibold mb-2" style="color:#34d399;">1 · Shorter research</p>
+        <p class="text-text-dim text-sm leading-relaxed">
+          Forge reads your repo <em>and</em> consults the brain. Decisions the team already made don't get re-discovered from the code.
+        </p>
+      </div>
+      <div class="card p-5" style="border-color: rgba(52,211,153,0.25);">
+        <p class="text-[0.7rem] uppercase tracking-[0.18em] font-semibold mb-2" style="color:#34d399;">2 · Sharper interviews</p>
+        <p class="text-text-dim text-sm leading-relaxed">
+          Phase 2 stops asking what the brain already knows. Questions get surgical — the non-obvious trade-offs only you can decide.
+        </p>
+      </div>
+      <div class="card p-5" style="border-color: rgba(52,211,153,0.25);">
+        <p class="text-[0.7rem] uppercase tracking-[0.18em] font-semibold mb-2" style="color:#34d399;">3 · Traceable decisions</p>
+        <p class="text-text-dim text-sm leading-relaxed">
+          Every spec decision references a neuron. Six months later you know <em>why</em> — not just <em>what</em> — the code looks the way it does.
+        </p>
+      </div>
+    </div>
+
+    <!-- Terminal: /specmint-core:forge workflow, grounded in brain -->
+    <div class="max-w-4xl mx-auto w-full mt-8">
+      <div class="terminal glow-mint-sm">
+        <div class="terminal-header">
+          <span class="terminal-dot" style="background:#34d399"></span>
+          <span class="terminal-dot" style="background:#a78bfa; opacity:0.6"></span>
+          <span>/specmint-core:forge — spec grounded in code + brain</span>
+          <span class="scope-agent-mint">In your AI agent · in a project</span>
+        </div>
+<pre><span class="prompt-agent">&gt;</span> <span class="cmd">/specmint-core:forge add OAuth sign-in with GitHub</span>
+
+<span class="meta">Phase 1a · Codebase research</span>
+  <span class="dim">●</span> Reading <span class="str">src/auth/</span> <span class="dim">(14 files)</span>
+  <span class="dim">●</span> Reading <span class="str">config/GlobalExceptionHandler.kt</span>
+
+<span class="meta">Phase 1b · Brain research</span>   <span class="warn">← the kluris bit</span>
+  <span class="dim">●</span> <span class="cmd">/kluris what do we know about auth</span>
+    <span class="ok">→</span> knowledge/auth-decisions.md
+    <span class="ok">→</span> projects/btb-core/auth-flow.md
+    <span class="ok">→</span> knowledge/jwt-rotation.md
+
+<span class="meta">Phase 2 · Interview</span>
+  <span class="cmd">Q1.</span> Brain says you chose Keycloak for cost.
+       Should GitHub OAuth live behind Keycloak
+       as an IdP, or alongside it?
+  <span class="cmd">Q2.</span> Auth-flow neuron says refresh-at-80% TTL.
+       Same cadence for the GitHub session?
+
+<span class="meta">Phase 3 · Spec written</span>
+  <span class="ok">✓</span> .specs/github-oauth-signin/SPEC.md
+  <span class="ok">✓</span> 3 phases · 14 tasks · 4 decisions logged
+  <span class="ok">✓</span> Every decision references a neuron</pre>
+      </div>
+    </div>
+
+    <!-- Install: two flavors side-by-side -->
+    <div class="max-w-5xl mx-auto w-full mt-8">
+      <p class="text-center text-xs uppercase tracking-[0.18em] text-text-muted font-medium mb-4">Install Specmint</p>
+      <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+        <!-- Core -->
+        <div class="card p-5" style="border-color: rgba(52,211,153,0.25);">
+          <div class="flex items-baseline justify-between mb-2">
+            <p class="font-serif text-lg" style="color:#34d399;">specmint-core</p>
+            <span class="text-[0.6rem] uppercase tracking-[0.14em] text-text-muted font-semibold">Spec-first</span>
+          </div>
+          <p class="text-text-dim text-xs leading-relaxed mb-3">Research · Interview · Spec · Implement. The workflow shown above.</p>
+          <div class="flex flex-col gap-2 text-[0.72rem]">
+            <code class="font-mono px-3 py-2 rounded-lg text-center" style="border:1px solid rgba(52,211,153,0.30); background:rgba(52,211,153,0.05); color:#34d399;">/plugin marketplace add ngvoicu/specmint-core</code>
+            <code class="font-mono px-3 py-2 rounded-lg text-center" style="border:1px solid rgba(52,211,153,0.30); background:rgba(52,211,153,0.05); color:#34d399;">npx skills add ngvoicu/specmint-core</code>
+          </div>
+        </div>
+        <!-- TDD -->
+        <div class="card p-5" style="border-color: rgba(52,211,153,0.25);">
+          <div class="flex items-baseline justify-between mb-2">
+            <p class="font-serif text-lg" style="color:#34d399;">specmint-tdd</p>
+            <span class="text-[0.6rem] uppercase tracking-[0.14em] text-text-muted font-semibold">Red · Green · Refactor</span>
+          </div>
+          <p class="text-text-dim text-xs leading-relaxed mb-3">Same forge flow, with strict TDD — a failing test before any implementation.</p>
+          <div class="flex flex-col gap-2 text-[0.72rem]">
+            <code class="font-mono px-3 py-2 rounded-lg text-center" style="border:1px solid rgba(52,211,153,0.30); background:rgba(52,211,153,0.05); color:#34d399;">/plugin marketplace add ngvoicu/specmint-tdd</code>
+            <code class="font-mono px-3 py-2 rounded-lg text-center" style="border:1px solid rgba(52,211,153,0.30); background:rgba(52,211,153,0.05); color:#34d399;">npx skills add ngvoicu/specmint-tdd</code>
+          </div>
+        </div>
+      </div>
+      <p class="text-center text-text-dim text-xs mt-4">
+        Both work with Claude Code, Codex, Cursor, Windsurf, Cline, Gemini CLI, and more.
+      </p>
+      <div class="text-center mt-5">
+        <a href="https://specmint.io" target="_blank" rel="noopener" class="inline-flex items-center gap-2 text-mint hover:text-mint-light text-sm font-medium">
+          <span>Visit specmint.io</span>
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
+        </a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ======================================================================= -->
+<!-- SLIDE 7 — BEAT 5 · GROW                                                  -->
+<!-- ======================================================================= -->
+<section class="slide" id="slide-7" data-title="Grow">
+  <div class="slide-inner">
+    <span class="slide-number"><span class="n">07</span> &nbsp;·&nbsp; Beat 5 · Grow</span>
     <h1 class="slide-title">
       Your brain grows <span class="gradient-text">with your team.</span>
     </h1>
@@ -1258,9 +1421,9 @@ annual. Access is restricted to the security team.</span>
 <!-- ======================================================================= -->
 <!-- SLIDE 7 — BEAT 6 · SELF-IMPROVE                                          -->
 <!-- ======================================================================= -->
-<section class="slide grid-bg" id="slide-7" data-title="Self-improve">
+<section class="slide grid-bg" id="slide-8" data-title="Self-improve">
   <div class="slide-inner">
-    <span class="slide-number"><span class="n">07</span> &nbsp;·&nbsp; Beat 6 · Self-improve</span>
+    <span class="slide-number"><span class="n">08</span> &nbsp;·&nbsp; Beat 6 · Self-improve</span>
     <h1 class="slide-title">
       Let the brain <span class="gradient-text">review itself.</span>
     </h1>
@@ -1325,9 +1488,9 @@ annual. Access is restricted to the security team.</span>
 <!-- ======================================================================= -->
 <!-- SLIDE 8 — RECAP & CTA                                                    -->
 <!-- ======================================================================= -->
-<section class="slide" id="slide-8" data-title="Recap">
+<section class="slide" id="slide-9" data-title="Recap">
   <div class="slide-inner">
-    <span class="slide-number"><span class="n">08</span> &nbsp;·&nbsp; The shortest recap you'll read</span>
+    <span class="slide-number"><span class="n">09</span> &nbsp;·&nbsp; The shortest recap you'll read</span>
     <h1 class="slide-title">
       Your AI agents, <span class="gradient-text">finally on your team.</span>
     </h1>
@@ -1401,7 +1564,7 @@ annual. Access is restricted to the security team.</span>
         <a href="https://github.com/ngvoicu/kluris-cli" style="color:#a78bfa; text-decoration:none;">source</a>
       </p>
       <p class="text-text-muted text-xs tracking-wide">
-        Use <span class="kbd">←</span> <span class="kbd">→</span> or <span class="kbd">Space</span> to navigate · <span class="kbd">1</span>–<span class="kbd">8</span> to jump.
+        Use <span class="kbd">←</span> <span class="kbd">→</span> or <span class="kbd">Space</span> to navigate · <span class="kbd">1</span>–<span class="kbd">9</span> to jump.
       </p>
     </div>
   </div>
