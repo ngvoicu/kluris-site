@@ -6,7 +6,7 @@
 
 <!-- Primary Meta -->
 <title>Kluris — The SME your team never had | AI agent knowledge base</title>
-<meta name="description" content="Kluris turns your AI agents into a subject matter expert that never sleeps and never quits. Customizable, human-curated, git-backed brains shared across Claude Code, Cursor, Windsurf, GitHub Copilot, Codex, Gemini CLI, and every agent on your team. Open source Python CLI, installable via pipx.">
+<meta name="description" content="Kluris turns your AI agents into team subject matter experts. Shared, human-curated, git-backed brains — works with Claude Code, Cursor, Copilot, and every agent on your team. Open-source Python CLI.">
 <meta name="keywords" content="kluris, kluris.io, AI agents, SME, subject matter expert, knowledge base, AI knowledge management, Claude Code, Cursor, Windsurf, GitHub Copilot, Codex, Gemini CLI, Kilo Code, Junie, brain, neurons, lobes, synapses, git-backed knowledge, pipx, python CLI, AI pair programming, agentic workflows, coding assistant memory, team knowledge sharing, token reduction, context window">
 <meta name="author" content="Gabriel Voicu">
 <meta name="robots" content="index, follow, max-image-preview:large, max-snippet:-1">
@@ -1516,6 +1516,7 @@ Multiple brains registered. Pick one:
 (function() {
   const canvas = document.getElementById('brain-canvas');
   if (!canvas) return;
+  if (window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
   const ctx = canvas.getContext('2d');
   const dpr = window.devicePixelRatio || 1;
 
