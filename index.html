@@ -1105,7 +1105,7 @@ Tunnel (zero public ports).</span></pre>
 
     <!-- Install: two flavors side-by-side -->
     <div class="max-w-5xl mx-auto mt-10">
-      <p class="text-center text-xs uppercase tracking-[0.18em] text-text-muted font-medium mb-5">Install Specmint</p>
+      <p class="text-center text-xs uppercase tracking-[0.18em] text-text-muted font-medium mb-5">Enable Specmint Companions</p>
       <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
         <!-- Core -->
         <div class="card rounded-2xl p-6 border border-mint/25">
@@ -1117,8 +1117,8 @@ Tunnel (zero public ports).</span></pre>
             Research · Interview · Spec · Implement. The workflow shown above.
           </p>
           <div class="flex flex-col gap-2 text-xs">
-            <code class="font-mono px-3 py-2.5 rounded-lg border border-mint/30 bg-mint/5 text-mint">/plugin marketplace add ngvoicu/specmint-core</code>
-            <code class="font-mono px-3 py-2.5 rounded-lg border border-mint/30 bg-mint/5 text-mint">npx skills add ngvoicu/specmint-core</code>
+            <code class="font-mono px-3 py-2.5 rounded-lg border border-mint/30 bg-mint/5 text-mint">kluris companion add specmint-core</code>
+            <code class="font-mono px-3 py-2.5 rounded-lg border border-mint/30 bg-mint/5 text-mint">bundled with kluris</code>
           </div>
         </div>
         <!-- TDD -->
@@ -1131,13 +1131,13 @@ Tunnel (zero public ports).</span></pre>
             Same forge flow, with strict TDD — a failing test before any implementation.
           </p>
           <div class="flex flex-col gap-2 text-xs">
-            <code class="font-mono px-3 py-2.5 rounded-lg border border-mint/30 bg-mint/5 text-mint">/plugin marketplace add ngvoicu/specmint-tdd</code>
-            <code class="font-mono px-3 py-2.5 rounded-lg border border-mint/30 bg-mint/5 text-mint">npx skills add ngvoicu/specmint-tdd</code>
+            <code class="font-mono px-3 py-2.5 rounded-lg border border-mint/30 bg-mint/5 text-mint">kluris companion add specmint-tdd</code>
+            <code class="font-mono px-3 py-2.5 rounded-lg border border-mint/30 bg-mint/5 text-mint">bundled with kluris</code>
           </div>
         </div>
       </div>
       <p class="text-center text-text-dim text-xs mt-5">
-        Both work with Claude Code, Codex, Cursor, Windsurf, Cline, Gemini CLI, and more.
+        Enable companions per brain; Kluris copies only the bundled SKILL.md and references it from the generated /kluris skill.
       </p>
     </div>
 
@@ -1336,22 +1336,20 @@ to the security team.</span>
           <tr><td>status</td><td>Show brain tree and recent changes</td></tr>
           <tr><td>search &lt;query&gt;</td><td>Ranked search across neurons, glossary, brain.md</td></tr>
           <tr><td>wake-up</td><td>Compact snapshot for agent bootstrap</td></tr>
-          <tr><td>neuron &lt;file&gt;</td><td>Create a neuron (<span class="font-mono text-xs">--lobe</span>, <span class="font-mono text-xs">--template</span>)</td></tr>
-          <tr><td>lobe &lt;name&gt;</td><td>Create a lobe (<span class="font-mono text-xs">--parent</span> for nesting)</td></tr>
+          <tr><td>companion add</td><td>Enable an embedded companion for a brain</td></tr>
+          <tr><td>companion remove</td><td>Remove a companion opt-in</td></tr>
           <tr><td>dream</td><td>Regenerate maps, fix links, validate</td></tr>
           <tr><td>branch [name]</td><td>Show, switch, or create a git branch (<span class="font-mono text-xs">--list</span>)</td></tr>
           <tr><td>push</td><td>Commit and push to the current branch</td></tr>
           <tr><td>pull</td><td>Pull remote changes for the current branch</td></tr>
           <tr><td>mri</td><td>Generate interactive HTML viz</td></tr>
           <tr><td>templates</td><td>List neuron templates</td></tr>
-          <tr><td>install-skills</td><td>Install /kluris skill for agents</td></tr>
-          <tr><td>uninstall-skills</td><td>Remove /kluris skill</td></tr>
           <tr><td>remove &lt;name&gt;</td><td>Unregister a brain (keeps files)</td></tr>
           <tr><td>doctor</td><td>Check prerequisites</td></tr>
           <tr><td>help</td><td>Show command help</td></tr>
         </table>
         <p class="mt-5 text-xs text-text-muted italic">All CLI commands support <span class="font-mono text-purple-light">--json</span> for machine-readable output.</p>
-        <p class="mt-2 text-xs text-text-muted italic">Most users create lobes and neurons by asking their AI agent — these commands are what the agent runs under the hood.</p>
+        <p class="mt-2 text-xs text-text-muted italic">Most users create and organize lobes and neurons by asking their AI agent, then run <span class="font-mono text-purple-light">dream</span> to refresh maps and links.</p>
       </div>
 
       <!-- Agent patterns -->
