@@ -872,6 +872,7 @@ queries, clearer SQL in git diffs.</span>
               <li class="flex items-start gap-3"><span class="text-purple mt-0.5">→</span>Fills in context, decision, consequences</li>
               <li class="flex items-start gap-3"><span class="text-purple mt-0.5">→</span>You edit or approve before anything lands</li>
             </ul>
+            <p class="mt-5 text-xs text-text-muted italic">End of a long pairing session? Say <span class="font-mono text-purple-light">/kluris remember from this session</span> and the agent sweeps the chat, proposing a neuron for every decision worth keeping — one at a time, same approve-or-edit flow.</p>
           </div>
         </div>
       </div>
@@ -1362,10 +1363,13 @@ to the security team.</span>
         <table class="cmd-table">
           <tr><td>/kluris learn &lt;topic&gt;</td><td>Agent analyzes code, proposes neurons</td></tr>
           <tr><td>/kluris remember &lt;fact&gt;</td><td>Quick-capture a decision as a neuron</td></tr>
+          <tr><td>/kluris remember from this session</td><td>Sweep the current chat, propose neurons for everything worth keeping</td></tr>
           <tr><td>/kluris add a &lt;name&gt; lobe</td><td>Propose a new lobe, approve before it lands</td></tr>
           <tr><td>/kluris add a sublobe for ...</td><td>Nest a lobe under an existing one</td></tr>
           <tr><td>/kluris search &lt;term&gt;</td><td>Search the brain for a topic</td></tr>
           <tr><td>/kluris what do we know about ...</td><td>Ask the brain a question</td></tr>
+          <tr><td>/kluris use brain knowledge and codebase and let's write a spec for ...</td><td>Ground a spec in both the brain and the live code</td></tr>
+          <tr><td>/kluris use brain knowledge and codebase and let's implement ...</td><td>Implement a feature grounded in both the brain and the live code</td></tr>
           <tr><td>/kluris review this brain</td><td>Audit the brain, propose more synapses</td></tr>
           <tr><td>/kluris create a decision</td><td>Create a decision record neuron</td></tr>
           <tr><td>/kluris create an incident</td><td>Create an incident report neuron</td></tr>
