@@ -464,6 +464,7 @@
   /* Table for commands */
   .cmd-table {
     width: 100%;
+    table-layout: fixed;
     font-family: 'JetBrains Mono', monospace;
     font-size: 0.82rem;
     border-collapse: collapse;
@@ -472,12 +473,14 @@
     padding: 0.55rem 0.6rem;
     border-bottom: 1px solid rgba(255,255,255,0.04);
     vertical-align: top;
+    overflow-wrap: anywhere;
+    word-break: break-word;
   }
   .cmd-table td:first-child {
     color: #a78bfa;
     font-weight: 600;
-    white-space: nowrap;
     padding-right: 1.2rem;
+    width: 55%;
   }
   .cmd-table td:last-child {
     color: #8a92a6;
@@ -655,7 +658,7 @@
       <span class="hidden sm:inline text-text-muted">·</span>
       <a href="walkthrough.html" class="inline-flex items-center gap-2 text-purple-light hover:text-pink transition-colors group/link2">
         <span class="inline-block w-1.5 h-1.5 rounded-full bg-cyan-400" style="background:#22d3ee;"></span>
-        Or see a <span class="underline decoration-purple/30 underline-offset-4 group-hover/link2:decoration-pink">real walkthrough</span> — 13 screenshots
+        Or see a <span class="underline decoration-purple/30 underline-offset-4 group-hover/link2:decoration-pink">real walkthrough</span>
         <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" class="group-hover/link2:translate-x-0.5 transition-transform"><path d="M5 12h14M13 5l7 7-7 7"/></svg>
       </a>
     </div>
@@ -741,18 +744,23 @@
 <pre><span class="prompt">$</span> <span class="cmd">kluris create</span>
 
 <span class="meta">Brain name:</span> <span class="str">acme-brain</span>
-<span class="meta">Brain type:</span>
-  <span class="dim">[1]</span> project-group  <span class="dim">[2]</span> personal
-  <span class="dim">[3]</span> product        <span class="dim">[4]</span> research
-  <span class="dim">[5]</span> blank
-<span class="meta">Choice:</span> <span class="str">1</span>
+<span class="meta">What does this brain cover?</span> <span class="str">Shared brain for ACME projects</span>
 <span class="meta">Location:</span> <span class="str">~/Projects/acme-brain</span>
-<span class="meta">Initialize git?</span> <span class="str">y</span>
+<span class="meta">Brain type</span> <span class="dim">[project-group, personal, product, research, blank]:</span> <span class="str">project-group</span>
+<span class="meta">Git setup</span> <span class="dim">[1=local, 2=with remote, 3=no git]:</span> <span class="str">1</span>
+<span class="meta">Default branch:</span> <span class="str">main</span>
 
-  <span class="ok">✓</span> Created acme-brain
+<span class="meta">Install specmint companions for this brain?</span>
+  <span class="dim">[1]</span> specmint-core  <span class="dim">(spec-driven-development)</span>
+  <span class="dim">[2]</span> specmint-tdd   <span class="dim">(spec-driven-development + TDD focus)</span>
+  <span class="dim">[3]</span> both           <span class="dim">[4]</span> skip
+<span class="meta">Choice:</span> <span class="str">3</span>
+
+  <span class="ok">✓</span> Created acme-brain <span class="dim">(project-group · 3 lobes)</span>
   <span class="ok">✓</span> Git initialized on main
   <span class="ok">✓</span> Registered acme-brain
   <span class="ok">✓</span> Installed /kluris skill for 8 agents
+  <span class="ok">✓</span> Bundled specmint-core + specmint-tdd companions
 
 <span class="dim">Next: open any project in your AI agent and</span>
 <span class="dim">      type /kluris learn this service</span></pre>
@@ -1219,6 +1227,16 @@ to the security team.</span>
       Lobes are folders, neurons are markdown files inside them — but you don't create them by hand. Ask the agent. It proposes the structure, shows you the diff, and writes it only after you approve. Nesting works the same way: <em>"add a sublobe for the <span class="font-mono text-purple-light text-sm">endpoints</span> of <span class="font-mono text-purple-light text-sm">acme-api</span>"</em> and the agent puts it in the right place.
     </p>
 
+    <!-- After-shipped-feature writeback callout -->
+    <div class="max-w-3xl mx-auto mt-10 p-5 rounded-2xl flex items-start gap-4" style="background: rgba(52,211,153,0.04); border: 1px solid rgba(52,211,153,0.30);">
+      <div class="flex-shrink-0 w-9 h-9 rounded-full flex items-center justify-center" style="background:rgba(52,211,153,0.12); border:1px solid rgba(52,211,153,0.40);">
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#34d399" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 12c0 4.97-4.03 9-9 9s-9-4.03-9-9 4.03-9 9-9c2.39 0 4.68.93 6.36 2.64L21 8"/><path d="M21 3v5h-5"/><path d="M9 12l2 2 4-4"/></svg>
+      </div>
+      <p class="text-text-dim text-sm leading-relaxed">
+        <span class="text-mint-light font-medium">The loop closes.</span> After every shipped feature — bug fix, deploy, env-var change — ask <code class="font-mono text-mint-light text-sm">/kluris remember what we worked on</code> and the agent drafts new neurons from the session. Approve, edit, reject. The brain that taught you today gets a little smarter for tomorrow's teammate.
+      </p>
+    </div>
+
     <p class="mt-10 text-center text-xs text-text-muted leading-relaxed">
       Run <span class="font-mono text-purple-light">kluris dream</span> to regenerate maps and validate links after structural changes. Run <span class="font-mono text-purple-light">kluris push</span> to commit and share with your team. Have more than one brain? Each installs as <span class="font-mono text-purple-light">/kluris-&lt;name&gt;</span> and everything above works the same — see <a href="#more-than-one-brain" class="text-purple-light underline decoration-purple/30 underline-offset-2 hover:decoration-pink">the appendix</a>.
     </p>
@@ -1332,9 +1350,9 @@ to the security team.</span>
       <!-- CLI commands -->
       <div class="card rounded-2xl p-8">
         <div class="flex flex-wrap items-center gap-3 mb-2 pb-4 border-b border-white/5">
-          <span class="w-2 h-2 rounded-full bg-purple pulse-soft"></span>
-          <h3 class="text-sm uppercase tracking-[0.15em] text-purple font-semibold">In your terminal &nbsp;·&nbsp; <span class="font-mono text-text">$ kluris *</span></h3>
-          <span class="scope scope-terminal" style="margin-left:0">Terminal</span>
+          <span class="w-2 h-2 rounded-full bg-purple pulse-soft flex-shrink-0"></span>
+          <h3 class="text-sm uppercase tracking-[0.15em] text-purple font-semibold min-w-0 break-words">In your terminal &nbsp;·&nbsp; <span class="font-mono text-text">$ kluris *</span></h3>
+          <span class="scope scope-terminal flex-shrink-0" style="margin-left:0">Terminal</span>
         </div>
         <p class="mb-5 text-xs text-text-muted italic">Run these in bash, zsh, fish, or PowerShell.</p>
         <table class="cmd-table">
@@ -1363,9 +1381,9 @@ to the security team.</span>
       <!-- Agent patterns -->
       <div class="card rounded-2xl p-8">
         <div class="flex flex-wrap items-center gap-3 mb-2 pb-4 border-b border-white/5">
-          <span class="w-2 h-2 rounded-full bg-pink pulse-soft"></span>
-          <h3 class="text-sm uppercase tracking-[0.15em] text-pink font-semibold">Inside your AI agent &nbsp;·&nbsp; <span class="font-mono text-text">&gt; /kluris ...</span></h3>
-          <span class="scope scope-agent" style="margin-left:0">Agent</span>
+          <span class="w-2 h-2 rounded-full bg-pink pulse-soft flex-shrink-0"></span>
+          <h3 class="text-sm uppercase tracking-[0.15em] text-pink font-semibold min-w-0 break-words">Inside your AI agent &nbsp;·&nbsp; <span class="font-mono text-text">&gt; /kluris ...</span></h3>
+          <span class="scope scope-agent flex-shrink-0" style="margin-left:0">Agent</span>
         </div>
         <p class="mb-3 text-xs text-pink/80 font-medium not-italic">There's only one slash command — <span class="font-mono text-purple-light">/kluris</span>. Everything below is an example of what you can say after it.</p>
         <p class="mb-5 text-xs text-text-muted italic">Type these inside Claude Code, Cursor, Windsurf, Codex, Copilot, Gemini CLI, Kilo, or Junie — with a project open, so the agent can read your code. With one brain registered the slash command is <span class="font-mono text-purple-light">/kluris</span>; with multiple brains each installs as <span class="font-mono text-purple-light">/kluris-&lt;name&gt;</span>. Examples below use <span class="font-mono text-purple-light">/kluris</span> for clarity.</p>

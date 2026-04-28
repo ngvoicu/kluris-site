@@ -934,18 +934,23 @@
 <pre><span class="prompt">$</span> <span class="cmd">kluris create</span>
 
 <span class="meta">Brain name:</span> <span class="str">acme-brain</span>
-<span class="meta">Brain type:</span>
-  <span class="dim">[1]</span> project-group  <span class="dim">[2]</span> personal
-  <span class="dim">[3]</span> product        <span class="dim">[4]</span> research
-  <span class="dim">[5]</span> blank
-<span class="meta">Choice:</span> <span class="str">1</span>
+<span class="meta">What does this brain cover?</span> <span class="str">Shared brain for ACME projects</span>
 <span class="meta">Location:</span> <span class="str">~/Projects/acme-brain</span>
-<span class="meta">Initialize git?</span> <span class="str">y</span>
+<span class="meta">Brain type</span> <span class="dim">[project-group, personal, product, research, blank]:</span> <span class="str">project-group</span>
+<span class="meta">Git setup</span> <span class="dim">[1=local, 2=with remote, 3=no git]:</span> <span class="str">1</span>
+<span class="meta">Default branch:</span> <span class="str">main</span>
 
-  <span class="ok">✓</span> Created acme-brain
+<span class="meta">Install specmint companions for this brain?</span>
+  <span class="dim">[1]</span> specmint-core  <span class="dim">(spec-driven-development)</span>
+  <span class="dim">[2]</span> specmint-tdd   <span class="dim">(spec-driven-development + TDD focus)</span>
+  <span class="dim">[3]</span> both           <span class="dim">[4]</span> skip
+<span class="meta">Choice:</span> <span class="str">3</span>
+
+  <span class="ok">✓</span> Created acme-brain <span class="dim">(project-group · 3 lobes)</span>
   <span class="ok">✓</span> Git initialized on main
   <span class="ok">✓</span> Registered acme-brain
   <span class="ok">✓</span> Installed /kluris skill for 8 agents
+  <span class="ok">✓</span> Bundled specmint-core + specmint-tdd companions
 
 <span class="dim">Next: open any project in your AI agent and</span>
 <span class="dim">      type /kluris learn this service</span></pre>
@@ -1321,6 +1326,19 @@ Tunnel (zero public ports).</span></pre>
     <!-- Install: two flavors side-by-side -->
     <div class="max-w-5xl mx-auto w-full mt-8">
       <p class="text-center text-xs uppercase tracking-[0.18em] text-text-muted font-medium mb-4">Enable Specmint Companions</p>
+
+      <!-- Easiest path: enable during kluris create -->
+      <div class="card p-5 mb-4" style="border-color: rgba(52,211,153,0.40); background: rgba(52,211,153,0.04);">
+        <div class="flex items-start gap-3">
+          <span class="text-[0.6rem] uppercase tracking-[0.14em] font-bold px-2 py-1 rounded flex-shrink-0" style="background:rgba(52,211,153,0.15); color:#34d399; border:1px solid rgba(52,211,153,0.40);">Easiest</span>
+          <div class="flex-1">
+            <p class="text-mint-light font-medium text-sm leading-snug mb-1">Enable during <code class="text-mint">kluris create</code> — they ship bundled.</p>
+            <p class="text-text-dim text-xs leading-relaxed">When the wizard asks <em>"Install specmint companions for this brain?"</em>, answer <code class="text-mint" style="background:rgba(52,211,153,0.08);padding:0 0.3rem;border-radius:3px;">[3] both</code> and the companions are live the moment your brain exists.</p>
+          </div>
+        </div>
+      </div>
+
+      <p class="text-center text-text-muted text-[0.7rem] uppercase tracking-[0.14em] font-medium mb-3">Or add them later, per brain</p>
       <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
         <!-- Core -->
         <div class="card p-5" style="border-color: rgba(52,211,153,0.25);">
@@ -1329,10 +1347,7 @@ Tunnel (zero public ports).</span></pre>
             <span class="text-[0.6rem] uppercase tracking-[0.14em] text-text-muted font-semibold">Spec-first</span>
           </div>
           <p class="text-text-dim text-xs leading-relaxed mb-3">Research · Interview · Spec · Implement. The workflow shown above.</p>
-          <div class="flex flex-col gap-2 text-[0.72rem]">
-            <code class="font-mono px-3 py-2 rounded-lg text-center" style="border:1px solid rgba(52,211,153,0.30); background:rgba(52,211,153,0.05); color:#34d399;">kluris companion add specmint-core</code>
-            <code class="font-mono px-3 py-2 rounded-lg text-center" style="border:1px solid rgba(52,211,153,0.30); background:rgba(52,211,153,0.05); color:#34d399;">bundled with kluris</code>
-          </div>
+          <code class="font-mono px-3 py-2 rounded-lg text-center text-[0.72rem] block" style="border:1px solid rgba(52,211,153,0.30); background:rgba(52,211,153,0.05); color:#34d399;">kluris companion add specmint-core</code>
         </div>
         <!-- TDD -->
         <div class="card p-5" style="border-color: rgba(52,211,153,0.25);">
@@ -1341,14 +1356,11 @@ Tunnel (zero public ports).</span></pre>
             <span class="text-[0.6rem] uppercase tracking-[0.14em] text-text-muted font-semibold">Red · Green · Refactor</span>
           </div>
           <p class="text-text-dim text-xs leading-relaxed mb-3">Same forge flow, with strict TDD — a failing test before any implementation.</p>
-          <div class="flex flex-col gap-2 text-[0.72rem]">
-            <code class="font-mono px-3 py-2 rounded-lg text-center" style="border:1px solid rgba(52,211,153,0.30); background:rgba(52,211,153,0.05); color:#34d399;">kluris companion add specmint-tdd</code>
-            <code class="font-mono px-3 py-2 rounded-lg text-center" style="border:1px solid rgba(52,211,153,0.30); background:rgba(52,211,153,0.05); color:#34d399;">bundled with kluris</code>
-          </div>
+          <code class="font-mono px-3 py-2 rounded-lg text-center text-[0.72rem] block" style="border:1px solid rgba(52,211,153,0.30); background:rgba(52,211,153,0.05); color:#34d399;">kluris companion add specmint-tdd</code>
         </div>
       </div>
       <p class="text-center text-text-dim text-xs mt-4">
-        Enable companions per brain; Kluris copies only the bundled SKILL.md and references it from the generated /kluris skill.
+        Companions are bundled with kluris — no separate plugin install. Per brain: kluris copies only the SKILL.md and references it from the generated /kluris skill.
       </p>
       <div class="text-center mt-5">
         <a href="https://specmint.io" target="_blank" rel="noopener" class="inline-flex items-center gap-2 text-mint hover:text-mint-light text-sm font-medium">
