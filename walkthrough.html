@@ -324,7 +324,7 @@
   <div class="relative max-w-5xl mx-auto text-center">
     <span class="chip mb-6">
       <span class="inline-block w-1.5 h-1.5 rounded-full bg-purple pulse-soft"></span>
-      A practical walkthrough · 13 screenshots · ~4 minutes to read
+      A practical walkthrough · 22 screenshots · ~7 minutes to read
     </span>
 
     <h1 class="font-serif text-4xl sm:text-5xl md:text-6xl lg:text-7xl leading-[0.98] tracking-tight max-w-4xl mx-auto mt-6 mb-6">
@@ -405,7 +405,7 @@
       <div class="shot-frame">
         <img src="walkthrough/01.png" alt="Terminal showing kluris create asking interactive questions and creating consensflow-brain with both specmint companions enabled." loading="lazy" />
       </div>
-      <figcaption class="shot-caption">01 · <span class="text-purple-light">kluris create</span> — interactive setup of <span class="text-text">consensflow-brain</span></figcaption>
+      <figcaption class="shot-caption">01 · <span class="text-purple-light">kluris create</span> — name, type, git setup, and the specmint companion picker</figcaption>
     </figure>
 
     <div class="phase-rule"></div>
@@ -438,28 +438,28 @@
         <div class="shot-frame pink">
           <img src="walkthrough/02.png" alt="AI agent surveying the consensflow-cc project, capturing it under projects/consensflow-cc and listing what it found." loading="lazy" />
         </div>
-        <figcaption class="shot-caption">02 · The agent reads the repo and lays out a plan-match capture</figcaption>
+        <figcaption class="shot-caption">02 · The agent reads the repo and proposes a capture plan — files surveyed, packages mapped, what's worth keeping</figcaption>
       </figure>
 
       <figure class="reveal">
         <div class="shot-frame pink">
           <img src="walkthrough/03.png" alt="Agent presenting candidate neurons grouped by area: cross-cutting decisions, distribution, extensions — asking before writing." loading="lazy" />
         </div>
-        <figcaption class="shot-caption">03 · Candidate neurons grouped by lobe, before anything is written</figcaption>
+        <figcaption class="shot-caption">03 · Candidate neurons grouped by section — decisions, distribution, extensions — before anything is written</figcaption>
       </figure>
 
       <figure class="reveal">
         <div class="shot-frame pink">
           <img src="walkthrough/04.png" alt="Single neuron shown with frontmatter and body, including an explicit security review and an approve / reject prompt." loading="lazy" />
         </div>
-        <figcaption class="shot-caption">04 · Each neuron — frontmatter, body, security review — appears before it lands</figcaption>
+        <figcaption class="shot-caption">04 · Neuron 1 of 5 shown in full — frontmatter, body, security review — approve, edit, or reject before it lands</figcaption>
       </figure>
 
       <figure class="reveal">
         <div class="shot-frame pink">
           <img src="walkthrough/05.png" alt="Agent confirming a neuron has been written and showing the next file format to be approved." loading="lazy" />
         </div>
-        <figcaption class="shot-caption">05 · Approve · Reject · Edit — the brain only grows with your sign-off</figcaption>
+        <figcaption class="shot-caption">05 · Neuron 2 of 5 — same review flow, repeated for every proposed neuron until the queue is empty</figcaption>
       </figure>
 
     </div>
@@ -494,28 +494,28 @@
         <div class="shot-frame mint">
           <img src="walkthrough/06.png" alt="Terminal: kluris mri picks the consensflow-brain and prints a clickable file:// URL to brain-mri.html with 23 nodes and 167 edges." loading="lazy" />
         </div>
-        <figcaption class="shot-caption">06 · <span class="text-mint-light">kluris mri</span> renders a self-contained HTML you can open offline</figcaption>
+        <figcaption class="shot-caption">06 · <span class="text-mint-light">kluris mri</span> picks a brain and prints a clickable file:// URL — 23 nodes, 167 edges, opens offline</figcaption>
       </figure>
 
       <figure class="reveal">
         <div class="shot-frame mint">
           <img src="walkthrough/07.png" alt="MRI overview: lobes (infrastructure, knowledge, projects) on the left, the full graph in the middle, an inspector with a selected neuron's metadata on the right." loading="lazy" />
         </div>
-        <figcaption class="shot-caption">07 · The whole brain in one screen — lobes, neurons, synapses, inspector</figcaption>
+        <figcaption class="shot-caption">07 · The whole brain in one screen — left rail of lobes, center force-graph of neurons and synapses, right inspector with the selected neuron's metadata</figcaption>
       </figure>
 
       <figure class="reveal">
         <div class="shot-frame mint">
           <img src="walkthrough/08.png" alt="MRI architecture detail page showing the high-level diagram of the consensflow-cc project, with related neurons and synapses linked." loading="lazy" />
         </div>
-        <figcaption class="shot-caption">08 · Drill into a neuron — body, synapses, related lobes, shells out from there</figcaption>
+        <figcaption class="shot-caption">08 · Click the Architecture neuron — its full body opens with breadcrumbs, related lobes, and the embedded high-level ASCII diagram</figcaption>
       </figure>
 
       <figure class="reveal">
         <div class="shot-frame mint">
           <img src="walkthrough/09.png" alt="MRI prompt-templates view showing the actual templates used by the consensflow agents — tiny, deliberate, populated at runtime." loading="lazy" />
         </div>
-        <figcaption class="shot-caption">09 · Even prompt templates and slash commands are first-class neurons</figcaption>
+        <figcaption class="shot-caption">09 · Prompt templates are first-class neurons too — the actual templates that drive the agents, viewable side-by-side with code</figcaption>
       </figure>
 
     </div>
@@ -593,14 +593,14 @@
         <div class="shot-frame amber">
           <img src="walkthrough/10.png" alt="Agent running the review pass: reports gaps, missing links, neurons without backing source files, and proposes restructure actions." loading="lazy" />
         </div>
-        <figcaption class="shot-caption">10 · The agent diagnoses gaps, missing links, and stale entries</figcaption>
+        <figcaption class="shot-caption">10 · The brain audits itself — gaps, missing back-references, neurons whose source files moved or vanished</figcaption>
       </figure>
 
       <figure class="reveal">
         <div class="shot-frame amber">
           <img src="walkthrough/11.png" alt="Agent showing the recommended restructure: merge candidates, split candidates, new synapses to add, and a 'what I recommend doing' summary." loading="lazy" />
         </div>
-        <figcaption class="shot-caption">11 · A recommended restructure — merge, split, link, ready for your sign-off</figcaption>
+        <figcaption class="shot-caption">11 · A mapped restructure — merge candidates, split candidates, new synapses, and a "what I recommend doing" summary</figcaption>
       </figure>
 
     </div>
@@ -662,7 +662,7 @@
       <div class="shot-frame cyan">
         <img src="walkthrough/12.png" alt="Agent answering a feature-development question grounded in the brain, then optionally kicking off a specmint spec." loading="lazy" />
       </div>
-      <figcaption class="shot-caption">12 · Build the feature with the brain in scope — optionally let a specmint companion forge the spec first</figcaption>
+      <figcaption class="shot-caption">12 · Brain pre-flight before any code is written — context loaded from neurons, then the spec workflow is launched in the terminal</figcaption>
     </figure>
 
     <!-- Use case 2 — Just ask -->
@@ -691,13 +691,221 @@
 <span class="meta">→ reads <span class="hl">infrastructure/secrets/coolify-env</span> · returns the steps + who to ask before</span></pre>
     </div>
 
-    <figure class="reveal">
-      <div class="shot-frame cyan">
-        <img src="walkthrough/13.png" alt="Agent answering a /kluris query about the codebase, grounded in a specific neuron, citing the source." loading="lazy" />
+    <p class="text-text-muted text-sm italic text-center max-w-2xl mx-auto mb-10 reveal">
+      Same shape every time: the brain reads itself, cites the neuron it answered from, and your teammate
+      stops being a senior-dev interrupt.
+    </p>
+
+    <!-- Spec-companion deep dive: what /kluris let's create a spec actually produces -->
+    <div class="card p-6 md:p-8 mt-14 mb-10 reveal" style="border-color: rgba(52,211,153,0.30); background: rgba(52,211,153,0.04);">
+      <div class="flex items-start gap-4 mb-3">
+        <div class="w-11 h-11 rounded-full flex items-center justify-center flex-shrink-0" style="background:rgba(52,211,153,0.12);border:1px solid rgba(52,211,153,0.45);">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#34d399" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/><line x1="9" y1="13" x2="15" y2="13"/><line x1="9" y1="17" x2="15" y2="17"/></svg>
+        </div>
+        <div class="flex-1">
+          <p class="kicker kicker-mint mb-1">Zoom in · what the spec companion actually produces</p>
+          <h3 class="font-serif text-2xl leading-snug">The spec, written from the brain <span class="text-mint-light">and</span> the codebase — page by page.</h3>
+        </div>
       </div>
-      <figcaption class="shot-caption">13 · A grounded answer with the source neuron cited — every teammate, every laptop</figcaption>
+      <p class="text-text-dim leading-relaxed">
+        Earlier we said <em>"if a spec companion was enabled at brain creation, it takes over."</em> Here's what
+        that actually looks like — a real spec for an HR-supervisor team-detail dashboard, drafted by the agent
+        in minutes. Every section is grounded in <span class="text-text">two sources</span>: the brain (decisions,
+        conventions, prior neurons) and the live codebase (actual files, packages, security matchers, schemas).
+        It starts with an interview to nail the ambiguity, then writes frontmatter, acceptance criteria,
+        architecture diagrams, phase plan, per-phase tests, alternating TEST/IMPL tasks, and a registry entry.
+      </p>
+    </div>
+
+    <figure class="reveal mb-10">
+      <div class="shot-frame mint">
+        <img src="walkthrough/13.png" alt="Spec interview output: 'Open questions before starting' and 'Test detail' sections, with clarifying questions about how overview.manager.* should be sourced." loading="lazy" />
+      </div>
+      <figcaption class="shot-caption">13 · Spec interview — the agent surfaces the open questions only you can answer before drafting</figcaption>
     </figure>
 
+    <div class="grid grid-cols-1 gap-10">
+
+      <figure class="reveal">
+        <div class="shot-frame mint">
+          <img src="walkthrough/14.png" alt="The top of SPEC.md: frontmatter (id, title, status, owner, source, priority), the Objective section, and the Acceptance criteria checklist — all grounded in brain neurons." loading="lazy" />
+        </div>
+        <figcaption class="shot-caption">14 · The top of SPEC.md — frontmatter (id, status, owner, source, priority), the objective paragraph, and the acceptance-criteria checklist</figcaption>
+      </figure>
+
+      <figure class="reveal">
+        <div class="shot-frame mint">
+          <img src="walkthrough/15.png" alt="Architecture section of the spec: HR Supervisor click flow, TeamDetailDashboard component tree, Spring Security matcher, backend package tree, shared PostgreSQL schema." loading="lazy" />
+        </div>
+        <figcaption class="shot-caption">15 · The Architecture section — HRS click flow, TeamDetailDashboard component tree, Spring Security matcher, backend package layout, shared PostgreSQL note</figcaption>
+      </figure>
+
+      <figure class="reveal">
+        <div class="shot-frame mint">
+          <img src="walkthrough/16.png" alt="The spec phase plan: Phase 1 frontend assertion, Phase 2 TeamSection skeleton, Phase 3 backend skeleton — each one independently testable." loading="lazy" />
+        </div>
+        <figcaption class="shot-caption">16 · The phase plan — each phase declares its own scope, tests, and exit criteria so it can ship independently</figcaption>
+      </figure>
+
+      <figure class="reveal">
+        <div class="shot-frame mint">
+          <img src="walkthrough/17.png" alt="Per-phase test detail: explicit test names like testFetchTeamDetailOverview, the imports they need, and the rules they enforce." loading="lazy" />
+        </div>
+        <figcaption class="shot-caption">17 · Per-phase test detail — every test is named (e.g. testFetchTeamDetailOverview), with its imports and the rule it enforces spelled out</figcaption>
+      </figure>
+
+      <figure class="reveal">
+        <div class="shot-frame mint">
+          <img src="walkthrough/18.png" alt="The Tasks section at the bottom of the spec: alternating TEST and IMPL tasks, ready for execution under TDD discipline." loading="lazy" />
+        </div>
+        <figcaption class="shot-caption">18 · The Tasks section — TEST and IMPL alternate row by row, so a failing test must exist before any code is written</figcaption>
+      </figure>
+
+      <figure class="reveal">
+        <div class="shot-frame mint">
+          <img src="walkthrough/19.png" alt="The shared .specs/registry.md gets a new row: hrs-team-detail | HRS Team Detail | active | medium | 0/30 | 2026-04-28." loading="lazy" />
+        </div>
+        <figcaption class="shot-caption">19 · A new row in <span class="text-mint-light">.specs/registry.md</span> — id, title, status, priority, progress, last-updated date — git-tracked for the team</figcaption>
+      </figure>
+
+      <figure class="reveal">
+        <div class="shot-frame mint">
+          <img src="walkthrough/20.png" alt="The agent presents the implementation plan as a checklist — Phase 1 backend foundation, Phase 2 GET /overview, etc. — ready to start TDD-style." loading="lazy" />
+        </div>
+        <figcaption class="shot-caption">20 · Implementation plan as a checklist — Phase 1 backend foundation, Phase 2 GET /overview, and so on, ready to execute test-first</figcaption>
+      </figure>
+
+    </div>
+
+    <!-- Iterate on the spec — keep refining until you're satisfied -->
+    <div class="card p-6 md:p-8 mt-14 mb-10 reveal" style="border-color: rgba(52,211,153,0.30); background: rgba(52,211,153,0.04);">
+      <div class="flex items-start gap-4 mb-3">
+        <div class="w-11 h-11 rounded-full flex items-center justify-center flex-shrink-0" style="background:rgba(52,211,153,0.12);border:1px solid rgba(52,211,153,0.45);">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#34d399" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 20h9"/><path d="M16.5 3.5a2.121 2.121 0 0 1 3 3L7 19l-4 1 1-4L16.5 3.5z"/></svg>
+        </div>
+        <div class="flex-1">
+          <p class="kicker kicker-mint mb-1">Iterate · until the spec is right</p>
+          <h3 class="font-serif text-2xl leading-snug">Refine in place — the spec is a living document, not a one-shot artifact.</h3>
+        </div>
+      </div>
+      <p class="text-text-dim leading-relaxed">
+        First drafts are never complete. Ask for the missing piece — UI mockups, edge cases, a clarified test, a
+        new decision to log — and the agent edits the spec in place. SPEC.md gets new sections, the registry
+        stays in sync, and every change lands as a normal git diff your team can review. Iterate as many rounds
+        as you need before a single line of implementation code is written.
+      </p>
+    </div>
+
+    <div class="grid grid-cols-1 gap-10">
+
+      <figure class="reveal">
+        <div class="shot-frame mint">
+          <img src="walkthrough/21.png" alt="User asks the agent to update the spec and add UI mockups, heatmap zone, and what's shown after a manager name is clicked. Agent responds with a summary of the spec edits and a Decision Log entry." loading="lazy" />
+        </div>
+        <figcaption class="shot-caption">21 · Ask for what's missing ("draw the UI, heatmap zone, and the manager-click view") — the agent edits SPEC.md, tightens a test, and adds a Decision Log entry</figcaption>
+      </figure>
+
+      <figure class="reveal">
+        <div class="shot-frame mint">
+          <img src="walkthrough/22.png" alt="The new UI Mockups section that landed in SPEC.md: ASCII scenes for the heatmap team zone, the Team Detail full page, the empty-team variant, and the 404-stale variant." loading="lazy" />
+        </div>
+        <figcaption class="shot-caption">22 · The new <span class="text-mint-light">UI Mockups</span> section now lives in SPEC.md — four ASCII scenes: heatmap team-zone, Team Detail full page, empty-team variant, 404-stale variant</figcaption>
+      </figure>
+
+    </div>
+
+  </div>
+</section>
+
+<!-- ======================================================================= -->
+<!-- MANY MODELS, ONE BRAIN — same /kluris skill, different agents           -->
+<!-- ======================================================================= -->
+<section class="px-6 py-12">
+  <div class="max-w-5xl mx-auto">
+    <div class="card p-6 md:p-9 reveal" style="
+      border-color: rgba(167,139,250,0.30);
+      background:
+        radial-gradient(circle at 0% 0%, rgba(167,139,250,0.08), transparent 50%),
+        radial-gradient(circle at 100% 0%, rgba(34,211,238,0.08), transparent 50%),
+        radial-gradient(circle at 100% 100%, rgba(52,211,153,0.08), transparent 50%),
+        radial-gradient(circle at 0% 100%, rgba(236,72,153,0.06), transparent 50%),
+        #10141f;
+    ">
+      <div class="flex items-start gap-4 mb-4">
+        <div class="w-11 h-11 rounded-full flex items-center justify-center flex-shrink-0" style="background:rgba(167,139,250,0.12);border:1px solid rgba(167,139,250,0.45);">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#c4b5fd" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="6" cy="6" r="3"/><circle cx="18" cy="6" r="3"/><circle cx="12" cy="18" r="3"/><path d="M8.5 7.5L11 16M15.5 7.5L13 16"/></svg>
+        </div>
+        <div class="flex-1">
+          <p class="kicker mb-1">Cross-model · same brain</p>
+          <h3 class="font-serif text-2xl md:text-3xl leading-snug">
+            Write with one model. <span class="gradient-text">Review with another.</span>
+          </h3>
+        </div>
+      </div>
+      <p class="text-text-dim leading-relaxed mb-6">
+        The <code class="text-purple-light">/kluris</code> skill installs into every major coding CLI — Claude Code,
+        Cursor, Windsurf, Codex, OpenCode, Gemini CLI, Kilo, Junie. Pick the model that fits the moment.
+        Draft the spec with <span class="text-purple-light">Claude Code · Opus 4.7</span>, then have a fresh
+        <span class="text-mint-light">Codex · GPT-5.5</span> review it for blind spots, then ask
+        <span class="text-cyan-300" style="color:#67e8f9;">OpenCode</span> running
+        <span class="text-cyan-300" style="color:#67e8f9;">GLM 5.1</span>,
+        <span class="text-cyan-300" style="color:#67e8f9;">DeepSeek 4 Pro</span>, or
+        <span class="text-cyan-300" style="color:#67e8f9;">Kimi 2.6</span> for a third opinion. All of them read the
+        same brain <span class="text-text">and</span> the same code — you get triangulation, not silos.
+      </p>
+
+      <!-- Three model panels -->
+      <div class="grid grid-cols-1 gap-5">
+
+        <!-- Claude Code Opus 4.7 — write the spec -->
+        <div class="rounded-xl overflow-hidden" style="border: 1px solid rgba(167,139,250,0.30); background:#10141f;">
+          <div class="flex items-center gap-3 px-4 py-2.5 border-b" style="border-color: rgba(167,139,250,0.20); background: rgba(167,139,250,0.04);">
+            <span class="w-2.5 h-2.5 rounded-full" style="background:#a78bfa;"></span>
+            <span class="font-mono text-xs" style="color:#c4b5fd; letter-spacing: 0.06em;">Claude Code · Opus 4.7</span>
+            <span class="ml-auto text-[0.62rem] uppercase tracking-[0.14em] font-semibold px-2 py-0.5 rounded-full" style="border:1px solid rgba(167,139,250,0.35); color:#c4b5fd; background:rgba(167,139,250,0.06);">Write</span>
+          </div>
+<pre class="miniterm" style="border:none; border-radius:0; background: transparent; color:#e4e7ef;"><span class="prompt-agent" style="color:#c4b5fd;">&gt;</span> <span class="cmd">/kluris let's add real-time presence to consensflow-cc — who's editing what</span>
+<span class="meta">→ kluris pre-flights the brain · reads <span class="hl">projects/consensflow-cc/architecture</span></span>
+<span class="meta">→ reads <span class="hl">infrastructure/realtime</span> · reads <span class="hl">knowledge/sessions</span></span>
+
+<span class="prompt-agent" style="color:#c4b5fd;">&gt;</span> <span class="cmd">/kluris let's create a spec for it first</span>
+<span class="meta">→ spec companion takes over · interview · plan · tasks</span>
+<span class="meta">→ SPEC.md drafted from brain + code · registered in <span class="hl">.specs/registry.md</span></span></pre>
+        </div>
+
+        <!-- Codex GPT-5.5 — review the spec -->
+        <div class="rounded-xl overflow-hidden" style="border: 1px solid rgba(52,211,153,0.30); background:#10141f;">
+          <div class="flex items-center gap-3 px-4 py-2.5 border-b" style="border-color: rgba(52,211,153,0.20); background: rgba(52,211,153,0.04);">
+            <span class="w-2.5 h-2.5 rounded-full" style="background:#34d399;"></span>
+            <span class="font-mono text-xs" style="color:#6ee7b7; letter-spacing: 0.06em;">Codex · GPT-5.5</span>
+            <span class="ml-auto text-[0.62rem] uppercase tracking-[0.14em] font-semibold px-2 py-0.5 rounded-full" style="border:1px solid rgba(52,211,153,0.35); color:#6ee7b7; background:rgba(52,211,153,0.06);">Review the spec</span>
+          </div>
+<pre class="miniterm" style="border:none; border-radius:0; background: transparent; color:#e4e7ef;"><span class="prompt-agent" style="color:#6ee7b7;">&gt;</span> <span class="cmd">/kluris review .specs/hrs-team-detail/SPEC.md against the brain and the codebase — challenge every assumption</span>
+<span class="meta">→ reads SPEC.md · cross-checks against brain neurons and live source files</span>
+<span class="meta">→ flags ambiguity, missing tests, conflicting decisions, weak acceptance criteria</span>
+<span class="meta">→ returns a critique with severity-ranked findings, ready to feed back into the spec</span></pre>
+        </div>
+
+        <!-- OpenCode (GLM / DeepSeek / Kimi) — review the implementation -->
+        <div class="rounded-xl overflow-hidden" style="border: 1px solid rgba(34,211,238,0.30); background:#10141f;">
+          <div class="flex items-center gap-3 px-4 py-2.5 border-b" style="border-color: rgba(34,211,238,0.20); background: rgba(34,211,238,0.04);">
+            <span class="w-2.5 h-2.5 rounded-full" style="background:#22d3ee;"></span>
+            <span class="font-mono text-xs" style="color:#67e8f9; letter-spacing: 0.06em;">OpenCode · GLM 5.1 / DeepSeek 4 Pro / Kimi 2.6</span>
+            <span class="ml-auto text-[0.62rem] uppercase tracking-[0.14em] font-semibold px-2 py-0.5 rounded-full" style="border:1px solid rgba(34,211,238,0.35); color:#67e8f9; background:rgba(34,211,238,0.06);">Review the code</span>
+          </div>
+<pre class="miniterm" style="border:none; border-radius:0; background: transparent; color:#e4e7ef;"><span class="prompt-agent" style="color:#67e8f9;">&gt;</span> <span class="cmd">/kluris compare the implementation in src/team-detail/ to .specs/hrs-team-detail/SPEC.md — flag drift</span>
+<span class="meta">→ reads brain · reads SPEC.md · reads the actual code · diffs intent vs reality</span>
+<span class="meta">→ returns: tasks marked done that aren't really done, missing tests, undocumented shortcuts</span>
+<span class="meta">→ a third pair of eyes from a different model family · same context, different bias</span></pre>
+        </div>
+
+      </div>
+
+      <p class="text-text-muted text-xs italic mt-6 text-center max-w-3xl mx-auto">
+        Same brain. Same code. Different model strengths. Triangulating across providers catches what a single
+        model — however good — would politely miss.
+      </p>
+    </div>
   </div>
 </section>
 
