@@ -1,0 +1,814 @@
+<!DOCTYPE html>
+<html lang="en" class="dark">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>Kluris — Walkthrough · A real brain, end to end</title>
+<meta name="description" content="A practical walkthrough: create a new brain, add the first project to it with your AI agent, explore it with the MRI visualization, then let the brain review itself. Repeat for each project in the same domain to grow the brain.">
+<meta name="robots" content="index, follow">
+<link rel="canonical" href="https://kluris.io/walkthrough.html">
+
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://kluris.io/walkthrough.html">
+<meta property="og:title" content="Kluris — Walkthrough · A real brain, end to end">
+<meta property="og:description" content="See kluris in action: create a brain, teach it your first project, visualize it with the MRI, then let it review itself.">
+<meta property="og:image" content="https://kluris.io/og-image.png">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+
+<meta name="theme-color" content="#0a0e1a">
+
+<link rel="icon" type="image/png" sizes="32x32" href="favicon-32x32.png">
+<link rel="icon" type="image/png" sizes="16x16" href="favicon-16x16.png">
+<link rel="apple-touch-icon" sizes="180x180" href="apple-touch-icon.png">
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=Inter:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<script>
+  tailwind.config = {
+    darkMode: 'class',
+    theme: {
+      extend: {
+        colors: {
+          bg: '#0a0e1a',
+          surface: '#10141f',
+          'surface-hover': '#141a28',
+          border: 'rgba(255,255,255,0.06)',
+          text: '#e4e7ef',
+          'text-dim': '#8a92a6',
+          'text-muted': '#5b6275',
+          purple: { DEFAULT: '#a78bfa', deep: '#8b5cf6', light: '#c4b5fd' },
+          pink: '#ec4899',
+          mint: { DEFAULT: '#34d399', light: '#6ee7b7' },
+          cyan: '#22d3ee',
+          lobe: {
+            pink: '#ec4899', orange: '#f59e0b', yellow: '#facc15',
+            purple: '#a78bfa', green: '#34d399', magenta: '#f0abfc',
+          },
+        },
+        fontFamily: {
+          serif: ['DM Serif Display', 'Georgia', 'serif'],
+          sans: ['Inter', 'system-ui', 'sans-serif'],
+          mono: ['JetBrains Mono', 'Fira Code', 'monospace'],
+        },
+      },
+    },
+  };
+</script>
+
+<style>
+  *,*::before,*::after { box-sizing: border-box; }
+  html { scroll-behavior: smooth; }
+  html, body {
+    background: #0a0e1a;
+    color: #e4e7ef;
+    font-family: 'Inter', system-ui, sans-serif;
+    -webkit-font-smoothing: antialiased;
+    line-height: 1.65;
+    margin: 0;
+  }
+
+  /* ============ Shared design language ============ */
+  .grid-bg {
+    background-image:
+      linear-gradient(rgba(255,255,255,0.03) 1px, transparent 1px),
+      linear-gradient(90deg, rgba(255,255,255,0.03) 1px, transparent 1px);
+    background-size: 48px 48px;
+  }
+  .gradient-text {
+    background: linear-gradient(135deg, #c4b5fd 0%, #a78bfa 35%, #ec4899 100%);
+    -webkit-background-clip: text; background-clip: text;
+    -webkit-text-fill-color: transparent; color: transparent;
+  }
+  .gradient-text-mint {
+    background: linear-gradient(135deg, #6ee7b7 0%, #34d399 50%, #a78bfa 100%);
+    -webkit-background-clip: text; background-clip: text;
+    -webkit-text-fill-color: transparent; color: transparent;
+  }
+
+  .glow-purple-sm { box-shadow: 0 0 25px rgba(167,139,250,0.2); }
+  .glow-mint-sm   { box-shadow: 0 0 25px rgba(52,211,153,0.18); }
+  .glow-pink-sm   { box-shadow: 0 0 25px rgba(236,72,153,0.20); }
+
+  .nav-bg {
+    background: rgba(10,14,26,0.85);
+    backdrop-filter: blur(14px);
+    -webkit-backdrop-filter: blur(14px);
+  }
+
+  .btn-primary {
+    background: linear-gradient(135deg, #a78bfa 0%, #ec4899 100%);
+    color: #0a0e1a; font-weight: 600;
+    box-shadow: 0 8px 30px rgba(167,139,250,0.3), 0 0 20px rgba(236,72,153,0.15);
+    transition: transform 0.2s, box-shadow 0.2s;
+  }
+  .btn-primary:hover {
+    transform: translateY(-1px);
+    box-shadow: 0 10px 40px rgba(167,139,250,0.5), 0 0 30px rgba(236,72,153,0.25);
+  }
+
+  .card {
+    background: #10141f;
+    border: 1px solid rgba(255,255,255,0.06);
+    transition: border-color 0.3s, box-shadow 0.3s;
+    border-radius: 1rem;
+  }
+  .card:hover {
+    border-color: rgba(167,139,250,0.35);
+    box-shadow: 0 0 40px rgba(167,139,250,0.1);
+  }
+
+  .chip {
+    display: inline-flex; align-items: center; gap: 0.4rem;
+    padding: 0.3rem 0.85rem;
+    border-radius: 9999px;
+    border: 1px solid rgba(167,139,250,0.35);
+    background: rgba(167,139,250,0.05);
+    color: #c4b5fd;
+    font-size: 0.7rem; font-weight: 500;
+    letter-spacing: 0.02em; text-transform: uppercase;
+  }
+  .chip-mint {
+    border: 1px solid rgba(52,211,153,0.40);
+    background: rgba(52,211,153,0.06);
+    color: #6ee7b7;
+  }
+  .chip-pink {
+    border: 1px solid rgba(236,72,153,0.40);
+    background: rgba(236,72,153,0.06);
+    color: #f0abfc;
+  }
+
+  .kicker {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 0.72rem;
+    letter-spacing: 0.22em;
+    text-transform: uppercase;
+    color: #a78bfa;
+  }
+  .kicker-mint { color: #34d399; }
+  .kicker-pink { color: #ec4899; }
+  .kicker-cyan { color: #22d3ee; }
+
+  /* ============ Phase markers ============ */
+  .phase-num {
+    display: inline-flex; align-items: center; justify-content: center;
+    width: 2.6rem; height: 2.6rem;
+    border-radius: 9999px;
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 1rem; font-weight: 700;
+    flex-shrink: 0;
+  }
+  .phase-num-1 { color: #c4b5fd; background: rgba(167,139,250,0.10); border: 1px solid rgba(167,139,250,0.45); }
+  .phase-num-2 { color: #f0abfc; background: rgba(236,72,153,0.10); border: 1px solid rgba(236,72,153,0.45); }
+  .phase-num-3 { color: #6ee7b7; background: rgba(52,211,153,0.10); border: 1px solid rgba(52,211,153,0.45); }
+  .phase-num-4 { color: #fde68a; background: rgba(245,158,11,0.10); border: 1px solid rgba(245,158,11,0.45); }
+  .phase-num-5 { color: #67e8f9; background: rgba(34,211,238,0.10);  border: 1px solid rgba(34,211,238,0.45); }
+
+  .phase-title {
+    font-family: 'DM Serif Display', Georgia, serif;
+    font-size: 2rem;
+    line-height: 1.1;
+    letter-spacing: -0.01em;
+  }
+  @media (min-width: 768px) {
+    .phase-title { font-size: 2.6rem; }
+  }
+
+  /* ============ Image frame ============ */
+  .shot-frame {
+    border: 1px solid rgba(167,139,250,0.30);
+    border-radius: 16px;
+    overflow: hidden;
+    background: #10141f;
+    box-shadow: 0 20px 60px rgba(167,139,250,0.10), 0 0 30px rgba(34,211,238,0.06);
+  }
+  .shot-frame.mint {
+    border-color: rgba(52,211,153,0.35);
+    box-shadow: 0 20px 60px rgba(52,211,153,0.10), 0 0 30px rgba(34,211,238,0.06);
+  }
+  .shot-frame.pink {
+    border-color: rgba(236,72,153,0.35);
+    box-shadow: 0 20px 60px rgba(236,72,153,0.10);
+  }
+  .shot-frame.amber {
+    border-color: rgba(245,158,11,0.35);
+    box-shadow: 0 20px 60px rgba(245,158,11,0.10);
+  }
+  .shot-frame.cyan {
+    border-color: rgba(34,211,238,0.35);
+    box-shadow: 0 20px 60px rgba(34,211,238,0.10);
+  }
+  .shot-frame img {
+    display: block;
+    width: 100%;
+    height: auto;
+  }
+  .shot-caption {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 0.72rem;
+    letter-spacing: 0.10em;
+    color: #8a92a6;
+    text-transform: uppercase;
+    margin-top: 0.85rem;
+    text-align: center;
+  }
+
+  /* ============ Arrow connector between phases ============ */
+  .phase-rule {
+    height: 56px;
+    width: 1px;
+    margin: 1.5rem auto;
+    background: linear-gradient(180deg, rgba(167,139,250,0.55) 0%, rgba(167,139,250,0) 100%);
+    position: relative;
+  }
+  .phase-rule::after {
+    content: '';
+    position: absolute;
+    bottom: 0; left: 50%;
+    transform: translate(-50%, 50%) rotate(45deg);
+    width: 8px; height: 8px;
+    border-right: 1px solid rgba(167,139,250,0.55);
+    border-bottom: 1px solid rgba(167,139,250,0.55);
+  }
+
+  /* ============ Loop badge that explains "repeat for every project" ============ */
+  .loop-callout {
+    background:
+      radial-gradient(circle at 20% 0%, rgba(34,211,238,0.10), transparent 55%),
+      radial-gradient(circle at 100% 100%, rgba(167,139,250,0.10), transparent 55%),
+      #10141f;
+    border: 1px solid rgba(34,211,238,0.30);
+    border-radius: 1rem;
+    box-shadow: 0 0 40px rgba(34,211,238,0.08);
+  }
+
+  .collab-callout {
+    background:
+      radial-gradient(circle at 0% 0%, rgba(167,139,250,0.10), transparent 55%),
+      radial-gradient(circle at 100% 100%, rgba(236,72,153,0.10), transparent 55%),
+      #10141f;
+    border: 1px solid rgba(167,139,250,0.35);
+    border-radius: 1rem;
+  }
+
+  /* ============ Mini terminal block (for query examples) ============ */
+  .miniterm {
+    background: #10141f;
+    border: 1px solid rgba(34,211,238,0.25);
+    border-radius: 12px;
+    padding: 1rem 1.1rem;
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 0.82rem;
+    line-height: 1.85;
+    color: #e4e7ef;
+    overflow-x: auto;
+  }
+  .miniterm .prompt-agent { color: #67e8f9; font-weight: 600; }
+  .miniterm .cmd          { color: #e4e7ef; }
+  .miniterm .meta         { color: #8a92a6; font-style: italic; }
+  .miniterm .hl           { color: #c4b5fd; }
+
+  .pulse-soft { animation: pulse-soft 2.4s infinite; }
+  @keyframes pulse-soft {
+    0%,100% { opacity: 0.55; transform: scale(1); }
+    50%     { opacity: 1;    transform: scale(1.4); }
+  }
+
+  /* Scroll-reveal animation, like index.html */
+  .reveal {
+    opacity: 0;
+    transform: translateY(16px);
+    transition: opacity 0.7s ease, transform 0.7s ease;
+  }
+  .reveal.in {
+    opacity: 1;
+    transform: translateY(0);
+  }
+</style>
+</head>
+
+<body class="bg-bg text-text">
+
+<!-- ============================================ -->
+<!-- TOP NAV                                      -->
+<!-- ============================================ -->
+<nav class="nav-bg fixed top-0 left-0 right-0 z-50 border-b border-white/5">
+  <div class="max-w-7xl mx-auto flex items-center justify-between px-6 md:px-10 h-16">
+    <a href="index.html" class="font-serif text-2xl tracking-tight flex items-center gap-3 group">
+      <img src="logo.png" alt="Kluris logo" width="44" height="44" class="w-11 h-11 object-contain" />
+      <span class="gradient-text">kluris</span>
+    </a>
+    <div class="hidden md:flex items-center gap-4 lg:gap-6 text-sm font-medium">
+      <a href="index.html" class="text-text-dim hover:text-text transition-colors">Home</a>
+      <a href="presentation.html" class="text-text-dim hover:text-text transition-colors">Tour</a>
+      <a href="walkthrough.html" class="text-purple-light hover:text-pink transition-colors">Walkthrough</a>
+    </div>
+    <a href="https://github.com/ngvoicu/kluris" class="inline-flex items-center gap-2 px-4 py-2 text-xs md:text-sm font-semibold text-purple-light border border-purple/40 hover:border-purple hover:bg-purple/10 rounded-full transition-all">
+      <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor"><path d="M12 .297c-6.63 0-12 5.373-12 12 0 5.303 3.438 9.8 8.205 11.385.6.113.82-.258.82-.577 0-.285-.01-1.04-.015-2.04-3.338.724-4.042-1.61-4.042-1.61C4.422 18.07 3.633 17.7 3.633 17.7c-1.087-.744.084-.729.084-.729 1.205.084 1.838 1.236 1.838 1.236 1.07 1.835 2.809 1.305 3.495.998.108-.776.417-1.305.76-1.605-2.665-.3-5.466-1.332-5.466-5.93 0-1.31.465-2.38 1.235-3.22-.135-.303-.54-1.523.105-3.176 0 0 1.005-.322 3.3 1.23.96-.267 1.98-.399 3-.405 1.02.006 2.04.138 3 .405 2.28-1.552 3.285-1.23 3.285-1.23.645 1.653.24 2.873.12 3.176.765.84 1.23 1.91 1.23 3.22 0 4.61-2.805 5.625-5.475 5.92.42.36.81 1.096.81 2.22 0 1.606-.015 2.896-.015 3.286 0 .315.21.69.825.57C20.565 22.092 24 17.592 24 12.297c0-6.627-5.373-12-12-12"/></svg>
+      GitHub
+    </a>
+  </div>
+</nav>
+
+<!-- ============================================ -->
+<!-- HERO                                          -->
+<!-- ============================================ -->
+<header class="relative grid-bg pt-32 pb-16 px-6 overflow-hidden">
+  <div class="absolute inset-0 pointer-events-none" style="background: radial-gradient(ellipse at 50% 30%, rgba(167,139,250,0.10) 0%, transparent 60%);"></div>
+
+  <div class="relative max-w-5xl mx-auto text-center">
+    <span class="chip mb-6">
+      <span class="inline-block w-1.5 h-1.5 rounded-full bg-purple pulse-soft"></span>
+      A practical walkthrough · 13 screenshots · ~4 minutes to read
+    </span>
+
+    <h1 class="font-serif text-4xl sm:text-5xl md:text-6xl lg:text-7xl leading-[0.98] tracking-tight max-w-4xl mx-auto mt-6 mb-6">
+      <span class="block text-text">From an empty repo to</span>
+      <span class="block gradient-text">a working brain.</span>
+    </h1>
+
+    <p class="text-lg md:text-xl text-text-dim max-w-3xl mx-auto leading-relaxed font-light">
+      A real run, captured frame by frame: create a fresh kluris brain, hand the first project to your
+      AI agent, curate the neurons it proposes one by one — approve, edit, or reject — open the MRI
+      visualization, ask the brain to review itself, and finally use it every day to ship features and
+      answer questions.
+    </p>
+
+    <div class="flex flex-wrap items-center justify-center gap-3 mt-8 text-xs text-text-muted">
+      <span class="chip"><span class="phase-num phase-num-1" style="width:1.4rem;height:1.4rem;font-size:0.65rem;">1</span> Create the brain</span>
+      <span class="chip chip-pink"><span class="phase-num phase-num-2" style="width:1.4rem;height:1.4rem;font-size:0.65rem;">2</span> Add the first project</span>
+      <span class="chip chip-mint"><span class="phase-num phase-num-3" style="width:1.4rem;height:1.4rem;font-size:0.65rem;">3</span> Explore with MRI</span>
+      <span class="chip" style="border-color:rgba(245,158,11,0.4);background:rgba(245,158,11,0.06);color:#fde68a;"><span class="phase-num phase-num-4" style="width:1.4rem;height:1.4rem;font-size:0.65rem;">4</span> Review the brain</span>
+      <span class="chip" style="border-color:rgba(34,211,238,0.45);background:rgba(34,211,238,0.06);color:#67e8f9;"><span class="phase-num phase-num-5" style="width:1.4rem;height:1.4rem;font-size:0.65rem;">5</span> Use the brain</span>
+    </div>
+  </div>
+</header>
+
+<!-- ============================================ -->
+<!-- HUMAN + AI COLLABORATION CALLOUT             -->
+<!-- ============================================ -->
+<section class="px-6 pb-12">
+  <div class="max-w-5xl mx-auto">
+    <div class="collab-callout p-7 md:p-10 reveal">
+      <div class="flex flex-col md:flex-row items-start gap-6">
+        <div class="flex-shrink-0 flex items-center gap-3">
+          <div class="w-12 h-12 rounded-full flex items-center justify-center" style="background:rgba(167,139,250,0.15);border:1px solid rgba(167,139,250,0.45);">
+            <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#c4b5fd" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="7" r="4"/><path d="M5 21v-2a7 7 0 0 1 14 0v2"/></svg>
+          </div>
+          <span class="font-mono text-xs text-text-dim">+</span>
+          <div class="w-12 h-12 rounded-full flex items-center justify-center" style="background:rgba(236,72,153,0.15);border:1px solid rgba(236,72,153,0.45);">
+            <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#f0abfc" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="4" y="6" width="16" height="12" rx="2"/><circle cx="9" cy="12" r="1.2" fill="#f0abfc"/><circle cx="15" cy="12" r="1.2" fill="#f0abfc"/><path d="M12 2v4M8 22h8"/></svg>
+          </div>
+        </div>
+        <div class="flex-1">
+          <p class="kicker mb-2">How a brain actually grows</p>
+          <h2 class="font-serif text-2xl md:text-3xl mb-3 leading-tight">
+            <span class="gradient-text">Human and AI agent</span> work together to create, restructure, and improve the brain.
+          </h2>
+          <p class="text-text-dim leading-relaxed">
+            Nothing is auto-saved. The agent surveys the project, drafts neurons, and shows them to you one by one. You read,
+            edit, accept, or reject — every entry is yours before it lands. Over time the brain reorganizes itself with your
+            approval: new lobes appear, old neurons get split or merged, synapses connect what belongs together. The result is
+            a knowledge base shaped by your judgment, written by both of you.
+          </p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ======================================================================= -->
+<!-- PHASE 1 — CREATE THE BRAIN                                              -->
+<!-- ======================================================================= -->
+<section class="px-6 py-12">
+  <div class="max-w-5xl mx-auto">
+
+    <div class="flex items-start gap-5 mb-3 reveal">
+      <span class="phase-num phase-num-1">1</span>
+      <div>
+        <p class="kicker mb-1">Phase 1 · One-time setup</p>
+        <h2 class="phase-title">Create <span class="gradient-text">the brain.</span></h2>
+      </div>
+    </div>
+
+    <p class="text-text-dim text-lg max-w-3xl ml-0 md:ml-[calc(2.6rem+1.25rem)] mb-8 leading-relaxed reveal">
+      One <code class="text-purple-light">kluris create</code> command, a few questions, optional specmint companions —
+      and you have an empty git-tracked brain ready to be taught. This step happens once per domain.
+    </p>
+
+    <figure class="reveal">
+      <div class="shot-frame">
+        <img src="walkthrough/01.png" alt="Terminal showing kluris create asking interactive questions and creating consensflow-brain with both specmint companions enabled." loading="lazy" />
+      </div>
+      <figcaption class="shot-caption">01 · <span class="text-purple-light">kluris create</span> — interactive setup of <span class="text-text">consensflow-brain</span></figcaption>
+    </figure>
+
+    <div class="phase-rule"></div>
+  </div>
+</section>
+
+<!-- ======================================================================= -->
+<!-- PHASE 2 — ADD THE FIRST PROJECT                                         -->
+<!-- ======================================================================= -->
+<section class="px-6 py-12">
+  <div class="max-w-5xl mx-auto">
+
+    <div class="flex items-start gap-5 mb-3 reveal">
+      <span class="phase-num phase-num-2">2</span>
+      <div>
+        <p class="kicker kicker-pink mb-1">Phase 2 · Repeats per project</p>
+        <h2 class="phase-title">Add the <span class="gradient-text">first project.</span></h2>
+      </div>
+    </div>
+
+    <p class="text-text-dim text-lg max-w-3xl ml-0 md:ml-[calc(2.6rem+1.25rem)] mb-8 leading-relaxed reveal">
+      Open the project repo, ask the kluris-aware agent to study it, and the back-and-forth begins. The agent surveys the
+      code, plans neurons across lobes, then shows them one at a time for you to review — the file format, the body, every
+      decision. Nothing is committed without your <span class="text-mint-light">approve</span>.
+    </p>
+
+    <div class="grid grid-cols-1 gap-10">
+
+      <figure class="reveal">
+        <div class="shot-frame pink">
+          <img src="walkthrough/02.png" alt="AI agent surveying the consensflow-cc project, capturing it under projects/consensflow-cc and listing what it found." loading="lazy" />
+        </div>
+        <figcaption class="shot-caption">02 · The agent reads the repo and lays out a plan-match capture</figcaption>
+      </figure>
+
+      <figure class="reveal">
+        <div class="shot-frame pink">
+          <img src="walkthrough/03.png" alt="Agent presenting candidate neurons grouped by area: cross-cutting decisions, distribution, extensions — asking before writing." loading="lazy" />
+        </div>
+        <figcaption class="shot-caption">03 · Candidate neurons grouped by lobe, before anything is written</figcaption>
+      </figure>
+
+      <figure class="reveal">
+        <div class="shot-frame pink">
+          <img src="walkthrough/04.png" alt="Single neuron shown with frontmatter and body, including an explicit security review and an approve / reject prompt." loading="lazy" />
+        </div>
+        <figcaption class="shot-caption">04 · Each neuron — frontmatter, body, security review — appears before it lands</figcaption>
+      </figure>
+
+      <figure class="reveal">
+        <div class="shot-frame pink">
+          <img src="walkthrough/05.png" alt="Agent confirming a neuron has been written and showing the next file format to be approved." loading="lazy" />
+        </div>
+        <figcaption class="shot-caption">05 · Approve · Reject · Edit — the brain only grows with your sign-off</figcaption>
+      </figure>
+
+    </div>
+
+    <div class="phase-rule"></div>
+  </div>
+</section>
+
+<!-- ======================================================================= -->
+<!-- PHASE 3 — EXPLORE WITH MRI                                              -->
+<!-- ======================================================================= -->
+<section class="px-6 py-12">
+  <div class="max-w-5xl mx-auto">
+
+    <div class="flex items-start gap-5 mb-3 reveal">
+      <span class="phase-num phase-num-3">3</span>
+      <div>
+        <p class="kicker kicker-mint mb-1">Phase 3 · Repeats per project</p>
+        <h2 class="phase-title">Explore it with the <span class="gradient-text-mint">MRI.</span></h2>
+      </div>
+    </div>
+
+    <p class="text-text-dim text-lg max-w-3xl ml-0 md:ml-[calc(2.6rem+1.25rem)] mb-8 leading-relaxed reveal">
+      Run <code class="text-mint-light">kluris mri</code> and the brain opens in your browser as a single-page graph.
+      Every lobe, every neuron, every synapse — pannable, searchable, shareable. Click a node to read it, expand the
+      synapses to see what touches it, follow the threads.
+    </p>
+
+    <div class="grid grid-cols-1 gap-10">
+
+      <figure class="reveal">
+        <div class="shot-frame mint">
+          <img src="walkthrough/06.png" alt="Terminal: kluris mri picks the consensflow-brain and prints a clickable file:// URL to brain-mri.html with 23 nodes and 167 edges." loading="lazy" />
+        </div>
+        <figcaption class="shot-caption">06 · <span class="text-mint-light">kluris mri</span> renders a self-contained HTML you can open offline</figcaption>
+      </figure>
+
+      <figure class="reveal">
+        <div class="shot-frame mint">
+          <img src="walkthrough/07.png" alt="MRI overview: lobes (infrastructure, knowledge, projects) on the left, the full graph in the middle, an inspector with a selected neuron's metadata on the right." loading="lazy" />
+        </div>
+        <figcaption class="shot-caption">07 · The whole brain in one screen — lobes, neurons, synapses, inspector</figcaption>
+      </figure>
+
+      <figure class="reveal">
+        <div class="shot-frame mint">
+          <img src="walkthrough/08.png" alt="MRI architecture detail page showing the high-level diagram of the consensflow-cc project, with related neurons and synapses linked." loading="lazy" />
+        </div>
+        <figcaption class="shot-caption">08 · Drill into a neuron — body, synapses, related lobes, shells out from there</figcaption>
+      </figure>
+
+      <figure class="reveal">
+        <div class="shot-frame mint">
+          <img src="walkthrough/09.png" alt="MRI prompt-templates view showing the actual templates used by the consensflow agents — tiny, deliberate, populated at runtime." loading="lazy" />
+        </div>
+        <figcaption class="shot-caption">09 · Even prompt templates and slash commands are first-class neurons</figcaption>
+      </figure>
+
+    </div>
+
+    <div class="phase-rule"></div>
+  </div>
+</section>
+
+<!-- ======================================================================= -->
+<!-- LOOP CALLOUT — repeat phases 2+3 for every project in the same domain   -->
+<!-- ======================================================================= -->
+<section class="px-6 py-10">
+  <div class="max-w-5xl mx-auto">
+    <div class="loop-callout p-7 md:p-9 reveal">
+      <div class="flex flex-col md:flex-row items-start gap-6">
+        <div class="flex-shrink-0">
+          <div class="w-14 h-14 rounded-full flex items-center justify-center" style="background:rgba(34,211,238,0.15);border:1px solid rgba(34,211,238,0.45);">
+            <svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="#22d3ee" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 12a9 9 0 0 1 15-6.7L21 8"/><path d="M21 3v5h-5"/><path d="M21 12a9 9 0 0 1-15 6.7L3 16"/><path d="M3 21v-5h5"/></svg>
+          </div>
+        </div>
+        <div class="flex-1">
+          <p class="kicker kicker-cyan mb-2">Repeat to grow the brain</p>
+          <h3 class="font-serif text-2xl md:text-3xl mb-3 leading-tight">
+            One brain per domain. <span class="gradient-text">Many projects per brain.</span>
+          </h3>
+          <p class="text-text-dim leading-relaxed mb-3">
+            Phase 1 happens once. <span class="text-mint-light">Phase 2 (add a project)</span> and
+            <span class="text-mint-light">Phase 3 (explore with the MRI)</span> repeat for every other project in the same
+            domain — a sibling repo, a frontend that talks to the same backend, a deploy script, a shared library. Each one
+            teaches the brain a little more, the lobes fill out, the synapses multiply, and the MRI keeps showing you what
+            your team actually knows about that domain.
+          </p>
+          <p class="text-text-muted text-sm font-mono">
+            <span style="color:#a78bfa;">create</span> →
+            <span style="color:#f0abfc;">add project</span> →
+            <span style="color:#34d399;">MRI</span>
+            &nbsp;·&nbsp;
+            <span style="color:#f0abfc;">add next project</span> →
+            <span style="color:#34d399;">MRI</span>
+            &nbsp;·&nbsp;
+            <span style="color:#f0abfc;">add next project</span> →
+            <span style="color:#34d399;">MRI</span>
+            &nbsp;·&nbsp;
+            …
+          </p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ======================================================================= -->
+<!-- PHASE 4 — REVIEW THE BRAIN                                              -->
+<!-- ======================================================================= -->
+<section class="px-6 py-12">
+  <div class="max-w-5xl mx-auto">
+
+    <div class="flex items-start gap-5 mb-3 reveal">
+      <span class="phase-num phase-num-4">4</span>
+      <div>
+        <p class="kicker mb-1" style="color:#fbbf24;">Phase 4 · Periodic health check</p>
+        <h2 class="phase-title">Let the brain <span class="gradient-text">review itself.</span></h2>
+      </div>
+    </div>
+
+    <p class="text-text-dim text-lg max-w-3xl ml-0 md:ml-[calc(2.6rem+1.25rem)] mb-8 leading-relaxed reveal">
+      Once enough projects live in the brain, ask it to audit itself. The agent reads every neuron, looks for
+      gaps, contradictions, missing synapses, neurons that should be split or merged — and proposes a restructuring plan.
+      Same approval flow as before: you accept the changes you like, reject the rest. The brain stays clean as it grows.
+    </p>
+
+    <div class="grid grid-cols-1 gap-10">
+
+      <figure class="reveal">
+        <div class="shot-frame amber">
+          <img src="walkthrough/10.png" alt="Agent running the review pass: reports gaps, missing links, neurons without backing source files, and proposes restructure actions." loading="lazy" />
+        </div>
+        <figcaption class="shot-caption">10 · The agent diagnoses gaps, missing links, and stale entries</figcaption>
+      </figure>
+
+      <figure class="reveal">
+        <div class="shot-frame amber">
+          <img src="walkthrough/11.png" alt="Agent showing the recommended restructure: merge candidates, split candidates, new synapses to add, and a 'what I recommend doing' summary." loading="lazy" />
+        </div>
+        <figcaption class="shot-caption">11 · A recommended restructure — merge, split, link, ready for your sign-off</figcaption>
+      </figure>
+
+    </div>
+
+    <div class="phase-rule"></div>
+  </div>
+</section>
+
+<!-- ======================================================================= -->
+<!-- PHASE 5 — USE THE BRAIN  (the daily payoff — the last and ongoing phase) -->
+<!-- ======================================================================= -->
+<section class="px-6 py-12">
+  <div class="max-w-5xl mx-auto">
+
+    <div class="flex items-start gap-5 mb-3 reveal">
+      <span class="phase-num phase-num-5">5</span>
+      <div>
+        <p class="kicker mb-1" style="color:#22d3ee;">Phase 5 · The daily payoff</p>
+        <h2 class="phase-title">Use <span class="gradient-text">the brain.</span></h2>
+      </div>
+    </div>
+
+    <p class="text-text-dim text-lg max-w-3xl ml-0 md:ml-[calc(2.6rem+1.25rem)] mb-8 leading-relaxed reveal">
+      Once a domain lives in the brain, every agent on every laptop reads from it before answering.
+      Two everyday shapes: <span class="text-text">build the next feature</span> and
+      <span class="text-text">just ask</span> — both grounded in what your team already knows.
+    </p>
+
+    <!-- Use case 1 — Build features (optionally with specmint companions) -->
+    <div class="card p-6 md:p-8 mb-10 reveal" style="border-color: rgba(34,211,238,0.30);">
+      <div class="flex items-start gap-4 mb-4">
+        <div class="w-11 h-11 rounded-full flex items-center justify-center flex-shrink-0" style="background:rgba(34,211,238,0.12);border:1px solid rgba(34,211,238,0.45);">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#67e8f9" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2v4"/><path d="M12 18v4"/><path d="M4.93 4.93l2.83 2.83"/><path d="M16.24 16.24l2.83 2.83"/><path d="M2 12h4"/><path d="M18 12h4"/><path d="M4.93 19.07l2.83-2.83"/><path d="M16.24 7.76l2.83-2.83"/></svg>
+        </div>
+        <div class="flex-1">
+          <p class="kicker mb-1" style="color:#22d3ee;">Use case 1 · Build the next feature</p>
+          <h3 class="font-serif text-2xl leading-snug">Grounded coding — and grounded specs.</h3>
+        </div>
+      </div>
+      <p class="text-text-dim leading-relaxed mb-4">
+        Tell your AI agent what to build. It reads the brain first, so it already knows your stack, your conventions,
+        your deploy story, your auth model — then proposes code that fits, not generic boilerplate.
+        Optionally, if you enabled <span class="text-mint-light">specmint</span> or
+        <span class="text-mint-light">specmint-tdd</span> as a companion when you created the brain, the agent can
+        forge a full spec from the brain first — interview, plan, implementation — every step grounded in your
+        team's actual knowledge.
+      </p>
+      <pre class="miniterm"><span class="prompt-agent">&gt;</span> <span class="cmd">/kluris let's add real-time presence to consensflow-cc — who's editing what</span>
+<span class="meta">→ kluris pre-flights the brain · reads <span class="hl">projects/consensflow-cc/architecture</span></span>
+<span class="meta">→ reads <span class="hl">infrastructure/realtime</span> · reads <span class="hl">knowledge/sessions</span></span>
+<span class="meta">→ proposes a plan that matches your conventions, not generic boilerplate</span>
+
+<span class="prompt-agent">&gt;</span> <span class="cmd">/kluris let's create a spec for it first</span>
+<span class="meta">→ spec companion takes over (if enabled at brain creation)</span>
+<span class="meta">→ interview · plan · tasks — all written from the brain · then implement</span></pre>
+    </div>
+
+    <figure class="reveal mb-12">
+      <div class="shot-frame cyan">
+        <img src="walkthrough/12.png" alt="Agent answering a feature-development question grounded in the brain, then optionally kicking off a specmint spec." loading="lazy" />
+      </div>
+      <figcaption class="shot-caption">12 · Build the feature with the brain in scope — optionally let a specmint companion forge the spec first</figcaption>
+    </figure>
+
+    <!-- Use case 2 — Just ask -->
+    <div class="card p-6 md:p-8 mb-10 reveal" style="border-color: rgba(34,211,238,0.30);">
+      <div class="flex items-start gap-4 mb-4">
+        <div class="w-11 h-11 rounded-full flex items-center justify-center flex-shrink-0" style="background:rgba(34,211,238,0.12);border:1px solid rgba(34,211,238,0.45);">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#67e8f9" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><path d="M9.09 9a3 3 0 0 1 5.83 1c0 2-3 3-3 3"/><line x1="12" y1="17" x2="12.01" y2="17"/></svg>
+        </div>
+        <div class="flex-1">
+          <p class="kicker mb-1" style="color:#22d3ee;">Use case 2 · Just ask</p>
+          <h3 class="font-serif text-2xl leading-snug">Onboarding-on-tap — no more "ping the senior".</h3>
+        </div>
+      </div>
+      <p class="text-text-dim leading-relaxed mb-4">
+        Anybody on the team types <code class="text-cyan">/kluris</code> in their agent and gets the team's
+        actual answer — verified, git-tracked, dated, with the source neuron linked. The same questions that used to
+        cost a Slack ping and an interrupted senior dev now resolve in seconds, locally, in the IDE.
+      </p>
+      <pre class="miniterm"><span class="prompt-agent">&gt;</span> <span class="cmd">/kluris where is btb-backend-core deployed and how?</span>
+<span class="meta">→ reads <span class="hl">infrastructure/deploy/coolify</span> · cites the source neuron · dated 2026-04-12</span>
+
+<span class="prompt-agent">&gt;</span> <span class="cmd">/kluris how do I deploy this to production?</span>
+<span class="meta">→ reads <span class="hl">infrastructure/release/ghcr-pipeline</span> · returns the exact tag-and-push flow</span>
+
+<span class="prompt-agent">&gt;</span> <span class="cmd">/kluris how do I change an env variable in prod?</span>
+<span class="meta">→ reads <span class="hl">infrastructure/secrets/coolify-env</span> · returns the steps + who to ask before</span></pre>
+    </div>
+
+    <figure class="reveal">
+      <div class="shot-frame cyan">
+        <img src="walkthrough/13.png" alt="Agent answering a /kluris query about the codebase, grounded in a specific neuron, citing the source." loading="lazy" />
+      </div>
+      <figcaption class="shot-caption">13 · A grounded answer with the source neuron cited — every teammate, every laptop</figcaption>
+    </figure>
+
+  </div>
+</section>
+
+<!-- ======================================================================= -->
+<!-- THE LOOP CLOSES — feed every shipped feature back into the brain        -->
+<!-- ======================================================================= -->
+<section class="px-6 py-12">
+  <div class="max-w-5xl mx-auto">
+    <div class="loop-callout p-7 md:p-9 reveal" style="border-color: rgba(52,211,153,0.30);">
+      <div class="flex flex-col md:flex-row items-start gap-6">
+        <div class="flex-shrink-0">
+          <div class="w-14 h-14 rounded-full flex items-center justify-center" style="background:rgba(52,211,153,0.15);border:1px solid rgba(52,211,153,0.45);">
+            <svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="#34d399" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 12c0 4.97-4.03 9-9 9s-9-4.03-9-9 4.03-9 9-9c2.39 0 4.68.93 6.36 2.64L21 8"/><path d="M21 3v5h-5"/><path d="M9 12l2 2 4-4"/></svg>
+          </div>
+        </div>
+        <div class="flex-1">
+          <p class="kicker kicker-mint mb-2">The loop closes · the brain compounds</p>
+          <h3 class="font-serif text-2xl md:text-3xl mb-3 leading-tight">
+            After every shipped feature, ask <span class="gradient-text-mint">/kluris to remember</span> what you just learned.
+          </h3>
+          <p class="text-text-dim leading-relaxed mb-4">
+            When the implementation is done — feature merged, bug fixed, deploy survived — turn back to the agent and ask
+            it to capture what you just figured out. New decisions, fresh gotchas, an updated env-var, a workaround that
+            took half a day to find: all of it lands in the brain as new neurons (with your approval, like always).
+            Tomorrow's agent reads them. Next week's teammate reads them. Next quarter's hire reads them.
+          </p>
+          <pre class="miniterm" style="border-color: rgba(52,211,153,0.25);"><span class="prompt-agent" style="color:#6ee7b7;">&gt;</span> <span class="cmd">/kluris remember what we worked on today and store it to the brain</span>
+<span class="meta">→ agent drafts neurons from the session: decisions, gotchas, snippets, links</span>
+<span class="meta">→ shows each one for <span class="hl">approve · edit · reject</span> · commits the approved ones</span>
+<span class="meta">→ <span class="hl">git push</span> · the whole team's brain just got smarter</span></pre>
+          <p class="text-text-dim leading-relaxed mt-4">
+            That's how the brain grows: every project teaches it once, every shipped feature teaches it a little more,
+            and every teammate is both reader and author. Knowledge that used to live in heads, in old Slack threads,
+            in nobody's head — now lives in git, written by the people doing the work.
+          </p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ======================================================================= -->
+<!-- CLOSING CTA                                                             -->
+<!-- ======================================================================= -->
+<section class="px-6 py-20 grid-bg relative overflow-hidden">
+  <div class="absolute inset-0 pointer-events-none" style="background: radial-gradient(ellipse at 50% 50%, rgba(167,139,250,0.10) 0%, transparent 60%);"></div>
+
+  <div class="relative max-w-3xl mx-auto text-center">
+    <p class="kicker mb-4">That's the whole loop</p>
+    <h2 class="font-serif text-3xl md:text-5xl leading-tight mb-6">
+      A brain that <span class="gradient-text">compounds</span><br class="hidden sm:inline"> with every project.
+    </h2>
+    <p class="text-text-dim text-lg mb-10 leading-relaxed">
+      Create once · teach project by project · explore with the MRI · review periodically · use it daily for
+      features and answers. Every step git-tracked, every neuron human-approved, every agent on every laptop
+      reading the same answers tomorrow morning.
+    </p>
+
+    <div class="flex flex-col sm:flex-row items-center justify-center gap-4">
+      <a href="index.html" class="btn-primary inline-flex items-center gap-2 px-8 py-4 rounded-full text-base">
+        Install kluris
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><path d="M5 12h14M13 5l7 7-7 7"/></svg>
+      </a>
+      <a href="presentation.html" class="inline-flex items-center gap-2 px-8 py-4 rounded-full text-base font-semibold text-purple-light border border-purple/50 hover:bg-purple/10 hover:border-purple transition-all">
+        Take the guided tour
+      </a>
+      <a href="https://github.com/ngvoicu/kluris" class="inline-flex items-center gap-2 px-8 py-4 rounded-full text-base font-semibold text-text-dim border border-white/10 hover:border-white/30 hover:text-text transition-all">
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M12 .297c-6.63 0-12 5.373-12 12 0 5.303 3.438 9.8 8.205 11.385.6.113.82-.258.82-.577 0-.285-.01-1.04-.015-2.04-3.338.724-4.042-1.61-4.042-1.61C4.422 18.07 3.633 17.7 3.633 17.7c-1.087-.744.084-.729.084-.729 1.205.084 1.838 1.236 1.838 1.236 1.07 1.835 2.809 1.305 3.495.998.108-.776.417-1.305.76-1.605-2.665-.3-5.466-1.332-5.466-5.93 0-1.31.465-2.38 1.235-3.22-.135-.303-.54-1.523.105-3.176 0 0 1.005-.322 3.3 1.23.96-.267 1.98-.399 3-.405 1.02.006 2.04.138 3 .405 2.28-1.552 3.285-1.23 3.285-1.23.645 1.653.24 2.873.12 3.176.765.84 1.23 1.91 1.23 3.22 0 4.61-2.805 5.625-5.475 5.92.42.36.81 1.096.81 2.22 0 1.606-.015 2.896-.015 3.286 0 .315.21.69.825.57C20.565 22.092 24 17.592 24 12.297c0-6.627-5.373-12-12-12"/></svg>
+        GitHub
+      </a>
+    </div>
+
+    <p class="text-text-muted text-xs tracking-wider mt-10">
+      Open source · MIT · Free forever · Yours, always.
+    </p>
+  </div>
+</section>
+
+<!-- ============================================ -->
+<!-- FOOTER                                       -->
+<!-- ============================================ -->
+<footer class="border-t border-white/5 py-14 px-6">
+  <div class="max-w-7xl mx-auto flex flex-col items-center gap-6">
+    <div class="flex items-center gap-3">
+      <img src="logo.png" alt="Kluris logo" width="28" height="28" class="w-7 h-7 object-contain" />
+      <span class="font-serif text-xl gradient-text">kluris</span>
+      <span class="text-text-muted text-sm ml-2 hidden md:inline">· The SME your team never had.</span>
+    </div>
+    <div class="flex items-center gap-6 text-sm text-text-dim">
+      <a href="https://github.com/ngvoicu/kluris" target="_blank" rel="noopener" class="inline-flex items-center gap-1.5 hover:text-purple transition-colors"><svg class="w-3.5 h-3.5 fill-current flex-shrink-0" viewBox="0 0 16 16"><path d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82.64-.18 1.32-.27 2-.27.68 0 1.36.09 2 .27 1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8.013 8.013 0 0016 8c0-4.42-3.58-8-8-8z"/></svg> kluris</a>
+      <a href="https://github.com/ngvoicu" target="_blank" rel="noopener" class="inline-flex items-center gap-1.5 hover:text-purple transition-colors"><svg class="w-3.5 h-3.5 fill-current flex-shrink-0" viewBox="0 0 16 16"><path d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82.64-.18 1.32-.27 2-.27.68 0 1.36.09 2 .27 1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8.013 8.013 0 0016 8c0-4.42-3.58-8-8-8z"/></svg> ngvoicu</a>
+      <a href="https://www.linkedin.com/in/ngvoicu/" target="_blank" rel="noopener" class="inline-flex items-center gap-1.5 hover:text-purple transition-colors"><svg class="w-3.5 h-3.5 fill-current flex-shrink-0" viewBox="0 0 24 24"><path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433a2.062 2.062 0 01-2.063-2.065 2.064 2.064 0 112.063 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/></svg> Gabriel Voicu</a>
+    </div>
+    <p class="text-xs text-text-muted">Open source and free forever &middot; MIT License</p>
+  </div>
+</footer>
+
+<script>
+  // Scroll-reveal — same pattern as index.html
+  (function() {
+    const io = new IntersectionObserver((entries) => {
+      for (const e of entries) {
+        if (e.isIntersecting) {
+          e.target.classList.add('in');
+          io.unobserve(e.target);
+        }
+      }
+    }, { threshold: 0.08 });
+    document.querySelectorAll('.reveal').forEach(el => io.observe(el));
+  })();
+</script>
+
+</body>
+</html>
