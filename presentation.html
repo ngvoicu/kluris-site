@@ -818,7 +818,7 @@
         </div>
         <p class="surface-desc">
           The <code>kluris</code> CLI. You run these yourself — install, create a brain,
-          push/pull changes, regenerate the MRI.
+          regenerate the MRI, validate links. Sync goes through <code>git</code> directly.
         </p>
         <div class="surface-example">kluris create</div>
       </div>
@@ -1434,7 +1434,7 @@ annual. Access is restricted to the security team.</span>
 
     <p class="text-text-muted text-xs italic text-center mt-5 max-w-3xl mx-auto leading-relaxed">
       Run <code>kluris dream</code> to regenerate maps after structural changes.
-      Run <code>kluris push</code> to commit and share with your team.
+      Commit and share with <code>git</code> directly — kluris brains are plain git repos.
       Have more than one brain? Each installs as
       <span class="font-mono text-purple-light">/kluris-&lt;name&gt;</span>
       and everything above works the same.
@@ -1588,8 +1588,7 @@ annual. Access is restricted to the security team.</span>
 <pre><span class="prompt">$</span> <span class="cmd">pipx install kluris</span>
 <span class="prompt">$</span> <span class="cmd">kluris create</span>                         <span class="dim"># new brain from scratch</span>
   <span class="dim"># — or — </span>
-<span class="prompt">$</span> <span class="cmd">kluris clone git@github.com:team/brain.git</span>   <span class="dim"># join a team brain</span>
-<span class="prompt">$</span> <span class="cmd">kluris register ~/path/to/brain</span>            <span class="dim"># adopt a brain already on disk</span>
+<span class="prompt">$</span> <span class="cmd">git clone git@github.com:team/brain.git ~/brains/team &amp;&amp; kluris register ~/brains/team</span>   <span class="dim"># join a team brain</span>
 <span class="meta">→ agent skills auto-install · open any repo · type</span> <span class="cmd">/kluris</span> <span class="meta">in chat</span></pre>
       </div>
 

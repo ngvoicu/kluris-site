@@ -1238,7 +1238,7 @@ to the security team.</span>
     </div>
 
     <p class="mt-10 text-center text-xs text-text-muted leading-relaxed">
-      Run <span class="font-mono text-purple-light">kluris dream</span> to regenerate maps and validate links after structural changes. Run <span class="font-mono text-purple-light">kluris push</span> to commit and share with your team. Have more than one brain? Each installs as <span class="font-mono text-purple-light">/kluris-&lt;name&gt;</span> and everything above works the same — see <a href="#more-than-one-brain" class="text-purple-light underline decoration-purple/30 underline-offset-2 hover:decoration-pink">the appendix</a>.
+      Run <span class="font-mono text-purple-light">kluris dream</span> to regenerate maps and validate links after structural changes. Commit and share with <span class="font-mono text-purple-light">git</span> directly — kluris brains are plain git repos. Have more than one brain? Each installs as <span class="font-mono text-purple-light">/kluris-&lt;name&gt;</span> and everything above works the same — see <a href="#more-than-one-brain" class="text-purple-light underline decoration-purple/30 underline-offset-2 hover:decoration-pink">the appendix</a>.
     </p>
   </div>
 </section>
@@ -1357,8 +1357,7 @@ to the security team.</span>
         <p class="mb-5 text-xs text-text-muted italic">Run these in bash, zsh, fish, or PowerShell.</p>
         <table class="cmd-table">
           <tr><td>create</td><td>Create a brain (interactive wizard)</td></tr>
-          <tr><td>clone &lt;url&gt;</td><td>Clone a brain from git</td></tr>
-          <tr><td>register &lt;path&#124;zip&gt;</td><td>Register a brain already on disk, or extract a brain zip</td></tr>
+          <tr><td>register &lt;path&gt;</td><td>Register an existing brain directory on disk</td></tr>
           <tr><td>list</td><td>List registered brains</td></tr>
           <tr><td>status</td><td>Show brain tree and recent changes</td></tr>
           <tr><td>search &lt;query&gt;</td><td>Ranked search across neurons, glossary, brain.md</td></tr>
@@ -1366,15 +1365,14 @@ to the security team.</span>
           <tr><td>companion add</td><td>Enable an embedded companion for a brain</td></tr>
           <tr><td>companion remove</td><td>Remove a companion opt-in</td></tr>
           <tr><td>dream</td><td>Regenerate maps, fix links, validate</td></tr>
-          <tr><td>branch [name]</td><td>Show, switch, or create a git branch (<span class="font-mono text-xs">--list</span>)</td></tr>
-          <tr><td>push</td><td>Commit and push to the current branch</td></tr>
-          <tr><td>pull</td><td>Pull remote changes for the current branch</td></tr>
+          <tr><td>pack</td><td>Pack a brain into a Docker chat server</td></tr>
           <tr><td>mri</td><td>Generate interactive HTML viz</td></tr>
           <tr><td>remove &lt;name&gt;</td><td>Unregister a brain (keeps files)</td></tr>
           <tr><td>doctor</td><td>Check prerequisites</td></tr>
           <tr><td>help</td><td>Show command help</td></tr>
         </table>
         <p class="mt-5 text-xs text-text-muted italic">All CLI commands support <span class="font-mono text-purple-light">--json</span> for machine-readable output.</p>
+        <p class="mt-2 text-xs text-text-muted italic">Brains are plain git repos — use <span class="font-mono text-purple-light">git push</span> / <span class="font-mono text-purple-light">git pull</span> / <span class="font-mono text-purple-light">git checkout</span> directly to sync and switch branches.</p>
         <p class="mt-2 text-xs text-text-muted italic">Most users create and organize lobes and neurons by asking their AI agent, then run <span class="font-mono text-purple-light">dream</span> to refresh maps and links.</p>
       </div>
 
@@ -1451,19 +1449,16 @@ Multiple brains registered. Pick one:
   <span class="dim">2026-04-05</span>  tasks/today.md
   <span class="dim">2026-04-04</span>  notes/q2-goals.md
 
-<span class="prompt">$</span> <span class="cmd">kluris clone git@github.com:acme/team-brain.git</span>
-  <span class="dim">Cloning into ~/Projects/team-brain...</span>
-  <span class="ok">✓</span> Registered team-brain
-  <span class="ok">✓</span> /kluris-team-brain skill installed across 8 agents
+<span class="prompt">$</span> <span class="cmd">git clone git@github.com:acme/team-brain.git ~/brains/team-brain</span>
+  <span class="dim">Cloning into ~/brains/team-brain...</span>
 
-<span class="prompt">$</span> <span class="cmd">kluris register ~/Downloads/archived-brain.zip</span>
-  <span class="dim">Extracting to ~/archived-brain...</span>
-  <span class="ok">✓</span> Registered archived-brain
-  <span class="ok">✓</span> /kluris-archived-brain skill installed across 8 agents</pre>
+<span class="prompt">$</span> <span class="cmd">kluris register ~/brains/team-brain</span>
+  <span class="ok">✓</span> Registered team-brain
+  <span class="ok">✓</span> /kluris-team-brain skill installed across 8 agents</pre>
     </div>
 
     <div class="mt-8 flex flex-wrap justify-center gap-3">
-      <span class="chip">Clone a team brain</span>
+      <span class="chip">git clone + kluris register</span>
       <span class="chip">One skill per brain</span>
       <span class="chip">Keep work and personal separate</span>
       <span class="chip">Every brain has its own git history</span>
