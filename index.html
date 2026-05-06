@@ -804,22 +804,22 @@
         Teach the <span class="gradient-text">brain</span> what your team knows.
       </h2>
       <p class="text-text-dim text-lg leading-relaxed">
-        Open your AI agent in a project — a repo, a service, a codebase — and your brain's slash command, <span class="font-mono text-purple-light">/kluris-&lt;name&gt;</span>, turns the conversation into knowledge. Say <em>learn</em>, <em>remember</em>, or anything in between; the agent picks the right behavior. <span class="text-text font-medium">Lobes</span> are folders you create to group related ideas — one per concern, as many as you need. <span class="text-text font-medium">Neurons</span> are the markdown files inside them. You approve every neuron before it lands.
+        Open your AI agent in a project. Two steps make every future session smoother — first wire kluris in so every coding agent that lands in this repo finds the brain, then have the agent learn the project end-to-end. <span class="text-text font-medium">Lobes</span> are folders you create to group related ideas — one per concern. <span class="text-text font-medium">Neurons</span> are the markdown files inside them. You approve every neuron before it lands.
       </p>
     </div>
 
     <div class="space-y-6">
-      <!-- Card 1 — /kluris-acme learn -->
+      <!-- Card 1 — Step 1: Wire kluris into the project -->
       <div class="card rounded-2xl overflow-hidden">
         <div class="grid grid-cols-1 lg:grid-cols-2 gap-0">
           <div class="p-10 border-b lg:border-b-0 lg:border-r border-white/5">
-            <div class="chip mb-5">/kluris-acme learn</div>
-            <h3 class="font-serif text-3xl mb-4">Let the agent analyze your code.</h3>
-            <p class="text-text-dim leading-relaxed mb-5">Point the agent at a folder in your project. It reads your code and proposes neurons one at a time, with a preview of every piece before it is written.</p>
+            <div class="chip mb-5">Step 1 · /kluris-acme setup</div>
+            <h3 class="font-serif text-3xl mb-4">Wire kluris into the project.</h3>
+            <p class="text-text-dim leading-relaxed mb-5">Drop a small pointer into the project's <code class="text-purple-light">CLAUDE.md</code> and <code class="text-purple-light">AGENTS.md</code>. The agent surveys both, creates them if missing, or reformulates a stale pointer it finds. Same <code class="text-purple-light">## Knowledge base</code> block in both files.</p>
             <ul class="space-y-2 text-sm text-text-dim">
-              <li class="flex items-start gap-3"><span class="text-purple mt-0.5">→</span>Approve, edit, skip, or change the target lobe</li>
-              <li class="flex items-start gap-3"><span class="text-purple mt-0.5">→</span>Nothing is written without your sign-off</li>
-              <li class="flex items-start gap-3"><span class="text-purple mt-0.5">→</span>The agent infers related neurons automatically</li>
+              <li class="flex items-start gap-3"><span class="text-purple mt-0.5">→</span>Every coding agent in the repo finds the brain on the way in</li>
+              <li class="flex items-start gap-3"><span class="text-purple mt-0.5">→</span>Same block in both files — no shim, no indirection</li>
+              <li class="flex items-start gap-3"><span class="text-purple mt-0.5">→</span>Idempotent — re-run any time</li>
             </ul>
           </div>
           <div class="bg-bg/40">
@@ -827,29 +827,32 @@
               <span>In your AI agent, opened on a project (Claude Code, Cursor, Windsurf, …)</span>
               <span class="scope scope-agent">Agent</span>
             </div>
-<pre class="p-8 font-mono text-[0.78rem] leading-relaxed"><span class="prompt-agent">&gt;</span> <span class="cmd">/kluris-acme learn the auth flow</span>
+<pre class="p-8 font-mono text-[0.78rem] leading-relaxed"><span class="prompt-agent">&gt;</span> <span class="cmd">/kluris-acme setup this project</span>
 
-<span class="dim">Analyzing src/auth/... (14 files)</span>
+<span class="dim">Surveying CLAUDE.md and AGENTS.md...</span>
 
-<span class="meta">Proposing neuron:</span> projects/btb-core/auth-flow.md
+<span class="meta">CLAUDE.md</span>: <span class="warn">missing</span> &mdash; propose creating
+<span class="meta">AGENTS.md</span>: <span class="warn">missing</span> &mdash; propose creating
+
+<span class="meta">Proposed ## Knowledge base section</span>
+<span class="dim">(same in both files):</span>
 <span class="dim">──────────────────────────────────────</span>
-<span class="str"># Auth flow</span>
+  <span class="str">## Knowledge base</span>
 
-<span class="cmd">We use Keycloak OIDC. Frontend obtains
-JWT via Keycloak, passes it to backend
-as Bearer token. Backend validates via
-JWKS. Refresh at 80% TTL.</span>
-
-<span class="meta">Related:</span> <span class="str">[clerk-vs-keycloak.md,
-          jwt-rotation.md]</span>
+  Read and write to the <span class="str">**acme**</span> brain through kluris
+  (never edit brain files by hand). Use the
+  <span class="str">/kluris-acme</span> skill &mdash; search, learn, remember, create.
 <span class="dim">──────────────────────────────────────</span>
 
-[<span class="ok">a</span>]pprove  [<span class="warn">e</span>]dit  [<span class="dim">s</span>]kip  [<span class="str">c</span>]hange lobe: </pre>
+[<span class="ok">a</span>]pprove  [<span class="warn">e</span>]dit  [<span class="dim">s</span>]kip: <span class="str">a</span>
+
+<span class="ok">✓</span> CLAUDE.md created
+<span class="ok">✓</span> AGENTS.md created (same block)</pre>
           </div>
         </div>
       </div>
 
-      <!-- Card 2 — /kluris-acme remember -->
+      <!-- Card 2 — Step 2: Learn everything about the project -->
       <div class="card rounded-2xl overflow-hidden">
         <div class="grid grid-cols-1 lg:grid-cols-2 gap-0">
           <div class="bg-bg/40 order-2 lg:order-1">
@@ -857,39 +860,46 @@ JWKS. Refresh at 80% TTL.</span>
               <span>In your AI agent, opened on a project (Claude Code, Cursor, Windsurf, …)</span>
               <span class="scope scope-agent">Agent</span>
             </div>
-<pre class="p-8 font-mono text-[0.78rem] leading-relaxed"><span class="prompt-agent">&gt;</span> <span class="cmd">/kluris-acme remember we chose raw SQL
-                      over JPA for query
-                      complexity</span>
+<pre class="p-8 font-mono text-[0.78rem] leading-relaxed"><span class="prompt-agent">&gt;</span> <span class="cmd">/kluris-acme learn everything
+                      about this project</span>
 
-<span class="meta">Proposing:</span> knowledge/use-raw-sql.md
+<span class="dim">Reading: src/, package.json, README,
+schema/, .github/, docs/...</span>
+
+<span class="meta">Proposing 12 neurons across 4 lobes:</span>
+  <span class="info">›</span> projects/btb-core/auth-flow.md
+  <span class="info">›</span> projects/btb-core/data-model.md
+  <span class="info">›</span> projects/btb-core/api-shape.md
+  <span class="info">›</span> infrastructure/docker-builds.md
+  <span class="info">›</span> knowledge/raw-sql-no-jpa.md
+  <span class="dim">... 7 more</span>
+
+<span class="meta">Walking through, one at a time:</span>
+
+<span class="meta">Neuron 1 / 12</span>
+<span class="meta">Proposing:</span> projects/btb-core/auth-flow.md
 <span class="dim">──────────────────────────────────────</span>
-<span class="str"># Use raw SQL over JPA</span>
+<span class="str"># Auth flow</span>
 
-<span class="meta">## Context</span>
-<span class="cmd">Query complexity and performance
-on the reporting endpoints...</span>
+<span class="cmd">Keycloak OIDC. Frontend obtains JWT,
+passes it to backend as Bearer token.
+Backend validates via JWKS. Refresh
+at 80% TTL.</span>
 
-<span class="meta">## Decision</span>
-<span class="cmd">Use NamedParameterJdbcTemplate with
-explicit raw SQL...</span>
-
-<span class="meta">## Consequences</span>
-<span class="cmd">Less ORM magic, more typing, faster
-queries, clearer SQL in git diffs.</span>
+<span class="meta">Related:</span> <span class="str">[clerk-vs-keycloak.md]</span>
 <span class="dim">──────────────────────────────────────</span>
 
 [<span class="ok">a</span>]pprove  [<span class="warn">e</span>]dit  [<span class="dim">s</span>]kip: </pre>
           </div>
           <div class="p-10 border-t lg:border-t-0 lg:border-l border-white/5 order-1 lg:order-2">
-            <div class="chip mb-5">/kluris-acme remember</div>
-            <h3 class="font-serif text-3xl mb-4">Capture a decision in one line.</h3>
-            <p class="text-text-dim leading-relaxed mb-5">For when you just made a call and want to write it down before you forget. The agent — in your project — turns your one-liner into a properly structured neuron.</p>
+            <div class="chip mb-5">Step 2 · /kluris-acme learn</div>
+            <h3 class="font-serif text-3xl mb-4">Learn everything about this project.</h3>
+            <p class="text-text-dim leading-relaxed mb-5">Point the agent at the whole project and let it propose neurons across every lobe — one at a time, with a preview of every piece before it is written.</p>
             <ul class="space-y-2 text-sm text-text-dim">
-              <li class="flex items-start gap-3"><span class="text-purple mt-0.5">→</span>Drops it in the right lobe</li>
-              <li class="flex items-start gap-3"><span class="text-purple mt-0.5">→</span>Fills in context, decision, consequences</li>
-              <li class="flex items-start gap-3"><span class="text-purple mt-0.5">→</span>You edit or approve before anything lands</li>
+              <li class="flex items-start gap-3"><span class="text-purple mt-0.5">→</span>Approve, edit, skip, or change the target lobe</li>
+              <li class="flex items-start gap-3"><span class="text-purple mt-0.5">→</span>Nothing is written without your sign-off</li>
+              <li class="flex items-start gap-3"><span class="text-purple mt-0.5">→</span>The agent infers related neurons automatically</li>
             </ul>
-            <p class="mt-5 text-xs text-text-muted italic">End of a long pairing session? Say <span class="font-mono text-purple-light">/kluris-acme remember from this session</span> and the agent sweeps the chat, proposing a neuron for every decision worth keeping — one at a time, same approve-or-edit flow.</p>
           </div>
         </div>
       </div>
@@ -1312,76 +1322,76 @@ to the security team.</span>
 </section>
 
 <!-- ============================================ -->
-<!-- BEAT 7 — WIRE IT IN                            -->
+<!-- BEAT 7 — CAPTURE SESSION                       -->
 <!-- ============================================ -->
-<section id="wire-in" class="py-28 md:py-40 px-6 relative grid-bg">
+<section id="capture" class="py-28 md:py-40 px-6 relative grid-bg">
   <div class="max-w-5xl mx-auto">
     <div class="text-center mb-16 max-w-3xl mx-auto">
-      <p class="text-purple text-xs uppercase tracking-[0.2em] font-medium mb-4">Beat 7 · Wire it in</p>
+      <p class="text-purple text-xs uppercase tracking-[0.2em] font-medium mb-4">Beat 7 · Capture session</p>
       <h2 class="font-serif text-4xl md:text-6xl leading-tight mb-6">
-        Drop a pointer in <span class="gradient-text">every project</span>.
+        Close the loop on <span class="gradient-text">every pairing session</span>.
       </h2>
       <p class="text-text-dim text-lg leading-relaxed">
-        A short pointer in your project's <span class="font-mono text-purple-light">CLAUDE.md</span> and <span class="font-mono text-purple-light">AGENTS.md</span> teaches every agent that lands in the repo about your brain. The skill stays the only way in — agents read <em>and</em> write through it, never by hand.
+        At the end of a long pairing session — research, debugging, decisions, gotchas — sweep the conversation into the brain in one step. The agent replays the chat, pulls every brain-worthy fact, and walks you through proposed neurons one at a time.
       </p>
     </div>
 
-    <!-- Agent sets it up for you -->
     <div class="terminal glow-purple-sm mb-10">
       <div class="terminal-header">
         <span class="terminal-dot" style="background:#a78bfa"></span>
-        <span class="ml-2">let the agent do it</span>
+        <span class="ml-2">/kluris-acme remember from this session &middot; the sweep</span>
         <span class="scope scope-agent">In your AI agent · in a project</span>
       </div>
-<pre><span class="prompt-agent">&gt;</span> <span class="cmd">/kluris-&lt;brain&gt; setup this project</span>
+<pre><span class="prompt-agent">&gt;</span> <span class="cmd">/kluris-acme remember everything from this session</span>
 
-<span class="dim">Surveying CLAUDE.md and AGENTS.md...</span>
+<span class="dim">Replaying the conversation...
+Identifying brain-worthy items:</span>
 
-<span class="meta">CLAUDE.md</span>: <span class="warn">missing</span> &mdash; propose creating it
-<span class="meta">AGENTS.md</span>: <span class="warn">missing</span> &mdash; propose creating it
+  <span class="info">›</span> Decision: <span class="cmd">use TIMESTAMPTZ for every timestamp column</span>
+  <span class="info">›</span> Convention: <span class="cmd">API errors must include error_code alongside message</span>
+  <span class="info">›</span> Gotcha: <span class="cmd">Cloudflare Tunnel blocks port 587 &mdash; use 465 SMTPS</span>
+  <span class="info">›</span> Stakeholder: <span class="cmd">legal flagged session-token storage for review</span>
+  <span class="dim">... 3 more candidates</span>
 
-<span class="meta">Proposed CLAUDE.md content:</span>
+<span class="meta">Routing each to the right lobe...</span>
+
+<span class="meta">Item 1 / 7</span>
+<span class="meta">Proposing:</span> knowledge/timestamps-tz.md
 <span class="dim">──────────────────────────────────────</span>
-  <span class="str">## Knowledge base</span>
+<span class="str"># Use TIMESTAMPTZ for every timestamp column</span>
 
-  Read and write to the <span class="str">**&lt;brain&gt;**</span> brain through kluris
-  (never edit brain files by hand). Use the
-  <span class="str">/kluris-&lt;brain&gt;</span> skill &mdash; search, learn, remember, create.
+<span class="cmd">Decided 2026-05-12. Standardized on
+TIMESTAMPTZ over TIMESTAMP across all
+schema migrations. Reason: avoids the
+silent UTC drift gotcha when servers
+or clients sit in different timezones.</span>
+
+<span class="meta">Related:</span> <span class="str">[../projects/btb-core/data-model.md]</span>
 <span class="dim">──────────────────────────────────────</span>
 
 [<span class="ok">a</span>]pprove  [<span class="warn">e</span>]dit  [<span class="dim">s</span>]kip: <span class="str">a</span>
 
-<span class="ok">✓</span> CLAUDE.md created
-<span class="ok">✓</span> AGENTS.md created (same <span class="str">## Knowledge base</span> block)</pre>
+<span class="ok">✓</span> 5 of 7 captured, 2 skipped, 0 edited</pre>
     </div>
 
-    <!-- Or paste manually -->
-    <div class="terminal max-w-2xl mx-auto">
-      <div class="terminal-header">
-        <span class="chip text-[0.62rem] py-0.5 px-2">CLAUDE.md and AGENTS.md</span>
-        <span class="ml-2">paste this once &mdash; same block in both files</span>
+    <div class="grid grid-cols-1 md:grid-cols-3 gap-4">
+      <div class="card rounded-2xl p-6">
+        <p class="text-purple text-xs uppercase tracking-widest font-semibold mb-2">No retyping</p>
+        <p class="text-text-dim text-sm leading-relaxed">You don't repeat decisions to the agent &mdash; it already heard them. The sweep extracts what's worth keeping and skips ephemeral debugging.</p>
       </div>
-<pre><span class="meta">## Knowledge base</span>
-
-Read and write to the <span class="str">**&lt;brain&gt;**</span> brain through kluris
-(never edit brain files by hand). Use the <span class="str">/kluris-&lt;brain&gt;</span>
-skill &mdash; search, learn, remember, create.</pre>
+      <div class="card rounded-2xl p-6">
+        <p class="text-purple text-xs uppercase tracking-widest font-semibold mb-2">Same approval</p>
+        <p class="text-text-dim text-sm leading-relaxed">Each candidate goes through the standard <em>approve &middot; edit &middot; skip</em> flow. Nothing lands without your sign-off.</p>
+      </div>
+      <div class="card rounded-2xl p-6">
+        <p class="text-purple text-xs uppercase tracking-widest font-semibold mb-2">Compounds</p>
+        <p class="text-text-dim text-sm leading-relaxed">Tomorrow's agents start their session with what last week's agents learned. Pairing sessions become permanent team knowledge.</p>
+      </div>
     </div>
 
-    <div class="mt-10 grid grid-cols-1 md:grid-cols-3 gap-4">
-      <div class="card rounded-2xl p-6">
-        <p class="text-purple text-xs uppercase tracking-widest font-semibold mb-2">Two files, one snippet</p>
-        <p class="text-text-dim text-sm leading-relaxed">Claude Code reads <span class="font-mono">CLAUDE.md</span>; Codex, Cursor, Windsurf, Cline, Gemini CLI read <span class="font-mono">AGENTS.md</span>. Same block in both &mdash; each file stands on its own.</p>
-      </div>
-      <div class="card rounded-2xl p-6">
-        <p class="text-purple text-xs uppercase tracking-widest font-semibold mb-2">Stays short</p>
-        <p class="text-text-dim text-sm leading-relaxed">The skill itself teaches search / learn / remember / create. The pointer just names the brain and the skill &mdash; no neuron paths to rot.</p>
-      </div>
-      <div class="card rounded-2xl p-6">
-        <p class="text-purple text-xs uppercase tracking-widest font-semibold mb-2">Idempotent</p>
-        <p class="text-text-dim text-sm leading-relaxed">Re-run <span class="font-mono">setup this project</span> any time. If the pointer is already there, the agent says so. If it's stale, it offers to reformulate.</p>
-      </div>
-    </div>
+    <p class="text-text-muted text-xs italic text-center mt-6 max-w-3xl mx-auto leading-relaxed">
+      Or capture a single decision in one line: <code>/kluris-acme remember we chose raw SQL over JPA</code>. Same flow, just narrower.
+    </p>
   </div>
 </section>
 
