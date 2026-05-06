@@ -757,7 +757,7 @@
       <span id="slide-label">Introduction</span>
     </div>
     <div style="display: flex; align-items: center; gap: 0.6rem;">
-      <span class="topbar-counter"><span class="cur" id="slide-cur">1</span> / <span id="slide-total">9</span></span>
+      <span class="topbar-counter"><span class="cur" id="slide-cur">1</span> / <span id="slide-total">10</span></span>
       <a href="index.html" class="nav-btn" title="Back to kluris.io" style="border: 1px solid rgba(255,255,255,0.08);">
         <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M3 12l9-9 9 9M5 10v10h14V10"/></svg>
       </a>
@@ -828,11 +828,11 @@
           <span>The agent, with the kluris skill loaded</span>
         </div>
         <p class="surface-desc">
-          One slash command — <code>/kluris</code> — followed by whatever you want to say.
+          A named slash command per brain — <code>/kluris-&lt;name&gt;</code> — followed by whatever you want to say.
           Run it while your agent is open on a project so it can read the code.
-          With more than one brain registered it becomes <code>/kluris-&lt;name&gt;</code>.
+          Every registered brain installs as its own named skill, even when it's the only one.
         </p>
-        <div class="surface-example">/kluris learn the auth flow</div>
+        <div class="surface-example">/kluris-acme learn the auth flow</div>
       </div>
     </div>
 
@@ -862,11 +862,15 @@
         <p class="text-purple-light text-xs uppercase tracking-widest mb-1">Beat 6</p>
         <p class="font-serif text-lg">Self-improve</p>
       </div>
+      <div class="card p-3.5 text-center">
+        <p class="text-purple-light text-xs uppercase tracking-widest mb-1">Beat 7</p>
+        <p class="font-serif text-lg">Wire it in</p>
+      </div>
     </div>
 
     <p class="text-text-muted text-xs italic mt-8 text-center">
       Use <span class="kbd">←</span> <span class="kbd">→</span> or <span class="kbd">Space</span> to navigate &nbsp;·&nbsp;
-      <span class="kbd">1</span>–<span class="kbd">9</span> to jump to any slide.
+      <span class="kbd">1</span>–<span class="kbd">9</span> to jump to the first nine slides.
     </p>
   </div>
 </section>
@@ -949,11 +953,11 @@
   <span class="ok">✓</span> Created acme-brain <span class="dim">(project-group · 3 lobes)</span>
   <span class="ok">✓</span> Git initialized on main
   <span class="ok">✓</span> Registered acme-brain
-  <span class="ok">✓</span> Installed /kluris skill for 8 agents
+  <span class="ok">✓</span> Installed /kluris-acme skill for 8 agents
   <span class="ok">✓</span> Bundled specmint-core + specmint-tdd companions
 
 <span class="dim">Next: open any project in your AI agent and</span>
-<span class="dim">      type /kluris learn this service</span></pre>
+<span class="dim">      type /kluris-acme learn this service</span></pre>
       </div>
 
       <div class="terminal">
@@ -995,8 +999,8 @@
       Teach the brain <span class="gradient-text">what your team knows.</span>
     </h1>
     <p class="slide-lede">
-      Open your AI agent in a project — a repo, a service, a codebase — and one slash command,
-      <code>/kluris</code>, turns the conversation into knowledge. Say <em>learn</em>,
+      Open your AI agent in a project — a repo, a service, a codebase — and your brain's slash command,
+      <code>/kluris-&lt;name&gt;</code>, turns the conversation into knowledge. Say <em>learn</em>,
       <em>remember</em>, or anything in between; the agent picks the right behavior.
       <strong>Lobes</strong> are folders you create to group related ideas — one per concern, as
       many as you need. <strong>Neurons</strong> are the markdown files inside them. You approve every
@@ -1004,14 +1008,14 @@
     </p>
 
     <div class="grid grid-cols-1 lg:grid-cols-2 gap-5 mt-8">
-      <!-- /kluris learn -->
+      <!-- /kluris-acme learn -->
       <div class="terminal glow-purple-sm">
         <div class="terminal-header">
           <span class="terminal-dot" style="background:#ec4899"></span>
-          <span>/kluris learn · analyze code, propose neurons</span>
+          <span>/kluris-acme learn · analyze code, propose neurons</span>
           <span class="scope scope-agent">In your AI agent · in a project</span>
         </div>
-<pre><span class="prompt-agent">&gt;</span> <span class="cmd">/kluris learn the auth flow</span>
+<pre><span class="prompt-agent">&gt;</span> <span class="cmd">/kluris-acme learn the auth flow</span>
 
 <span class="dim">Analyzing src/auth/... (14 files)</span>
 
@@ -1031,14 +1035,14 @@ JWKS. Refresh at 80% TTL.</span>
 [<span class="ok">a</span>]pprove  [<span class="warn">e</span>]dit  [<span class="dim">s</span>]kip  [<span class="str">c</span>]hange lobe: </pre>
       </div>
 
-      <!-- /kluris remember -->
+      <!-- /kluris-acme remember -->
       <div class="terminal glow-purple-sm">
         <div class="terminal-header">
           <span class="terminal-dot" style="background:#ec4899"></span>
-          <span>/kluris remember · capture a decision in one line</span>
+          <span>/kluris-acme remember · capture a decision in one line</span>
           <span class="scope scope-agent">In your AI agent · in a project</span>
         </div>
-<pre><span class="prompt-agent">&gt;</span> <span class="cmd">/kluris remember we chose raw SQL
+<pre><span class="prompt-agent">&gt;</span> <span class="cmd">/kluris-acme remember we chose raw SQL
                       over JPA for query
                       complexity</span>
 
@@ -1080,7 +1084,7 @@ queries, clearer SQL in git diffs.</span>
 
     <p class="mt-6 text-center text-sm text-text-dim">
       End of a long pairing session? Say
-      <span class="font-mono text-purple-light">/kluris remember from this session</span>
+      <span class="font-mono text-purple-light">/kluris-acme remember from this session</span>
       and the agent sweeps the whole chat — proposing a neuron for every decision worth keeping, one at a time.
     </p>
   </div>
@@ -1173,26 +1177,26 @@ drop it in Slack — it runs anywhere, no server.</span></pre>
       <div class="terminal glow-purple-sm">
         <div class="terminal-header">
           <span class="terminal-dot" style="background:#ec4899"></span>
-          <span>/kluris search · semantic + keyword lookup</span>
+          <span>/kluris-acme search · semantic + keyword lookup</span>
           <span class="scope scope-agent">In your AI agent · in a project</span>
         </div>
-<pre><span class="prompt-agent">&gt;</span> <span class="cmd">/kluris search auth flow</span>
+<pre><span class="prompt-agent">&gt;</span> <span class="cmd">/kluris-acme search auth flow</span>
 
 <span class="meta">Found 3 neurons:</span>
   projects/btb-core/auth-flow.md       <span class="warn">★★★</span>
   knowledge/jwt-rotation.md            <span class="warn">★★</span>
   infrastructure/keycloak-setup.md     <span class="warn">★</span>
 
-<span class="dim">Run `/kluris open auth-flow.md` to read one.</span></pre>
+<span class="dim">Run `/kluris-acme open auth-flow.md` to read one.</span></pre>
       </div>
 
       <div class="terminal glow-purple-sm">
         <div class="terminal-header">
           <span class="terminal-dot" style="background:#ec4899"></span>
-          <span>/kluris what do we know · natural language Q&amp;A</span>
+          <span>/kluris-acme what do we know · natural language Q&amp;A</span>
           <span class="scope scope-agent">In your AI agent · in a project</span>
         </div>
-<pre><span class="prompt-agent">&gt;</span> <span class="cmd">/kluris what do we know about Docker?</span>
+<pre><span class="prompt-agent">&gt;</span> <span class="cmd">/kluris-acme what do we know about Docker?</span>
 
 <span class="dim">Reading:</span>
   infrastructure/docker-builds.md
@@ -1228,7 +1232,7 @@ Tunnel (zero public ports).</span></pre>
 
     <p class="mt-6 text-center text-sm text-text-dim">
       For anything non-trivial, prefix with
-      <span class="font-mono text-purple-light">/kluris use brain knowledge and codebase and let's ...</span> —
+      <span class="font-mono text-purple-light">/kluris-acme use brain knowledge and codebase and let's ...</span> —
       <span class="italic">write a spec for OAuth sign-in</span>, <span class="italic">implement auth</span> — the agent
       grounds the work in <em>both</em> surfaces: documented decisions <em>and</em> the actual current shape of the code.
     </p>
@@ -1304,7 +1308,7 @@ Tunnel (zero public ports).</span></pre>
   <span class="dim">●</span> Reading <span class="str">config/GlobalExceptionHandler.kt</span>
 
 <span class="meta">Phase 1b · Brain research</span>   <span class="warn">← the kluris bit</span>
-  <span class="dim">●</span> <span class="cmd">/kluris what do we know about auth</span>
+  <span class="dim">●</span> <span class="cmd">/kluris-acme what do we know about auth</span>
     <span class="ok">→</span> knowledge/auth-decisions.md
     <span class="ok">→</span> projects/btb-core/auth-flow.md
     <span class="ok">→</span> knowledge/jwt-rotation.md
@@ -1360,7 +1364,7 @@ Tunnel (zero public ports).</span></pre>
         </div>
       </div>
       <p class="text-center text-text-dim text-xs mt-4">
-        Companions are bundled with kluris — no separate plugin install. Per brain: kluris copies only the SKILL.md and references it from the generated /kluris skill.
+        Companions are bundled with kluris — no separate plugin install. Per brain: kluris copies only the SKILL.md and references it from the generated /kluris-&lt;name&gt; skill.
       </p>
       <div class="text-center mt-5">
         <a href="https://specmint.io" target="_blank" rel="noopener" class="inline-flex items-center gap-2 text-mint hover:text-mint-light text-sm font-medium">
@@ -1389,10 +1393,10 @@ Tunnel (zero public ports).</span></pre>
       <div class="terminal glow-purple-sm">
         <div class="terminal-header">
           <span class="terminal-dot" style="background:#ec4899"></span>
-          <span>/kluris · add a new lobe</span>
+          <span>/kluris-acme · add a new lobe</span>
           <span class="scope scope-agent">In your AI agent · in a project</span>
         </div>
-<pre><span class="prompt-agent">&gt;</span> <span class="cmd">/kluris add a compliance lobe for SOC2
+<pre><span class="prompt-agent">&gt;</span> <span class="cmd">/kluris-acme add a compliance lobe for SOC2
          and GDPR notes</span>
 
 <span class="meta">Proposing new lobe:</span> compliance/
@@ -1405,10 +1409,10 @@ Tunnel (zero public ports).</span></pre>
       <div class="terminal glow-purple-sm">
         <div class="terminal-header">
           <span class="terminal-dot" style="background:#ec4899"></span>
-          <span>/kluris · add a neuron in the new lobe</span>
+          <span>/kluris-acme · add a neuron in the new lobe</span>
           <span class="scope scope-agent">In your AI agent · in a project</span>
         </div>
-<pre><span class="prompt-agent">&gt;</span> <span class="cmd">/kluris remember that SOC2 audit evidence
+<pre><span class="prompt-agent">&gt;</span> <span class="cmd">/kluris-acme remember that SOC2 audit evidence
          lives in the compliance-evidence/ bucket,
          rotated yearly</span>
 
@@ -1462,7 +1466,7 @@ annual. Access is restricted to the security team.</span>
         <span>the brain reviewing itself</span>
         <span class="scope scope-agent">In your AI agent · in a project</span>
       </div>
-<pre><span class="prompt-agent">&gt;</span> <span class="cmd">/kluris review this brain and create more synapses</span>
+<pre><span class="prompt-agent">&gt;</span> <span class="cmd">/kluris-acme review this brain and create more synapses</span>
 
 <span class="dim">Reading 34 neurons across 3 lobes...</span>
 
@@ -1510,11 +1514,85 @@ annual. Access is restricted to the security team.</span>
 </section>
 
 <!-- ======================================================================= -->
-<!-- SLIDE 8 — RECAP & CTA                                                    -->
+<!-- SLIDE 9 — BEAT 7 · WIRE IT IN                                            -->
 <!-- ======================================================================= -->
-<section class="slide" id="slide-9" data-title="Recap">
+<section class="slide" id="slide-9" data-title="Wire it in">
   <div class="slide-inner">
-    <span class="slide-number"><span class="n">09</span> &nbsp;·&nbsp; The shortest recap you'll read</span>
+    <span class="slide-number"><span class="n">09</span> &nbsp;·&nbsp; Beat 7 · Wire it in</span>
+    <h1 class="slide-title">
+      Drop a pointer in <span class="gradient-text">every project.</span>
+    </h1>
+    <p class="slide-lede">
+      A short pointer in your project's <code>CLAUDE.md</code> and <code>AGENTS.md</code>
+      teaches every agent that lands in the repo about your brain. The skill stays the only
+      way in &mdash; agents read <em>and</em> write through it, never by hand.
+    </p>
+
+    <div class="terminal glow-purple-sm mt-8 mb-6">
+      <div class="terminal-header">
+        <span class="terminal-dot" style="background:#ec4899"></span>
+        <span>/kluris-&lt;brain&gt; setup this project &middot; the agent does it</span>
+        <span class="scope scope-agent">In your AI agent &middot; in a project</span>
+      </div>
+<pre><span class="prompt-agent">&gt;</span> <span class="cmd">/kluris-&lt;brain&gt; setup this project</span>
+
+<span class="dim">Surveying CLAUDE.md and AGENTS.md...</span>
+
+<span class="meta">CLAUDE.md</span>: <span class="warn">missing</span> &mdash; propose creating it
+<span class="meta">AGENTS.md</span>: <span class="warn">missing</span> &mdash; propose creating it
+
+<span class="meta">Proposed CLAUDE.md content:</span>
+<span class="dim">──────────────────────────────────────</span>
+  <span class="str">## Knowledge base</span>
+
+  Read and write to the <span class="str">**&lt;brain&gt;**</span> brain through kluris
+  (never edit brain files by hand). Use the
+  <span class="str">/kluris-&lt;brain&gt;</span> skill &mdash; search, learn, remember, create.
+<span class="dim">──────────────────────────────────────</span>
+
+[<span class="ok">a</span>]pprove  [<span class="warn">e</span>]dit  [<span class="dim">s</span>]kip: <span class="str">a</span>
+
+<span class="ok">✓</span> CLAUDE.md created
+<span class="ok">✓</span> AGENTS.md created (same <span class="str">## Knowledge base</span> block)</pre>
+    </div>
+
+    <div class="grid grid-cols-1 md:grid-cols-3 gap-4">
+      <div class="card p-5">
+        <p class="text-purple text-xs uppercase tracking-widest font-semibold mb-2">Two files, one snippet</p>
+        <p class="text-text-dim text-sm leading-relaxed">
+          Claude Code reads <code>CLAUDE.md</code>; Codex / Cursor / Windsurf / Cline / Gemini CLI
+          read <code>AGENTS.md</code>. Same block in both &mdash; each file stands on its own.
+        </p>
+      </div>
+      <div class="card p-5">
+        <p class="text-purple text-xs uppercase tracking-widest font-semibold mb-2">Stays short</p>
+        <p class="text-text-dim text-sm leading-relaxed">
+          The skill itself teaches <em>search &middot; learn &middot; remember &middot; create</em>. The pointer just
+          names the brain and the skill &mdash; no neuron paths to rot.
+        </p>
+      </div>
+      <div class="card p-5">
+        <p class="text-purple text-xs uppercase tracking-widest font-semibold mb-2">Idempotent</p>
+        <p class="text-text-dim text-sm leading-relaxed">
+          Re-run any time. If the pointer is already there, the agent says so. If it's stale, the
+          agent offers to reformulate.
+        </p>
+      </div>
+    </div>
+
+    <p class="text-text-muted text-xs italic text-center mt-6 max-w-3xl mx-auto leading-relaxed">
+      Or paste the snippet manually &mdash; the same <code>## Knowledge base</code> block goes
+      in both files.
+    </p>
+  </div>
+</section>
+
+<!-- ======================================================================= -->
+<!-- SLIDE 10 — RECAP & CTA                                                   -->
+<!-- ======================================================================= -->
+<section class="slide" id="slide-10" data-title="Recap">
+  <div class="slide-inner">
+    <span class="slide-number"><span class="n">10</span> &nbsp;·&nbsp; The shortest recap you'll read</span>
     <h1 class="slide-title">
       Your AI agents, <span class="gradient-text">finally on your team.</span>
     </h1>
@@ -1589,7 +1667,7 @@ annual. Access is restricted to the security team.</span>
 <span class="prompt">$</span> <span class="cmd">kluris create</span>                         <span class="dim"># new brain from scratch</span>
   <span class="dim"># — or — </span>
 <span class="prompt">$</span> <span class="cmd">git clone git@github.com:team/brain.git ~/brains/team &amp;&amp; kluris register ~/brains/team</span>   <span class="dim"># join a team brain</span>
-<span class="meta">→ agent skills auto-install · open any repo · type</span> <span class="cmd">/kluris</span> <span class="meta">in chat</span></pre>
+<span class="meta">→ agent skills auto-install · open any repo · type</span> <span class="cmd">/kluris-acme</span> <span class="meta">in chat</span></pre>
       </div>
 
       <div class="flex flex-col sm:flex-row items-center justify-center gap-4 mt-10">

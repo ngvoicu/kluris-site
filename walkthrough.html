@@ -413,6 +413,54 @@
 </section>
 
 <!-- ======================================================================= -->
+<!-- WIRE IT IN — runs once before adding each project                       -->
+<!-- ======================================================================= -->
+<section class="px-6 py-12">
+  <div class="max-w-5xl mx-auto reveal">
+
+    <p class="kicker kicker-pink mb-2">Before each project · Wire kluris in</p>
+    <h2 class="phase-title mb-5">Drop a pointer in <span class="gradient-text">CLAUDE.md and AGENTS.md.</span></h2>
+
+    <p class="text-text-dim text-lg max-w-3xl mb-8 leading-relaxed">
+      Before you teach the brain anything about a project, drop a small pointer into the
+      project's <code>CLAUDE.md</code> and <code>AGENTS.md</code> so every coding agent that
+      lands in the repo knows the brain exists. The skill (and only the skill) reads and
+      writes the brain &mdash; never edit brain files by hand.
+    </p>
+
+    <pre class="miniterm"><span class="prompt-agent">&gt;</span> <span class="cmd">/kluris-&lt;brain&gt; setup this project</span>
+
+<span class="dim">Surveying CLAUDE.md and AGENTS.md...</span>
+
+<span class="meta">CLAUDE.md</span>: <span class="warn">missing</span> &mdash; propose creating it
+<span class="meta">AGENTS.md</span>: <span class="warn">missing</span> &mdash; propose creating it
+
+<span class="meta">Proposed ## Knowledge base section</span> (same in both files):
+<span class="dim">──────────────────────────────────────</span>
+  <span class="str">## Knowledge base</span>
+
+  Read and write to the <span class="str">**&lt;brain&gt;**</span> brain through kluris
+  (never edit brain files by hand). Use the <span class="str">/kluris-&lt;brain&gt;</span>
+  skill &mdash; search, learn, remember, create.
+<span class="dim">──────────────────────────────────────</span>
+
+[<span class="ok">a</span>]pprove  [<span class="warn">e</span>]dit  [<span class="dim">s</span>]kip: <span class="str">a</span>
+
+<span class="ok">✓</span> CLAUDE.md created
+<span class="ok">✓</span> AGENTS.md created (same <span class="str">## Knowledge base</span> block)</pre>
+
+    <p class="text-text-muted text-sm italic max-w-3xl mt-6 leading-relaxed">
+      The same block goes in both files because not every coding agent reads
+      <code>CLAUDE.md</code> &mdash; Codex, OpenCode, Cursor, Windsurf, Cline, and
+      Gemini CLI read <code>AGENTS.md</code>. Re-run any time; if the pointer is
+      already there, the agent says so. If it's stale, it offers to reformulate.
+    </p>
+
+    <div class="phase-rule"></div>
+  </div>
+</section>
+
+<!-- ======================================================================= -->
 <!-- PHASE 2 — ADD THE FIRST PROJECT                                         -->
 <!-- ======================================================================= -->
 <section class="px-6 py-12">
@@ -648,12 +696,12 @@
         forge a full spec from the brain first — interview, plan, implementation — every step grounded in your
         team's actual knowledge.
       </p>
-      <pre class="miniterm"><span class="prompt-agent">&gt;</span> <span class="cmd">/kluris let's add real-time presence to consensflow-cc — who's editing what</span>
+      <pre class="miniterm"><span class="prompt-agent">&gt;</span> <span class="cmd">/kluris-acme let's add real-time presence to consensflow-cc — who's editing what</span>
 <span class="meta">→ kluris pre-flights the brain · reads <span class="hl">projects/consensflow-cc/architecture</span></span>
 <span class="meta">→ reads <span class="hl">infrastructure/realtime</span> · reads <span class="hl">knowledge/sessions</span></span>
 <span class="meta">→ proposes a plan that matches your conventions, not generic boilerplate</span>
 
-<span class="prompt-agent">&gt;</span> <span class="cmd">/kluris let's create a spec for it first</span>
+<span class="prompt-agent">&gt;</span> <span class="cmd">/kluris-acme let's create a spec for it first</span>
 <span class="meta">→ spec companion takes over (if enabled at brain creation)</span>
 <span class="meta">→ interview · plan · tasks — all written from the brain · then implement</span></pre>
     </div>
@@ -677,17 +725,17 @@
         </div>
       </div>
       <p class="text-text-dim leading-relaxed mb-4">
-        Anybody on the team types <code class="text-cyan">/kluris</code> in their agent and gets the team's
+        Anybody on the team types <code class="text-cyan">/kluris-&lt;name&gt;</code> in their agent and gets the team's
         actual answer — verified, git-tracked, dated, with the source neuron linked. The same questions that used to
         cost a Slack ping and an interrupted senior dev now resolve in seconds, locally, in the IDE.
       </p>
-      <pre class="miniterm"><span class="prompt-agent">&gt;</span> <span class="cmd">/kluris where is btb-backend-core deployed and how?</span>
+      <pre class="miniterm"><span class="prompt-agent">&gt;</span> <span class="cmd">/kluris-acme where is btb-backend-core deployed and how?</span>
 <span class="meta">→ reads <span class="hl">infrastructure/deploy/coolify</span> · cites the source neuron · dated 2026-04-12</span>
 
-<span class="prompt-agent">&gt;</span> <span class="cmd">/kluris how do I deploy this to production?</span>
+<span class="prompt-agent">&gt;</span> <span class="cmd">/kluris-acme how do I deploy this to production?</span>
 <span class="meta">→ reads <span class="hl">infrastructure/release/ghcr-pipeline</span> · returns the exact tag-and-push flow</span>
 
-<span class="prompt-agent">&gt;</span> <span class="cmd">/kluris how do I change an env variable in prod?</span>
+<span class="prompt-agent">&gt;</span> <span class="cmd">/kluris-acme how do I change an env variable in prod?</span>
 <span class="meta">→ reads <span class="hl">infrastructure/secrets/coolify-env</span> · returns the steps + who to ask before</span></pre>
     </div>
 
@@ -696,7 +744,7 @@
       stops being a senior-dev interrupt.
     </p>
 
-    <!-- Spec-companion deep dive: what /kluris let's create a spec actually produces -->
+    <!-- Spec-companion deep dive: what /kluris-acme let's create a spec actually produces -->
     <div class="card p-6 md:p-8 mt-14 mb-10 reveal" style="border-color: rgba(52,211,153,0.30); background: rgba(52,211,153,0.04);">
       <div class="flex items-start gap-4 mb-3">
         <div class="w-11 h-11 rounded-full flex items-center justify-center flex-shrink-0" style="background:rgba(52,211,153,0.12);border:1px solid rgba(52,211,153,0.45);">
@@ -818,7 +866,7 @@
 </section>
 
 <!-- ======================================================================= -->
-<!-- MANY MODELS, ONE BRAIN — same /kluris skill, different agents           -->
+<!-- MANY MODELS, ONE BRAIN — same /kluris-acme skill, different agents           -->
 <!-- ======================================================================= -->
 <section class="px-6 py-12">
   <div class="max-w-5xl mx-auto">
@@ -843,7 +891,7 @@
         </div>
       </div>
       <p class="text-text-dim leading-relaxed mb-6">
-        The <code class="text-purple-light">/kluris</code> skill installs into every major coding CLI — Claude Code,
+        The <code class="text-purple-light">/kluris-&lt;name&gt;</code> skill installs into every major coding CLI — Claude Code,
         Cursor, Windsurf, Codex, OpenCode, Gemini CLI, Kilo, Junie. Pick the model that fits the moment.
         Draft the spec with <span class="text-purple-light">Claude Code · Opus 4.7</span>, then have a fresh
         <span class="text-mint-light">Codex · GPT-5.5</span> review it for blind spots, then ask
@@ -864,11 +912,11 @@
             <span class="font-mono text-xs min-w-0 break-words" style="color:#c4b5fd; letter-spacing: 0.06em;">Claude Code · Opus 4.7</span>
             <span class="ml-auto text-[0.62rem] uppercase tracking-[0.14em] font-semibold px-2 py-0.5 rounded-full flex-shrink-0" style="border:1px solid rgba(167,139,250,0.35); color:#c4b5fd; background:rgba(167,139,250,0.06);">Write</span>
           </div>
-<pre class="miniterm" style="border:none; border-radius:0; background: transparent; color:#e4e7ef;"><span class="prompt-agent" style="color:#c4b5fd;">&gt;</span> <span class="cmd">/kluris let's add real-time presence to consensflow-cc — who's editing what</span>
+<pre class="miniterm" style="border:none; border-radius:0; background: transparent; color:#e4e7ef;"><span class="prompt-agent" style="color:#c4b5fd;">&gt;</span> <span class="cmd">/kluris-acme let's add real-time presence to consensflow-cc — who's editing what</span>
 <span class="meta">→ kluris pre-flights the brain · reads <span class="hl">projects/consensflow-cc/architecture</span></span>
 <span class="meta">→ reads <span class="hl">infrastructure/realtime</span> · reads <span class="hl">knowledge/sessions</span></span>
 
-<span class="prompt-agent" style="color:#c4b5fd;">&gt;</span> <span class="cmd">/kluris let's create a spec for it first</span>
+<span class="prompt-agent" style="color:#c4b5fd;">&gt;</span> <span class="cmd">/kluris-acme let's create a spec for it first</span>
 <span class="meta">→ spec companion takes over · interview · plan · tasks</span>
 <span class="meta">→ SPEC.md drafted from brain + code · registered in <span class="hl">.specs/registry.md</span></span></pre>
         </div>
@@ -880,7 +928,7 @@
             <span class="font-mono text-xs min-w-0 break-words" style="color:#6ee7b7; letter-spacing: 0.06em;">Codex · GPT-5.5</span>
             <span class="ml-auto text-[0.62rem] uppercase tracking-[0.14em] font-semibold px-2 py-0.5 rounded-full flex-shrink-0" style="border:1px solid rgba(52,211,153,0.35); color:#6ee7b7; background:rgba(52,211,153,0.06);">Review the spec</span>
           </div>
-<pre class="miniterm" style="border:none; border-radius:0; background: transparent; color:#e4e7ef;"><span class="prompt-agent" style="color:#6ee7b7;">&gt;</span> <span class="cmd">/kluris review .specs/hrs-team-detail/SPEC.md against the brain and the codebase — challenge every assumption</span>
+<pre class="miniterm" style="border:none; border-radius:0; background: transparent; color:#e4e7ef;"><span class="prompt-agent" style="color:#6ee7b7;">&gt;</span> <span class="cmd">/kluris-acme review .specs/hrs-team-detail/SPEC.md against the brain and the codebase — challenge every assumption</span>
 <span class="meta">→ reads SPEC.md · cross-checks against brain neurons and live source files</span>
 <span class="meta">→ flags ambiguity, missing tests, conflicting decisions, weak acceptance criteria</span>
 <span class="meta">→ returns a critique with severity-ranked findings, ready to feed back into the spec</span></pre>
@@ -893,7 +941,7 @@
             <span class="font-mono text-xs min-w-0 break-words" style="color:#67e8f9; letter-spacing: 0.06em;">OpenCode · GLM 5.1 / DeepSeek 4 Pro / Kimi 2.6</span>
             <span class="ml-auto text-[0.62rem] uppercase tracking-[0.14em] font-semibold px-2 py-0.5 rounded-full flex-shrink-0" style="border:1px solid rgba(34,211,238,0.35); color:#67e8f9; background:rgba(34,211,238,0.06);">Review the code</span>
           </div>
-<pre class="miniterm" style="border:none; border-radius:0; background: transparent; color:#e4e7ef;"><span class="prompt-agent" style="color:#67e8f9;">&gt;</span> <span class="cmd">/kluris compare the implementation in src/team-detail/ to .specs/hrs-team-detail/SPEC.md — flag drift</span>
+<pre class="miniterm" style="border:none; border-radius:0; background: transparent; color:#e4e7ef;"><span class="prompt-agent" style="color:#67e8f9;">&gt;</span> <span class="cmd">/kluris-acme compare the implementation in src/team-detail/ to .specs/hrs-team-detail/SPEC.md — flag drift</span>
 <span class="meta">→ reads brain · reads SPEC.md · reads the actual code · diffs intent vs reality</span>
 <span class="meta">→ returns: tasks marked done that aren't really done, missing tests, undocumented shortcuts</span>
 <span class="meta">→ a third pair of eyes from a different model family · same context, different bias</span></pre>
@@ -924,7 +972,7 @@
         <div class="flex-1">
           <p class="kicker kicker-mint mb-2">The loop closes · the brain compounds</p>
           <h3 class="font-serif text-2xl md:text-3xl mb-3 leading-tight">
-            After every shipped feature, ask <span class="gradient-text-mint">/kluris to remember</span> what you just learned.
+            After every shipped feature, ask <span class="gradient-text-mint">/kluris-acme to remember</span> what you just learned.
           </h3>
           <p class="text-text-dim leading-relaxed mb-4">
             When the implementation is done — feature merged, bug fixed, deploy survived — turn back to the agent and ask
@@ -932,7 +980,7 @@
             took half a day to find: all of it lands in the brain as new neurons (with your approval, like always).
             Tomorrow's agent reads them. Next week's teammate reads them. Next quarter's hire reads them.
           </p>
-          <pre class="miniterm" style="border-color: rgba(52,211,153,0.25);"><span class="prompt-agent" style="color:#6ee7b7;">&gt;</span> <span class="cmd">/kluris remember what we worked on today and store it to the brain</span>
+          <pre class="miniterm" style="border-color: rgba(52,211,153,0.25);"><span class="prompt-agent" style="color:#6ee7b7;">&gt;</span> <span class="cmd">/kluris-acme remember what we worked on today and store it to the brain</span>
 <span class="meta">→ agent drafts neurons from the session: decisions, gotchas, snippets, links</span>
 <span class="meta">→ shows each one for <span class="hl">approve · edit · reject</span> · commits the approved ones</span>
 <span class="meta">→ <span class="hl">git push</span> · the whole team's brain just got smarter</span></pre>
