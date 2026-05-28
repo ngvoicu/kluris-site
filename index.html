@@ -490,6 +490,93 @@
   .cmd-table tr:last-child td { border-bottom: none; }
   .cmd-table tr:hover td { background: rgba(167,139,250,0.03); }
 
+  /* Comparison table */
+  .compare-wrap {
+    overflow-x: auto;
+    border-radius: 1.25rem;
+    border: 1px solid rgba(167,139,250,0.18);
+    background:
+      radial-gradient(circle at 18% 0%, rgba(167,139,250,0.16), transparent 32%),
+      radial-gradient(circle at 86% 100%, rgba(236,72,153,0.10), transparent 35%),
+      #10141f;
+    box-shadow: 0 24px 80px rgba(0,0,0,0.24), 0 0 50px rgba(167,139,250,0.08);
+  }
+  .compare-table {
+    width: 100%;
+    min-width: 860px;
+    border-collapse: collapse;
+  }
+  .compare-table th,
+  .compare-table td {
+    padding: 1rem 1.1rem;
+    text-align: left;
+    vertical-align: top;
+    border-bottom: 1px solid rgba(255,255,255,0.06);
+    border-right: 1px solid rgba(255,255,255,0.045);
+  }
+  .compare-table th:last-child,
+  .compare-table td:last-child { border-right: none; }
+  .compare-table tr:last-child td { border-bottom: none; }
+  .compare-table thead th {
+    position: sticky;
+    top: 0;
+    background: rgba(10,14,26,0.84);
+    backdrop-filter: blur(18px);
+    -webkit-backdrop-filter: blur(18px);
+    color: #e4e7ef;
+    font-family: 'DM Serif Display', Georgia, serif;
+    font-size: 1.25rem;
+    font-weight: 400;
+  }
+  .compare-table thead th:first-child {
+    width: 18%;
+    color: #8a92a6;
+    font-family: 'Inter', sans-serif;
+    font-size: 0.68rem;
+    font-weight: 700;
+    letter-spacing: 0.16em;
+    text-transform: uppercase;
+  }
+  .compare-table tbody td:first-child {
+    color: #c4b5fd;
+    font-weight: 700;
+    font-size: 0.78rem;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+  }
+  .compare-table td {
+    color: #8a92a6;
+    font-size: 0.9rem;
+    line-height: 1.55;
+  }
+  .compare-table td strong { color: #e4e7ef; font-weight: 600; }
+  .compare-table .winner {
+    background: linear-gradient(180deg, rgba(167,139,250,0.12), rgba(236,72,153,0.06));
+  }
+  .compare-table code {
+    color: #c4b5fd;
+    background: rgba(167,139,250,0.08);
+    border: 1px solid rgba(167,139,250,0.16);
+    border-radius: 0.35rem;
+    padding: 0.08rem 0.28rem;
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 0.78em;
+  }
+  .tool-pill {
+    display: inline-flex;
+    align-items: center;
+    padding: 0.18rem 0.55rem;
+    border-radius: 9999px;
+    border: 1px solid rgba(255,255,255,0.10);
+    color: #c4b5fd;
+    background: rgba(167,139,250,0.08);
+    font-family: 'Inter', sans-serif;
+    font-size: 0.62rem;
+    font-weight: 700;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+  }
+
   /* Section divider */
   .section-divider {
     max-width: 240px;
@@ -572,9 +659,10 @@
       </span>
       <span class="gradient-text">kluris</span>
     </a>
-    <div class="hidden md:flex items-center gap-4 lg:gap-6 text-sm font-medium">
+    <div class="hidden md:flex items-center gap-3 lg:gap-5 text-xs lg:text-sm font-medium">
       <a href="presentation.html" class="text-purple-light hover:text-pink transition-colors">Tour</a>
       <a href="walkthrough.html" class="text-purple-light hover:text-pink transition-colors">Walkthrough</a>
+      <a href="#compare" class="text-text-dim hover:text-text transition-colors">Compare</a>
       <a href="#setup" class="text-text-dim hover:text-text transition-colors">Set up</a>
       <a href="#teach" class="text-text-dim hover:text-text transition-colors">Teach</a>
       <a href="#see" class="text-text-dim hover:text-text transition-colors">See</a>
@@ -668,6 +756,91 @@
   <div class="absolute bottom-8 left-1/2 -translate-x-1/2 text-text-muted text-xs tracking-widest uppercase flex flex-col items-center gap-2 opacity-60">
     <span>Scroll</span>
     <div class="w-px h-8 bg-gradient-to-b from-purple to-transparent"></div>
+  </div>
+</section>
+
+<!-- ============================================ -->
+<!-- COMPARISON — GENERATED GRAPHS VS SME BRAIN     -->
+<!-- ============================================ -->
+<section id="compare" class="py-24 md:py-32 px-6 relative overflow-hidden">
+  <div class="absolute inset-0 pointer-events-none" style="background: radial-gradient(circle at 50% 0%, rgba(167,139,250,0.10), transparent 55%);"></div>
+  <div class="relative z-10 max-w-7xl mx-auto">
+    <div class="text-center mb-12 max-w-3xl mx-auto">
+      <p class="text-purple text-xs uppercase tracking-[0.2em] font-medium mb-4">Kluris vs generated graphs</p>
+      <h2 class="font-serif text-4xl md:text-6xl leading-tight mb-6">
+        Discovery tools find the map. <span class="gradient-text">Kluris keeps the memory.</span>
+      </h2>
+      <p class="text-text-dim text-lg leading-relaxed">
+        Graphify and Understand Anything are useful for understanding what exists in a repo or corpus. Kluris is where your team preserves the reviewed decisions, conventions, and cross-project context future agents should trust.
+      </p>
+    </div>
+
+    <p class="mb-3 text-center text-xs text-text-muted md:hidden">Swipe the comparison table horizontally.</p>
+    <div class="compare-wrap">
+      <table class="compare-table">
+        <thead>
+          <tr>
+            <th>Dimension</th>
+            <th>Graphify</th>
+            <th>Understand Anything</th>
+            <th class="winner">Kluris</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>Core job</td>
+            <td>Turn a folder of code, docs, papers, images, or video into a queryable knowledge graph.</td>
+            <td>Analyze a codebase into an interactive dashboard of files, functions, classes, dependencies, and tours.</td>
+            <td class="winner"><strong>Turn agents into team SMEs</strong> with shared, durable knowledge they can search, cite, and update.</td>
+          </tr>
+          <tr>
+            <td>Knowledge source</td>
+            <td>Automatic extraction from artifacts using parsers, local processing, and LLM-assisted semantic passes.</td>
+            <td>Automatic multi-agent scan of the current project, with structural parsing plus semantic summaries.</td>
+            <td class="winner"><strong>Human-curated neurons</strong>: the agent proposes, but the team reviews and approves what becomes durable truth.</td>
+          </tr>
+          <tr>
+            <td>Best at</td>
+            <td>Fast corpus discovery: structure, relationships, clusters, reports, and graph visualization.</td>
+            <td>Repo onboarding: visual exploration, guided tours, semantic search, and change-impact understanding.</td>
+            <td class="winner"><strong>Team memory</strong>: architecture decisions, conventions, lessons learned, deprecations, and context across many projects.</td>
+          </tr>
+          <tr>
+            <td>Output</td>
+            <td><code>graphify-out/</code> with <code>graph.html</code>, <code>GRAPH_REPORT.md</code>, and <code>graph.json</code>.</td>
+            <td><code>.understand-anything/knowledge-graph.json</code> plus a dashboard and related generated artifacts.</td>
+            <td class="winner"><code>brain.md</code>, <code>map.md</code>, glossary, neurons, synapses, git history, and MRI visualization.</td>
+          </tr>
+          <tr>
+            <td>Trust model</td>
+            <td>Generated graph with confidence labels like extracted, inferred, or ambiguous.</td>
+            <td>Generated summaries and relationships from a pipeline that can be re-run incrementally.</td>
+            <td class="winner"><strong>Reviewed by default</strong>: knowledge is explicit markdown, versioned in git, and corrected by humans.</td>
+          </tr>
+          <tr>
+            <td>Team workflow</td>
+            <td>Great first pass: map raw material, then decide what is worth keeping.</td>
+            <td>Great onboarding layer: teach a repo quickly and expose impact before changing code.</td>
+            <td class="winner"><strong>The durable layer</strong>: store only the decisions and lessons that should survive sessions, tools, and employees.</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+
+    <div class="mt-8 grid grid-cols-1 md:grid-cols-3 gap-4">
+      <div class="card rounded-2xl p-5">
+        <span class="tool-pill mb-3">Use together</span>
+        <p class="text-text-dim text-sm leading-relaxed">Run Graphify or Understand Anything to discover structure fast.</p>
+      </div>
+      <div class="card rounded-2xl p-5">
+        <span class="tool-pill mb-3">Review</span>
+        <p class="text-text-dim text-sm leading-relaxed">Ask the agent which findings are durable decisions, risks, or conventions.</p>
+      </div>
+      <div class="card rounded-2xl p-5 border-purple/25">
+        <span class="tool-pill mb-3">Remember</span>
+        <p class="text-text-dim text-sm leading-relaxed">Save the approved takeaways into Kluris so every future agent starts smarter.</p>
+      </div>
+    </div>
   </div>
 </section>
 
