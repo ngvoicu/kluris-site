@@ -6,8 +6,8 @@
 
 <!-- Primary Meta -->
 <title>Kluris — The SME your team never had | AI agent knowledge base</title>
-<meta name="description" content="Kluris turns your AI agents into team subject matter experts. Shared, human-curated, git-backed brains — works with Claude Code, Cursor, Copilot, and every agent on your team. Open-source Python CLI.">
-<meta name="keywords" content="kluris, kluris.io, AI agents, SME, subject matter expert, knowledge base, AI knowledge management, Claude Code, Cursor, Windsurf, GitHub Copilot, Codex, Gemini CLI, Kilo Code, Junie, brain, neurons, lobes, synapses, git-backed knowledge, pipx, python CLI, AI pair programming, agentic workflows, coding assistant memory, team knowledge sharing, token reduction, context window">
+<meta name="description" content="Kluris turns your AI agents into team subject matter experts. Shared, human-curated, git-backed brains — works with Claude Code, Cursor, Hermes Agent, Copilot, and every agent on your team. Open-source Python CLI.">
+<meta name="keywords" content="kluris, kluris.io, AI agents, SME, subject matter expert, knowledge base, AI knowledge management, Claude Code, Cursor, Windsurf, GitHub Copilot, Codex, Gemini CLI, Hermes Agent, Kilo Code, Junie, brain, neurons, lobes, synapses, git-backed knowledge, pipx, python CLI, AI pair programming, agentic workflows, coding assistant memory, team knowledge sharing, token reduction, context window">
 <meta name="author" content="Gabriel Voicu">
 <meta name="robots" content="index, follow, max-image-preview:large, max-snippet:-1">
 <meta name="googlebot" content="index, follow">
@@ -78,7 +78,7 @@
     "priceCurrency": "USD",
     "availability": "https://schema.org/InStock"
   },
-  "keywords": "AI agents, SME, knowledge base, brain, neurons, lobes, synapses, token reduction, context window, Claude Code, Cursor, Windsurf, GitHub Copilot, Codex, Gemini CLI, pipx, Python CLI",
+  "keywords": "AI agents, SME, knowledge base, brain, neurons, lobes, synapses, token reduction, context window, Claude Code, Cursor, Windsurf, GitHub Copilot, Codex, Gemini CLI, Hermes Agent, pipx, Python CLI",
   "sameAs": [
     "https://github.com/ngvoicu/kluris",
     "https://pypi.org/project/kluris/"
@@ -751,19 +751,22 @@
 <span class="meta">Default branch:</span> <span class="str">main</span>
 
 <span class="meta">Install specmint companions for this brain?</span>
-  <span class="dim">[1]</span> specmint-core  <span class="dim">(spec-driven-development)</span>
-  <span class="dim">[2]</span> specmint-tdd   <span class="dim">(spec-driven-development + TDD focus)</span>
-  <span class="dim">[3]</span> both           <span class="dim">[4]</span> skip
+  <span class="dim">[1]</span> specmint-core       <span class="dim">(markdown specs)</span>
+  <span class="dim">[2]</span> specmint-tdd        <span class="dim">(markdown specs + TDD)</span>
+  <span class="dim">[3]</span> core + tdd          <span class="dim">[4]</span> skip
+  <span class="dim">[5]</span> specmint-core-html  <span class="dim">(canonical SPEC.html)</span>
+  <span class="dim">[6]</span> specmint-tdd-html   <span class="dim">(SPEC.html + TDD)</span>
+  <span class="dim">[7]</span> all
 <span class="meta">Choice:</span> <span class="str">3</span>
 
   <span class="ok">✓</span> Created acme-brain <span class="dim">(project-group · 3 lobes)</span>
   <span class="ok">✓</span> Git initialized on main
   <span class="ok">✓</span> Registered acme-brain
-  <span class="ok">✓</span> Installed /kluris-acme skill for 8 agents
+  <span class="ok">✓</span> Installed kluris-acme skill for 9 agents
   <span class="ok">✓</span> Bundled specmint-core + specmint-tdd companions
 
 <span class="dim">Next: open any project in your AI agent and</span>
-<span class="dim">      type /kluris-acme learn this service</span></pre>
+<span class="dim">      load /kluris-acme (Hermes: /skill kluris-acme)</span></pre>
       </div>
 
       <div class="terminal">
@@ -1130,7 +1133,7 @@ Tunnel (zero public ports).</span></pre>
       </div>
     </div>
 
-    <!-- Install: two flavors side-by-side -->
+    <!-- Install: four flavors -->
     <div class="max-w-5xl mx-auto mt-10">
       <p class="text-center text-xs uppercase tracking-[0.18em] text-text-muted font-medium mb-5">Enable Specmint Companions</p>
       <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
@@ -1138,10 +1141,10 @@ Tunnel (zero public ports).</span></pre>
         <div class="card rounded-2xl p-6 border border-mint/25">
           <div class="flex items-baseline justify-between mb-3">
             <p class="font-serif text-xl text-mint">specmint-core</p>
-            <span class="text-[0.62rem] uppercase tracking-[0.16em] text-text-muted font-semibold">Spec-first</span>
+            <span class="text-[0.62rem] uppercase tracking-[0.16em] text-text-muted font-semibold">Markdown spec</span>
           </div>
           <p class="text-text-dim text-sm leading-relaxed mb-4">
-            Research · Interview · Spec · Implement. The workflow shown above.
+            Research · Interview · SPEC.md · Implement. The lightweight workflow shown above.
           </p>
           <div class="flex flex-col gap-2 text-xs">
             <code class="font-mono px-3 py-2.5 rounded-lg border border-mint/30 bg-mint/5 text-mint">kluris companion add specmint-core</code>
@@ -1152,19 +1155,47 @@ Tunnel (zero public ports).</span></pre>
         <div class="card rounded-2xl p-6 border border-mint/25">
           <div class="flex items-baseline justify-between mb-3">
             <p class="font-serif text-xl text-mint">specmint-tdd</p>
-            <span class="text-[0.62rem] uppercase tracking-[0.16em] text-text-muted font-semibold">Red · Green · Refactor</span>
+            <span class="text-[0.62rem] uppercase tracking-[0.16em] text-text-muted font-semibold">Markdown + TDD</span>
           </div>
           <p class="text-text-dim text-sm leading-relaxed mb-4">
-            Same forge flow, with strict TDD — a failing test before any implementation.
+            Same markdown forge flow, with strict TDD — a failing test before implementation.
           </p>
           <div class="flex flex-col gap-2 text-xs">
             <code class="font-mono px-3 py-2.5 rounded-lg border border-mint/30 bg-mint/5 text-mint">kluris companion add specmint-tdd</code>
             <code class="font-mono px-3 py-2.5 rounded-lg border border-mint/30 bg-mint/5 text-mint">bundled with kluris</code>
           </div>
         </div>
+        <!-- Core HTML -->
+        <div class="card rounded-2xl p-6 border border-mint/25">
+          <div class="flex items-baseline justify-between mb-3">
+            <p class="font-serif text-xl text-mint">specmint-core-html</p>
+            <span class="text-[0.62rem] uppercase tracking-[0.16em] text-text-muted font-semibold">Canonical HTML</span>
+          </div>
+          <p class="text-text-dim text-sm leading-relaxed mb-4">
+            Spec-first workflow where .specs/&lt;id&gt;/SPEC.html is the source of truth.
+          </p>
+          <div class="flex flex-col gap-2 text-xs">
+            <code class="font-mono px-3 py-2.5 rounded-lg border border-mint/30 bg-mint/5 text-mint">kluris companion add specmint-core-html</code>
+            <code class="font-mono px-3 py-2.5 rounded-lg border border-mint/30 bg-mint/5 text-mint">bundled with kluris</code>
+          </div>
+        </div>
+        <!-- TDD HTML -->
+        <div class="card rounded-2xl p-6 border border-mint/25">
+          <div class="flex items-baseline justify-between mb-3">
+            <p class="font-serif text-xl text-mint">specmint-tdd-html</p>
+            <span class="text-[0.62rem] uppercase tracking-[0.16em] text-text-muted font-semibold">HTML + RGR</span>
+          </div>
+          <p class="text-text-dim text-sm leading-relaxed mb-4">
+            Canonical SPEC.html with TEST/IMPL pairs, red-green-refactor state, and TDD log.
+          </p>
+          <div class="flex flex-col gap-2 text-xs">
+            <code class="font-mono px-3 py-2.5 rounded-lg border border-mint/30 bg-mint/5 text-mint">kluris companion add specmint-tdd-html</code>
+            <code class="font-mono px-3 py-2.5 rounded-lg border border-mint/30 bg-mint/5 text-mint">bundled with kluris</code>
+          </div>
+        </div>
       </div>
       <p class="text-center text-text-dim text-xs mt-5">
-        Enable companions per brain; Kluris copies only the bundled SKILL.md and references it from the generated /kluris-&lt;name&gt; skill.
+        Enable companions per brain; Kluris copies only the bundled SKILL.md and references it from the generated kluris-&lt;name&gt; skill.
       </p>
     </div>
 
@@ -1406,7 +1437,7 @@ or clients sit in different timezones.</span>
         Two surfaces, <span class="gradient-text">one brain</span>.
       </h2>
       <p class="text-text-dim text-lg leading-relaxed">
-        Kluris lives in two places. You run the <span class="text-purple font-medium">CLI</span> in your terminal to set up and maintain your brains. Your AI agents run one <span class="text-pink font-medium">named slash command per brain</span> — <span class="font-mono text-purple-light">/kluris-&lt;name&gt;</span> — inside Claude Code, Cursor, Windsurf, Codex, Copilot, Gemini CLI, Kilo, or Junie, followed by whatever you want to say. Keep the agent open on a project so it has code to read.
+        Kluris lives in two places. You run the <span class="text-purple font-medium">CLI</span> in your terminal to set up and maintain your brains. Your AI agents load one <span class="text-pink font-medium">named skill per brain</span> — <span class="font-mono text-purple-light">kluris-&lt;name&gt;</span> — inside Claude Code, Cursor, Windsurf, Codex, Copilot, Gemini CLI, Hermes Agent, Kilo, or Junie, followed by whatever you want to say. Keep the agent open on a project so it has code to read.
       </p>
     </div>
 
@@ -1426,7 +1457,7 @@ or clients sit in different timezones.</span>
           <span class="text-xs text-text-muted">where the agent types</span>
         </div>
         <p class="font-mono text-sm text-pink mb-2"><span class="text-pink font-bold">&gt;</span> /kluris-acme &lt;pattern&gt;</p>
-        <p class="text-xs text-text-dim leading-relaxed">Run inside your AI coding agent — Claude Code, Cursor, Windsurf, Codex, Copilot, Gemini CLI, Kilo, Junie — with a project open. The <span class="text-pink">pink <span class="font-mono">&gt;</span></span> prompt. Use it while coding to teach and query the brain.</p>
+        <p class="text-xs text-text-dim leading-relaxed">Run inside your AI coding agent — Claude Code, Cursor, Windsurf, Codex, Copilot, Gemini CLI, Hermes Agent, Kilo, Junie — with a project open. Most agents invoke <span class="font-mono text-pink">/kluris-acme</span>; Hermes uses <span class="font-mono text-pink">/skill kluris-acme</span> or <span class="font-mono text-pink">hermes -s kluris-acme</span>. Use it while coding to teach and query the brain.</p>
       </div>
     </div>
 
@@ -1447,12 +1478,13 @@ or clients sit in different timezones.</span>
           <tr><td>search &lt;query&gt;</td><td>Ranked search across neurons, glossary, brain.md</td></tr>
           <tr><td>wake-up</td><td>Compact snapshot for agent bootstrap</td></tr>
           <tr><td>companion add</td><td>Enable an embedded companion for a brain</td></tr>
+          <tr><td>companion list</td><td>List companion installs and brain opt-ins</td></tr>
           <tr><td>companion remove</td><td>Remove a companion opt-in</td></tr>
           <tr><td>dream</td><td>Regenerate maps, fix links, validate</td></tr>
           <tr><td>pack</td><td>Pack a brain into a Docker chat server</td></tr>
           <tr><td>mri</td><td>Generate interactive HTML viz</td></tr>
           <tr><td>remove &lt;name&gt;</td><td>Unregister a brain (keeps files)</td></tr>
-          <tr><td>doctor</td><td>Check prerequisites</td></tr>
+          <tr><td>doctor</td><td>Check prerequisites and refresh installed skills</td></tr>
           <tr><td>help</td><td>Show command help</td></tr>
         </table>
         <p class="mt-5 text-xs text-text-muted italic">All CLI commands support <span class="font-mono text-purple-light">--json</span> for machine-readable output.</p>
@@ -1467,8 +1499,8 @@ or clients sit in different timezones.</span>
           <h3 class="text-sm uppercase tracking-[0.15em] text-pink font-semibold min-w-0 break-words">Inside your AI agent &nbsp;·&nbsp; <span class="font-mono text-text">&gt; /kluris-acme ...</span></h3>
           <span class="scope scope-agent flex-shrink-0" style="margin-left:0">Agent</span>
         </div>
-        <p class="mb-3 text-xs text-pink/80 font-medium not-italic">Each brain has its own slash command — <span class="font-mono text-purple-light">/kluris-&lt;name&gt;</span>. Everything below is an example of what you can say after it.</p>
-        <p class="mb-5 text-xs text-text-muted italic">Type these inside Claude Code, Cursor, Windsurf, Codex, Copilot, Gemini CLI, Kilo, or Junie — with a project open, so the agent can read your code. Every registered brain installs as <span class="font-mono text-purple-light">/kluris-&lt;name&gt;</span>. Examples below use <span class="font-mono text-purple-light">/kluris-acme</span> for clarity.</p>
+        <p class="mb-3 text-xs text-pink/80 font-medium not-italic">Each brain has its own skill — <span class="font-mono text-purple-light">kluris-&lt;name&gt;</span>. Most agents expose it as <span class="font-mono text-purple-light">/kluris-&lt;name&gt;</span>; Hermes loads it with <span class="font-mono text-purple-light">/skill kluris-&lt;name&gt;</span>.</p>
+        <p class="mb-5 text-xs text-text-muted italic">Type these inside Claude Code, Cursor, Windsurf, Codex, Copilot, Gemini CLI, Hermes Agent, Kilo, or Junie — with a project open, so the agent can read your code. Examples below use <span class="font-mono text-purple-light">/kluris-acme</span> for clarity.</p>
         <table class="cmd-table">
           <tr><td>/kluris-acme learn &lt;topic&gt;</td><td>Agent analyzes code, proposes neurons</td></tr>
           <tr><td>/kluris-acme remember &lt;fact&gt;</td><td>Quick-capture a decision as a neuron</td></tr>
@@ -1503,7 +1535,7 @@ or clients sit in different timezones.</span>
         More than <span class="gradient-text">one brain</span>.
       </h2>
       <p class="text-text-dim text-lg leading-relaxed">
-        A work brain, a personal brain, a team brain you cloned from GitHub — kluris keeps them separate. Each brain installs as its own slash command, so the agent never has to guess which one you mean.
+        A work brain, a personal brain, a team brain you cloned from GitHub — kluris keeps them separate. Each brain installs as its own named skill, so the agent never has to guess which one you mean.
       </p>
     </div>
 
@@ -1538,7 +1570,7 @@ Multiple brains registered. Pick one:
 
 <span class="prompt">$</span> <span class="cmd">kluris register ~/brains/team-brain</span>
   <span class="ok">✓</span> Registered team-brain
-  <span class="ok">✓</span> /kluris-team-brain skill installed across 8 agents</pre>
+  <span class="ok">✓</span> kluris-team-brain skill installed across 9 agents</pre>
     </div>
 
     <div class="mt-8 flex flex-wrap justify-center gap-3">
@@ -1589,6 +1621,8 @@ Multiple brains registered. Pick one:
         <span class="hover:text-purple transition-colors cursor-default">Codex</span>
         <span class="text-text-muted">·</span>
         <span class="hover:text-purple transition-colors cursor-default">Gemini CLI</span>
+        <span class="text-text-muted">·</span>
+        <span class="hover:text-purple transition-colors cursor-default">Hermes Agent</span>
         <span class="text-text-muted">·</span>
         <span class="hover:text-purple transition-colors cursor-default">Kilo Code</span>
         <span class="text-text-muted">·</span>
