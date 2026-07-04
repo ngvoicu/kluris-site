@@ -2,7 +2,7 @@
 
 The marketing and tutorial site for [Kluris](https://github.com/ngvoicu/kluris) — *the SME your team never had.*
 
-Lives at **[https://kluris.io/](https://kluris.io/)**.
+Lives at **[https://kluris.ngvoicu.dev/](https://kluris.ngvoicu.dev/)**.
 
 ## Stack
 
@@ -26,7 +26,7 @@ Lives at **[https://kluris.io/](https://kluris.io/)**.
 | `site.webmanifest` | PWA manifest |
 | `robots.txt` | Search engine directives |
 | `sitemap.xml` | URL list for crawlers |
-| `CNAME` | GitHub Pages custom domain (`kluris.io`) |
+| `CNAME` | GitHub Pages custom domain (`kluris.ngvoicu.dev`) |
 
 ## Local preview
 
@@ -53,7 +53,7 @@ The site has a complete SEO setup:
 
 ## GitHub Pages deployment
 
-This folder is designed to deploy to GitHub Pages with a custom domain (`kluris.io`).
+This folder is designed to deploy to GitHub Pages with a custom domain (`kluris.ngvoicu.dev`).
 
 ### One-time setup
 
@@ -67,13 +67,13 @@ This folder is designed to deploy to GitHub Pages with a custom domain (`kluris.
 
 3. **Custom domain:**
    - Same Settings → Pages page
-   - **Custom domain:** `kluris.io`
+   - **Custom domain:** `kluris.ngvoicu.dev`
    - Save. GitHub will detect the `CNAME` file in this folder automatically.
    - Tick **Enforce HTTPS** once the cert is issued (a few minutes).
 
 4. **DNS records** at your domain registrar (Cloudflare, Namecheap, Porkbun, etc.):
 
-   For an apex domain (`kluris.io`), add four `A` records pointing to GitHub Pages:
+   For an apex domain (`kluris.ngvoicu.dev`), add four `A` records pointing to GitHub Pages:
 
    ```
    A    @    185.199.108.153
@@ -82,7 +82,7 @@ This folder is designed to deploy to GitHub Pages with a custom domain (`kluris.
    A    @    185.199.111.153
    ```
 
-   Plus a `CNAME` for the `www` subdomain so `www.kluris.io` redirects:
+   Plus a `CNAME` for the `www` subdomain so `www.kluris.ngvoicu.dev` redirects:
 
    ```
    CNAME    www    ngvoicu.github.io

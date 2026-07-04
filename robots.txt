@@ -1,4 +1,4 @@
 User-agent: *
 Allow: /
 
-Sitemap: https://kluris.io/sitemap.xml
+Sitemap: https://kluris.ngvoicu.dev/sitemap.xml
