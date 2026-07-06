@@ -111,3 +111,14 @@ The Tailwind classes are configured inline at the top of `<head>`. Custom CSS va
 ## License
 
 The site itself follows the same MIT license as Kluris. The brand assets (`logo.png`, `logo.webp`) are © Gabriel Voicu — please do not reuse for derivative or competing products.
+
+## Deploying (read this — Pages builds get stuck)
+
+Push `main` to `upstream` (GitHub) and Pages builds automatically — but builds **regularly hang in `"building"`**. After every push:
+
+```bash
+gh api repos/ngvoicu/kluris-site/pages/builds/latest --jq .status   # expect "built" within ~1 min
+gh api -X POST repos/ngvoicu/kluris-site/pages/builds               # re-queue if it sits in "building"
+```
+
+Then confirm the change is actually live: `curl -s https://kluris.ngvoicu.dev/ | grep '<something-from-your-change>'`.
