@@ -71,24 +71,13 @@ This folder is designed to deploy to GitHub Pages with a custom domain (`kluris.
    - Save. GitHub will detect the `CNAME` file in this folder automatically.
    - Tick **Enforce HTTPS** once the cert is issued (a few minutes).
 
-4. **DNS records** at your domain registrar (Cloudflare, Namecheap, Porkbun, etc.):
-
-   For an apex domain (`kluris.ngvoicu.dev`), add four `A` records pointing to GitHub Pages:
+4. **DNS record** in the Cloudflare-managed `ngvoicu.dev` zone. `kluris.ngvoicu.dev` is a subdomain, not an apex domain, so one `CNAME` record points it at GitHub Pages:
 
    ```
-   A    @    185.199.108.153
-   A    @    185.199.109.153
-   A    @    185.199.110.153
-   A    @    185.199.111.153
+   CNAME    kluris    ngvoicu.github.io
    ```
 
-   Plus a `CNAME` for the `www` subdomain so `www.kluris.ngvoicu.dev` redirects:
-
-   ```
-   CNAME    www    ngvoicu.github.io
-   ```
-
-   (Replace `ngvoicu` with the actual GitHub username/org that owns the repo.)
+   No `A` records and no `www` record are needed.
 
 5. **Wait for propagation** (DNS: minutes to hours · GitHub cert issuance: minutes).
 

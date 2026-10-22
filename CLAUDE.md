@@ -43,7 +43,7 @@ The whole site is one file. In-file banner comments (`HERO`, `COMPARISON`, `BEAT
 
 ## Deploy
 
-Push to `main`. GitHub Pages rebuilds automatically — no CI workflow. DNS: four `A` records at the apex pointing to GitHub Pages, plus `CNAME www → ngvoicu.github.io`.
+Push to `main`. GitHub Pages rebuilds automatically — no CI workflow. DNS: `kluris.ngvoicu.dev` is a subdomain: one `CNAME kluris → ngvoicu.github.io` in the Cloudflare-managed `ngvoicu.dev` zone; no `A` records, no `www` record.
 
 ## License
 
