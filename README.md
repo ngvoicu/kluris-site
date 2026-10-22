@@ -83,13 +83,16 @@ This folder is designed to deploy to GitHub Pages with a custom domain (`kluris.
 
 ### Subsequent deploys
 
-Just push to `main`. GitHub Pages rebuilds automatically. No CI workflow needed — Pages handles a static site directly.
+Push `main` to both remotes. `origin` is the NAS; the push to `upstream` (GitHub) is what GitHub Pages builds and serves. No CI workflow needed — Pages handles a static site directly.
 
 ```bash
 git add -A
 git commit -m "site: copy tweak"
 git push origin main
+git push upstream main
 ```
+
+For a build stuck in "building", see the Deploying section below.
 
 ## Editing
 
