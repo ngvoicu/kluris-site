@@ -5,14 +5,14 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
 <title>Kluris — The guided tour</title>
-<meta name="description" content="A nine-slide tour of kluris: set up a brain, teach it from your AI agent in a project, see it on one screen, use it to get grounded answers, pair it with specmint for grounded specs, grow it with your team, and let the brain review itself.">
+<meta name="description" content="A ten-slide tour of kluris: set up a brain, teach it from your AI agent in a project, see it on one screen, use it to get grounded answers, pair it with specmint for grounded specs, grow it with your team, and let the brain review itself.">
 <meta name="robots" content="index, follow">
 <link rel="canonical" href="https://kluris.ngvoicu.dev/presentation.html">
 
 <meta property="og:type" content="website">
 <meta property="og:url" content="https://kluris.ngvoicu.dev/presentation.html">
 <meta property="og:title" content="Kluris — The guided tour">
-<meta property="og:description" content="A nine-slide tour of kluris: set up, teach, see, use, pair with specmint, grow, and let the brain review itself.">
+<meta property="og:description" content="A ten-slide tour of kluris: set up, teach, see, use, pair with specmint, grow, and let the brain review itself.">
 <meta property="og:image" content="https://kluris.ngvoicu.dev/og-image.png">
 <meta property="og:image:width" content="1200">
 <meta property="og:image:height" content="630">
@@ -782,7 +782,7 @@
   <button class="nav-btn" id="btn-prev" title="Previous slide (← / PgUp / Shift+Space)">
     <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round"><path d="M15 18l-6-6 6-6"/></svg>
   </button>
-  <span class="nav-label" id="nav-label">1 / 9</span>
+  <span class="nav-label" id="nav-label">1 / 10</span>
   <button class="nav-btn" id="btn-next" title="Next slide (→ / PgDn / Space)">
     <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round"><path d="M9 6l6 6-6 6"/></svg>
   </button>
@@ -809,7 +809,7 @@
 
     <div class="section-divider my-10"></div>
 
-    <p class="slide-kicker">Two surfaces · one brain · six beats</p>
+    <p class="slide-kicker">Two surfaces · one brain · seven beats</p>
     <div class="grid grid-cols-1 md:grid-cols-2 gap-4 mb-8">
       <div class="surface-card terminal-card">
         <div class="surface-head">
@@ -836,7 +836,7 @@
       </div>
     </div>
 
-    <p class="slide-kicker">The six beats ahead</p>
+    <p class="slide-kicker">The seven beats ahead</p>
     <div class="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-6 gap-3">
       <div class="card p-3.5 text-center">
         <p class="text-purple-light text-xs uppercase tracking-widest mb-1">Beat 1</p>
@@ -900,6 +900,7 @@
         </div>
 <pre><span class="prompt">$</span> <span class="cmd">brew install pipx</span>
 <span class="prompt">$</span> <span class="cmd">pipx ensurepath</span>
+<span class="dim"># restart your terminal, then:</span>
 <span class="prompt">$</span> <span class="cmd">pipx install kluris</span></pre>
       </div>
       <div class="terminal glow-purple-sm">
@@ -912,6 +913,7 @@
         </div>
 <pre><span class="prompt">$</span> <span class="cmd">python3 -m pip install --user pipx</span>
 <span class="prompt">$</span> <span class="cmd">pipx ensurepath</span>
+<span class="dim"># restart your terminal, then:</span>
 <span class="prompt">$</span> <span class="cmd">pipx install kluris</span></pre>
       </div>
       <div class="terminal glow-purple-sm">
@@ -924,6 +926,7 @@
         </div>
 <pre><span class="prompt">&gt;</span> <span class="cmd">pip install pipx</span>
 <span class="prompt">&gt;</span> <span class="cmd">pipx ensurepath</span>
+<span class="dim"># restart your terminal, then:</span>
 <span class="prompt">&gt;</span> <span class="cmd">pipx install kluris</span></pre>
       </div>
     </div>
@@ -937,48 +940,54 @@
         </div>
 <pre><span class="prompt">$</span> <span class="cmd">kluris create</span>
 
-<span class="meta">Brain name:</span> <span class="str">acme-brain</span>
+<span class="meta">Brain name:</span> <span class="str">acme</span>
 <span class="meta">What does this brain cover?</span> <span class="str">Shared brain for ACME projects</span>
-<span class="meta">Location:</span> <span class="str">~/Projects/acme-brain</span>
-<span class="meta">Brain type</span> <span class="dim">[project-group, personal, product, research, blank]:</span> <span class="str">project-group</span>
+<span class="meta">Location:</span> <span class="str">~/Projects</span>
+<span class="meta">Brain type</span> <span class="dim">[product-group, personal, product, research, blank]:</span> <span class="str">product-group</span>
 <span class="meta">Git setup</span> <span class="dim">[1=local, 2=with remote, 3=no git]:</span> <span class="str">1</span>
 <span class="meta">Default branch:</span> <span class="str">main</span>
 
 <span class="meta">Install specmint companions for this brain?</span>
-  <span class="dim">[1]</span> specmint-core  <span class="dim">(spec-driven-development)</span>
-  <span class="dim">[2]</span> specmint-tdd   <span class="dim">(spec-driven-development + TDD focus)</span>
-  <span class="dim">[3]</span> both           <span class="dim">[4]</span> skip
-<span class="meta">Choice:</span> <span class="str">3</span>
+  <span class="dim">[1]</span> specmint-core      <span class="dim">(spec-driven-development companion)</span>
+  <span class="dim">[2]</span> specmint-tdd       <span class="dim">(spec-driven-development with test-driven-development focus)</span>
+  <span class="dim">[3]</span> core + tdd
+  <span class="dim">[4]</span> skip
+  <span class="dim">[5]</span> specmint-core-html <span class="dim">(spec-driven-development with canonical SPEC.html)</span>
+  <span class="dim">[6]</span> specmint-tdd-html  <span class="dim">(TDD-focused specs with canonical SPEC.html)</span>
+  <span class="dim">[7]</span> all
+<span class="meta">Choice</span> <span class="dim">[4]:</span> <span class="str">3</span>
 
-  <span class="ok">✓</span> Created acme-brain <span class="dim">(project-group · 3 lobes)</span>
-  <span class="ok">✓</span> Git initialized on main
-  <span class="ok">✓</span> Registered acme-brain
-  <span class="ok">✓</span> Installed /kluris-acme skill for 8 agents
-  <span class="ok">✓</span> Bundled specmint-core + specmint-tdd companions
+<span class="ok">Brain created:</span> acme <span class="dim">(product-group)</span>
+  Path: ~/Projects/acme
+  Lobes: 3
 
-<span class="dim">Next: open any project in your AI agent and</span>
-<span class="dim">      type /kluris-acme learn this service</span></pre>
+<span class="ok">Agent skill installed: kluris-acme</span>
+  <span class="dim">Claude/Codex/Gemini/etc:</span> /kluris-acme
+  <span class="dim">Hermes:</span> /skill kluris-acme  <span class="dim">(or start with `hermes -s kluris-acme`)</span></pre>
       </div>
 
       <div class="terminal">
         <div class="terminal-header">
           <span class="terminal-dot" style="background:#a78bfa"></span>
-          <span>The folder kluris just created · <code>project-group</code> defaults</span>
+          <span>The folder kluris just created · <code>product-group</code> defaults</span>
         </div>
-<pre class="tree"><span class="folder">acme-brain/</span>
+<pre class="tree"><span class="folder">acme/</span>
 ├── kluris.yml              <span class="note"># gitignored — your local config</span>
 ├── brain.md                <span class="note"># root directory, auto-generated</span>
 ├── glossary.md             <span class="note"># domain terms, hand-edited</span>
 ├── README.md               <span class="note"># usage guide</span>
 ├── .gitignore
 ├── <span class="folder">projects/</span>
+│   ├── map.md              <span class="note"># lobe index, auto-generated</span>
 │   └── <span class="dim">(your neurons go here)</span>
 ├── <span class="folder">infrastructure/</span>
+│   ├── map.md
 │   └── <span class="dim">(your neurons go here)</span>
 └── <span class="folder">knowledge/</span>
+    ├── map.md
     └── <span class="dim">(your neurons go here)</span></pre>
         <p class="px-5 py-3 text-xs text-text-muted italic border-t border-white/5">
-          Scaffolded defaults for the <code>project-group</code> brain type. You add, rename, or remove lobes as your team grows.
+          Scaffolded defaults for the <code>product-group</code> brain type. You add, rename, or remove lobes as your team grows.
         </p>
       </div>
     </div>
@@ -1125,11 +1134,11 @@ at 80% TTL.</span>
         </div>
 <pre><span class="prompt">$</span> <span class="cmd">kluris mri</span>
 
-<span class="ok">MRI complete</span> — brain-mri.html
-  <span class="warn">51</span> neurons, <span class="warn">491</span> synapses
-  <span class="dim">→ file:///.../brain-mri.html</span>
+<span class="ok">MRI complete</span> — /home/user/ngvoicu-sme/brain-mri.html
+  Open: <span class="dim">file:///home/user/ngvoicu-sme/brain-mri.html</span>
+  <span class="warn">43</span> nodes, <span class="warn">254</span> edges
 
-<span class="dim">Open it in any browser. Commit it, email it,
+<span class="dim">Open the link in any browser. Commit it, email it,
 drop it in Slack — it runs anywhere, no server.</span></pre>
       </div>
     </div>
@@ -1137,34 +1146,37 @@ drop it in Slack — it runs anywhere, no server.</span></pre>
     <!-- Overview: full-width screenshot, explanation below -->
     <figure class="max-w-5xl mx-auto mt-8">
       <div class="mri-frame">
-        <img src="mri-overview.png" alt="kluris mri overview — lobe panel with neuron counts, live stats, search box, and the whole brain as coloured clusters with dashed synapse lines" style="display:block; width:100%; height:auto;">
+        <img src="mri-overview.png" alt="kluris mri root view of a brain — its lobes and the glossary as C4-style boxes with synapse counts on the lines between them, the file tree on the left, and the Find and Recent panels on the right" style="display:block; width:100%; height:auto;">
       </div>
       <figcaption class="text-text-muted text-xs mt-3 text-center leading-relaxed">
-        <span class="text-purple-light font-semibold">The overview</span> — lobes as clusters, neurons as nodes, synapses as the lines between them.
+        <span class="text-purple-light font-semibold">The root view</span> — each lobe as a box, synapse counts on the lines between them.
       </figcaption>
       <p class="text-text-dim text-sm leading-relaxed mt-3 max-w-3xl mx-auto text-center">
-        Live counts (<strong>51 neurons · 491 synapses</strong>), a lobe breakdown you can collapse and
-        filter, and a fuzzy search across names, paths, lobes, and tags. Click a lobe to isolate it;
-        click a node to open it.
+        The header counts the brain (<strong>30 neurons · 254 synapses</strong> here), the file tree on the
+        left collapses, and Find on the right searches neurons, paths, lobes, tags, and YAML, with the most
+        recently updated neurons listed beneath. Click a folder to drill in; click a neuron to open it.
       </p>
     </figure>
 
-    <!-- Inspector: full-width screenshot, explanation below -->
+    <!-- Neuron view: full-width screenshot, explanation below -->
     <figure class="max-w-5xl mx-auto mt-8">
       <div class="mri-frame">
-        <img src="mri-inspector.png" alt="kluris mri inspector — a neuron's rendered markdown on the right, related-neuron tabs along the top, and the full brain tree in the left panel" style="display:block; width:100%; height:auto;">
+        <img src="mri-inspector.png" alt="kluris mri neuron detail — one neuron open in a modal: back and forward buttons and its title at the top, its path and tags, buttons for the connected neurons, the rendered markdown with a code block, and the file tree on the left" style="display:block; width:100%; height:auto;">
       </div>
       <figcaption class="text-text-muted text-xs mt-3 text-center leading-relaxed">
-        <span class="text-purple-light font-semibold">The inspector</span> — rendered markdown on the right, related neurons as tabs, the full brain tree on the left.
+        <span class="text-purple-light font-semibold">The neuron view</span> — rendered markdown on the right, connected neurons as buttons along the top, the file tree on the left.
       </figcaption>
       <p class="text-text-dim text-sm leading-relaxed mt-3 max-w-3xl mx-auto text-center">
-        One click on any node opens its neuron, fully rendered, with the related-neuron tabs across the
-        top so you can walk a topic in seconds. This is what agents see — now visible to you.
+        One click on any neuron box opens it in a modal, fully rendered, with its path, tags and
+        connected-neuron buttons above the text and back and forward buttons to retrace your steps, so you can
+        walk a topic in seconds. This is what agents see — now visible to you.
       </p>
     </figure>
 
     <p class="text-center text-text-dim text-sm italic mt-8 max-w-3xl mx-auto leading-relaxed">
-      Lines between neurons are <strong>synapses</strong> — cross-links agents follow to load related
+      The MRI opens on the brain's lobes as C4-style boxes, with the synapse counts between them. Click a folder to
+      drill into its sublobes, click a neuron to read it rendered, and use the breadcrumb or back and forward
+      buttons to walk out again. Lines between neurons are <strong>synapses</strong> — cross-links agents follow to load related
       context. A pre-digested brain means agents spend far fewer tokens orienting to a codebase than
       without one.
     </p>
@@ -1189,7 +1201,7 @@ drop it in Slack — it runs anywhere, no server.</span></pre>
       <div class="terminal glow-purple-sm">
         <div class="terminal-header">
           <span class="terminal-dot" style="background:#ec4899"></span>
-          <span>/kluris-acme search · semantic + keyword lookup</span>
+          <span>/kluris-acme search · ranked keyword lookup</span>
           <span class="scope scope-agent">In your AI agent · in a project</span>
         </div>
 <pre><span class="prompt-agent">&gt;</span> <span class="cmd">/kluris-acme search auth flow</span>
@@ -1339,7 +1351,7 @@ Tunnel (zero public ports).</span></pre>
       </div>
     </div>
 
-    <!-- Install: two flavors side-by-side -->
+    <!-- Install: four flavors -->
     <div class="max-w-5xl mx-auto w-full mt-8">
       <p class="text-center text-xs uppercase tracking-[0.18em] text-text-muted font-medium mb-4">Enable Specmint Companions</p>
 
@@ -1349,7 +1361,7 @@ Tunnel (zero public ports).</span></pre>
           <span class="text-[0.6rem] uppercase tracking-[0.14em] font-bold px-2 py-1 rounded flex-shrink-0" style="background:rgba(52,211,153,0.15); color:#34d399; border:1px solid rgba(52,211,153,0.40);">Easiest</span>
           <div class="flex-1">
             <p class="text-mint-light font-medium text-sm leading-snug mb-1">Enable during <code class="text-mint">kluris create</code> — they ship bundled.</p>
-            <p class="text-text-dim text-xs leading-relaxed">When the wizard asks <em>"Install specmint companions for this brain?"</em>, answer <code class="text-mint" style="background:rgba(52,211,153,0.08);padding:0 0.3rem;border-radius:3px;">[3] both</code> and the companions are live the moment your brain exists.</p>
+            <p class="text-text-dim text-xs leading-relaxed">When the wizard asks <em>"Install specmint companions for this brain?"</em>, answer <code class="text-mint" style="background:rgba(52,211,153,0.08);padding:0 0.3rem;border-radius:3px;">[3] core + tdd</code> and the companions are live the moment your brain exists.</p>
           </div>
         </div>
       </div>
@@ -1374,9 +1386,27 @@ Tunnel (zero public ports).</span></pre>
           <p class="text-text-dim text-xs leading-relaxed mb-3">Same forge flow, with strict TDD — a failing test before any implementation.</p>
           <code class="font-mono px-3 py-2 rounded-lg text-center text-[0.72rem] block" style="border:1px solid rgba(52,211,153,0.30); background:rgba(52,211,153,0.05); color:#34d399;">kluris companion add specmint-tdd</code>
         </div>
+        <!-- Core HTML -->
+        <div class="card p-5" style="border-color: rgba(52,211,153,0.25);">
+          <div class="flex items-baseline justify-between mb-2">
+            <p class="font-serif text-lg" style="color:#34d399;">specmint-core-html</p>
+            <span class="text-[0.6rem] uppercase tracking-[0.14em] text-text-muted font-semibold">Canonical HTML</span>
+          </div>
+          <p class="text-text-dim text-xs leading-relaxed mb-3">Spec-first workflow where .specs/&lt;id&gt;/SPEC.html is the source of truth.</p>
+          <code class="font-mono px-3 py-2 rounded-lg text-center text-[0.72rem] block" style="border:1px solid rgba(52,211,153,0.30); background:rgba(52,211,153,0.05); color:#34d399;">kluris companion add specmint-core-html</code>
+        </div>
+        <!-- TDD HTML -->
+        <div class="card p-5" style="border-color: rgba(52,211,153,0.25);">
+          <div class="flex items-baseline justify-between mb-2">
+            <p class="font-serif text-lg" style="color:#34d399;">specmint-tdd-html</p>
+            <span class="text-[0.6rem] uppercase tracking-[0.14em] text-text-muted font-semibold">HTML + RGR</span>
+          </div>
+          <p class="text-text-dim text-xs leading-relaxed mb-3">Canonical SPEC.html with TEST/IMPL pairs, red-green-refactor state, and TDD log.</p>
+          <code class="font-mono px-3 py-2 rounded-lg text-center text-[0.72rem] block" style="border:1px solid rgba(52,211,153,0.30); background:rgba(52,211,153,0.05); color:#34d399;">kluris companion add specmint-tdd-html</code>
+        </div>
       </div>
       <p class="text-center text-text-dim text-xs mt-4">
-        Companions are bundled with kluris — no separate plugin install. Per brain: kluris copies only the SKILL.md and references it from the generated /kluris-&lt;name&gt; skill.
+        Companions are bundled with kluris — no separate plugin install. Each is a folder (<code class="text-mint">SKILL.md</code> plus its <code class="text-mint">references/</code>, and <code class="text-mint">assets/</code> for the HTML pair) that kluris copies to <code class="text-mint">~/.kluris/companions/&lt;name&gt;/</code>. The generated <span class="whitespace-nowrap">/kluris-&lt;name&gt;</span> skill only references it, and <code class="text-mint">kluris doctor</code> refreshes it.
       </p>
       <div class="text-center mt-5">
         <a href="https://specmint.ngvoicu.dev" target="_blank" rel="noopener" class="inline-flex items-center gap-2 text-mint hover:text-mint-light text-sm font-medium">
@@ -1453,7 +1483,10 @@ annual. Access is restricted to the security team.</span>
       Commit and share with <code>git</code> directly — kluris brains are plain git repos.
       Have more than one brain? Each installs as
       <span class="font-mono text-purple-light">/kluris-&lt;name&gt;</span>
-      and everything above works the same.
+      and everything above works the same. In the terminal,
+      <span class="font-mono text-purple-light whitespace-nowrap">--brain NAME</span> picks one (kluris asks when you don't);
+      <span class="font-mono text-purple-light whitespace-nowrap">--brain all</span> fans out
+      <code>dream</code>, <code>status</code>, <code>mri</code> and <code>companion</code>.
     </p>
   </div>
 </section>
@@ -1638,8 +1671,8 @@ or clients sit in different timezones.</span>
       </div>
       <div class="card p-5">
         <p class="text-purple text-xs uppercase tracking-widest font-semibold mb-2">What changed</p>
-        <p class="text-text font-serif text-xl leading-snug mb-1">Every agent, smarter.</p>
-        <p class="text-text-dim text-sm">Claude Code, Cursor, Windsurf, Copilot, Codex, Gemini, Kilo, Junie.</p>
+        <p class="text-text font-serif text-xl leading-snug mb-1">Your agents, smarter.</p>
+        <p class="text-text-dim text-sm">Installed into Claude Code, Cursor, Windsurf, Copilot, Codex, Gemini, Hermes, Kilo, Junie &mdash; and any agent that reads <code>~/.agents/skills/</code>.</p>
       </div>
     </div>
 

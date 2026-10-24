@@ -403,9 +403,9 @@
 
     <figure class="reveal">
       <div class="shot-frame">
-        <img src="walkthrough/01.png" alt="Terminal showing kluris create asking interactive questions and creating consensflow-brain with both specmint companions enabled." loading="lazy" />
+        <img src="walkthrough/01.png" alt="Terminal showing kluris create asking its interactive questions for a brain named acme, the seven-option specmint companion picker with core + tdd chosen, and the closing Agent skill installed: kluris-acme lines." loading="lazy" />
       </div>
-      <figcaption class="shot-caption">01 · <span class="text-purple-light">kluris create</span> — name, type, git setup, and the specmint companion picker</figcaption>
+      <figcaption class="shot-caption">01 · <span class="text-purple-light">kluris create</span> — name, type, git setup, the seven-option specmint companion picker, and the installed kluris-acme skill</figcaption>
     </figure>
 
     <div class="phase-rule"></div>
@@ -531,9 +531,9 @@
     </div>
 
     <p class="text-text-dim text-lg max-w-3xl ml-0 md:ml-[calc(2.6rem+1.25rem)] mb-8 leading-relaxed reveal">
-      Run <code class="text-mint-light">kluris mri</code> and the brain opens in your browser as a single-page graph.
-      Every lobe, every neuron, every synapse — pannable, searchable, shareable. Click a node to read it, expand the
-      synapses to see what touches it, follow the threads.
+      Run <code class="text-mint-light">kluris mri</code> and it prints a clickable link to a single self-contained HTML file.
+      The brain opens on its lobes as C4-style boxes, with the synapse counts between them. Click a folder to drill
+      into its sublobes, click a neuron to read it, follow the related-neuron tabs — pannable, searchable, shareable.
     </p>
 
     <div class="grid grid-cols-1 gap-10">
@@ -547,9 +547,9 @@
 
       <figure class="reveal">
         <div class="shot-frame mint">
-          <img src="walkthrough/07.png" alt="MRI overview: lobes (infrastructure, knowledge, projects) on the left, the full graph in the middle, an inspector with a selected neuron's metadata on the right." loading="lazy" />
+          <img src="walkthrough/07.png" alt="MRI drilled into the Kluris folder of a brain. The breadcrumb ngvoicu-sme › Projects › Kluris and the back and forward buttons are outlined in red at the top; the folder's contents, two sublobes and one neuron with synapse counts on the lines between them, sit in an outlined area in the middle, with the file tree on the left and the Find and Recent panels on the right." loading="lazy" />
         </div>
-        <figcaption class="shot-caption">07 · The whole brain in one screen — left rail of lobes, center force-graph of neurons and synapses, right inspector with the selected neuron's metadata</figcaption>
+        <figcaption class="shot-caption">07 · Click a folder to drill in — the breadcrumb tracks the path, back and forward retrace it, and the folder's sublobes and neurons appear as boxes with the synapse counts between them</figcaption>
       </figure>
 
       <figure class="reveal">
@@ -691,7 +691,7 @@
       <p class="text-text-dim leading-relaxed mb-4">
         Tell your AI agent what to build. It reads the brain first, so it already knows your stack, your conventions,
         your deploy story, your auth model — then proposes code that fits, not generic boilerplate.
-        Optionally, if you enabled <span class="text-mint-light">specmint</span> or
+        Optionally, if you enabled <span class="text-mint-light">specmint-core</span> or
         <span class="text-mint-light">specmint-tdd</span> as a companion when you created the brain, the agent can
         forge a full spec from the brain first — interview, plan, implementation — every step grounded in your
         team's actual knowledge.
@@ -891,8 +891,11 @@
         </div>
       </div>
       <p class="text-text-dim leading-relaxed mb-6">
-        The <code class="text-purple-light">/kluris-&lt;name&gt;</code> skill installs into every major coding CLI — Claude Code,
-        Cursor, Windsurf, Codex, OpenCode, Gemini CLI, Kilo, Junie. Pick the model that fits the moment.
+        The <code class="text-purple-light">/kluris-&lt;name&gt;</code> skill installs into nine coding agents — Claude Code,
+        Cursor, Windsurf, GitHub Copilot, Codex, Gemini CLI, Hermes Agent, Kilo Code, Junie — and into the universal
+        <code class="text-purple-light">~/.agents/skills/</code> folder, which other agents that load <code>SKILL.md</code> skills, such as
+        <a href="https://opencode.ai/docs/skills/" target="_blank" rel="noopener" class="text-purple-light underline decoration-purple/30 underline-offset-2 hover:decoration-pink">OpenCode</a>,
+        read too. Pick the model that fits the moment.
         Draft the spec with <span class="text-purple-light">Claude Code · Opus 4.7</span>, then have a fresh
         <span class="text-mint-light">Codex · GPT-5.5</span> review it for blind spots, then ask
         <span class="text-cyan-300" style="color:#67e8f9;">OpenCode</span> running

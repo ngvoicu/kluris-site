@@ -51,7 +51,7 @@
   "@context": "https://schema.org",
   "@type": "SoftwareApplication",
   "name": "Kluris",
-  "description": "Kluris turns your AI agents into a subject matter expert that never sleeps and never quits. Customizable, human-curated, git-backed brains shared across every AI agent on your team.",
+  "description": "Kluris turns your AI agents into a subject matter expert that never sleeps and never quits. Customizable, human-curated, git-backed brains shared across the AI coding agents on your team.",
   "url": "https://kluris.ngvoicu.dev/",
   "applicationCategory": "DeveloperApplication",
   "applicationSubCategory": "AI Knowledge Management",
@@ -59,7 +59,7 @@
   "programmingLanguage": "Python",
   "license": "https://opensource.org/licenses/MIT",
   "image": "https://kluris.ngvoicu.dev/og-image.png",
-  "softwareVersion": "1.0.0",
+  "softwareVersion": "2.28.10",
   "downloadUrl": "https://github.com/ngvoicu/kluris",
   "installUrl": "https://github.com/ngvoicu/kluris#install",
   "softwareRequirements": "Python 3.10+, git, pipx",
@@ -80,7 +80,7 @@
     "priceCurrency": "USD",
     "availability": "https://schema.org/InStock"
   },
-  "keywords": "AI agents, SME, knowledge base, brain, neurons, lobes, synapses, token reduction, context window, Claude Code, Cursor, Windsurf, GitHub Copilot, Codex, Gemini CLI, Hermes Agent, pipx, Python CLI",
+  "keywords": "AI agents, SME, knowledge base, brain, neurons, lobes, synapses, token reduction, context window, Claude Code, Cursor, Windsurf, GitHub Copilot, Codex, Gemini CLI, Hermes Agent, Kilo Code, Junie, pipx, Python CLI",
   "sameAs": [
     "https://github.com/ngvoicu/kluris",
     "https://pypi.org/project/kluris/"
@@ -894,6 +894,7 @@
         </div>
 <pre><span class="prompt">$</span> <span class="cmd">brew install pipx</span>
 <span class="prompt">$</span> <span class="cmd">pipx ensurepath</span>
+<span class="dim"># restart your terminal, then:</span>
 <span class="prompt">$</span> <span class="cmd">pipx install kluris</span></pre>
       </div>
 
@@ -908,6 +909,7 @@
         </div>
 <pre><span class="prompt">$</span> <span class="cmd">python3 -m pip install --user pipx</span>
 <span class="prompt">$</span> <span class="cmd">pipx ensurepath</span>
+<span class="dim"># restart your terminal, then:</span>
 <span class="prompt">$</span> <span class="cmd">pipx install kluris</span></pre>
       </div>
 
@@ -922,9 +924,11 @@
         </div>
 <pre><span class="prompt">&gt;</span> <span class="cmd">pip install pipx</span>
 <span class="prompt">&gt;</span> <span class="cmd">pipx ensurepath</span>
+<span class="dim"># restart your terminal, then:</span>
 <span class="prompt">&gt;</span> <span class="cmd">pipx install kluris</span></pre>
       </div>
     </div>
+    <p class="-mt-5 mb-10 text-center text-text-muted text-sm italic">Restart your terminal after <span class="font-mono text-purple-light">pipx ensurepath</span> so the new <span class="font-mono text-purple-light">PATH</span> takes effect, then run <span class="font-mono text-purple-light">pipx install kluris</span>.</p>
 
     <!-- Create wizard + scaffolded folder tree -->
     <div class="grid grid-cols-1 lg:grid-cols-2 gap-6 items-stretch">
@@ -938,51 +942,54 @@
         </div>
 <pre><span class="prompt">$</span> <span class="cmd">kluris create</span>
 
-<span class="meta">Brain name:</span> <span class="str">acme-brain</span>
+<span class="meta">Brain name:</span> <span class="str">acme</span>
 <span class="meta">What does this brain cover?</span> <span class="str">Shared brain for ACME projects</span>
-<span class="meta">Location:</span> <span class="str">~/Projects/acme-brain</span>
-<span class="meta">Brain type</span> <span class="dim">[project-group, personal, product, research, blank]:</span> <span class="str">project-group</span>
+<span class="meta">Location:</span> <span class="str">~/Projects</span>
+<span class="meta">Brain type</span> <span class="dim">[product-group, personal, product, research, blank]:</span> <span class="str">product-group</span>
 <span class="meta">Git setup</span> <span class="dim">[1=local, 2=with remote, 3=no git]:</span> <span class="str">1</span>
 <span class="meta">Default branch:</span> <span class="str">main</span>
 
 <span class="meta">Install specmint companions for this brain?</span>
-  <span class="dim">[1]</span> specmint-core       <span class="dim">(markdown specs)</span>
-  <span class="dim">[2]</span> specmint-tdd        <span class="dim">(markdown specs + TDD)</span>
-  <span class="dim">[3]</span> core + tdd          <span class="dim">[4]</span> skip
-  <span class="dim">[5]</span> specmint-core-html  <span class="dim">(canonical SPEC.html)</span>
-  <span class="dim">[6]</span> specmint-tdd-html   <span class="dim">(SPEC.html + TDD)</span>
+  <span class="dim">[1]</span> specmint-core      <span class="dim">(spec-driven-development companion)</span>
+  <span class="dim">[2]</span> specmint-tdd       <span class="dim">(spec-driven-development with test-driven-development focus)</span>
+  <span class="dim">[3]</span> core + tdd
+  <span class="dim">[4]</span> skip
+  <span class="dim">[5]</span> specmint-core-html <span class="dim">(spec-driven-development with canonical SPEC.html)</span>
+  <span class="dim">[6]</span> specmint-tdd-html  <span class="dim">(TDD-focused specs with canonical SPEC.html)</span>
   <span class="dim">[7]</span> all
-<span class="meta">Choice:</span> <span class="str">3</span>
+<span class="meta">Choice</span> <span class="dim">[4]:</span> <span class="str">3</span>
 
-  <span class="ok">✓</span> Created acme-brain <span class="dim">(project-group · 3 lobes)</span>
-  <span class="ok">✓</span> Git initialized on main
-  <span class="ok">✓</span> Registered acme-brain
-  <span class="ok">✓</span> Installed kluris-acme skill for 9 agents
-  <span class="ok">✓</span> Bundled specmint-core + specmint-tdd companions
+<span class="ok">Brain created:</span> acme <span class="dim">(product-group)</span>
+  Path: ~/Projects/acme
+  Lobes: 3
 
-<span class="dim">Next: open any project in your AI agent and</span>
-<span class="dim">      load /kluris-acme (Hermes: /skill kluris-acme)</span></pre>
+<span class="ok">Agent skill installed: kluris-acme</span>
+  <span class="dim">Claude/Codex/Gemini/etc:</span> /kluris-acme
+  <span class="dim">Hermes:</span> /skill kluris-acme  <span class="dim">(or start with `hermes -s kluris-acme`)</span></pre>
       </div>
 
       <div class="terminal">
         <div class="terminal-header">
           <span class="terminal-dot" style="background:#a78bfa"></span>
-          <span class="ml-2">The folder kluris just created · <code>project-group</code> defaults</span>
+          <span class="ml-2">The folder kluris just created · <code>product-group</code> defaults</span>
         </div>
-<pre class="tree"><span class="folder">acme-brain/</span>
+<pre class="tree"><span class="folder">acme/</span>
 ├── kluris.yml              <span class="note"># gitignored — your local config</span>
 ├── brain.md                <span class="note"># root directory, auto-generated</span>
 ├── glossary.md             <span class="note"># domain terms, hand-edited</span>
 ├── README.md               <span class="note"># usage guide</span>
 ├── .gitignore
 ├── <span class="folder">projects/</span>
+│   ├── map.md              <span class="note"># lobe index, auto-generated</span>
 │   └── <span class="dim">(your neurons go here)</span>
 ├── <span class="folder">infrastructure/</span>
+│   ├── map.md
 │   └── <span class="dim">(your neurons go here)</span>
 └── <span class="folder">knowledge/</span>
+    ├── map.md
     └── <span class="dim">(your neurons go here)</span></pre>
         <p class="px-5 py-3 text-xs text-text-muted italic border-t border-white/5">
-          Scaffolded defaults for the <code>project-group</code> brain type. You add, rename, or remove lobes as your team grows.
+          Scaffolded defaults for the <code>product-group</code> brain type. You add, rename, or remove lobes as your team grows.
         </p>
       </div>
     </div>
@@ -1135,11 +1142,11 @@ at 80% TTL.</span>
         </div>
 <pre><span class="prompt">$</span> <span class="cmd">kluris mri</span>
 
-<span class="ok">MRI complete</span> — brain-mri.html
-  <span class="warn">51</span> neurons, <span class="warn">491</span> synapses
-  <span class="dim">→ file:///home/user/acme-brain/brain-mri.html</span>
+<span class="ok">MRI complete</span> — /home/user/ngvoicu-sme/brain-mri.html
+  Open: <span class="dim">file:///home/user/ngvoicu-sme/brain-mri.html</span>
+  <span class="warn">43</span> nodes, <span class="warn">254</span> edges
 
-<span class="dim">Open it in any browser. Commit it, email it, drop it
+<span class="dim">Open the link in any browser. Commit it, email it, drop it
 in Slack — it runs anywhere, with no server.</span></pre>
       </div>
     </div>
@@ -1147,31 +1154,31 @@ in Slack — it runs anywhere, with no server.</span></pre>
     <div class="space-y-12 mb-12">
       <figure class="max-w-5xl mx-auto">
         <div class="mri-frame">
-          <img loading="lazy" decoding="async" src="mri-overview.png" alt="kluris mri overview — lobe panel with neuron counts, live stats (51 neurons, 491 links), search box, and the whole brain as coloured clusters with dashed synapse lines" class="w-full h-auto block" />
+          <img loading="lazy" decoding="async" src="mri-overview.png" alt="kluris mri root view of a brain — its lobes and the glossary as C4-style boxes with synapse counts on the lines between them, the file tree on the left, and the Find and Recent panels on the right" class="w-full h-auto block" />
         </div>
         <figcaption class="mt-4 text-sm text-text-muted leading-relaxed text-center">
-          <span class="text-purple-light font-semibold">The overview</span> — lobes as clusters, neurons as nodes, synapses as the lines between them.
+          <span class="text-purple-light font-semibold">The root view</span> — each lobe as a box, synapse counts on the lines between them.
         </figcaption>
         <p class="mt-3 max-w-3xl mx-auto text-text-dim text-base leading-relaxed text-center">
-          Live counts (<span class="text-text font-medium">51 neurons · 491 synapses</span>), a lobe breakdown you can collapse and filter, and a fuzzy search across names, paths, lobes, and tags. Click a lobe to isolate it; click a node to open it.
+          The header counts the brain (<span class="text-text font-medium">30 neurons · 254 synapses</span> here), the file tree on the left collapses, and Find on the right searches neurons, paths, lobes, tags, and YAML, with the most recently updated neurons listed beneath. Click a folder to drill in; click a neuron to open it.
         </p>
       </figure>
       <figure class="max-w-5xl mx-auto">
         <div class="mri-frame">
-          <img loading="lazy" decoding="async" src="mri-inspector.png" alt="kluris mri inspector — a neuron's rendered markdown on the right, related-neuron tabs along the top, and the full brain tree in the left panel for jumping around" class="w-full h-auto block" />
+          <img loading="lazy" decoding="async" src="mri-inspector.png" alt="kluris mri neuron detail — one neuron open in a modal: back and forward buttons and its title at the top, its path and tags, buttons for the connected neurons, the rendered markdown with a code block, and the file tree on the left for jumping around" class="w-full h-auto block" />
         </div>
         <figcaption class="mt-4 text-sm text-text-muted leading-relaxed text-center">
-          <span class="text-purple-light font-semibold">The inspector</span> — rendered markdown on the right, related neurons as tabs, the full brain tree on the left.
+          <span class="text-purple-light font-semibold">The neuron view</span> — rendered markdown on the right, connected neurons as buttons along the top, the file tree on the left.
         </figcaption>
         <p class="mt-3 max-w-3xl mx-auto text-text-dim text-base leading-relaxed text-center">
-          One click on any node opens its neuron, fully rendered, with related-neuron tabs across the top so you can walk a topic in seconds. This is what agents see — now visible to you.
+          One click on any neuron box opens it in a modal, fully rendered, with its path, tags and connected-neuron buttons above the text and back and forward buttons to retrace your steps, so you can walk a topic in seconds. This is what agents see — now visible to you.
         </p>
       </figure>
     </div>
 
     <div class="max-w-3xl mx-auto space-y-5 text-text-dim text-base leading-relaxed">
       <p>
-        The MRI is a single self-contained HTML file — no server, no account, no external calls. Run <span class="font-mono text-purple-light text-sm">kluris mri</span>, open it in any browser, and you've got the whole brain to explore.
+        The MRI is a single self-contained HTML file — no server, no account, no external calls. Run <span class="font-mono text-purple-light text-sm">kluris mri</span>, open the link it prints in any browser, and you've got the whole brain to explore. It opens on the brain's lobes as C4-style boxes with the synapse counts between them. Click a folder to drill into its sublobes, click a neuron to read it rendered, and use the breadcrumb or back and forward buttons to walk out again.
       </p>
       <p>
         It's a tool for three audiences at once: <span class="text-text font-medium">you</span> (spot isolated neurons that should be cross-linked), <span class="text-text font-medium">your team</span> (shared mental model of what we know), and <span class="text-text font-medium">new hires</span> (five-minute onboarding instead of five days of spelunking). Since it's just HTML, you can commit it, email it, or drop it in Slack.
@@ -1203,7 +1210,7 @@ in Slack — it runs anywhere, with no server.</span></pre>
       <div class="terminal">
         <div class="terminal-header">
           <span class="chip text-[0.62rem] py-0.5 px-2">SEARCH</span>
-          <span class="ml-2">semantic + keyword lookup</span>
+          <span class="ml-2">ranked keyword lookup</span>
           <span class="scope scope-agent">In your AI agent · in a project</span>
         </div>
 <pre><span class="prompt-agent">&gt;</span> <span class="cmd">/kluris-acme search auth flow</span>
@@ -1389,8 +1396,8 @@ Tunnel (zero public ports).</span></pre>
           </div>
         </div>
       </div>
-      <p class="text-center text-text-dim text-xs mt-5">
-        Enable companions per brain; Kluris copies only the bundled SKILL.md and references it from the generated kluris-&lt;name&gt; skill.
+      <p class="text-center text-balance text-text-dim text-xs mt-5 max-w-3xl mx-auto leading-relaxed">
+        Enable companions per brain. Each one is a folder bundled with Kluris: a <span class="font-mono text-mint-light">SKILL.md</span> plus the <span class="font-mono text-mint-light">references/</span> it points at, and <span class="font-mono text-mint-light">assets/</span> for the two HTML flavors. Enabling one copies it into <span class="font-mono text-mint-light">~/.kluris/companions/&lt;name&gt;/</span> and adds a short reference to the brain&rsquo;s generated <span class="font-mono text-mint-light">kluris-&lt;name&gt;</span> skill. Companions are read from there, never installed as skills of their own, and <span class="font-mono text-mint-light">kluris doctor</span> refreshes them.
       </p>
     </div>
 
@@ -1632,7 +1639,7 @@ or clients sit in different timezones.</span>
         Two surfaces, <span class="gradient-text">one brain</span>.
       </h2>
       <p class="text-text-dim text-lg leading-relaxed">
-        Kluris lives in two places. You run the <span class="text-purple font-medium">CLI</span> in your terminal to set up and maintain your brains. Your AI agents load one <span class="text-pink font-medium">named skill per brain</span> — <span class="font-mono text-purple-light">kluris-&lt;name&gt;</span> — inside Claude Code, Cursor, Windsurf, Codex, Copilot, Gemini CLI, Hermes Agent, Kilo, or Junie, followed by whatever you want to say. Keep the agent open on a project so it has code to read.
+        Kluris lives in two places. You run the <span class="text-purple font-medium">CLI</span> in your terminal to set up and maintain your brains. Your AI agents load one <span class="text-pink font-medium">named skill per brain</span> — <span class="font-mono text-purple-light">kluris-&lt;name&gt;</span> — inside Claude Code, Cursor, Windsurf, Codex, Copilot, Gemini CLI, Hermes Agent, Kilo, or Junie (or any other agent that loads <span class="font-mono text-purple-light">SKILL.md</span> skills), followed by whatever you want to say. Keep the agent open on a project so it has code to read.
       </p>
     </div>
 
@@ -1644,7 +1651,7 @@ or clients sit in different timezones.</span>
           <span class="text-xs text-text-muted">where you type</span>
         </div>
         <p class="font-mono text-sm text-purple-light mb-2"><span class="text-purple font-bold">$</span> kluris &lt;cmd&gt;</p>
-        <p class="text-xs text-text-dim leading-relaxed">Run in your shell — bash, zsh, fish, PowerShell. The <span class="text-purple">purple <span class="font-mono">$</span></span> prompt. Use it for install, setup, snapshots, git, and housekeeping.</p>
+        <p class="text-xs text-text-dim leading-relaxed">Run in your shell — bash, zsh, fish, PowerShell. The <span class="text-purple">purple <span class="font-mono">$</span></span> prompt. Use it for install, setup, snapshots, and housekeeping.</p>
       </div>
       <div class="rounded-2xl p-6 border border-pink/30 bg-pink/5">
         <div class="flex items-center gap-3 mb-2">
@@ -1671,18 +1678,19 @@ or clients sit in different timezones.</span>
           <tr><td>list</td><td>List registered brains</td></tr>
           <tr><td>status</td><td>Show brain tree and recent changes</td></tr>
           <tr><td>search &lt;query&gt;</td><td>Ranked search across neurons, glossary, brain.md</td></tr>
-          <tr><td>wake-up</td><td>Compact snapshot for agent bootstrap</td></tr>
+          <tr><td>wake-up</td><td>Compact brain snapshot the agent loads once per session</td></tr>
           <tr><td>companion add</td><td>Enable an embedded companion for a brain</td></tr>
           <tr><td>companion list</td><td>List companion installs and brain opt-ins</td></tr>
           <tr><td>companion remove</td><td>Remove a companion opt-in</td></tr>
           <tr><td>dream</td><td>Regenerate maps, fix links, validate</td></tr>
-          <tr><td>pack</td><td>Pack a brain into a Docker chat server</td></tr>
+          <tr><td>pack</td><td>Pack a brain into a Docker chat server (<a href="#pack" class="text-purple-light underline decoration-purple/30 underline-offset-2 hover:decoration-pink">below</a>)</td></tr>
           <tr><td>mri</td><td>Generate interactive HTML viz</td></tr>
           <tr><td>remove &lt;name&gt;</td><td>Unregister a brain (keeps files)</td></tr>
           <tr><td>doctor</td><td>Check prerequisites and refresh installed skills</td></tr>
           <tr><td>help</td><td>Show command help</td></tr>
         </table>
         <p class="mt-5 text-xs text-text-muted italic">All CLI commands support <span class="font-mono text-purple-light">--json</span> for machine-readable output.</p>
+        <p class="mt-2 text-xs text-text-muted italic">Every command that acts on a brain &mdash; <span class="font-mono text-purple-light">search</span>, <span class="font-mono text-purple-light">wake-up</span>, <span class="font-mono text-purple-light">pack</span>, <span class="font-mono text-purple-light">status</span>, <span class="font-mono text-purple-light">dream</span>, <span class="font-mono text-purple-light">mri</span>, <span class="font-mono text-purple-light">companion</span> &mdash; takes <span class="font-mono text-purple-light whitespace-nowrap">--brain NAME</span>. With two or more brains registered, see <a href="#more-than-one-brain" class="text-purple-light underline decoration-purple/30 underline-offset-2 hover:decoration-pink">more than one brain</a>.</p>
         <p class="mt-2 text-xs text-text-muted italic">Brains are plain git repos — use <span class="font-mono text-purple-light">git push</span> / <span class="font-mono text-purple-light">git pull</span> / <span class="font-mono text-purple-light">git checkout</span> directly to sync and switch branches.</p>
         <p class="mt-2 text-xs text-text-muted italic">Most users create and organize lobes and neurons by asking their AI agent, then run <span class="font-mono text-purple-light">dream</span> to refresh maps and links.</p>
       </div>
@@ -1716,6 +1724,56 @@ or clients sit in different timezones.</span>
         <p class="mt-5 text-xs text-text-muted italic">Agent patterns are free-form — say it naturally. The agent figures out the shape.</p>
       </div>
     </div>
+
+    <div class="grid grid-cols-1 lg:grid-cols-2 gap-8 mt-8">
+      <!-- Agent bootstrap -->
+      <div class="card rounded-2xl p-8" id="bootstrap">
+        <div class="flex flex-wrap items-center gap-3 mb-2 pb-4 border-b border-white/5">
+          <span class="w-2 h-2 rounded-full bg-pink pulse-soft flex-shrink-0"></span>
+          <h3 class="text-sm uppercase tracking-[0.15em] text-pink font-semibold min-w-0 break-words">What the agent does first</h3>
+          <span class="scope scope-agent flex-shrink-0" style="margin-left:0">Agent</span>
+        </div>
+        <p class="mb-5 text-sm text-text-dim leading-relaxed">On the first <span class="font-mono text-purple-light">/kluris-acme</span> of a session, the agent runs <span class="font-mono text-purple-light">kluris wake-up <span class="whitespace-nowrap">--brain acme --json</span></span> once, through its shell. It keeps that snapshot &mdash; the <span class="font-mono text-purple-light">brain.md</span> body, every lobe with its neuron count, the 5 most recently updated neurons, the glossary, and any deprecation warnings &mdash; so it can decode your jargon and avoid citing superseded neurons. It refreshes the snapshot only after the brain changes: a <span class="font-mono text-purple-light">remember</span> or <span class="font-mono text-purple-light">learn</span>, a <span class="font-mono text-purple-light">kluris dream</span>, or a file edit you tell it about.</p>
+        <div class="terminal">
+          <div class="terminal-header">
+            <span class="chip text-[0.62rem] py-0.5 px-2">BOOTSTRAP</span>
+            <span class="scope scope-agent">In your AI agent</span>
+          </div>
+<pre><span class="prompt-agent">&gt;</span> <span class="cmd">/kluris-acme what do we know about Docker?</span>
+<span class="meta">→ first call this session, via its shell:</span>
+<span class="meta">  kluris wake-up --brain acme --json</span>
+<span class="meta">→ snapshot cached: brain.md · lobes · recent</span>
+<span class="meta">  · glossary · deprecation warnings</span>
+<span class="meta">→ later turns reuse it; refreshed only</span>
+<span class="meta">  after remember, learn or dream</span></pre>
+        </div>
+        <p class="mt-5 text-xs text-text-muted italic">You never call it yourself. To see what the agent sees, run <span class="font-mono text-purple-light">kluris wake-up <span class="whitespace-nowrap">--brain acme</span></span> in your terminal (add <span class="font-mono text-purple-light">--json</span> for the raw payload).</p>
+      </div>
+
+      <!-- kluris pack -->
+      <div class="card rounded-2xl p-8" id="pack">
+        <div class="flex flex-wrap items-center gap-3 mb-2 pb-4 border-b border-white/5">
+          <span class="w-2 h-2 rounded-full bg-purple pulse-soft flex-shrink-0"></span>
+          <h3 class="text-sm uppercase tracking-[0.15em] text-purple font-semibold min-w-0 break-words">No coding agent? Pack the brain</h3>
+          <span class="scope scope-terminal flex-shrink-0" style="margin-left:0">Terminal</span>
+        </div>
+        <p class="mb-5 text-sm text-text-dim leading-relaxed">Not everyone on your team has one. <span class="font-mono text-purple-light">kluris pack</span> turns a brain into a self-contained <span class="text-text font-medium">Docker chat server</span>: a web chat that answers by searching and reading the brain, next to a read-only explorer of its files. The brain is baked into the image read-only, so the chat cannot change it.</p>
+        <div class="terminal">
+          <div class="terminal-header">
+            <span class="chip text-[0.62rem] py-0.5 px-2">PACK</span>
+            <span class="scope scope-terminal">Terminal</span>
+          </div>
+<pre><span class="prompt">$</span> <span class="cmd">kluris pack --brain acme</span>
+<span class="dim"># writes ./acme-pack/</span>
+<span class="prompt">$</span> <span class="cmd">cd acme-pack</span>
+<span class="prompt">$</span> <span class="cmd">cp .env.example .env</span>
+<span class="dim"># fill in your LLM settings in .env</span>
+<span class="prompt">$</span> <span class="cmd">docker compose up --build</span>
+<span class="dim"># open http://localhost:8765</span></pre>
+        </div>
+        <p class="mt-5 text-xs text-text-muted italic">Needs Docker with Compose v2. Chat needs an Anthropic or OpenAI-compatible LLM, or OAuth client credentials for an internal gateway, set in <span class="font-mono text-purple-light">.env</span>. <span class="text-text font-medium not-italic">There is no authentication, by design:</span> anyone who can reach port <span class="font-mono text-purple-light">8765</span> can chat and read the whole bundled brain and the saved conversations. Run it on a trusted host or network, and put your own access control in front if it is reachable more widely.</p>
+      </div>
+    </div>
   </div>
 </section>
 
@@ -1743,33 +1801,89 @@ or clients sit in different timezones.</span>
         <span class="scope scope-terminal">Terminal</span>
       </div>
 <pre><span class="prompt">$</span> <span class="cmd">kluris list</span>
-  <span class="str">acme-brain</span>     <span class="dim">~/Projects/acme-brain       [git]</span>
-  <span class="str">personal</span>       <span class="dim">~/Projects/personal-brain   [git]</span>
-  <span class="str">research</span>       <span class="dim">~/Projects/research-brain   [no git]</span>
+<span class="dim">                                           Registered Brains</span>
+┏━━━━━━━━━━┳━━━━━━━━━━━━━━━━━━━━━━━━━━━┳━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━┳━━━━━━━━━━━━━━━━━━━━━━━━━━━━━┓
+┃ Name     ┃ Path                      ┃ Description                     ┃ Companions                  ┃
+┡━━━━━━━━━━╇━━━━━━━━━━━━━━━━━━━━━━━━━━━╇━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━╇━━━━━━━━━━━━━━━━━━━━━━━━━━━━━┩
+│ <span class="str">acme</span>     │ <span class="dim">~/Projects/acme</span>           │ Shared brain for ACME projects  │ specmint-core, specmint-tdd │
+│ <span class="str">personal</span> │ <span class="dim">~/Projects/personal-brain</span> │ Personal tasks, notes and ideas │ <span class="dim">(none)</span>                      │
+│ <span class="str">research</span> │ <span class="dim">~/Projects/research-brain</span> │ Research notes and findings     │ <span class="dim">(none)</span>                      │
+└──────────┴───────────────────────────┴─────────────────────────────────┴─────────────────────────────┘
 
 <span class="prompt">$</span> <span class="cmd">kluris status</span>
 Multiple brains registered. Pick one:
-  <span class="dim">[1]</span> acme-brain  (~/Projects/acme-brain)
-  <span class="dim">[2]</span> personal    (~/Projects/personal-brain)
-  <span class="dim">[3]</span> research    (~/Projects/research-brain)
+  <span class="dim">[1]</span> acme  (~/Projects/acme)
+  <span class="dim">[2]</span> personal  (~/Projects/personal-brain)
+  <span class="dim">[3]</span> research  (~/Projects/research-brain)
   <span class="dim">[4]</span> all
 <span class="meta">Choice:</span> <span class="str">2</span>
 
-<span class="str">personal</span> <span class="dim">(personal)</span>
+<span class="str">personal</span>
   Lobes: <span class="warn">3</span>, Neurons: <span class="warn">18</span>
-  <span class="dim">2026-04-05</span>  tasks/today.md
-  <span class="dim">2026-04-04</span>  notes/q2-goals.md
+  <span class="dim">2026-04-05</span> brain: capture q2 goals
+  <span class="dim">2026-04-04</span> brain: initialize personal
 
 <span class="prompt">$</span> <span class="cmd">git clone git@github.com:acme/team-brain.git ~/brains/team-brain</span>
   <span class="dim">Cloning into ~/brains/team-brain...</span>
 
 <span class="prompt">$</span> <span class="cmd">kluris register ~/brains/team-brain</span>
-  <span class="ok">✓</span> Registered team-brain
-  <span class="ok">✓</span> kluris-team-brain skill installed across 9 agents</pre>
+<span class="ok">Brain registered:</span> team-brain
+  Path: ~/brains/team-brain
+
+<span class="ok">Agent skill installed: kluris-team-brain</span>
+  <span class="dim">Claude/Codex/Gemini/etc:</span> /kluris-team-brain
+  <span class="dim">Hermes:</span> /skill kluris-team-brain  <span class="dim">(or start with `hermes -s kluris-team-brain`)</span></pre>
+    </div>
+
+    <div class="terminal glow-purple-sm mt-6">
+      <div class="terminal-header">
+        <span class="terminal-dot" style="background:#ef4444;opacity:0.6"></span>
+        <span class="terminal-dot" style="background:#f59e0b;opacity:0.6"></span>
+        <span class="terminal-dot" style="background:#34d399;opacity:0.6"></span>
+        <span class="ml-2">naming the brain: --brain, all, and scripts</span>
+        <span class="scope scope-terminal">Terminal</span>
+      </div>
+<pre><span class="prompt">$</span> <span class="cmd">kluris dream --brain all</span>
+<span class="str">acme</span> health report:
+  Lobes: infrastructure, knowledge, projects
+  Maps regenerated: 3 (infrastructure, knowledge, projects)
+  <span class="ok">OK</span> synapses
+  <span class="dim">…</span>
+<span class="str">personal</span> health report:
+  <span class="dim">…</span>
+<span class="str">research</span> health report:
+  <span class="dim">…</span>
+Brain is healthy.
+
+<span class="prompt">$</span> <span class="cmd">kluris search auth --brain all</span>
+Error: --brain all is only supported on dream, status, mri, and companion commands.
+
+<span class="prompt">$</span> <span class="cmd">KLURIS_NO_PROMPT=1 kluris status</span>
+Error: Multiple brains registered. Pass --brain NAME or 'all'. Available: acme, personal, research</pre>
+    </div>
+
+    <div class="grid grid-cols-1 md:grid-cols-2 gap-5 mt-8">
+      <div class="card rounded-2xl p-6">
+        <p class="font-mono text-sm text-purple-light mb-2">--brain NAME</p>
+        <p class="text-xs text-text-dim leading-relaxed">Names the brain and skips the picker. Every command that acts on a brain takes it: <span class="font-mono text-purple-light">search</span>, <span class="font-mono text-purple-light">wake-up</span>, <span class="font-mono text-purple-light">pack</span>, <span class="font-mono text-purple-light">status</span>, <span class="font-mono text-purple-light">dream</span>, <span class="font-mono text-purple-light">mri</span> and <span class="font-mono text-purple-light">companion list / add / remove</span>. Each installed <span class="font-mono text-purple-light">kluris-&lt;name&gt;</span> skill passes it for you, so an agent never meets the picker.</p>
+      </div>
+      <div class="card rounded-2xl p-6">
+        <p class="font-mono text-sm text-purple-light mb-2">The picker</p>
+        <p class="text-xs text-text-dim leading-relaxed">With two or more brains registered and no <span class="font-mono text-purple-light whitespace-nowrap">--brain</span>, in a terminal, kluris asks which one you mean. The fan-out commands offer <span class="font-mono text-purple-light">all</span> as the last choice; <span class="font-mono text-purple-light">wake-up</span>, <span class="font-mono text-purple-light">search</span> and <span class="font-mono text-purple-light">pack</span> work on one brain, so they don&rsquo;t. A brain whose folder has gone missing is marked <span class="font-mono text-purple-light">(missing)</span>.</p>
+      </div>
+      <div class="card rounded-2xl p-6">
+        <p class="font-mono text-sm text-purple-light mb-2">--brain all</p>
+        <p class="text-xs text-text-dim leading-relaxed">Runs the command on every registered brain. Accepted only on the fan-out commands &mdash; <span class="font-mono text-purple-light">dream</span>, <span class="font-mono text-purple-light">status</span>, <span class="font-mono text-purple-light">mri</span> and <span class="font-mono text-purple-light">companion list / add / remove</span>. Any other command rejects it with an error.</p>
+      </div>
+      <div class="card rounded-2xl p-6">
+        <p class="font-mono text-sm text-purple-light mb-2">Scripts and CI</p>
+        <p class="text-xs text-text-dim leading-relaxed">With <span class="font-mono text-purple-light">--json</span>, with no TTY, or with <span class="font-mono text-purple-light">KLURIS_NO_PROMPT=1</span> there is no picker: kluris exits with an error that lists the registered brains (a JSON object under <span class="font-mono text-purple-light">--json</span>). Always pass <span class="font-mono text-purple-light whitespace-nowrap">--brain</span> in scripts; set <span class="font-mono text-purple-light">KLURIS_NO_PROMPT=1</span> for wrappers that inherit a terminal but can&rsquo;t answer a prompt.</p>
+      </div>
     </div>
 
     <div class="mt-8 flex flex-wrap justify-center gap-3">
       <span class="chip">git clone + kluris register</span>
+      <span class="chip">--brain NAME skips the picker</span>
       <span class="chip">One skill per brain</span>
       <span class="chip">Keep work and personal separate</span>
       <span class="chip">Every brain has its own git history</span>
@@ -1788,7 +1902,7 @@ Multiple brains registered. Pick one:
         Your <span class="gradient-text">SME</span> starts here.
       </h2>
       <p class="text-text-dim text-lg md:text-xl max-w-2xl mx-auto mb-10 leading-relaxed">
-        Free forever. Works with every AI agent on your team.
+        Free forever. One shared brain for the AI agents your team already uses.
       </p>
       <div class="flex flex-col sm:flex-row items-center justify-center gap-4 mb-8">
         <a href="#setup" class="btn-primary inline-flex items-center gap-2 px-8 py-4 rounded-full text-base">
@@ -1803,7 +1917,7 @@ Multiple brains registered. Pick one:
 
     <!-- Supported agents strip -->
     <div class="mt-28 text-center">
-      <p class="text-xs uppercase tracking-[0.25em] text-text-muted font-medium mb-10">Works with every agent on your team</p>
+      <p class="text-xs uppercase tracking-[0.25em] text-text-muted font-medium mb-10">Installs a skill into nine agents</p>
       <div class="flex flex-wrap justify-center items-center gap-x-10 gap-y-5 text-base md:text-lg font-serif text-text-dim">
         <span class="hover:text-purple transition-colors cursor-default">Claude Code</span>
         <span class="text-text-muted">·</span>
@@ -1823,6 +1937,9 @@ Multiple brains registered. Pick one:
         <span class="text-text-muted">·</span>
         <span class="hover:text-purple transition-colors cursor-default">Junie</span>
       </div>
+      <p class="mt-10 max-w-3xl mx-auto text-sm text-text-dim leading-relaxed">
+        Kluris writes one <span class="font-mono text-purple-light">kluris-&lt;name&gt;</span> <span class="font-mono text-purple-light">SKILL.md</span> per brain into each of these agents&rsquo; skill folders, plus the universal <span class="font-mono text-purple-light">~/.agents/skills/</span> folder. The skill is plain instructions plus shell calls to the <span class="font-mono text-purple-light">kluris</span> CLI, so any other agent that loads <span class="font-mono text-purple-light">SKILL.md</span> skills from one of those folders (or is pointed at the file) and can run a shell can use it too. OpenCode, for one, <a href="https://opencode.ai/docs/skills/" target="_blank" rel="noopener" class="text-purple-light underline decoration-purple/30 underline-offset-2 hover:decoration-pink">loads skills</a> from <span class="font-mono text-purple-light">~/.claude/skills/</span> and <span class="font-mono text-purple-light">~/.agents/skills/</span>.
+      </p>
     </div>
   </div>
 </section>
