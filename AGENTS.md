@@ -10,39 +10,46 @@ Topics relevant to this repo: kluris-site overview (sections, SEO, assets), depl
 
 ## What this repo is
 
-A single static landing page (`index.html`, ~1980 lines, 13 sections) hosted on GitHub Pages at **kluris.ngvoicu.dev**. Inline CSS + Tailwind via CDN; vanilla JS for the hero brain canvas. **No build step, no framework, no bundler** — `open index.html` to preview locally.
+A static site of three hand-written pages hosted on GitHub Pages at **kluris.ngvoicu.dev**: the landing page (`index.html`, ~2,150 lines, 14 sections), a slide-style guided tour (`presentation.html`, 10 slides, ~1,940 lines) and a screenshot walkthrough (`walkthrough.html`, 22 screenshots in `walkthrough/`, ~1,070 lines). Inline CSS + Tailwind via CDN; vanilla JS for the hero brain canvas and the tour's slide navigation. **No build step, no framework, no bundler** — `open index.html` to preview locally.
 
 Tagline used on the site: *"The SME your team never had."*
 
 ## Editing
 
-The whole site is one file. In-file banner comments (`HERO`, `COMPARISON`, `BEAT 1 — SET UP` … `BEAT 7 — CAPTURE SESSION`, `PAIR — KLURIS × SPECMINT`, `APPENDIX`, `CTA + AGENTS + FOOTER`) make navigation easy. Tailwind config + custom CSS variables sit at the top of `<head>`.
+The landing page is one file, and so are the tour and the walkthrough. In-file banner comments in `index.html` (`HERO`, `COMPARISON`, `BEAT 1 — SET UP` … `BEAT 7 — CAPTURE SESSION`, with `PAIR — KLURIS × SPECMINT` after Beat 4, then `REFERENCE`, `APPENDIX`, `CTA + AGENTS + FOOTER`) make navigation easy. Tailwind config + custom CSS variables sit at the top of `<head>` on each page.
+
+What lives where: the install step (restart the terminal after `pipx ensurepath`) is in `BEAT 1 — SET UP` and on tour slide 2; `REFERENCE` holds the CLI and agent tables plus the agent-bootstrap (`kluris wake-up`) and `kluris pack` cards; `APPENDIX` holds the multi-brain rules (`--brain NAME`, the picker, `--brain all`, non-interactive runs).
+
+Agent claims stay exact. Kluris installs a `kluris-<name>` `SKILL.md` into the nine agents in the product's `AGENT_REGISTRY` plus the universal `~/.agents/skills/` folder; any other agent that loads `SKILL.md` skills from one of those folders and can run a shell can use it (OpenCode reads `~/.claude/skills/` and `~/.agents/skills/`, per https://opencode.ai/docs/skills/). Do not write that it works with "every" agent.
 
 ## Notable assets
 
 | File | Purpose |
 |------|---------|
-| `index.html` | The full single-page site |
-| `logo.png` / `logo.webp` / `logo.pxd` | Brand logo (Pixelmator source) |
-| `mri-overview.png` / `mri-inspector.png` | Real `kluris mri` renders, embedded in the page |
-| `mri-ngvoicu.png` | Older `kluris mri` render — on disk but not currently referenced by `index.html` |
+| `index.html` | The landing page |
+| `presentation.html` | The guided tour: ten slides, keyboard navigation |
+| `walkthrough.html` + `walkthrough/01.png`–`22.png` | The screenshot-by-screenshot walkthrough. `01` is the current `kluris create` wizard for `acme` (7-option companion prompt, `Agent skill installed: kluris-acme`); `07` is the C4-style MRI drilled into Projects › Kluris, with red highlights on the breadcrumb, back/forward buttons and the folder's boxes |
+| `logo.png` / `logo.webp` / `logo.pxd` | Brand logo. `logo.webp` is a reference copy no page loads; the Pixelmator source `logo.pxd` is gitignored (local only) |
+| `specmint-logo.webp` | Specmint logo in the Kluris × Specmint sections (`specmint-logo-with-text.png` is on disk, unreferenced) |
+| `mri-overview.png` / `mri-inspector.png` | `kluris mri` renders of the ngvoicu-sme brain, embedded in `index.html` and `presentation.html`, from the current C4-style viewer: the root view (lobes as boxes with synapse counts, file tree, Find/Recent) and a neuron modal (the Deprecation neuron). The product `README.md` embeds `mri-overview.png` by its kluris.ngvoicu.dev URL. Retake them from a scratch copy of the brain with a sandbox `HOME`/`KLURIS_CONFIG`, never the real brain: `kluris mri` runs a dream preflight that writes into it |
+| `mri-ngvoicu.png` | Older `kluris mri` render — on disk but not referenced by any page |
 | `og-image.png` | Open Graph / Twitter Card image (1200×630) — keep under 200 KB or WhatsApp falls back to apple-touch-icon |
-| `favicon-*.png`, `apple-touch-icon.png`, `icon-192.png`, `icon-512.png` | Browser/PWA icons |
+| `favicon-*.png`, `favicon.ico`, `apple-touch-icon.png`, `icon-192.png`, `icon-512.png` | Browser/PWA icons (`favicon.ico` answers the implicit `/favicon.ico` request; no page links it) |
 | `site.webmanifest` | PWA manifest |
 | `CNAME` | GitHub Pages custom domain (`kluris.ngvoicu.dev`) |
-| `robots.txt`, `sitemap.xml` | SEO |
+| `robots.txt`, `sitemap.xml` | SEO (the sitemap lists the three pages) |
 
 ## SEO
 
 - Title, description, keywords, canonical URL
 - Open Graph + Twitter Card tags
-- Three JSON-LD blocks: `SoftwareApplication`, `Organization`, `WebSite`
+- Four JSON-LD blocks on `index.html`: `SoftwareApplication`, `Organization`, `WebSite`, `VideoObject`
 - Theme color, Apple touch icon, web manifest
 - Semantic HTML, image alt attributes, anchor IDs
 
 ## Deploy
 
-Push to `main`. GitHub Pages rebuilds automatically — no CI workflow. DNS: `kluris.ngvoicu.dev` is a subdomain: one `CNAME kluris → ngvoicu.github.io` in the Cloudflare-managed `ngvoicu.dev` zone; no `A` records, no `www` record.
+Push `main` to both remotes: `origin` (the NAS) and `upstream` (GitHub). The push to `upstream` is what GitHub Pages builds and serves, so it goes live: the owner's call, so prepare and show the change first and push when the owner says so. Pages rebuilds automatically — no CI workflow. DNS: `kluris.ngvoicu.dev` is a subdomain: one `CNAME kluris → ngvoicu.github.io` in the Cloudflare-managed `ngvoicu.dev` zone; no `A` records, no `www` record.
 
 ## License
 

@@ -6,26 +6,31 @@ Lives at **[https://kluris.ngvoicu.dev/](https://kluris.ngvoicu.dev/)**.
 
 ## Stack
 
-- Single static `index.html` (no build step, no framework, no bundler)
+- Three static pages — `index.html`, `presentation.html`, `walkthrough.html` (no build step, no framework, no bundler)
 - Inline CSS + Tailwind via CDN
-- Vanilla JS for the hero brain canvas
+- Vanilla JS for the hero brain canvas and the tour's slide navigation
 - Hosted on **GitHub Pages** with custom domain
 
 ## Files
 
 | File | Purpose |
 |---|---|
-| `index.html` | The full single-page site (12 sections, ~1400 lines) |
+| `index.html` | The landing page (14 sections, ~2,150 lines) |
+| `presentation.html` | The guided tour: ten slides, keyboard navigation |
+| `walkthrough.html` | The screenshot-by-screenshot walkthrough |
+| `walkthrough/01.png`–`22.png` | The 22 screenshots `walkthrough.html` shows (`01` is the current `kluris create` wizard for `acme`; `07` is the C4-style MRI drilled into Projects › Kluris) |
 | `logo.png` | Brand logo (used in nav, hero, footer) |
-| `logo.webp` | Source brand image (kept as reference) |
-| `mri-ngvoicu.png` | Real `kluris mri` output, embedded in section 8 |
-| `favicon-16x16.png`, `favicon-32x32.png` | Browser tab favicons |
+| `logo.webp` | Source brand image (kept as reference; no page loads it) |
+| `specmint-logo.webp` | Specmint logo in the Kluris × Specmint sections (`specmint-logo-with-text.png` is on disk, unreferenced) |
+| `mri-overview.png`, `mri-inspector.png` | `kluris mri` renders of the ngvoicu-sme brain, embedded in `index.html` and `presentation.html`, from the current C4-style viewer: the root view (lobes as boxes with synapse counts, file tree, Find/Recent) and a neuron modal (the Deprecation neuron). The product README embeds `mri-overview.png` by its kluris.ngvoicu.dev URL |
+| `mri-ngvoicu.png` | Older `kluris mri` render, on disk but not referenced by any page |
+| `favicon-16x16.png`, `favicon-32x32.png`, `favicon.ico` | Browser tab favicons (`favicon.ico` answers the implicit `/favicon.ico` request) |
 | `apple-touch-icon.png` | iOS home screen icon (180×180) |
 | `icon-192.png`, `icon-512.png` | PWA / Android icons |
 | `og-image.png` | Open Graph / Twitter Card image (1200×630) |
 | `site.webmanifest` | PWA manifest |
 | `robots.txt` | Search engine directives |
-| `sitemap.xml` | URL list for crawlers |
+| `sitemap.xml` | URL list for crawlers (the three pages) |
 | `CNAME` | GitHub Pages custom domain (`kluris.ngvoicu.dev`) |
 
 ## Local preview
@@ -45,7 +50,7 @@ The site has a complete SEO setup:
 - Twitter Card tags for X
 - Theme color for mobile browsers
 - Apple touch icon + web manifest for PWA install
-- Three JSON-LD structured data blocks: `SoftwareApplication`, `Organization`, `WebSite`
+- Four JSON-LD structured data blocks on `index.html`: `SoftwareApplication`, `Organization`, `WebSite`, `VideoObject`
 - `robots.txt` + `sitemap.xml`
 - Semantic HTML with proper heading hierarchy
 - Image alt attributes everywhere
@@ -96,9 +101,13 @@ For a build stuck in "building", see the Deploying section below.
 
 ## Editing
 
-The whole site is one file. To change a section, search for the section comment marker (e.g. `SECTION 4 — YOUR FIRST BRAIN`) in `index.html` and edit inline.
+The landing page is one file, and so are the tour and the walkthrough. To change a section of the landing page, search for its section comment marker (e.g. `BEAT 1 — SET UP`) in `index.html` and edit inline.
 
-The Tailwind classes are configured inline at the top of `<head>`. Custom CSS variables and components live in the `<style>` block right after.
+What lives where: the install step (restart the terminal after `pipx ensurepath`) is in `BEAT 1 — SET UP` and on tour slide 2; `REFERENCE` holds the CLI and agent tables plus the agent-bootstrap (`kluris wake-up`) and `kluris pack` cards; `APPENDIX` holds the multi-brain rules (`--brain NAME`, the picker, `--brain all`, non-interactive runs).
+
+Agent claims stay exact. Kluris installs a `kluris-<name>` `SKILL.md` into the nine agents in the product's `AGENT_REGISTRY` plus the universal `~/.agents/skills/` folder; any other agent that loads `SKILL.md` skills from one of those folders and can run a shell can use it (OpenCode reads `~/.claude/skills/` and `~/.agents/skills/`, per https://opencode.ai/docs/skills/). Do not write that it works with "every" agent.
+
+The Tailwind classes are configured inline at the top of `<head>` on each page. Custom CSS variables and components live in the `<style>` block right after.
 
 ## License
 
@@ -106,7 +115,7 @@ The site itself follows the same MIT license as Kluris. The brand assets (`logo.
 
 ## Deploying (read this — Pages builds get stuck)
 
-Push `main` to `upstream` (GitHub) and Pages builds automatically — but builds **regularly hang in `"building"`**. After every push:
+Push `main` to both remotes (`origin`, the NAS, and `upstream`, GitHub). The push to `upstream` is what makes Pages build automatically and goes live, so it is the owner's call — but builds **regularly hang in `"building"`**. After every push to `upstream`:
 
 ```bash
 gh api repos/ngvoicu/kluris-site/pages/builds/latest --jq .status   # expect "built" within ~1 min
