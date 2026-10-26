@@ -889,32 +889,18 @@
       reads as a subject matter expert. One command to install. One wizard to create your first one.
     </p>
 
-    <div class="grid grid-cols-1 lg:grid-cols-3 gap-4 mt-8 mb-6">
+    <div class="grid grid-cols-1 lg:grid-cols-2 gap-4 mt-8 mb-4">
       <div class="terminal glow-purple-sm">
         <div class="terminal-header">
           <span class="terminal-dot" style="background:#ef4444;opacity:0.6"></span>
           <span class="terminal-dot" style="background:#f59e0b;opacity:0.6"></span>
           <span class="terminal-dot" style="background:#34d399;opacity:0.6"></span>
-          <span>macOS · zsh/bash</span>
+          <span>macOS · Linux</span>
           <span class="scope scope-terminal">Terminal</span>
         </div>
-<pre><span class="prompt">$</span> <span class="cmd">brew install pipx</span>
-<span class="prompt">$</span> <span class="cmd">pipx ensurepath</span>
-<span class="dim"># restart your terminal, then:</span>
-<span class="prompt">$</span> <span class="cmd">pipx install kluris</span></pre>
-      </div>
-      <div class="terminal glow-purple-sm">
-        <div class="terminal-header">
-          <span class="terminal-dot" style="background:#ef4444;opacity:0.6"></span>
-          <span class="terminal-dot" style="background:#f59e0b;opacity:0.6"></span>
-          <span class="terminal-dot" style="background:#34d399;opacity:0.6"></span>
-          <span>Linux · bash</span>
-          <span class="scope scope-terminal">Terminal</span>
-        </div>
-<pre><span class="prompt">$</span> <span class="cmd">python3 -m pip install --user pipx</span>
-<span class="prompt">$</span> <span class="cmd">pipx ensurepath</span>
-<span class="dim"># restart your terminal, then:</span>
-<span class="prompt">$</span> <span class="cmd">pipx install kluris</span></pre>
+<pre><span class="prompt">$</span> <span class="cmd">curl -fsSL https://kluris.ngvoicu.dev/install.sh | sh</span>
+<span class="dim"># open a new terminal, then:</span>
+<span class="prompt">$</span> <span class="cmd">kluris doctor</span></pre>
       </div>
       <div class="terminal glow-purple-sm">
         <div class="terminal-header">
@@ -924,12 +910,17 @@
           <span>Windows · PowerShell</span>
           <span class="scope scope-terminal">Terminal</span>
         </div>
-<pre><span class="prompt">&gt;</span> <span class="cmd">pip install pipx</span>
-<span class="prompt">&gt;</span> <span class="cmd">pipx ensurepath</span>
-<span class="dim"># restart your terminal, then:</span>
-<span class="prompt">&gt;</span> <span class="cmd">pipx install kluris</span></pre>
+<pre><span class="prompt">&gt;</span> <span class="cmd">irm https://kluris.ngvoicu.dev/install.ps1 | iex</span>
+<span class="dim"># from cmd.exe: powershell -ExecutionPolicy ByPass -c "irm https://kluris.ngvoicu.dev/install.ps1 | iex"</span>
+<span class="dim"># open a new terminal, then:</span>
+<span class="prompt">&gt;</span> <span class="cmd">kluris doctor</span></pre>
       </div>
     </div>
+    <p class="mb-6 text-center text-text-dim text-sm leading-relaxed max-w-4xl mx-auto">
+      No admin rights: one binary in <code>~/.kluris/bin</code>, added to your PATH, so <strong>open a new terminal</strong> after installing.
+      macOS, Linux and Windows, Intel/x86_64 and ARM. Update with <code>kluris self-update</code>, uninstall with
+      <code>kluris self-uninstall</code> (your brains stay), and pin a release with <code>KLURIS_VERSION=3.0.0</code>.
+    </p>
 
     <div class="grid grid-cols-1 lg:grid-cols-2 gap-5 items-stretch">
       <div class="terminal glow-purple-sm">
@@ -940,30 +931,32 @@
         </div>
 <pre><span class="prompt">$</span> <span class="cmd">kluris create</span>
 
-<span class="meta">Brain name:</span> <span class="str">acme</span>
-<span class="meta">What does this brain cover?</span> <span class="str">Shared brain for ACME projects</span>
-<span class="meta">Location:</span> <span class="str">~/Projects</span>
-<span class="meta">Brain type</span> <span class="dim">[product-group, personal, product, research, blank]:</span> <span class="str">product-group</span>
-<span class="meta">Git setup</span> <span class="dim">[1=local, 2=with remote, 3=no git]:</span> <span class="str">1</span>
-<span class="meta">Default branch:</span> <span class="str">main</span>
+Create a new brain
 
-<span class="meta">Install specmint companions for this brain?</span>
-  <span class="dim">[1]</span> specmint-core      <span class="dim">(spec-driven-development companion)</span>
-  <span class="dim">[2]</span> specmint-tdd       <span class="dim">(spec-driven-development with test-driven-development focus)</span>
-  <span class="dim">[3]</span> core + tdd
-  <span class="dim">[4]</span> skip
-  <span class="dim">[5]</span> specmint-core-html <span class="dim">(spec-driven-development with canonical SPEC.html)</span>
-  <span class="dim">[6]</span> specmint-tdd-html  <span class="dim">(TDD-focused specs with canonical SPEC.html)</span>
-  <span class="dim">[7]</span> all
-<span class="meta">Choice</span> <span class="dim">[4]:</span> <span class="str">3</span>
+  <span class="meta">Brain name (lowercase, hyphens ok):</span> <span class="str">acme</span>
+  <span class="meta">What does this brain cover? (one sentence):</span> <span class="str">Shared brain for ACME projects</span>
+  <span class="meta">Location</span> <span class="dim">[~]:</span> <span class="str">~/Projects</span>
+  <span class="meta">Brain type</span> <span class="dim">(product-group, personal, product, research, blank) [product-group]:</span>
+  <span class="meta">Git setup</span> <span class="dim">(1=local, 2=with remote, 3=no git) [1]:</span> <span class="str">1</span>
+  <span class="meta">Default branch</span> <span class="dim">[main]:</span>
 
+  <span class="meta">Install specmint companions for this brain?</span>
+    <span class="dim">[1]</span> specmint-core      <span class="dim">(spec-driven-development companion)</span>
+    <span class="dim">[2]</span> specmint-tdd       <span class="dim">(spec-driven-development with test-driven-development focus)</span>
+    <span class="dim">[3]</span> core + tdd
+    <span class="dim">[4]</span> skip
+    <span class="dim">[5]</span> specmint-core-html <span class="dim">(spec-driven-development with canonical SPEC.html)</span>
+    <span class="dim">[6]</span> specmint-tdd-html  <span class="dim">(TDD-focused specs with canonical SPEC.html)</span>
+    <span class="dim">[7]</span> all
+  <span class="meta">Choice</span> <span class="dim">[4]:</span> <span class="str">3</span>
 <span class="ok">Brain created:</span> acme <span class="dim">(product-group)</span>
   Path: ~/Projects/acme
   Lobes: 3
 
 <span class="ok">Agent skill installed: kluris-acme</span>
   <span class="dim">Claude/Codex/Gemini/etc:</span> /kluris-acme
-  <span class="dim">Hermes:</span> /skill kluris-acme  <span class="dim">(or start with `hermes -s kluris-acme`)</span></pre>
+  <span class="dim">Hermes:</span> /skill kluris-acme  <span class="dim">(or start with `hermes -s kluris-acme`)</span>
+  <span class="dim">Created a new Hermes profile later? Run `kluris doctor` to refresh Kluris skills.</span></pre>
       </div>
 
       <div class="terminal">
@@ -1136,7 +1129,7 @@ at 80% TTL.</span>
 
 <span class="ok">MRI complete</span> — /home/user/ngvoicu-sme/brain-mri.html
   Open: <span class="dim">file:///home/user/ngvoicu-sme/brain-mri.html</span>
-  <span class="warn">43</span> nodes, <span class="warn">254</span> edges
+  <span class="warn">42</span> nodes, <span class="warn">242</span> edges
 
 <span class="dim">Open the link in any browser. Commit it, email it,
 drop it in Slack — it runs anywhere, no server.</span></pre>
@@ -1152,7 +1145,7 @@ drop it in Slack — it runs anywhere, no server.</span></pre>
         <span class="text-purple-light font-semibold">The root view</span> — each lobe as a box, synapse counts on the lines between them.
       </figcaption>
       <p class="text-text-dim text-sm leading-relaxed mt-3 max-w-3xl mx-auto text-center">
-        The header counts the brain (<strong>30 neurons · 254 synapses</strong> here), the file tree on the
+        The header counts the brain (<strong>29 neurons · 242 synapses</strong> here), the file tree on the
         left collapses, and Find on the right searches neurons, paths, lobes, tags, and YAML, with the most
         recently updated neurons listed beneath. Click a folder to drill in; click a neuron to open it.
       </p>
@@ -1161,7 +1154,7 @@ drop it in Slack — it runs anywhere, no server.</span></pre>
     <!-- Neuron view: full-width screenshot, explanation below -->
     <figure class="max-w-5xl mx-auto mt-8">
       <div class="mri-frame">
-        <img src="mri-inspector.png" alt="kluris mri neuron detail — one neuron open in a modal: back and forward buttons and its title at the top, its path and tags, buttons for the connected neurons, the rendered markdown with a code block, and the file tree on the left" style="display:block; width:100%; height:auto;">
+        <img src="mri-inspector.png" alt="kluris mri neuron detail — one neuron open in a modal: back and forward buttons and its title at the top, its path and tags, buttons for the connected neurons, the rendered markdown, and the file tree on the left" style="display:block; width:100%; height:auto;">
       </div>
       <figcaption class="text-text-muted text-xs mt-3 text-center leading-relaxed">
         <span class="text-purple-light font-semibold">The neuron view</span> — rendered markdown on the right, connected neurons as buttons along the top, the file tree on the left.
@@ -1201,17 +1194,25 @@ drop it in Slack — it runs anywhere, no server.</span></pre>
       <div class="terminal glow-purple-sm">
         <div class="terminal-header">
           <span class="terminal-dot" style="background:#ec4899"></span>
-          <span>/kluris-acme search · ranked keyword lookup</span>
+          <span>search · ranked, in your own words</span>
           <span class="scope scope-agent">In your AI agent · in a project</span>
         </div>
-<pre><span class="prompt-agent">&gt;</span> <span class="cmd">/kluris-acme search auth flow</span>
+<pre><span class="prompt-agent">&gt;</span> <span class="cmd">/kluris-acme how does the app refresh its token?</span>
 
-<span class="meta">Found 3 neurons:</span>
-  projects/btb-core/auth-flow.md       <span class="warn">★★★</span>
-  knowledge/jwt-rotation.md            <span class="warn">★★</span>
-  infrastructure/keycloak-setup.md     <span class="warn">★</span>
+<span class="meta">→ kluris search "token refresh" --brain acme</span>
 
-<span class="dim">Run `/kluris-acme open auth-flow.md` to read one.</span></pre>
+3 result(s) for 'token refresh' in acme
+
+  <span class="warn">233</span>  <span class="str">Auth flow</span>
+        <span class="dim">projects/btb-core/auth-flow.md</span>
+        The web app refreshes the access token at
+        80% of its lifetime...
+  <span class="warn">115</span>  <span class="str">Keycloak setup</span>
+        <span class="dim">infrastructure/keycloak-setup.md</span>
+   <span class="warn">31</span>  <span class="str">JWT signing key rotation</span>
+        <span class="dim">knowledge/jwt-rotation.md</span>
+
+<span class="meta">→ reading the top hit, section "Token refresh"</span></pre>
       </div>
 
       <div class="terminal glow-purple-sm">
@@ -1237,7 +1238,7 @@ Tunnel (zero public ports).</span></pre>
       <div class="card p-5">
         <p class="text-purple text-xs uppercase tracking-widest font-semibold mb-2">Search</p>
         <p class="text-text-dim text-sm leading-relaxed">
-          Ranked hits across neurons, glossary, and the <code>brain.md</code> map. The agent opens only what actually answers the question.
+          Ranked hits across neurons, glossary, and <code>brain.md</code>, scored per <code>##</code> section, so each hit points at the heading where the answer is. Word forms and accents don't matter. The agent opens only what answers the question.
         </p>
       </div>
       <div class="card p-5">
@@ -1600,8 +1601,8 @@ Identifying brain-worthy items:</span>
 <span class="str"># Use TIMESTAMPTZ for every timestamp column</span>
 
 <span class="cmd">Decided 2026-05-12. Standardized on
-TIMESTAMPTZ over TIMESTAMP across all
-schema migrations. Reason: avoids the
+TIMESTAMPTZ over TIMESTAMP in every
+schema change. Reason: avoids the
 silent UTC drift gotcha when servers
 or clients sit in different timezones.</span>
 
@@ -1661,8 +1662,8 @@ or clients sit in different timezones.</span>
     <div class="grid grid-cols-1 md:grid-cols-3 gap-4 mt-10">
       <div class="card p-5">
         <p class="text-purple text-xs uppercase tracking-widest font-semibold mb-2">What you installed</p>
-        <p class="text-text font-serif text-xl leading-snug mb-1">A Python CLI.</p>
-        <p class="text-text-dim text-sm">One <code>pipx install</code> &nbsp;·&nbsp; nothing to host, nothing to log into.</p>
+        <p class="text-text font-serif text-xl leading-snug mb-1">One small binary.</p>
+        <p class="text-text-dim text-sm">One install line, no admin rights &nbsp;·&nbsp; nothing to host, nothing to log into.</p>
       </div>
       <div class="card p-5">
         <p class="text-purple text-xs uppercase tracking-widest font-semibold mb-2">What you built</p>
@@ -1672,7 +1673,7 @@ or clients sit in different timezones.</span>
       <div class="card p-5">
         <p class="text-purple text-xs uppercase tracking-widest font-semibold mb-2">What changed</p>
         <p class="text-text font-serif text-xl leading-snug mb-1">Your agents, smarter.</p>
-        <p class="text-text-dim text-sm">Installed into Claude Code, Cursor, Windsurf, Copilot, Codex, Gemini, Hermes, Kilo, Junie &mdash; and any agent that reads <code>~/.agents/skills/</code>.</p>
+        <p class="text-text-dim text-sm">A skill in <code>~/.agents/skills/</code> for Cursor, Codex, Gemini CLI, Devin, OpenCode, Kilo Code, Junie and others, plus its own copy for Claude Code, Hermes, Antigravity and Copilot.</p>
       </div>
     </div>
 
@@ -1719,7 +1720,8 @@ or clients sit in different timezones.</span>
           <span>start here</span>
           <span class="scope scope-terminal">Terminal</span>
         </div>
-<pre><span class="prompt">$</span> <span class="cmd">pipx install kluris</span>
+<pre><span class="prompt">$</span> <span class="cmd">curl -fsSL https://kluris.ngvoicu.dev/install.sh | sh</span>   <span class="dim"># Windows: irm https://kluris.ngvoicu.dev/install.ps1 | iex</span>
+<span class="dim"># open a new terminal, then:</span>
 <span class="prompt">$</span> <span class="cmd">kluris create</span>                         <span class="dim"># new brain from scratch</span>
   <span class="dim"># — or — </span>
 <span class="prompt">$</span> <span class="cmd">git clone git@github.com:team/brain.git ~/brains/team &amp;&amp; kluris register ~/brains/team</span>   <span class="dim"># join a team brain</span>

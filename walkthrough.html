@@ -269,6 +269,8 @@
     overflow-x: auto;
   }
   .miniterm .prompt-agent { color: #67e8f9; font-weight: 600; }
+  .miniterm .prompt       { color: #a78bfa; font-weight: 600; }
+  .miniterm .dim          { color: #5b6275; }
   .miniterm .cmd          { color: #e4e7ef; }
   .miniterm .meta         { color: #8a92a6; font-style: italic; }
   .miniterm .hl           { color: #c4b5fd; }
@@ -397,8 +399,22 @@
     </div>
 
     <p class="text-text-dim text-lg max-w-3xl ml-0 md:ml-[calc(2.6rem+1.25rem)] mb-8 leading-relaxed reveal">
-      One <code class="text-purple-light">kluris create</code> command, a few questions, optional specmint companions —
+      Install Kluris, then one <code class="text-purple-light">kluris create</code> command, a few questions, optional specmint companions —
       and you have an empty git-tracked brain ready to be taught. This step happens once per domain.
+    </p>
+
+    <pre class="miniterm mb-4 reveal"><span class="dim"># macOS · Linux</span>
+<span class="prompt">$</span> <span class="cmd">curl -fsSL https://kluris.ngvoicu.dev/install.sh | sh</span>
+<span class="dim"># Windows · PowerShell</span>
+<span class="prompt">&gt;</span> <span class="cmd">irm https://kluris.ngvoicu.dev/install.ps1 | iex</span>
+<span class="dim"># Windows · cmd.exe</span>
+<span class="prompt">&gt;</span> <span class="cmd">powershell -ExecutionPolicy ByPass -c "irm https://kluris.ngvoicu.dev/install.ps1 | iex"</span>
+<span class="dim"># open a new terminal, then:</span>
+<span class="prompt">$</span> <span class="cmd">kluris doctor</span></pre>
+    <p class="text-text-muted text-sm italic max-w-3xl mb-8 leading-relaxed reveal">
+      No admin rights: Kluris is one binary in <code>~/.kluris/bin</code>, on macOS, Linux and Windows, and the installer adds it
+      to your PATH. Later, <code>kluris self-update</code> updates it and <code>kluris self-uninstall</code> removes it; your brains stay.
+      To install one particular release, set <code>KLURIS_VERSION=3.0.0</code> in front of the installer.
     </p>
 
     <figure class="reveal">
@@ -451,7 +467,7 @@
 
     <p class="text-text-muted text-sm italic max-w-3xl mt-6 leading-relaxed">
       The same block goes in both files because not every coding agent reads
-      <code>CLAUDE.md</code> &mdash; Codex, OpenCode, Cursor, Windsurf, Cline, and
+      <code>CLAUDE.md</code> &mdash; Codex, OpenCode, Cursor, Cline, and
       Gemini CLI read <code>AGENTS.md</code>. Re-run any time; if the pointer is
       already there, the agent says so. If it's stale, it offers to reformulate.
     </p>
@@ -726,7 +742,7 @@
       </div>
       <p class="text-text-dim leading-relaxed mb-4">
         Anybody on the team types <code class="text-cyan">/kluris-&lt;name&gt;</code> in their agent and gets the team's
-        actual answer — verified, git-tracked, dated, with the source neuron linked. The same questions that used to
+        actual answer — verified, git-tracked, dated, with the source neuron linked. The same questions that once
         cost a Slack ping and an interrupted senior dev now resolve in seconds, locally, in the IDE.
       </p>
       <pre class="miniterm"><span class="prompt-agent">&gt;</span> <span class="cmd">/kluris-acme where is btb-backend-core deployed and how?</span>
@@ -891,11 +907,11 @@
         </div>
       </div>
       <p class="text-text-dim leading-relaxed mb-6">
-        The <code class="text-purple-light">/kluris-&lt;name&gt;</code> skill installs into nine coding agents — Claude Code,
-        Cursor, Windsurf, GitHub Copilot, Codex, Gemini CLI, Hermes Agent, Kilo Code, Junie — and into the universal
-        <code class="text-purple-light">~/.agents/skills/</code> folder, which other agents that load <code>SKILL.md</code> skills, such as
+        The <code class="text-purple-light">/kluris-&lt;name&gt;</code> skill goes into the shared
+        <code class="text-purple-light">~/.agents/skills/</code> folder, which Cursor, Codex, Gemini CLI, Devin,
         <a href="https://opencode.ai/docs/skills/" target="_blank" rel="noopener" class="text-purple-light underline decoration-purple/30 underline-offset-2 hover:decoration-pink">OpenCode</a>,
-        read too. Pick the model that fits the moment.
+        Kilo Code, Junie and others read, and Claude Code, Hermes Agent, Antigravity and GitHub Copilot get their own copy.
+        Pick the model that fits the moment.
         Draft the spec with <span class="text-purple-light">Claude Code · Opus 4.7</span>, then have a fresh
         <span class="text-mint-light">Codex · GPT-5.5</span> review it for blind spots, then ask
         <span class="text-cyan-300" style="color:#67e8f9;">OpenCode</span> running
@@ -972,7 +988,7 @@
             <svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="#34d399" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 12c0 4.97-4.03 9-9 9s-9-4.03-9-9 4.03-9 9-9c2.39 0 4.68.93 6.36 2.64L21 8"/><path d="M21 3v5h-5"/><path d="M9 12l2 2 4-4"/></svg>
           </div>
         </div>
-        <div class="flex-1">
+        <div class="flex-1 min-w-0 max-w-full">
           <p class="kicker kicker-mint mb-2">The loop closes · the brain compounds</p>
           <h3 class="font-serif text-2xl md:text-3xl mb-3 leading-tight">
             After every shipped feature, ask <span class="gradient-text-mint">/kluris-acme to remember</span> what you just learned.
@@ -989,7 +1005,7 @@
 <span class="meta">→ <span class="hl">git push</span> · the whole team's brain just got smarter</span></pre>
           <p class="text-text-dim leading-relaxed mt-4">
             That's how the brain grows: every project teaches it once, every shipped feature teaches it a little more,
-            and every teammate is both reader and author. Knowledge that used to live in heads, in old Slack threads,
+            and every teammate is both reader and author. Knowledge that lived in heads, in old Slack threads,
             in nobody's head — now lives in git, written by the people doing the work.
           </p>
         </div>
@@ -1016,7 +1032,7 @@
     </p>
 
     <div class="flex flex-col sm:flex-row items-center justify-center gap-4">
-      <a href="index.html" class="btn-primary inline-flex items-center gap-2 px-8 py-4 rounded-full text-base">
+      <a href="index.html#setup" class="btn-primary inline-flex items-center gap-2 px-8 py-4 rounded-full text-base">
         Install kluris
         <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><path d="M5 12h14M13 5l7 7-7 7"/></svg>
       </a>
