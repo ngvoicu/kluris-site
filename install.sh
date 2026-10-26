@@ -17,6 +17,12 @@
 # The release installer's own settings pass through as they are: for example
 # KLURIS_INSTALL_DIR, KLURIS_NO_MODIFY_PATH=1, KLURIS_GITHUB_TOKEN.
 #
+# The release installer checks the archive's SHA-256 with `sha256sum` and
+# skips the check when there is none, as on macOS 14 and older (Apple added
+# `sha256sum` in macOS 15). There this gives it one, `shasum -a 256` (whose
+# `-b` output is the same `<hex> *<file>`), first on PATH for its run alone;
+# with neither command it stops before downloading anything.
+#
 # Everything is inside main, called on the last line, so a download cut short
 # runs nothing.
 
@@ -39,8 +45,20 @@ main() {
         url="$releases/latest/download/kluris-installer.sh"
     fi
 
+    if ! command -v sha256sum >/dev/null 2>&1 && ! command -v shasum >/dev/null 2>&1; then
+        echo "kluris: neither sha256sum nor shasum is installed, so the download could not be verified; install one of them and run this again" >&2
+        exit 1
+    fi
+
     tmp=$(mktemp -d 2>/dev/null || mktemp -d -t kluris)
     trap 'rm -rf "$tmp"' EXIT INT TERM
+    shim=""
+    if ! command -v sha256sum >/dev/null 2>&1; then
+        shim="$tmp/bin"
+        mkdir "$shim"
+        printf '#!/bin/sh\nexec shasum -a 256 "$@"\n' > "$shim/sha256sum"
+        chmod +x "$shim/sha256sum"
+    fi
     if command -v curl >/dev/null 2>&1; then
         if [ -n "${KLURIS_RELEASES_URL:-}" ]; then
             curl -fsSL "$url" -o "$tmp/kluris-installer.sh"
@@ -56,7 +74,11 @@ main() {
         echo "kluris: could not download $url" >&2
         exit 1
     }
-    sh "$tmp/kluris-installer.sh" "$@"
+    if [ -n "$shim" ]; then
+        PATH="$shim:$PATH" sh "$tmp/kluris-installer.sh" "$@"
+    else
+        sh "$tmp/kluris-installer.sh" "$@"
+    fi
 }
 
 main "$@"
