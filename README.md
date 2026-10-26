@@ -22,11 +22,11 @@ Lives at **[https://kluris.ngvoicu.dev/](https://kluris.ngvoicu.dev/)**.
 | `logo.png` | Brand logo (used in nav, hero, footer) |
 | `logo.webp` | Source brand image (kept as reference; no page loads it) |
 | `specmint-logo.webp` | Specmint logo in the Kluris × Specmint sections (`specmint-logo-with-text.png` is on disk, unreferenced) |
-| `mri-overview.png`, `mri-inspector.png` | `kluris mri` renders of the ngvoicu-sme brain, embedded in `index.html` and `presentation.html`, from the current C4-style viewer: the root view (lobes as boxes with synapse counts, file tree, Find/Recent) and a neuron modal (specmint-core's Overview). The product README embeds `mri-overview.png` by its kluris.ngvoicu.dev URL |
+| `mri-overview.png`, `mri-inspector.png` | `kluris mri` renders of the ngvoicu-sme brain, embedded in `index.html` and `presentation.html`, from the current C4-style viewer: the root view (lobes as boxes with synapse counts, file tree, Find/Recent) and a neuron modal (ngvoicu-site's Design neuron, chosen because its text carries no version history). The product README embeds `mri-overview.png` by its kluris.ngvoicu.dev URL |
 | `favicon-16x16.png`, `favicon-32x32.png`, `favicon.ico` | Browser tab favicons (`favicon.ico` answers the implicit `/favicon.ico` request) |
 | `apple-touch-icon.png` | iOS home screen icon (180×180) |
 | `icon-192.png`, `icon-512.png` | PWA / Android icons |
-| `og-image.png` | Open Graph / Twitter Card image (1200×630) |
+| `og-image.png` | Open Graph / Twitter Card image (1200×630): the logo, "kluris", the tagline and `kluris.ngvoicu.dev`; keep it under 200 KB |
 | `install.sh`, `install.ps1` | The one-line installers the pages show: `curl -fsSL https://kluris.ngvoicu.dev/install.sh \| sh` and `irm https://kluris.ngvoicu.dev/install.ps1 \| iex` |
 | `site.webmanifest` | PWA manifest |
 | `robots.txt` | Search engine directives |
