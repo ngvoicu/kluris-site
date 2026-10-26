@@ -36,6 +36,7 @@ Agent claims stay exact. Kluris installs a `kluris-<name>` `SKILL.md` into the n
 | `og-image.png` | Open Graph / Twitter Card image (1200×630) — keep under 200 KB or WhatsApp falls back to apple-touch-icon |
 | `favicon-*.png`, `favicon.ico`, `apple-touch-icon.png`, `icon-192.png`, `icon-512.png` | Browser/PWA icons (`favicon.ico` answers the implicit `/favicon.ico` request; no page links it) |
 | `site.webmanifest` | PWA manifest |
+| `install.sh` / `install.ps1` | Kluris 3's one-line installers: `curl -fsSL https://kluris.ngvoicu.dev/install.sh \| sh` and `powershell -ExecutionPolicy ByPass -c "irm https://kluris.ngvoicu.dev/install.ps1 \| iex"`. Thin pass-throughs to the release's own `kluris-installer.sh` / `.ps1` on GitHub (`releases/latest/download/`, or `releases/download/v<KLURIS_VERSION>/` when `KLURIS_VERSION` pins one; `KLURIS_RELEASES_URL` points them elsewhere, for the tests). The `.ps1` sets the execution policy to Bypass for its own process first and reports errors with `throw`, never `exit` (which would close the window under `iex`). The kluris repo tests them (`scripts/release/installer-smoke.sh` / `.ps1`; its ci.yml checks this repo out), so a change here goes with a run there. No page links them before the Kluris 3 cutover |
 | `CNAME` | GitHub Pages custom domain (`kluris.ngvoicu.dev`) |
 | `robots.txt`, `sitemap.xml` | SEO (the sitemap lists the three pages) |
 
