@@ -818,7 +818,7 @@
         </div>
         <p class="surface-desc">
           The <code>kluris</code> CLI. You run these yourself — install, create a brain,
-          regenerate the MRI, validate links. Sync goes through <code>git</code> directly.
+          regenerate the MRI, validate links, and <code>kluris sync</code> the brain with your team.
         </p>
         <div class="surface-example">kluris create</div>
       </div>
@@ -1481,14 +1481,46 @@ annual. Access is restricted to the security team.</span>
 
     <p class="text-text-muted text-xs italic text-center mt-5 max-w-3xl mx-auto leading-relaxed">
       Run <code>kluris dream</code> to regenerate maps after structural changes.
-      Commit and share with <code>git</code> directly — kluris brains are plain git repos.
+      The agent commits what you approved and shares it with <code>kluris sync</code>.
       Have more than one brain? Each installs as
       <span class="font-mono text-purple-light">/kluris-&lt;name&gt;</span>
       and everything above works the same. In the terminal,
       <span class="font-mono text-purple-light whitespace-nowrap">--brain NAME</span> picks one (kluris asks when you don't);
       <span class="font-mono text-purple-light whitespace-nowrap">--brain all</span> fans out
-      <code>dream</code>, <code>status</code>, <code>mri</code> and <code>companion</code>.
+      <code>dream</code>, <code>status</code>, <code>mri</code>, <code>sync</code> and <code>companion</code>.
     </p>
+
+    <!-- Together: one brain, many people -->
+    <div class="grid grid-cols-1 lg:grid-cols-2 gap-5 mt-10 items-start">
+      <div>
+        <p class="text-purple text-xs uppercase tracking-widest font-semibold mb-2">Together · one brain, many people</p>
+        <p class="text-text-dim text-sm leading-relaxed mb-3">
+          Everyone writes to the same brain. Before the agent writes, it syncs with your teammates; after you approve,
+          it commits exactly the files it wrote and shares them. Edits to different files, the generated maps, dates,
+          <code>related</code> and <code>tags</code>, and changes to different parts of a neuron merge on their own.
+        </p>
+        <p class="text-text-dim text-sm leading-relaxed">
+          When two people changed the same line, nothing in your folder changes and there are never conflict markers:
+          the agent shows you both versions, asks which to keep, and settles it with <code>kluris resolve</code>.
+          <code>wake-up</code> and <code>search</code> pull teammates&rsquo; changes on their own;
+          <code>kluris sync --watch</code> or <code>--install-service</code> keeps a brain in sync in the background, with no admin rights.
+        </p>
+      </div>
+      <div class="terminal glow-purple-sm">
+        <div class="terminal-header">
+          <span class="terminal-dot" style="background:#a78bfa"></span>
+          <span>a conflict, settled</span>
+          <span class="scope scope-terminal">Terminal</span>
+        </div>
+<pre><span class="prompt">$</span> <span class="cmd">kluris sync --brain acme</span>
+acme: <span class="warn">1 conflict(s), nothing changed</span>; settle them with `kluris resolve`:
+  content: knowledge/auth.md
+
+<span class="dim"># the team agrees on the teammate's version</span>
+<span class="prompt">$</span> <span class="cmd">kluris resolve --brain acme knowledge/auth.md --theirs</span>
+<span class="ok">Resolved</span> knowledge/auth.md (theirs); committed e6f6f73 and pushed</pre>
+      </div>
+    </div>
   </div>
 </section>
 
@@ -1611,7 +1643,8 @@ or clients sit in different timezones.</span>
 
 [<span class="ok">a</span>]pprove  [<span class="warn">e</span>]dit  [<span class="dim">s</span>]kip: <span class="str">a</span>
 
-<span class="ok">✓</span> 5 of 7 captured, 2 skipped, 0 edited</pre>
+<span class="ok">✓</span> 5 of 7 captured, 2 skipped, 0 edited
+<span class="meta">→ kluris commit · kluris sync:</span> acme: pushed</pre>
     </div>
 
     <div class="grid grid-cols-1 md:grid-cols-3 gap-4">

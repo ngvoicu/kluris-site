@@ -998,11 +998,15 @@
             it to capture what you just figured out. New decisions, fresh gotchas, an updated env-var, a workaround that
             took half a day to find: all of it lands in the brain as new neurons (with your approval, like always).
             Tomorrow's agent reads them. Next week's teammate reads them. Next quarter's hire reads them.
+            Several people can do this on the same brain at once: edits to different files or different parts of a
+            neuron merge on their own, and the brain never gets conflict markers.
           </p>
           <pre class="miniterm" style="border-color: rgba(52,211,153,0.25);"><span class="prompt-agent" style="color:#6ee7b7;">&gt;</span> <span class="cmd">/kluris-acme remember what we worked on today and store it to the brain</span>
 <span class="meta">→ agent drafts neurons from the session: decisions, gotchas, snippets, links</span>
-<span class="meta">→ shows each one for <span class="hl">approve · edit · reject</span> · commits the approved ones</span>
-<span class="meta">→ <span class="hl">git push</span> · the whole team's brain just got smarter</span></pre>
+<span class="meta">→ syncs the brain first: <span class="hl">kluris sync</span> · your teammates' latest changes come in</span>
+<span class="meta">→ shows each one for <span class="hl">approve · edit · reject</span></span>
+<span class="meta">→ <span class="hl">kluris commit</span> the approved files · <span class="hl">kluris sync</span> pushes them · the whole team's brain just got smarter</span>
+<span class="meta">→ a teammate changed the same line? both versions are shown to you · <span class="hl">kluris resolve</span> keeps the one you choose</span></pre>
           <p class="text-text-dim leading-relaxed mt-4">
             That's how the brain grows: every project teaches it once, every shipped feature teaches it a little more,
             and every teammate is both reader and author. Knowledge that lived in heads, in old Slack threads,
