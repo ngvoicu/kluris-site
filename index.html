@@ -7,7 +7,7 @@
 <!-- Primary Meta -->
 <title>Kluris — The SME your team never had | AI agent knowledge base</title>
 <meta name="description" content="Kluris turns your AI agents into team SMEs — shared, human-curated, git-backed knowledge brains for Claude Code, Cursor, Codex &amp; Copilot, kept in sync across your team. One native binary for macOS, Linux and Windows.">
-<meta name="keywords" content="kluris, kluris.ngvoicu.dev, AI agents, SME, subject matter expert, knowledge base, AI knowledge management, Claude Code, Cursor, Codex, Gemini CLI, GitHub Copilot, Devin, OpenCode, Kilo Code, Junie, Hermes Agent, Antigravity, agent skills, SKILL.md, brain, neurons, lobes, synapses, git-backed knowledge, git sync, team knowledge sync, merge conflicts, native CLI, single binary, AI pair programming, agentic workflows, coding assistant memory, team knowledge sharing, token reduction, context window">
+<meta name="keywords" content="kluris, kluris.ngvoicu.dev, AI agents, SME, subject matter expert, knowledge base, AI knowledge management, Claude Code, Cursor, Codex, GitHub Copilot, Devin, OpenCode, Kilo Code, Junie, Hermes Agent, Antigravity CLI, agent skills, SKILL.md, brain, neurons, lobes, synapses, git-backed knowledge, git sync, team knowledge sync, merge conflicts, native CLI, single binary, AI pair programming, agentic workflows, coding assistant memory, team knowledge sharing, token reduction, context window">
 <meta name="author" content="Gabriel Voicu">
 <meta name="robots" content="index, follow, max-image-preview:large, max-snippet:-1">
 <meta name="googlebot" content="index, follow">
@@ -80,7 +80,7 @@
     "priceCurrency": "USD",
     "availability": "https://schema.org/InStock"
   },
-  "keywords": "AI agents, SME, knowledge base, brain, neurons, lobes, synapses, token reduction, context window, Claude Code, Cursor, Codex, Gemini CLI, GitHub Copilot, Devin, OpenCode, Kilo Code, Junie, Hermes Agent, Antigravity, git sync, team knowledge sync, native CLI, single binary",
+  "keywords": "AI agents, SME, knowledge base, brain, neurons, lobes, synapses, token reduction, context window, Claude Code, Cursor, Codex, GitHub Copilot, Devin, OpenCode, Kilo Code, Junie, Hermes Agent, Antigravity CLI, git sync, team knowledge sync, native CLI, single binary",
   "sameAs": [
     "https://github.com/ngvoicu/kluris"
   ]
@@ -975,7 +975,7 @@ Create a new brain
   Lobes: 3
 
 <span class="ok">Agent skill installed: kluris-acme</span>
-  <span class="dim">Claude/Codex/Gemini/etc:</span> /kluris-acme
+  <span class="dim">Claude/Codex/Antigravity/etc:</span> /kluris-acme
   <span class="dim">Hermes:</span> /skill kluris-acme  <span class="dim">(or start with `hermes -s kluris-acme`)</span>
   <span class="dim">Created a new Hermes profile later? Run `kluris doctor` to refresh Kluris skills.</span></pre>
       </div>
@@ -1797,7 +1797,7 @@ acme: <span class="warn">1 conflict(s), nothing changed</span>; settle them with
         Two surfaces, <span class="gradient-text">one brain</span>.
       </h2>
       <p class="text-text-dim text-lg leading-relaxed">
-        Kluris lives in two places. You run the <span class="text-purple font-medium">CLI</span> in your terminal to set up and maintain your brains. Your AI agents load one <span class="text-pink font-medium">named skill per brain</span> — <span class="font-mono text-purple-light">kluris-&lt;name&gt;</span> — inside Claude Code, Cursor, Codex, Gemini CLI, Copilot, Devin, OpenCode, Kilo Code, Junie, Hermes Agent or Antigravity (or any other agent that loads <span class="font-mono text-purple-light">SKILL.md</span> skills and can run a shell), followed by whatever you want to say. Keep the agent open on a project so it has code to read.
+        Kluris lives in two places. You run the <span class="text-purple font-medium">CLI</span> in your terminal to set up and maintain your brains. Your AI agents load one <span class="text-pink font-medium">named skill per brain</span> — <span class="font-mono text-purple-light">kluris-&lt;name&gt;</span> — inside Claude Code, Cursor, Codex, Copilot, Devin, OpenCode, Kilo Code, Junie, Hermes Agent or Antigravity CLI (or any other agent that loads <span class="font-mono text-purple-light">SKILL.md</span> skills and can run a shell), followed by whatever you want to say. Keep the agent open on a project so it has code to read.
       </p>
     </div>
 
@@ -1817,7 +1817,7 @@ acme: <span class="warn">1 conflict(s), nothing changed</span>; settle them with
           <span class="text-xs text-text-muted">where the agent types</span>
         </div>
         <p class="font-mono text-sm text-pink mb-2"><span class="text-pink font-bold">&gt;</span> /kluris-acme &lt;pattern&gt;</p>
-        <p class="text-xs text-text-dim leading-relaxed">Run inside your AI coding agent — Claude Code, Cursor, Codex, Gemini CLI, Copilot, Devin, OpenCode, Kilo Code, Junie, Hermes Agent, Antigravity — with a project open. Most agents invoke <span class="font-mono text-pink">/kluris-acme</span>; Hermes uses <span class="font-mono text-pink">/skill kluris-acme</span> or <span class="font-mono text-pink">hermes -s kluris-acme</span>. Use it while coding to teach and query the brain.</p>
+        <p class="text-xs text-text-dim leading-relaxed">Run inside your AI coding agent — Claude Code, Cursor, Codex, Copilot, Devin, OpenCode, Kilo Code, Junie, Hermes Agent, Antigravity CLI — with a project open. Most agents invoke <span class="font-mono text-pink">/kluris-acme</span>; Hermes uses <span class="font-mono text-pink">/skill kluris-acme</span> or <span class="font-mono text-pink">hermes -s kluris-acme</span>. Use it while coding to teach and query the brain.</p>
       </div>
     </div>
 
@@ -1865,7 +1865,7 @@ acme: <span class="warn">1 conflict(s), nothing changed</span>; settle them with
           <span class="scope scope-agent flex-shrink-0" style="margin-left:0">Agent</span>
         </div>
         <p class="mb-3 text-xs text-pink/80 font-medium not-italic">Each brain has its own skill — <span class="font-mono text-purple-light">kluris-&lt;name&gt;</span>. Most agents expose it as <span class="font-mono text-purple-light">/kluris-&lt;name&gt;</span>; Hermes loads it with <span class="font-mono text-purple-light">/skill kluris-&lt;name&gt;</span>.</p>
-        <p class="mb-5 text-xs text-text-muted italic">Type these inside Claude Code, Cursor, Codex, Gemini CLI, Copilot, Devin, OpenCode, Kilo Code, Junie, Hermes Agent or Antigravity — with a project open, so the agent can read your code. Examples below use <span class="font-mono text-purple-light">/kluris-acme</span> for clarity.</p>
+        <p class="mb-5 text-xs text-text-muted italic">Type these inside Claude Code, Cursor, Codex, Copilot, Devin, OpenCode, Kilo Code, Junie, Hermes Agent or Antigravity CLI — with a project open, so the agent can read your code. Examples below use <span class="font-mono text-purple-light">/kluris-acme</span> for clarity.</p>
         <table class="cmd-table">
           <tr><td>/kluris-acme learn &lt;topic&gt;</td><td>Agent analyzes code, proposes neurons</td></tr>
           <tr><td>/kluris-acme remember &lt;fact&gt;</td><td>Quick-capture a decision as a neuron</td></tr>
@@ -1921,10 +1921,10 @@ acme: <span class="warn">1 conflict(s), nothing changed</span>; settle them with
         </div>
         <p class="mb-5 text-sm text-text-dim leading-relaxed">Every brain installs as one <span class="font-mono text-purple-light">kluris-&lt;name&gt;</span> skill: a <span class="font-mono text-purple-light">SKILL.md</span> with instructions and the <span class="font-mono text-purple-light">kluris</span> commands to run. Kluris writes it to the shared folder most agents read, and gives a few agents their own copy.</p>
         <table class="cmd-table">
-          <tr><td>~/.agents/skills/</td><td>Cursor, Codex, Gemini CLI, Devin, OpenCode, Kilo Code, Junie and other agents that read this shared folder</td></tr>
+          <tr><td>~/.agents/skills/</td><td>Cursor, Codex, Devin, OpenCode, Kilo Code, Junie and other agents that read this shared folder</td></tr>
           <tr><td>~/.claude/skills/</td><td>Claude Code</td></tr>
           <tr><td>~/.hermes/skills/ + profiles/*/skills/</td><td>Hermes Agent, its own folder and every profile</td></tr>
-          <tr><td>~/.gemini/config/skills/</td><td>Antigravity</td></tr>
+          <tr><td>~/.gemini/config/skills/</td><td>Antigravity CLI (<span class="font-mono">agy</span>)</td></tr>
           <tr><td>$COPILOT_HOME/skills/</td><td>GitHub Copilot, when <span class="font-mono">COPILOT_HOME</span> is set</td></tr>
         </table>
         <p class="mt-5 text-xs text-text-muted italic">Created a new Hermes profile, or set <span class="font-mono text-purple-light">COPILOT_HOME</span>, after adding a brain? Run <span class="font-mono text-purple-light">kluris doctor</span> to install the skills there too. To skip an agent, trim <span class="font-mono text-purple-light">agents.commands_for</span> in the brain&rsquo;s <span class="font-mono text-purple-light">kluris.yml</span>; the shared folder always gets every brain&rsquo;s skill.</p>
@@ -1985,7 +1985,7 @@ Multiple brains registered. Pick one:
   Path: ~/brains/team-brain
 
 <span class="ok">Agent skill installed: kluris-team-brain</span>
-  <span class="dim">Claude/Codex/Gemini/etc:</span> /kluris-team-brain
+  <span class="dim">Claude/Codex/Antigravity/etc:</span> /kluris-team-brain
   <span class="dim">Hermes:</span> /skill kluris-team-brain  <span class="dim">(or start with `hermes -s kluris-team-brain`)</span>
   <span class="dim">Created a new Hermes profile later? Run `kluris doctor` to refresh Kluris skills.</span></pre>
     </div>
@@ -2081,8 +2081,6 @@ Error: Multiple brains registered. Pass --brain NAME or 'all'. Available: acme, 
         <span class="text-text-muted">·</span>
         <span class="hover:text-purple transition-colors cursor-default">Codex</span>
         <span class="text-text-muted">·</span>
-        <span class="hover:text-purple transition-colors cursor-default">Gemini CLI</span>
-        <span class="text-text-muted">·</span>
         <span class="hover:text-purple transition-colors cursor-default">GitHub Copilot</span>
         <span class="text-text-muted">·</span>
         <span class="hover:text-purple transition-colors cursor-default">Devin</span>
@@ -2095,10 +2093,10 @@ Error: Multiple brains registered. Pass --brain NAME or 'all'. Available: acme, 
         <span class="text-text-muted">·</span>
         <span class="hover:text-purple transition-colors cursor-default">Hermes Agent</span>
         <span class="text-text-muted">·</span>
-        <span class="hover:text-purple transition-colors cursor-default">Antigravity</span>
+        <span class="hover:text-purple transition-colors cursor-default">Antigravity CLI</span>
       </div>
       <p class="mt-10 max-w-3xl mx-auto text-sm text-text-dim leading-relaxed">
-        Kluris writes one <span class="font-mono text-purple-light">kluris-&lt;name&gt;</span> <span class="font-mono text-purple-light">SKILL.md</span> per brain into the shared <span class="font-mono text-purple-light">~/.agents/skills/</span> folder, which Cursor, Codex, Gemini CLI, Devin, OpenCode, Kilo Code, Junie and others read. Claude Code (<span class="font-mono text-purple-light">~/.claude/skills/</span>), Hermes Agent (its own folder and every profile), Antigravity (<span class="font-mono text-purple-light">~/.gemini/config/skills/</span>) and GitHub Copilot (<span class="font-mono text-purple-light">$COPILOT_HOME/skills/</span>, when <span class="font-mono text-purple-light">COPILOT_HOME</span> is set) get their own copy. The skill is plain instructions plus shell calls to the <span class="font-mono text-purple-light">kluris</span> CLI, so any other agent that loads <span class="font-mono text-purple-light">SKILL.md</span> skills from one of those folders and can run a shell can use it too.
+        Kluris writes one <span class="font-mono text-purple-light">kluris-&lt;name&gt;</span> <span class="font-mono text-purple-light">SKILL.md</span> per brain into the shared <span class="font-mono text-purple-light">~/.agents/skills/</span> folder, which Cursor, Codex, Devin, OpenCode, Kilo Code, Junie and others read. Claude Code (<span class="font-mono text-purple-light">~/.claude/skills/</span>), Hermes Agent (its own folder and every profile), Antigravity CLI (<span class="font-mono text-purple-light">~/.gemini/config/skills/</span>) and GitHub Copilot (<span class="font-mono text-purple-light">$COPILOT_HOME/skills/</span>, when <span class="font-mono text-purple-light">COPILOT_HOME</span> is set) get their own copy. The skill is plain instructions plus shell calls to the <span class="font-mono text-purple-light">kluris</span> CLI, so any other agent that loads <span class="font-mono text-purple-light">SKILL.md</span> skills from one of those folders and can run a shell can use it too.
       </p>
     </div>
   </div>
