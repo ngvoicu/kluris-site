@@ -934,8 +934,8 @@
           <span class="ml-2">Install one particular release</span>
           <span class="scope scope-terminal">Terminal</span>
         </div>
-<pre><span class="prompt">$</span> <span class="cmd">curl -fsSL https://kluris.ngvoicu.dev/install.sh | KLURIS_VERSION=3.0.0 sh</span>
-<span class="prompt">&gt;</span> <span class="cmd">$env:KLURIS_VERSION = '3.0.0'; irm https://kluris.ngvoicu.dev/install.ps1 | iex</span></pre>
+<pre><span class="prompt">$</span> <span class="cmd">curl -fsSL https://kluris.ngvoicu.dev/install.sh | KLURIS_VERSION=3.1.0 sh</span>
+<span class="prompt">&gt;</span> <span class="cmd">$env:KLURIS_VERSION = '3.1.0'; irm https://kluris.ngvoicu.dev/install.ps1 | iex</span></pre>
       </div>
     </div>
     <p class="-mt-5 mb-10 max-w-3xl mx-auto text-center text-text-muted text-sm italic leading-relaxed">No admin rights. Kluris is one binary in <span class="font-mono text-purple-light">~/.kluris/bin</span>, and the installer adds that folder to your <span class="font-mono text-purple-light">PATH</span>: <span class="text-text-dim not-italic">open a new terminal</span> so it takes effect. macOS (Apple Silicon and Intel), Linux x86_64 and arm64, Windows x86_64 and arm64. <span class="font-mono text-purple-light">git</span> is the only other tool it uses.</p>
@@ -2011,7 +2011,7 @@ Multiple brains registered. Pick one:
 Brain is healthy.
 
 <span class="prompt">$</span> <span class="cmd">kluris search auth --brain all</span>
-Error: --brain all is only supported on dream, status, mri, and companion commands.
+Error: --brain all is only supported on dream, status, mri, sync, and companion commands.
 
 <span class="prompt">$</span> <span class="cmd">KLURIS_NO_PROMPT=1 kluris status</span>
 Error: Multiple brains registered. Pass --brain NAME or 'all'. Available: acme, personal, research</pre>
