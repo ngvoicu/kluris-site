@@ -59,7 +59,7 @@
   "programmingLanguage": "Rust",
   "license": "https://opensource.org/licenses/MIT",
   "image": "https://kluris.ngvoicu.dev/og-image.png",
-  "softwareVersion": "3.1.1",
+  "softwareVersion": "3.2.0",
   "downloadUrl": "https://github.com/ngvoicu/kluris/releases/latest",
   "installUrl": "https://kluris.ngvoicu.dev/#setup",
   "softwareRequirements": "git",
@@ -924,7 +924,7 @@
         </div>
 <pre><span class="prompt">$</span> <span class="cmd">kluris self-update</span>          <span class="dim"># newest release, then kluris doctor</span>
 <span class="prompt">$</span> <span class="cmd">kluris self-update --check</span>  <span class="dim"># only show the versions</span>
-<span class="prompt">$</span> <span class="cmd">kluris self-uninstall</span>       <span class="dim"># stops sync services; your brains stay</span></pre>
+<span class="prompt">$</span> <span class="cmd">kluris self-uninstall</span>       <span class="dim"># your brains stay</span></pre>
       </div>
 
       <!-- Pin a version -->
@@ -934,8 +934,8 @@
           <span class="ml-2">Install one particular release</span>
           <span class="scope scope-terminal">Terminal</span>
         </div>
-<pre><span class="prompt">$</span> <span class="cmd">curl -fsSL https://kluris.ngvoicu.dev/install.sh | KLURIS_VERSION=3.1.1 sh</span>
-<span class="prompt">&gt;</span> <span class="cmd">$env:KLURIS_VERSION = '3.1.1'; irm https://kluris.ngvoicu.dev/install.ps1 | iex</span></pre>
+<pre><span class="prompt">$</span> <span class="cmd">curl -fsSL https://kluris.ngvoicu.dev/install.sh | KLURIS_VERSION=3.2.0 sh</span>
+<span class="prompt">&gt;</span> <span class="cmd">$env:KLURIS_VERSION = '3.2.0'; irm https://kluris.ngvoicu.dev/install.ps1 | iex</span></pre>
       </div>
     </div>
     <p class="-mt-5 mb-10 max-w-3xl mx-auto text-center text-text-muted text-sm italic leading-relaxed">No admin rights. Kluris is one binary in <span class="font-mono text-purple-light">~/.kluris/bin</span>, and the installer adds that folder to your <span class="font-mono text-purple-light">PATH</span>: <span class="text-text-dim not-italic">open a new terminal</span> so it takes effect. macOS (Apple Silicon and Intel), Linux x86_64 and arm64, Windows x86_64 and arm64. <span class="font-mono text-purple-light">git</span> is the only other tool it uses.</p>
@@ -1339,7 +1339,7 @@ Tunnel (zero public ports).</span></pre>
   <span class="dim">●</span> Reading <span class="str">src/auth/</span> <span class="dim">(14 files)</span>
   <span class="dim">●</span> Reading <span class="str">config/GlobalExceptionHandler.kt</span>
 
-<span class="meta">Phase 1b · Brain research</span>   <span class="warn">← the kluris bit</span>
+<span class="meta">Phase 1b · Brain research</span>   <span class="warn">← the Kluris bit</span>
   <span class="dim">●</span> <span class="cmd">/kluris-acme what do we know about auth</span>
     <span class="ok">→</span> knowledge/auth-decisions.md
     <span class="ok">→</span> projects/btb-core/auth-flow.md
@@ -1505,7 +1505,7 @@ to the security team.</span>
     </div>
 
     <p class="mt-10 text-center text-xs text-text-muted leading-relaxed">
-      Run <span class="font-mono text-purple-light">kluris dream</span> to regenerate maps and validate links after structural changes. The agent commits what you approved and shares it with <span class="font-mono text-purple-light">kluris sync</span> &mdash; see <a href="#together" class="text-purple-light underline decoration-purple/30 underline-offset-2 hover:decoration-pink">working together</a>. Have more than one brain? Each installs as <span class="font-mono text-purple-light">/kluris-&lt;name&gt;</span> and everything above works the same — see <a href="#more-than-one-brain" class="text-purple-light underline decoration-purple/30 underline-offset-2 hover:decoration-pink">the appendix</a>.
+      Run <span class="font-mono text-purple-light">kluris dream</span> to regenerate maps and validate links after structural changes. The agent commits what you approved with <span class="font-mono text-purple-light">kluris commit</span>, which brings your teammates&rsquo; changes in and pushes yours &mdash; see <a href="#together" class="text-purple-light underline decoration-purple/30 underline-offset-2 hover:decoration-pink">working together</a>. Have more than one brain? Each installs as <span class="font-mono text-purple-light">/kluris-&lt;name&gt;</span> and everything above works the same — see <a href="#more-than-one-brain" class="text-purple-light underline decoration-purple/30 underline-offset-2 hover:decoration-pink">the appendix</a>.
     </p>
   </div>
 </section>
@@ -1629,7 +1629,7 @@ or clients sit in different timezones.</span>
 [<span class="ok">a</span>]pprove  [<span class="warn">e</span>]dit  [<span class="dim">s</span>]kip: <span class="str">a</span>
 
 <span class="ok">✓</span> 5 of 7 captured, 2 skipped, 0 edited
-<span class="meta">→ kluris commit · kluris sync:</span> acme: pushed</pre>
+<span class="meta">→ kluris commit ·</span> kluris: acme: pushed</pre>
     </div>
 
     <div class="grid grid-cols-1 md:grid-cols-3 gap-4">
@@ -1664,8 +1664,23 @@ or clients sit in different timezones.</span>
         Edit one brain <span class="gradient-text">as a team</span>.
       </h2>
       <p class="text-text-dim text-lg leading-relaxed">
-        The whole team writes to the same brain, and nobody has to pull, push or untangle a merge by hand. Before the agent writes, it syncs with your teammates. After you approve, it commits exactly the files it wrote and shares them. When two people changed the same line, it shows you both versions and asks which to keep. The brain never gets conflict markers, and nothing in your folder changes until you choose.
+        The whole team writes to the same brain, and nobody has to pull, push or untangle a merge by hand. Clone the brain and register it once; from then on every command that opens it keeps it in step with your teammates. The agent reads, writes what you approved, then runs <span class="font-mono text-purple-light">kluris commit</span>, which brings the team&rsquo;s changes in, commits exactly those files and pushes them. When two people changed the same line, it shows you both versions and asks which to keep. The brain never gets conflict markers, and nothing in your folder changes until you choose.
       </p>
+    </div>
+
+    <!-- Join the team's brain -->
+    <div class="terminal glow-purple-sm mb-5">
+      <div class="terminal-header">
+        <span class="terminal-dot" style="background:#ef4444;opacity:0.6"></span>
+        <span class="terminal-dot" style="background:#f59e0b;opacity:0.6"></span>
+        <span class="terminal-dot" style="background:#34d399;opacity:0.6"></span>
+        <span class="ml-2">join the team&rsquo;s brain, once</span>
+        <span class="scope scope-terminal">Terminal</span>
+      </div>
+<pre><span class="prompt">$</span> <span class="cmd">git clone git@github.com:acme/acme-brain.git ~/brains/acme</span>
+<span class="prompt">$</span> <span class="cmd">kluris register ~/brains/acme</span>
+<span class="ok">Brain registered:</span> acme
+<span class="ok">Agent skill installed:</span> kluris-acme</pre>
     </div>
 
     <div class="grid grid-cols-1 lg:grid-cols-2 gap-5 mb-6">
@@ -1679,8 +1694,8 @@ or clients sit in different timezones.</span>
 <pre><span class="prompt-agent">&gt;</span> <span class="cmd">/kluris-acme remember access tokens are now
              signed with RS256</span>
 
-<span class="meta">→ kluris sync --brain acme</span>
-acme: pulled
+<span class="meta">→ kluris search "access tokens" --brain acme</span>
+kluris: acme: pulled 1 commit
 
 <span class="meta">Proposing update:</span> knowledge/auth.md
 [<span class="ok">a</span>]pprove  [<span class="warn">e</span>]dit  [<span class="dim">s</span>]kip: <span class="str">a</span>
@@ -1688,8 +1703,7 @@ acme: pulled
 <span class="meta">→ kluris commit --brain acme --paths knowledge/auth.md</span>
 <span class="ok">Committed</span> 6408cab in acme: kluris: update knowledge/auth.md
   knowledge/auth.md
-<span class="meta">→ kluris sync --brain acme</span>
-acme: pushed</pre>
+kluris: acme: pushed</pre>
       </div>
 
       <!-- Merged on its own -->
@@ -1701,18 +1715,20 @@ acme: pushed</pre>
           <span class="ml-2">a teammate edited the same neuron, elsewhere</span>
           <span class="scope scope-terminal">Terminal</span>
         </div>
-<pre><span class="dim"># Bob added a tag and changed another line of auth.md</span>
-<span class="prompt">$</span> <span class="cmd">kluris sync --brain acme</span>
-acme: pulled, pushed
-  auto-merged: knowledge/auth.md
+<pre><span class="dim"># Bob added a tag and changed another section of auth.md</span>
+<span class="prompt">$</span> <span class="cmd">kluris commit --brain acme --paths knowledge/auth.md</span>
+<span class="ok">Committed</span> 73d699e in acme: kluris: update knowledge/auth.md
+  knowledge/auth.md
+kluris: acme: pulled 1 commit; auto-merged knowledge/auth.md; pushed
 
 <span class="dim"># both edits are in, both tags kept:</span>
 tags:
 - auth
-- keycloak
 - jwt
+- keycloak
 ...
 Access tokens live 15 minutes, signed with RS256.
+...
 Refresh tokens live 8 hours and rotate on every use.</pre>
       </div>
     </div>
@@ -1726,22 +1742,24 @@ Refresh tokens live 8 hours and rotate on every use.</pre>
         <span class="ml-2">two people changed the same line: a person decides</span>
         <span class="scope scope-terminal">Terminal</span>
       </div>
-<pre><span class="dim"># Alice wrote "10 minutes", Bob pushed "30 minutes" first</span>
+<pre><span class="dim"># Alice wrote "20 minutes", Bob pushed "30 minutes" first</span>
+<span class="prompt">$</span> <span class="cmd">kluris commit --brain acme --paths knowledge/auth.md</span>
+<span class="ok">Committed</span> 409f6d6 in acme: kluris: update knowledge/auth.md
+  knowledge/auth.md
+kluris: acme: <span class="warn">1 conflict (knowledge/auth.md) in merge 41398b394068</span>; 1 commit to push
+
 <span class="prompt">$</span> <span class="cmd">kluris sync --brain acme</span>
 acme: <span class="warn">1 conflict(s), nothing changed</span>; settle them with `kluris resolve`:
   content: knowledge/auth.md
-
-<span class="prompt">$</span> <span class="cmd">kluris status --brain acme</span>
-<span class="dim">...</span>
-  <span class="warn">Sync: blocked by 1 conflict; settle it with kluris resolve</span>
-    content: knowledge/auth.md
+    kluris resolve --brain acme knowledge/auth.md --ours|--theirs|--file FILE --merge 41398b394068
 
 <span class="dim"># the team agrees on Bob's 30 minutes</span>
-<span class="prompt">$</span> <span class="cmd">kluris resolve --brain acme knowledge/auth.md --theirs</span>
-<span class="ok">Resolved</span> knowledge/auth.md (theirs); committed e6f6f73 and pushed</pre>
+<span class="prompt">$</span> <span class="cmd">kluris resolve --brain acme knowledge/auth.md --theirs --merge 41398b394068</span>
+kluris: acme: pushed
+<span class="ok">Resolved</span> knowledge/auth.md (theirs); committed fec774f and pushed</pre>
     </div>
     <p class="-mt-4 mb-12 max-w-3xl mx-auto text-center text-text-muted text-sm italic leading-relaxed">
-      In your agent you never type these: it shows you what each side changed, asks which to keep (or proposes a merged text for you to approve), then settles it. <span class="font-mono text-purple-light not-italic">--ours</span> keeps your version, <span class="font-mono text-purple-light not-italic">--theirs</span> the teammate&rsquo;s, <span class="font-mono text-purple-light not-italic">--file</span> a text you merged, and <span class="font-mono text-purple-light not-italic">--abort</span> drops the open conflict.
+      In your agent you never type these: it shows you what each side changed, asks which to keep (or proposes a merged text for you to approve), then settles it. <span class="font-mono text-purple-light not-italic">--ours</span> keeps your version, <span class="font-mono text-purple-light not-italic">--theirs</span> the teammate&rsquo;s, <span class="font-mono text-purple-light not-italic">--file</span> a text you merged, and <span class="font-mono text-purple-light not-italic">--merge</span> names the waiting merge the choice answers.
     </p>
 
     <div class="grid grid-cols-1 md:grid-cols-2 gap-5 mb-5">
@@ -1768,20 +1786,21 @@ acme: <span class="warn">1 conflict(s), nothing changed</span>; settle them with
 
     <div class="grid grid-cols-1 md:grid-cols-2 gap-5">
       <div class="card rounded-2xl p-6">
-        <p class="text-purple text-xs uppercase tracking-widest font-semibold mb-3">Reads</p>
-        <p class="text-sm text-text-dim leading-relaxed">Before they read, <span class="font-mono text-purple-light">kluris wake-up</span> and <span class="font-mono text-purple-light">kluris search</span> fetch your teammates&rsquo; changes quietly, at most once a minute, and never touch your files. The changes come into your brain with <span class="font-mono text-purple-light">kluris sync</span>, which the agent runs before every write and whenever you ask for the team&rsquo;s latest. <span class="font-mono text-purple-light">KLURIS_NO_AUTO_SYNC=1</span> turns the fetch off.</p>
+        <p class="text-purple text-xs uppercase tracking-widest font-semibold mb-3">Reads bring the team in</p>
+        <p class="text-sm text-text-dim leading-relaxed">Before they read, <span class="font-mono text-purple-light">kluris wake-up</span>, <span class="font-mono text-purple-light">kluris search</span> and <span class="font-mono text-purple-light">kluris status</span> pull your teammates&rsquo; commits into the brain: at most once a minute, and within 3 seconds, so a slow network never holds the agent up. A file you are still editing is never overwritten; the brain waits until you commit it. <span class="font-mono text-purple-light">kluris sync</span> brings everything in on demand, and <span class="font-mono text-purple-light">kluris commit</span> pulls and pushes as it commits.</p>
       </div>
       <div class="card rounded-2xl p-6">
-        <p class="text-purple text-xs uppercase tracking-widest font-semibold mb-3">Always in sync</p>
-        <p class="text-sm text-text-dim leading-relaxed mb-3"><span class="font-mono text-purple-light">kluris sync --watch</span> syncs whenever you commit or a teammate pushes. <span class="font-mono text-purple-light">--install-service</span> runs it in the background from login on, as you, with no admin rights: a launchd agent on macOS, a systemd user unit on Linux, a Task Scheduler task on Windows.</p>
-<pre class="font-mono text-[0.72rem] leading-relaxed text-text-dim bg-bg/60 rounded-lg px-3 py-2 overflow-x-auto"><span class="text-purple">$</span> kluris sync --watch --brain acme
-2026-10-27 13:36:28 acme: up to date
-2026-10-27 13:36:34 acme: pulled</pre>
+        <p class="text-purple text-xs uppercase tracking-widest font-semibold mb-3">Housekeeping goes out on its own</p>
+        <p class="text-sm text-text-dim leading-relaxed mb-3"><span class="font-mono text-purple-light">kluris dream</span> and <span class="font-mono text-purple-light">kluris mri</span> pull first, then commit the brain&rsquo;s own tidying (regenerated maps, a missing <span class="font-mono text-purple-light">parent</span>, the other half of a link) as one commit under your git identity. Commits left waiting go out in one background push, so the command you ran never waits for the network. Nothing to set up, nothing to turn on.</p>
+<pre class="font-mono text-[0.72rem] leading-relaxed text-text-dim bg-bg/60 rounded-lg px-3 py-2 overflow-x-auto"><span class="text-purple">$</span> kluris dream --brain acme
+<span class="text-text-muted">...</span>
+Committed 1 housekeeping file in acme
+kluris: acme: pulled 2 commits; 3 commits to push</pre>
       </div>
     </div>
 
     <p class="mt-10 text-center text-xs text-text-muted leading-relaxed max-w-3xl mx-auto">
-      A file with uncommitted changes is never overwritten. Sync never asks for credentials, runs your repository&rsquo;s git hooks, and needs git 2.38 or newer. <span class="font-mono text-purple-light">kluris sync --brain all</span> syncs every brain.
+      A file with uncommitted changes is never overwritten. Kluris never asks for credentials, runs your repository&rsquo;s git hooks, and needs git 2.38 or newer. <span class="font-mono text-purple-light">kluris sync --brain all</span> syncs every brain.
     </p>
   </div>
 </section>
@@ -1853,7 +1872,7 @@ acme: <span class="warn">1 conflict(s), nothing changed</span>; settle them with
         </table>
         <p class="mt-5 text-xs text-text-muted italic">All CLI commands support <span class="font-mono text-purple-light">--json</span> for machine-readable output.</p>
         <p class="mt-2 text-xs text-text-muted italic">Every command that acts on a brain &mdash; <span class="font-mono text-purple-light">search</span>, <span class="font-mono text-purple-light">wake-up</span>, <span class="font-mono text-purple-light">status</span>, <span class="font-mono text-purple-light">dream</span>, <span class="font-mono text-purple-light">mri</span>, <span class="font-mono text-purple-light">commit</span>, <span class="font-mono text-purple-light">sync</span>, <span class="font-mono text-purple-light">resolve</span>, <span class="font-mono text-purple-light">companion</span> &mdash; takes <span class="font-mono text-purple-light whitespace-nowrap">--brain NAME</span>. With two or more brains registered, see <a href="#more-than-one-brain" class="text-purple-light underline decoration-purple/30 underline-offset-2 hover:decoration-pink">more than one brain</a>.</p>
-        <p class="mt-2 text-xs text-text-muted italic">Brains are plain git repos. <span class="font-mono text-purple-light">kluris sync</span> fetches, merges and pushes them for you; plain <span class="font-mono text-purple-light">git</span> works too, for branches and history.</p>
+        <p class="mt-2 text-xs text-text-muted italic">Brains are plain git repos. Every command that opens one keeps it in step with your team, and <span class="font-mono text-purple-light">kluris sync</span> fetches, merges and pushes on demand; plain <span class="font-mono text-purple-light">git</span> works too, for branches and history.</p>
         <p class="mt-2 text-xs text-text-muted italic">Most users create and organize lobes and neurons by asking their AI agent, then run <span class="font-mono text-purple-light">dream</span> to refresh maps and links.</p>
       </div>
 

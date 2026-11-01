@@ -414,7 +414,7 @@
     <p class="text-text-muted text-sm italic max-w-3xl mb-8 leading-relaxed reveal">
       No admin rights: Kluris is one binary in <code>~/.kluris/bin</code>, on macOS, Linux and Windows, and the installer adds it
       to your PATH. Later, <code>kluris self-update</code> updates it and <code>kluris self-uninstall</code> removes it; your brains stay.
-      To install one particular release, set <code>KLURIS_VERSION=3.1.1</code> in front of the installer.
+      To install one particular release, set <code>KLURIS_VERSION=3.2.0</code> in front of the installer.
     </p>
 
     <figure class="reveal">
@@ -713,7 +713,7 @@
         team's actual knowledge.
       </p>
       <pre class="miniterm"><span class="prompt-agent">&gt;</span> <span class="cmd">/kluris-acme let's add real-time presence to consensflow-cc — who's editing what</span>
-<span class="meta">→ kluris pre-flights the brain · reads <span class="hl">projects/consensflow-cc/architecture</span></span>
+<span class="meta">→ Kluris pre-flights the brain · reads <span class="hl">projects/consensflow-cc/architecture</span></span>
 <span class="meta">→ reads <span class="hl">infrastructure/realtime</span> · reads <span class="hl">knowledge/sessions</span></span>
 <span class="meta">→ proposes a plan that matches your conventions, not generic boilerplate</span>
 
@@ -932,7 +932,7 @@
             <span class="ml-auto text-[0.62rem] uppercase tracking-[0.14em] font-semibold px-2 py-0.5 rounded-full flex-shrink-0" style="border:1px solid rgba(167,139,250,0.35); color:#c4b5fd; background:rgba(167,139,250,0.06);">Write</span>
           </div>
 <pre class="miniterm" style="border:none; border-radius:0; background: transparent; color:#e4e7ef;"><span class="prompt-agent" style="color:#c4b5fd;">&gt;</span> <span class="cmd">/kluris-acme let's add real-time presence to consensflow-cc — who's editing what</span>
-<span class="meta">→ kluris pre-flights the brain · reads <span class="hl">projects/consensflow-cc/architecture</span></span>
+<span class="meta">→ Kluris pre-flights the brain · reads <span class="hl">projects/consensflow-cc/architecture</span></span>
 <span class="meta">→ reads <span class="hl">infrastructure/realtime</span> · reads <span class="hl">knowledge/sessions</span></span>
 
 <span class="prompt-agent" style="color:#c4b5fd;">&gt;</span> <span class="cmd">/kluris-acme let's create a spec for it first</span>
@@ -1003,9 +1003,9 @@
           </p>
           <pre class="miniterm" style="border-color: rgba(52,211,153,0.25);"><span class="prompt-agent" style="color:#6ee7b7;">&gt;</span> <span class="cmd">/kluris-acme remember what we worked on today and store it to the brain</span>
 <span class="meta">→ agent drafts neurons from the session: decisions, gotchas, snippets, links</span>
-<span class="meta">→ syncs the brain first: <span class="hl">kluris sync</span> · your teammates' latest changes come in</span>
+<span class="meta">→ reads the brain first: <span class="hl">kluris search</span> · your teammates' latest changes come in</span>
 <span class="meta">→ shows each one for <span class="hl">approve · edit · reject</span></span>
-<span class="meta">→ <span class="hl">kluris commit</span> the approved files · <span class="hl">kluris sync</span> pushes them · the whole team's brain just got smarter</span>
+<span class="meta">→ <span class="hl">kluris commit</span> the approved files · it pulls, commits and pushes them · the whole team's brain just got smarter</span>
 <span class="meta">→ a teammate changed the same line? both versions are shown to you · <span class="hl">kluris resolve</span> keeps the one you choose</span></pre>
           <p class="text-text-dim leading-relaxed mt-4">
             That's how the brain grows: every project teaches it once, every shipped feature teaches it a little more,

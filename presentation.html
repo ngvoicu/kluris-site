@@ -818,7 +818,7 @@
         </div>
         <p class="surface-desc">
           The <code>kluris</code> CLI. You run these yourself — install, create a brain,
-          regenerate the MRI, validate links, and <code>kluris sync</code> the brain with your team.
+          regenerate the MRI and validate links; every command keeps the brain in step with your team.
         </p>
         <div class="surface-example">kluris create</div>
       </div>
@@ -919,7 +919,7 @@
     <p class="mb-6 text-center text-text-dim text-sm leading-relaxed max-w-4xl mx-auto">
       No admin rights: one binary in <code>~/.kluris/bin</code>, added to your PATH, so <strong>open a new terminal</strong> after installing.
       macOS, Linux and Windows, Intel/x86_64 and ARM. Update with <code>kluris self-update</code>, uninstall with
-      <code>kluris self-uninstall</code> (your brains stay), and pin a release with <code>KLURIS_VERSION=3.1.1</code>.
+      <code>kluris self-uninstall</code> (your brains stay), and pin a release with <code>KLURIS_VERSION=3.2.0</code>.
     </p>
 
     <div class="grid grid-cols-1 lg:grid-cols-2 gap-5 items-stretch">
@@ -1332,7 +1332,7 @@ Tunnel (zero public ports).</span></pre>
   <span class="dim">●</span> Reading <span class="str">src/auth/</span> <span class="dim">(14 files)</span>
   <span class="dim">●</span> Reading <span class="str">config/GlobalExceptionHandler.kt</span>
 
-<span class="meta">Phase 1b · Brain research</span>   <span class="warn">← the kluris bit</span>
+<span class="meta">Phase 1b · Brain research</span>   <span class="warn">← the Kluris bit</span>
   <span class="dim">●</span> <span class="cmd">/kluris-acme what do we know about auth</span>
     <span class="ok">→</span> knowledge/auth-decisions.md
     <span class="ok">→</span> projects/btb-core/auth-flow.md
@@ -1481,7 +1481,7 @@ annual. Access is restricted to the security team.</span>
 
     <p class="text-text-muted text-xs italic text-center mt-5 max-w-3xl mx-auto leading-relaxed">
       Run <code>kluris dream</code> to regenerate maps after structural changes.
-      The agent commits what you approved and shares it with <code>kluris sync</code>.
+      The agent commits what you approved with <code>kluris commit</code>, which pulls and pushes.
       Have more than one brain? Each installs as
       <span class="font-mono text-purple-light">/kluris-&lt;name&gt;</span>
       and everything above works the same. In the terminal,
@@ -1495,15 +1495,15 @@ annual. Access is restricted to the security team.</span>
       <div>
         <p class="text-purple text-xs uppercase tracking-widest font-semibold mb-2">Together · one brain, many people</p>
         <p class="text-text-dim text-sm leading-relaxed mb-3">
-          Everyone writes to the same brain. Before the agent writes, it syncs with your teammates; after you approve,
-          it commits exactly the files it wrote and shares them. Edits to different files, the generated maps, dates,
+          Everyone writes to the same brain. Clone it, run <code>kluris register</code>, and every command that opens it
+          keeps it in step: reads pull your teammates&rsquo; commits first. The agent reads, writes what you approved, then runs
+          <code>kluris commit</code>, which pulls, commits exactly those files and pushes. Edits to different files, the generated maps, dates,
           <code>related</code> and <code>tags</code>, and changes to different parts of a neuron merge on their own.
         </p>
         <p class="text-text-dim text-sm leading-relaxed">
           When two people changed the same line, nothing in your folder changes and there are never conflict markers:
           the agent shows you both versions, asks which to keep, and settles it with <code>kluris resolve</code>.
-          <code>kluris sync</code> brings teammates&rsquo; changes in before every write;
-          <code>kluris sync --watch</code> or <code>--install-service</code> keeps a brain in sync in the background, with no admin rights.
+          <code>kluris dream</code> commits the brain&rsquo;s own housekeeping, and commits left waiting go out in one background push.
         </p>
       </div>
       <div class="terminal glow-purple-sm">
@@ -1512,13 +1512,19 @@ annual. Access is restricted to the security team.</span>
           <span>a conflict, settled</span>
           <span class="scope scope-terminal">Terminal</span>
         </div>
-<pre><span class="prompt">$</span> <span class="cmd">kluris sync --brain acme</span>
+<pre><span class="prompt">$</span> <span class="cmd">kluris commit --brain acme --paths knowledge/auth.md</span>
+<span class="ok">Committed</span> 409f6d6 in acme: kluris: update knowledge/auth.md
+  knowledge/auth.md
+kluris: acme: <span class="warn">1 conflict (knowledge/auth.md) in merge 41398b394068</span>; 1 commit to push
+
+<span class="prompt">$</span> <span class="cmd">kluris sync --brain acme</span>
 acme: <span class="warn">1 conflict(s), nothing changed</span>; settle them with `kluris resolve`:
   content: knowledge/auth.md
+    kluris resolve --brain acme knowledge/auth.md --ours|--theirs|--file FILE --merge 41398b394068
 
 <span class="dim"># the team agrees on the teammate's version</span>
-<span class="prompt">$</span> <span class="cmd">kluris resolve --brain acme knowledge/auth.md --theirs</span>
-<span class="ok">Resolved</span> knowledge/auth.md (theirs); committed e6f6f73 and pushed</pre>
+<span class="prompt">$</span> <span class="cmd">kluris resolve --brain acme knowledge/auth.md --theirs --merge 41398b394068</span>
+<span class="ok">Resolved</span> knowledge/auth.md (theirs); committed fec774f and pushed</pre>
       </div>
     </div>
   </div>
@@ -1644,7 +1650,7 @@ or clients sit in different timezones.</span>
 [<span class="ok">a</span>]pprove  [<span class="warn">e</span>]dit  [<span class="dim">s</span>]kip: <span class="str">a</span>
 
 <span class="ok">✓</span> 5 of 7 captured, 2 skipped, 0 edited
-<span class="meta">→ kluris commit · kluris sync:</span> acme: pushed</pre>
+<span class="meta">→ kluris commit ·</span> kluris: acme: pushed</pre>
     </div>
 
     <div class="grid grid-cols-1 md:grid-cols-3 gap-4">
