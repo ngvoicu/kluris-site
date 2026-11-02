@@ -1501,30 +1501,30 @@ annual. Access is restricted to the security team.</span>
           <code>related</code> and <code>tags</code>, and changes to different parts of a neuron merge on their own.
         </p>
         <p class="text-text-dim text-sm leading-relaxed">
-          When two people changed the same line, nothing in your folder changes and there are never conflict markers:
-          the agent shows you both versions, asks which to keep, and settles it with <code>kluris resolve</code>.
+          When two people changed the same line, the merge waits for a person: your file stays as you wrote it, nothing is pushed, and there are never conflict markers:
+          the agent shows you both versions, asks which to keep, writes it and finishes the merge with <code>kluris commit --merge</code>.
           <code>kluris dream</code> commits the brain&rsquo;s own housekeeping, and commits left waiting go out in one background push.
         </p>
       </div>
       <div class="terminal glow-purple-sm">
         <div class="terminal-header">
-          <span class="terminal-dot" style="background:#a78bfa"></span>
-          <span>a conflict, settled</span>
-          <span class="scope scope-terminal">Terminal</span>
+          <span class="terminal-dot" style="background:#ec4899"></span>
+          <span>the same line, settled by a person</span>
+          <span class="scope scope-agent">In your AI agent · in a project</span>
         </div>
-<pre><span class="prompt">$</span> <span class="cmd">kluris commit --brain acme --paths knowledge/auth.md</span>
-<span class="ok">Committed</span> 409f6d6 in acme: kluris: update knowledge/auth.md
+<pre><span class="meta">→ kluris commit --brain acme --paths knowledge/auth.md</span>
+<span class="ok">Committed</span> 0eefccb in acme: kluris: update knowledge/auth.md
   knowledge/auth.md
-kluris: acme: <span class="warn">1 conflict (knowledge/auth.md) in merge 41398b394068</span>; 1 commit to push
+kluris: acme: <span class="warn">1 conflict (knowledge/auth.md) in merge e46c333aabf0</span>; 1 commit to push
 
-<span class="prompt">$</span> <span class="cmd">kluris sync --brain acme</span>
-acme: <span class="warn">1 conflict(s), nothing changed</span>; settle them with `kluris resolve`:
-  content: knowledge/auth.md
-    kluris resolve --brain acme knowledge/auth.md --ours|--theirs|--file FILE --merge 41398b394068
+  yours     Access tokens live <span class="str">30 minutes</span>, signed with RS256.
+  teammate  Access tokens live <span class="str">20 minutes</span>, signed with RS256.
+<span class="meta">Which one do we keep?</span> [<span class="ok">y</span>]ours  [<span class="ok">t</span>]eammate&rsquo;s: <span class="str">t</span>
 
-<span class="dim"># the team agrees on the teammate's version</span>
-<span class="prompt">$</span> <span class="cmd">kluris resolve --brain acme knowledge/auth.md --theirs --merge 41398b394068</span>
-<span class="ok">Resolved</span> knowledge/auth.md (theirs); committed fec774f and pushed</pre>
+<span class="meta">→ kluris commit --brain acme --merge e46c333aabf0 --paths knowledge/auth.md</span>
+<span class="ok">Committed</span> c981616 in acme: kluris: sync (resolved)
+  knowledge/auth.md
+kluris: acme: pushed</pre>
       </div>
     </div>
   </div>

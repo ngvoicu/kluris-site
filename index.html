@@ -336,6 +336,20 @@
   .terminal pre .cmd { color: #e4e7ef; }
   .terminal pre .meta { color: #8a92a6; font-style: italic; }
 
+  /* Numbered badges of the #together picture: a light ring, as drawn in team-sync.png */
+  .sync-badge {
+    flex: none;
+    width: 1.9rem; height: 1.9rem;
+    border-radius: 9999px;
+    border: 2px solid rgba(228,231,239,0.85);
+    box-shadow: 0 0 0 3px rgba(167,139,250,0.22);
+    color: #e4e7ef;
+    font-weight: 600;
+    font-size: 0.9rem;
+    display: inline-flex; align-items: center; justify-content: center;
+    margin-top: 0.1rem;
+  }
+
   /* Scope badges — tell the reader where a command runs.
      Terminal (purple $) vs Inside your AI agent (pink >). */
   .scope {
@@ -1657,150 +1671,168 @@ or clients sit in different timezones.</span>
 <!-- TOGETHER — ONE BRAIN, MANY PEOPLE              -->
 <!-- ============================================ -->
 <section id="together" class="py-28 md:py-40 px-6 relative">
-  <div class="max-w-6xl mx-auto">
-    <div class="text-center mb-14 max-w-3xl mx-auto">
+  <div class="max-w-7xl mx-auto">
+    <div class="text-center mb-12 max-w-3xl mx-auto">
       <p class="text-purple text-xs uppercase tracking-[0.2em] font-medium mb-4">Together · One brain, many people</p>
       <h2 class="font-serif text-4xl md:text-6xl leading-tight mb-6">
         Edit one brain <span class="gradient-text">as a team</span>.
       </h2>
       <p class="text-text-dim text-lg leading-relaxed">
-        The whole team writes to the same brain, and nobody has to pull, push or untangle a merge by hand. Clone the brain and register it once; from then on every command that opens it keeps it in step with your teammates. The agent reads, writes what you approved, then runs <span class="font-mono text-purple-light">kluris commit</span>, which brings the team&rsquo;s changes in, commits exactly those files and pushes them. When two people changed the same line, it shows you both versions and asks which to keep. The brain never gets conflict markers, and nothing in your folder changes until you choose.
+        Every teammate&rsquo;s agent reads and writes the same brain. Clone it and register it once: from then on every command that opens it keeps it in step, and nobody pulls, pushes or untangles a merge by hand.
       </p>
     </div>
 
-    <!-- Join the team's brain -->
-    <div class="terminal glow-purple-sm mb-5">
-      <div class="terminal-header">
-        <span class="terminal-dot" style="background:#ef4444;opacity:0.6"></span>
-        <span class="terminal-dot" style="background:#f59e0b;opacity:0.6"></span>
-        <span class="terminal-dot" style="background:#34d399;opacity:0.6"></span>
-        <span class="ml-2">join the team&rsquo;s brain, once</span>
-        <span class="scope scope-terminal">Terminal</span>
-      </div>
+    <!-- The picture, and what each badge means -->
+    <div class="grid grid-cols-1 lg:grid-cols-[minmax(0,1.55fr)_minmax(0,1fr)] gap-8 lg:gap-12 items-center mb-16">
+      <picture class="block">
+        <source srcset="team-sync.webp" type="image/webp">
+        <img src="team-sync.png" width="1600" height="1000" loading="lazy" decoding="async" class="w-full h-auto rounded-2xl"
+          alt="Alice and Bob each work at a laptop that holds their own copy of the team's brain, with the shared brain glowing above them. 1: a purple arrow brings a teammate's note down to Bob's copy. 2: a pink arrow carries Alice's approved note up to the shared brain. 3: two notes with different lines changed join into one. 4: two versions of the same line side by side; Bob picks one and it goes up. 5: a dotted line with a moon carries Alice's housekeeping up in the background.">
+      </picture>
+
+      <ol class="space-y-6">
+        <li class="flex items-start gap-4">
+          <span class="sync-badge" aria-hidden="true">1</span>
+          <div class="min-w-0">
+            <p class="text-text font-medium">Reads bring the team in.</p>
+            <p class="text-sm text-text-dim leading-relaxed">Before your agent reads, Kluris pulls your teammates&rsquo; commits: at most once a minute, within 3 seconds. A file you&rsquo;re still editing is never overwritten.</p>
+            <p class="font-mono text-xs text-purple-light mt-1.5">kluris wake-up · search · status</p>
+          </div>
+        </li>
+        <li class="flex items-start gap-4">
+          <span class="sync-badge" aria-hidden="true">2</span>
+          <div class="min-w-0">
+            <p class="text-text font-medium">You approve, it&rsquo;s shared.</p>
+            <p class="text-sm text-text-dim leading-relaxed">The agent commits exactly the files you approved and the maps they change, pulling first and pushing after.</p>
+            <p class="font-mono text-xs text-purple-light mt-1.5">kluris commit --paths knowledge/auth.md</p>
+          </div>
+        </li>
+        <li class="flex items-start gap-4">
+          <span class="sync-badge" aria-hidden="true">3</span>
+          <div class="min-w-0">
+            <p class="text-text font-medium">Different parts merge on their own.</p>
+            <p class="text-sm text-text-dim leading-relaxed">Two edits that don&rsquo;t touch the same lines become one, and nobody is asked.</p>
+            <p class="font-mono text-xs text-purple-light mt-1.5">pulled 1 commit; auto-merged knowledge/auth.md; pushed</p>
+          </div>
+        </li>
+        <li class="flex items-start gap-4">
+          <span class="sync-badge" aria-hidden="true">4</span>
+          <div class="min-w-0">
+            <p class="text-text font-medium">The same line goes to a person.</p>
+            <p class="text-sm text-text-dim leading-relaxed">The agent shows both versions, asks which to keep, writes it and finishes the merge. Until then the merge waits: your file stays as you wrote it, and nothing is pushed.</p>
+            <p class="font-mono text-xs text-purple-light mt-1.5">kluris commit --merge &lt;id&gt; --paths &lt;file&gt;</p>
+          </div>
+        </li>
+        <li class="flex items-start gap-4">
+          <span class="sync-badge" aria-hidden="true">5</span>
+          <div class="min-w-0">
+            <p class="text-text font-medium">Housekeeping goes out on its own.</p>
+            <p class="text-sm text-text-dim leading-relaxed"><span class="font-mono text-purple-light">dream</span> and <span class="font-mono text-purple-light">mri</span> commit the brain&rsquo;s own tidying, and commits left waiting go out in one background push.</p>
+            <p class="font-mono text-xs text-purple-light mt-1.5">kluris dream · mri</p>
+          </div>
+        </li>
+      </ol>
+    </div>
+
+    <div class="grid grid-cols-1 lg:grid-cols-2 gap-5 items-start">
+      <!-- Join the team's brain -->
+      <div class="terminal glow-purple-sm lg:col-start-1 lg:row-start-1">
+        <div class="terminal-header">
+          <span class="terminal-dot" style="background:#ef4444;opacity:0.6"></span>
+          <span class="terminal-dot" style="background:#f59e0b;opacity:0.6"></span>
+          <span class="terminal-dot" style="background:#34d399;opacity:0.6"></span>
+          <span class="ml-2">join the team&rsquo;s brain, once</span>
+          <span class="scope scope-terminal">Terminal</span>
+        </div>
 <pre><span class="prompt">$</span> <span class="cmd">git clone git@github.com:acme/acme-brain.git ~/brains/acme</span>
 <span class="prompt">$</span> <span class="cmd">kluris register ~/brains/acme</span>
 <span class="ok">Brain registered:</span> acme
-<span class="ok">Agent skill installed:</span> kluris-acme</pre>
-    </div>
+  Path: /Users/bob/brains/acme
 
-    <div class="grid grid-cols-1 lg:grid-cols-2 gap-5 mb-6">
-      <!-- The write flow, through the agent -->
-      <div class="terminal glow-purple-sm">
+<span class="ok">Agent skill installed:</span> kluris-acme
+  Claude/Codex/Antigravity/etc: /kluris-acme</pre>
+      </div>
+
+      <!-- The everyday write, through the agent -->
+      <div class="terminal glow-purple-sm lg:col-start-2 lg:row-start-1 lg:row-span-2">
         <div class="terminal-header">
           <span class="terminal-dot" style="background:#ec4899"></span>
           <span class="ml-2">the agent writes, the team gets it</span>
           <span class="scope scope-agent">In your AI agent · in a project</span>
         </div>
-<pre><span class="prompt-agent">&gt;</span> <span class="cmd">/kluris-acme remember access tokens are now
-             signed with RS256</span>
+<pre><span class="prompt-agent">&gt;</span> <span class="cmd">/kluris-acme remember access tokens are signed
+             with RS256</span>
 
 <span class="meta">→ kluris search "access tokens" --brain acme</span>
+1 result(s) for 'access tokens' in acme
+  353  Auth flow
+        knowledge/auth.md
+        Access tokens live 15 minutes.
+
 kluris: acme: pulled 1 commit
 
 <span class="meta">Proposing update:</span> knowledge/auth.md
+<span class="dim">-</span> Access tokens live 15 minutes.
+<span class="ok">+</span> Access tokens live 15 minutes, signed with RS256.
 [<span class="ok">a</span>]pprove  [<span class="warn">e</span>]dit  [<span class="dim">s</span>]kip: <span class="str">a</span>
 
 <span class="meta">→ kluris commit --brain acme --paths knowledge/auth.md</span>
-<span class="ok">Committed</span> 6408cab in acme: kluris: update knowledge/auth.md
+<span class="ok">Committed</span> 94380f6 in acme: kluris: update knowledge/auth.md
   knowledge/auth.md
 kluris: acme: pushed</pre>
       </div>
 
-      <!-- Merged on its own -->
-      <div class="terminal glow-purple-sm">
+      <!-- The same line, settled by a person -->
+      <div class="terminal glow-purple-sm lg:col-span-2 lg:row-start-3">
         <div class="terminal-header">
-          <span class="terminal-dot" style="background:#ef4444;opacity:0.6"></span>
-          <span class="terminal-dot" style="background:#f59e0b;opacity:0.6"></span>
-          <span class="terminal-dot" style="background:#34d399;opacity:0.6"></span>
-          <span class="ml-2">a teammate edited the same neuron, elsewhere</span>
-          <span class="scope scope-terminal">Terminal</span>
+          <span class="terminal-dot" style="background:#ec4899"></span>
+          <span class="ml-2">two people changed the same line: you pick one</span>
+          <span class="scope scope-agent">In your AI agent · in a project</span>
         </div>
-<pre><span class="dim"># Bob added a tag and changed another section of auth.md</span>
-<span class="prompt">$</span> <span class="cmd">kluris commit --brain acme --paths knowledge/auth.md</span>
-<span class="ok">Committed</span> 73d699e in acme: kluris: update knowledge/auth.md
+<pre><span class="prompt-agent">&gt;</span> <span class="cmd">/kluris-acme remember access tokens live 30 minutes</span>
+<span class="dim">  ...</span>
+<span class="meta">→ kluris commit --brain acme --paths knowledge/auth.md</span>
+<span class="ok">Committed</span> 0eefccb in acme: kluris: update knowledge/auth.md
   knowledge/auth.md
-kluris: acme: pulled 1 commit; auto-merged knowledge/auth.md; pushed
+kluris: acme: <span class="warn">1 conflict (knowledge/auth.md) in merge e46c333aabf0</span>; 1 commit to push
 
-<span class="dim"># both edits are in, both tags kept:</span>
-tags:
-- auth
-- jwt
-- keycloak
-...
-Access tokens live 15 minutes, signed with RS256.
-...
-Refresh tokens live 8 hours and rotate on every use.</pre>
-      </div>
-    </div>
+<span class="meta">A teammate changed the same line first. Your file is as you wrote it, and nothing is pushed.</span>
+  yours     Access tokens live <span class="str">30 minutes</span>, signed with RS256.
+  teammate  Access tokens live <span class="str">20 minutes</span>, signed with RS256.
+<span class="meta">Which one do we keep?</span> [<span class="ok">y</span>]ours  [<span class="ok">t</span>]eammate&rsquo;s: <span class="str">t</span>
 
-    <!-- A real conflict, settled -->
-    <div class="terminal glow-purple-sm mb-8">
-      <div class="terminal-header">
-        <span class="terminal-dot" style="background:#ef4444;opacity:0.6"></span>
-        <span class="terminal-dot" style="background:#f59e0b;opacity:0.6"></span>
-        <span class="terminal-dot" style="background:#34d399;opacity:0.6"></span>
-        <span class="ml-2">two people changed the same line: a person decides</span>
-        <span class="scope scope-terminal">Terminal</span>
-      </div>
-<pre><span class="dim"># Alice wrote "20 minutes", Bob pushed "30 minutes" first</span>
-<span class="prompt">$</span> <span class="cmd">kluris commit --brain acme --paths knowledge/auth.md</span>
-<span class="ok">Committed</span> 409f6d6 in acme: kluris: update knowledge/auth.md
+<span class="meta">→ writes the teammate&rsquo;s version to knowledge/auth.md</span>
+<span class="meta">→ kluris commit --brain acme --merge e46c333aabf0 --paths knowledge/auth.md</span>
+<span class="ok">Committed</span> c981616 in acme: kluris: sync (resolved)
   knowledge/auth.md
-kluris: acme: <span class="warn">1 conflict (knowledge/auth.md) in merge 41398b394068</span>; 1 commit to push
-
-<span class="prompt">$</span> <span class="cmd">kluris sync --brain acme</span>
-acme: <span class="warn">1 conflict(s), nothing changed</span>; settle them with `kluris resolve`:
-  content: knowledge/auth.md
-    kluris resolve --brain acme knowledge/auth.md --ours|--theirs|--file FILE --merge 41398b394068
-
-<span class="dim"># the team agrees on Bob's 30 minutes</span>
-<span class="prompt">$</span> <span class="cmd">kluris resolve --brain acme knowledge/auth.md --theirs --merge 41398b394068</span>
-kluris: acme: pushed
-<span class="ok">Resolved</span> knowledge/auth.md (theirs); committed fec774f and pushed</pre>
-    </div>
-    <p class="-mt-4 mb-12 max-w-3xl mx-auto text-center text-text-muted text-sm italic leading-relaxed">
-      In your agent you never type these: it shows you what each side changed, asks which to keep (or proposes a merged text for you to approve), then settles it. <span class="font-mono text-purple-light not-italic">--ours</span> keeps your version, <span class="font-mono text-purple-light not-italic">--theirs</span> the teammate&rsquo;s, <span class="font-mono text-purple-light not-italic">--file</span> a text you merged, and <span class="font-mono text-purple-light not-italic">--merge</span> names the waiting merge the choice answers.
-    </p>
-
-    <div class="grid grid-cols-1 md:grid-cols-2 gap-5 mb-5">
-      <div class="card rounded-2xl p-6">
-        <p class="text-purple text-xs uppercase tracking-widest font-semibold mb-3">Merged on their own</p>
-        <ul class="space-y-2 text-sm text-text-dim leading-relaxed">
-          <li class="flex items-start gap-3"><span class="text-purple mt-0.5">→</span><span>Changes to different files</span></li>
-          <li class="flex items-start gap-3"><span class="text-purple mt-0.5">→</span><span>The generated <span class="font-mono text-purple-light">map.md</span> and <span class="font-mono text-purple-light">brain.md</span>, rebuilt from the merged brain</span></li>
-          <li class="flex items-start gap-3"><span class="text-purple mt-0.5">→</span><span><span class="font-mono text-purple-light">created</span> and <span class="font-mono text-purple-light">updated</span> dates: the earlier and the later one</span></li>
-          <li class="flex items-start gap-3"><span class="text-purple mt-0.5">→</span><span><span class="font-mono text-purple-light">related</span> and <span class="font-mono text-purple-light">tags</span>: both lists joined</span></li>
-          <li class="flex items-start gap-3"><span class="text-purple mt-0.5">→</span><span>Edits to different parts of the same neuron</span></li>
-        </ul>
+kluris: acme: pushed</pre>
       </div>
-      <div class="card rounded-2xl p-6">
-        <p class="text-pink text-xs uppercase tracking-widest font-semibold mb-3">Left for a person</p>
-        <ul class="space-y-2 text-sm text-text-dim leading-relaxed">
-          <li class="flex items-start gap-3"><span class="text-pink mt-0.5">→</span><span>Overlapping edits to the same lines</span></li>
-          <li class="flex items-start gap-3"><span class="text-pink mt-0.5">→</span><span>A file deleted on one side and edited on the other</span></li>
-          <li class="flex items-start gap-3"><span class="text-pink mt-0.5">→</span><span>Different <span class="font-mono text-pink">parent</span> values, or another frontmatter field changed differently on both sides</span></li>
-          <li class="flex items-start gap-3"><span class="text-pink mt-0.5">→</span><span>Until it is settled: no file changes, no commit, no push</span></li>
-        </ul>
-      </div>
-    </div>
 
-    <div class="grid grid-cols-1 md:grid-cols-2 gap-5">
-      <div class="card rounded-2xl p-6">
-        <p class="text-purple text-xs uppercase tracking-widest font-semibold mb-3">Reads bring the team in</p>
-        <p class="text-sm text-text-dim leading-relaxed">Before they read, <span class="font-mono text-purple-light">kluris wake-up</span>, <span class="font-mono text-purple-light">kluris search</span> and <span class="font-mono text-purple-light">kluris status</span> pull your teammates&rsquo; commits into the brain: at most once a minute, and within 3 seconds, so a slow network never holds the agent up. A file you are still editing is never overwritten; the brain waits until you commit it. <span class="font-mono text-purple-light">kluris sync</span> brings everything in on demand, and <span class="font-mono text-purple-light">kluris commit</span> pulls and pushes as it commits.</p>
-      </div>
-      <div class="card rounded-2xl p-6">
-        <p class="text-purple text-xs uppercase tracking-widest font-semibold mb-3">Housekeeping goes out on its own</p>
-        <p class="text-sm text-text-dim leading-relaxed mb-3"><span class="font-mono text-purple-light">kluris dream</span> and <span class="font-mono text-purple-light">kluris mri</span> pull first, then commit the brain&rsquo;s own tidying (regenerated maps, a missing <span class="font-mono text-purple-light">parent</span>, the other half of a link) as one commit under your git identity. Commits left waiting go out in one background push, so the command you ran never waits for the network. Nothing to set up, nothing to turn on.</p>
-<pre class="font-mono text-[0.72rem] leading-relaxed text-text-dim bg-bg/60 rounded-lg px-3 py-2 overflow-x-auto"><span class="text-purple">$</span> kluris dream --brain acme
-<span class="text-text-muted">...</span>
-Committed 1 housekeeping file in acme
-kluris: acme: pulled 2 commits; 3 commits to push</pre>
+      <!-- What merges on its own, what goes to a person -->
+      <div class="grid grid-cols-1 sm:grid-cols-2 gap-5 lg:col-start-1 lg:row-start-2">
+        <div class="card rounded-2xl p-5">
+          <p class="text-purple text-xs uppercase tracking-widest font-semibold mb-3">Merged on their own</p>
+          <ul class="space-y-2 text-sm text-text-dim leading-relaxed">
+            <li class="flex items-start gap-3"><span class="text-purple mt-0.5">→</span><span>Changes to different files, or to different parts of one neuron</span></li>
+            <li class="flex items-start gap-3"><span class="text-purple mt-0.5">→</span><span><span class="font-mono text-purple-light">tags</span> and <span class="font-mono text-purple-light">related</span>: both lists joined</span></li>
+            <li class="flex items-start gap-3"><span class="text-purple mt-0.5">→</span><span><span class="font-mono text-purple-light">created</span> and <span class="font-mono text-purple-light">updated</span>: the earlier and the later date</span></li>
+            <li class="flex items-start gap-3"><span class="text-purple mt-0.5">→</span><span>The generated <span class="font-mono text-purple-light">map.md</span> and <span class="font-mono text-purple-light">brain.md</span>, rebuilt</span></li>
+          </ul>
+        </div>
+        <div class="card rounded-2xl p-5">
+          <p class="text-pink text-xs uppercase tracking-widest font-semibold mb-3">Left for a person</p>
+          <ul class="space-y-2 text-sm text-text-dim leading-relaxed">
+            <li class="flex items-start gap-3"><span class="text-pink mt-0.5">→</span><span>Edits to the same lines</span></li>
+            <li class="flex items-start gap-3"><span class="text-pink mt-0.5">→</span><span>A file deleted on one side and edited on the other</span></li>
+            <li class="flex items-start gap-3"><span class="text-pink mt-0.5">→</span><span><span class="font-mono text-pink">parent</span>, or another frontmatter field, changed differently on both sides</span></li>
+            <li class="flex items-start gap-3"><span class="text-pink mt-0.5">→</span><span>A file on one side and a folder on the other, or a binary file: settled with <span class="font-mono text-pink">kluris resolve</span></span></li>
+          </ul>
+        </div>
       </div>
     </div>
 
     <p class="mt-10 text-center text-xs text-text-muted leading-relaxed max-w-3xl mx-auto">
-      A file with uncommitted changes is never overwritten. Kluris never asks for credentials, runs your repository&rsquo;s git hooks, and needs git 2.38 or newer. <span class="font-mono text-purple-light">kluris sync --brain all</span> syncs every brain.
+      There is nothing to turn on. Kluris never asks for credentials, runs your repository&rsquo;s git hooks as git does, and needs git 2.38 or newer. <span class="font-mono text-purple-light">kluris sync</span> does it all by hand.
     </p>
   </div>
 </section>
